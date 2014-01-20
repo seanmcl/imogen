@@ -1,0 +1,6 @@
+
+% Status : Theorem
+% Rating  : 0.00
+
+(p -o q) -o (p -o q)
+

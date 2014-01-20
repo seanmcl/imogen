@@ -1,0 +1,6 @@
+
+% Problem : FOL024+1
+% Status  : NonTheorem
+% Rating  : 0.0
+
+( forall U V W. big_p(U,V) | big_p(V,W)  ) => ( exists X. forall Y. big_p(X,Y) )

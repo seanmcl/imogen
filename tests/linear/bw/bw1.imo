@@ -1,0 +1,9 @@
+
+(forall X Y. free(X) * on(X, Y) * empty -o free(Y) * holds(X)) =>
+(forall X Y. holds(X) * free(Y) -o empty * free(X) * on(X,Y)) =>
+(forall X. free(X) * on(X,tab) * empty -o holds(X)) =>
+(forall X. holds(X) -o empty * on(X,tab) * free(X)) =>
+
+forall X Y. free(X) * on(X,Y) * on(Y,tab) * empty
+              -o on(X,tab) * on(Y,tab) * top
+

@@ -1,0 +1,100 @@
+% File     : GEJ039+2 : ILTP v1.1.2
+% Domain   : Constructive Geometry
+% Problem  : Lemma 7.3
+% Version  : [D97],[D98] axioms : Especial.
+% English  : If the point X is incident with both the lines Y and Z, and
+%          : Y and Z are parallel, then Y and Z are equal.
+% Refs     : [P95] J. von Plato. The Axioms of Constructive Geometry. Annals
+%                  of Pure and Applied Logic 76 (2): 169-200, 1995.
+% Source   : [P95]
+% Names    :
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.75 v1.1.0
+%
+% Comments : Shortened axioms
+%------------------------------------------------------------------------------
+
+ 
+
+% a1, axiom.
+(( forall X. ( ~ dipt(X, X) ) ))
+
+  =>
+
+% a2, axiom.
+(( forall X. ( ~ diln(X, X) ) ))
+
+  =>
+
+% ax3, axiom.
+(( forall X. ( ~ con(X, X) ) ))
+
+  =>
+
+% ax4, axiom.
+(( forall X Y Z. ( dipt(X, Y) => ( dipt(X, Z) | dipt(Y, Z) ) ) ))
+
+  =>
+
+% ax5, axiom.
+(( forall X Y Z. ( diln(X, Y) => ( diln(X, Z) | diln(Y, Z) ) ) ))
+
+  =>
+
+% ax6, axiom.
+(( forall X Y Z. ( con(X, Y) => ( con(X, Z) | con(Y, Z) ) ) ))
+
+  =>
+
+% a1, axiom.
+(( forall X Y Z. ( dipt(X, Y) => ( apt(Z, ln(X, Y)) => ( dipt(Z, X) & dipt(Z, Y) ) ) ) ))
+
+  =>
+
+% a2, axiom.
+(( forall X Y Z. ( con(X, Y) => ( ( apt(Z, X) | apt(Z, Y) ) => dipt(Z, pt(X, Y)) ) ) ))
+
+  =>
+
+% a1, axiom.
+(( forall X Y U V. ( ( dipt(X, Y) & diln(U, V) ) => ( ( apt(X, U) | apt(X, V) ) | ( apt(Y, U) | apt(Y, V) ) ) ) ))
+
+  =>
+
+% a1, axiom.
+(( forall X Y Z. ( apt(X, Y) => ( dipt(X, Z) | apt(Z, Y) ) ) ))
+
+  =>
+
+% a2, axiom.
+(( forall X Y Z. ( apt(X, Y) => ( diln(Y, Z) | apt(X, Z) ) ) ))
+
+  =>
+
+% a3, axiom.
+(( forall X Y. ( con(X, Y) => diln(X, Y) ) ))
+
+  =>
+
+% a1, axiom.
+(( forall X Y. ( ~ con(par(Y, X), Y) ) ))
+
+  =>
+
+% a2, axiom.
+(( forall X Y. ( ~ apt(X, par(Y, X)) ) ))
+
+  =>
+
+% a1, axiom.
+(( forall X Y Z. ( diln(Y, Z) => ( ( apt(X, Y) | apt(X, Z) ) | con(Y, Z) ) ) ))
+
+  =>
+
+% con, conjecture.
+(( forall X Y Z. ( ( ( ~ apt(X, Y) ) & ( ( ~ apt(X, Z) ) & ( ~ con(Y, Z) ) ) ) => ( ~ diln(Y, Z) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

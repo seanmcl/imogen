@@ -1,0 +1,9 @@
+rand_X.int contains 1000 instances of randomly generated Intuitionistic formulae, with one formula per line.
+
+Formulae are built from the following:
+
+identifier	Proposition
+&			Conjunction
+|			Disjunction
+=>			Intuitionistic Implication
+<=>			Intuitionsitc Bi-implication

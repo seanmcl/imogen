@@ -1,0 +1,294 @@
+% File     : GRA010+2 : ILTP v1.1.2
+% Domain   : Graph Theory
+% Problem  : Maximal shortest path length in terms of triangles
+% Version  : Augmented > Especial.
+% English  : In a complete graph, if there is a shortest path P from V1 to 
+%            V2 with edges E1 and E2, E1 sequential to E2 means there is an 
+%            edge E3 such that E1, E2, and E3 form a triangle, then the
+%            number of sequential pairs in P is the number of triangles 
+%            in P.
+% Refs     : 
+% Source   : [TPTP]
+% Names    : 
+% Status   : Theorem
+% Rating   : 0.55 v3.1.0
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.75 v1.1.0
+%
+% Syntax   : Number of formulae    :   18 (   1 unit)
+%            Number of atoms       :   99 (  25 equality)
+%            Maximal formula depth :   13 (   9 average)
+%            Number of connectives :   87 (   6 ~  ;   3  |;  50  &)
+%                                         (   3 <=>;  20 =>;   2 <=)
+%                                         (   3 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   12 (   1 propositional; 0-3 arity)
+%            Number of functors    :   12 (   6 constant; 0-2 arity)
+%            Number of variables   :   76 (   0 singleton;  64 !;  12 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% head_of_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( head_of(A) = head_of(B) ) ) ))
+
+  =>
+
+% length_of_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( length_of(A) = length_of(B) ) ) ))
+
+  =>
+
+% minus_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( minus(A, C) = minus(B, C) ) ) ))
+
+  =>
+
+% minus_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( minus(C, A) = minus(C, B) ) ) ))
+
+  =>
+
+% number_of_in_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_in(A, C) = number_of_in(B, C) ) ) ))
+
+  =>
+
+% number_of_in_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_in(C, A) = number_of_in(C, B) ) ) ))
+
+  =>
+
+% path_cons_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( path_cons(A, C) = path_cons(B, C) ) ) ))
+
+  =>
+
+% path_cons_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( path_cons(C, A) = path_cons(C, B) ) ) ))
+
+  =>
+
+% tail_of_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( tail_of(A) = tail_of(B) ) ) ))
+
+  =>
+
+% edge_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & edge(A) ) => edge(B) ) ))
+
+  =>
+
+% in_path_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & in_path(A, C) ) => in_path(B, C) ) ))
+
+  =>
+
+% in_path_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & in_path(C, A) ) => in_path(C, B) ) ))
+
+  =>
+
+% less_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & less_or_equal(A, C) ) => less_or_equal(B, C) ) ))
+
+  =>
+
+% less_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & less_or_equal(C, A) ) => less_or_equal(C, B) ) ))
+
+  =>
+
+% on_path_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & on_path(A, C) ) => on_path(B, C) ) ))
+
+  =>
+
+% on_path_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & on_path(C, A) ) => on_path(C, B) ) ))
+
+  =>
+
+% path_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & path(A, C, D) ) => path(B, C, D) ) ))
+
+  =>
+
+% path_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & path(C, A, D) ) => path(C, B, D) ) ))
+
+  =>
+
+% path_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & path(C, D, A) ) => path(C, D, B) ) ))
+
+  =>
+
+% precedes_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & precedes(A, C, D) ) => precedes(B, C, D) ) ))
+
+  =>
+
+% precedes_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & precedes(C, A, D) ) => precedes(C, B, D) ) ))
+
+  =>
+
+% precedes_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & precedes(C, D, A) ) => precedes(C, D, B) ) ))
+
+  =>
+
+% sequential_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & sequential(A, C) ) => sequential(B, C) ) ))
+
+  =>
+
+% sequential_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & sequential(C, A) ) => sequential(C, B) ) ))
+
+  =>
+
+% shortest_path_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & shortest_path(A, C, D) ) => shortest_path(B, C, D) ) ))
+
+  =>
+
+% shortest_path_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & shortest_path(C, A, D) ) => shortest_path(C, B, D) ) ))
+
+  =>
+
+% shortest_path_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & shortest_path(C, D, A) ) => shortest_path(C, D, B) ) ))
+
+  =>
+
+% triangle_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & triangle(A, C, D) ) => triangle(B, C, D) ) ))
+
+  =>
+
+% triangle_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & triangle(C, A, D) ) => triangle(C, B, D) ) ))
+
+  =>
+
+% triangle_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & triangle(C, D, A) ) => triangle(C, D, B) ) ))
+
+  =>
+
+% vertex_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & vertex(A) ) => vertex(B) ) ))
+
+  =>
+
+% no_loops, axiom.
+(( forall E. ( edge(E) => ( ~ ( head_of(E) = tail_of(E) ) ) ) ))
+
+  =>
+
+% complete_properties, axiom.
+(( complete => ( forall V1 V2. ( ( vertex(V1) & ( vertex(V2) & ( ~ ( V1 = V2 ) ) ) ) => ( exists E. ( edge(E) & ( ~ ( ( ( V1 = head_of(E) ) & ( V2 = tail_of(E) ) ) <=> ( ( V2 = head_of(E) ) & ( V1 = tail_of(E) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% path_defn, axiom.
+(( forall V1 V2 P. ( ( vertex(V1) & ( vertex(V2) & ( exists E. ( edge(E) & ( ( V1 = tail_of(E) ) & ( ( ( V2 = head_of(E) ) & ( P = path_cons(E, empty) ) ) | ( exists TP. ( path(head_of(E), V2, TP) & ( P = path_cons(E, TP) ) ) ) ) ) ) ) ) ) => path(V1, V2, P) ) ))
+
+  =>
+
+% path_properties, axiom.
+(( forall V1 V2 P. ( path(V1, V2, P) => ( vertex(V1) & ( vertex(V2) & ( exists E. ( edge(E) & ( ( V1 = tail_of(E) ) & ( ~ ( ( ( V2 = head_of(E) ) & ( P = path_cons(E, empty) ) ) <=> ( exists TP. ( path(head_of(E), V2, TP) & ( P = path_cons(E, TP) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% on_path_properties, axiom.
+(( forall V1 V2 P E. ( ( path(V1, V2, P) & on_path(E, P) ) => ( edge(E) & ( in_path(head_of(E), P) & in_path(tail_of(E), P) ) ) ) ))
+
+  =>
+
+% in_path_properties, axiom.
+(( forall V1 V2 P V. ( ( path(V1, V2, P) & in_path(V, P) ) => ( vertex(V) & ( exists E. ( on_path(E, P) & ( ( V = head_of(E) ) | ( V = tail_of(E) ) ) ) ) ) ) ))
+
+  =>
+
+% sequential_defn, axiom.
+(( forall E1 E2. ( sequential(E1, E2) <=> ( edge(E1) & ( edge(E2) & ( ( ~ ( E1 = E2 ) ) & ( head_of(E1) = tail_of(E2) ) ) ) ) ) ))
+
+  =>
+
+% precedes_defn, axiom.
+(( forall P V1 V2. ( path(V1, V2, P) => ( forall E1 E2. ( ( on_path(E1, P) & ( on_path(E2, P) & ( sequential(E1, E2) | ( exists E3. ( sequential(E1, E3) & precedes(E3, E2, P) ) ) ) ) ) => precedes(E1, E2, P) ) ) ) ))
+
+  =>
+
+% precedes_properties, axiom.
+(( forall P V1 V2. ( path(V1, V2, P) => ( forall E1 E2. ( precedes(E1, E2, P) => ( on_path(E1, P) & ( on_path(E2, P) & ( ~ ( sequential(E1, E2) <=> ( exists E3. ( sequential(E1, E3) & precedes(E3, E2, P) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% shortest_path_defn, axiom.
+(( forall V1 V2 SP. ( shortest_path(V1, V2, SP) <=> ( path(V1, V2, SP) & ( ( ~ ( V1 = V2 ) ) & ( forall P. ( path(V1, V2, P) => less_or_equal(length_of(SP), length_of(P)) ) ) ) ) ) ))
+
+  =>
+
+% shortest_path_properties, axiom.
+(( forall V1 V2 E1 E2 P. ( ( shortest_path(V1, V2, P) & precedes(E1, E2, P) ) => ( ( ~ ( exists E3. ( ( tail_of(E3) = tail_of(E1) ) & ( head_of(E3) = head_of(E2) ) ) ) ) & ( ~ precedes(E2, E1, P) ) ) ) ))
+
+  =>
+
+% triangle_defn, axiom.
+(( forall E1 E2 E3. ( triangle(E1, E2, E3) <=> ( edge(E1) & ( edge(E2) & ( edge(E3) & ( sequential(E1, E2) & ( sequential(E2, E3) & sequential(E3, E1) ) ) ) ) ) ) ))
+
+  =>
+
+% length_defn, axiom.
+(( forall V1 V2 P. ( path(V1, V2, P) => ( length_of(P) = number_of_in(edges, P) ) ) ))
+
+  =>
+
+% path_length_sequential_pairs, axiom.
+(( forall V1 V2 P. ( path(V1, V2, P) => ( number_of_in(sequential_pairs, P) = minus(length_of(P), n1) ) ) ))
+
+  =>
+
+% sequential_pairs_and_triangles, axiom.
+(( forall P V1 V2. ( ( path(V1, V2, P) & ( forall E1 E2. ( ( on_path(E1, P) & ( on_path(E2, P) & sequential(E1, E2) ) ) => ( exists E3. triangle(E1, E2, E3) ) ) ) ) => ( number_of_in(sequential_pairs, P) = number_of_in(triangles, P) ) ) ))
+
+  =>
+
+% graph_has_them_all, axiom.
+(( forall Things InThese. less_or_equal(number_of_in(Things, InThese), number_of_in(Things, graph)) ))
+
+  =>
+
+% sequential_is_triangle, lemma.
+(( complete => ( forall V1 V2 E1 E2 P. ( ( shortest_path(V1, V2, P) & ( precedes(E1, E2, P) & sequential(E1, E2) ) ) => ( exists E3. triangle(E1, E2, E3) ) ) ) ))
+
+  =>
+
+% sequential_pairs_and_triangles, conjecture.
+(( complete => ( forall P V1 V2. ( ( path(V1, V2, P) & ( forall E1 E2. ( ( on_path(E1, P) & ( on_path(E2, P) & sequential(E1, E2) ) ) => ( exists E3. triangle(E1, E2, E3) ) ) ) ) => ( number_of_in(sequential_pairs, P) = number_of_in(triangles, P) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

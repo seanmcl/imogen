@@ -1,0 +1,96 @@
+% File     : MSC010+1 : ILTP v1.1.2
+% Domain   : Miscellaneous
+% Problem  : Simple, but hard, obligation from proof verification
+% Version  : Especial.
+% English  : Verification of the negation of a conjecture, which is simply to
+%            prove the double negated version of a formula from the formula.
+% Refs     : 
+% Source   : [TPTP]
+% Names    : 
+% Status   : Theorem
+% Rating   : 0.82 v3.1.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :    2 (   0 unit)
+%            Number of atoms       :  136 (  30 equality)
+%            Maximal formula depth :   26 (  25 average)
+%            Number of connectives :  140 (   6 ~  ;   0  |; 102  &)
+%                                         (   0 <=>;  32 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    3 (   0 propositional; 2-2 arity)
+%            Number of functors    :   18 (  16 constant; 0-3 arity)
+%            Number of variables   :   44 (   0 singleton;  44 !;   0 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% a_select3_substitution_1, axiom.
+(( forall A B C D. ( ( A = B ) => ( a_select3(A, C, D) = a_select3(B, C, D) ) ) ))
+
+  =>
+
+% a_select3_substitution_2, axiom.
+(( forall A B C D. ( ( A = B ) => ( a_select3(C, A, D) = a_select3(C, B, D) ) ) ))
+
+  =>
+
+% a_select3_substitution_3, axiom.
+(( forall A B C D. ( ( A = B ) => ( a_select3(C, D, A) = a_select3(C, D, B) ) ) ))
+
+  =>
+
+% pred_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( pred(A) = pred(B) ) ) ))
+
+  =>
+
+% gt_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & gt(A, C) ) => gt(B, C) ) ))
+
+  =>
+
+% gt_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & gt(C, A) ) => gt(C, B) ) ))
+
+  =>
+
+% leq_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & leq(A, C) ) => leq(B, C) ) ))
+
+  =>
+
+% leq_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & leq(C, A) ) => leq(C, B) ) ))
+
+  =>
+
+% n1, axiom.
+(( ( ( ~ ( pv63 = pv64 ) ) & ( leq(n0, pv5) & ( leq(n0, pv63) & ( leq(n0, pv64) & ( leq(pv5, n998) & ( leq(pv63, n5) & ( leq(pv64, n5) & ( ( forall X1 X2. ( ( leq(n0, X1) & ( leq(n0, X2) & ( leq(X1, n2) & leq(X2, n5) ) ) ) => ( a_select3(h_ds1_filter_init, X1, X2) = init ) ) ) & ( ( forall X3 X4. ( ( leq(n0, X3) & ( leq(n0, X4) & ( leq(X3, n5) & leq(X4, n5) ) ) ) => ( a_select3(phi_ds1_filter_init, X3, X4) = init ) ) ) & ( ( forall X5 X6. ( ( leq(n0, X5) & ( leq(n0, X6) & ( leq(X5, n5) & leq(X6, n0) ) ) ) => ( a_select3(dv_ds1_filter_init, X5, X6) = init ) ) ) & ( ( forall X7 X8. ( ( leq(n0, X7) & ( leq(n0, X8) & ( leq(X7, n5) & leq(X8, n5) ) ) ) => ( a_select3(q_ds1_filter_init, X7, X8) = init ) ) ) & ( ( forall X9 X10. ( ( leq(n0, X9) & ( leq(n0, X10) & ( leq(X9, n2) & leq(X10, n2) ) ) ) => ( a_select3(r_ds1_filter_init, X9, X10) = init ) ) ) & ( ( forall X11 X12. ( ( leq(n0, X11) & ( leq(n0, X12) & ( leq(X11, n5) & leq(X12, n0) ) ) ) => ( a_select3(xhatmin_ds1_filter_init, X11, X12) = init ) ) ) & ( ( forall X13 X14. ( ( leq(n0, X13) & ( leq(n0, X14) & ( leq(X13, n5) & leq(X14, n5) ) ) ) => ( a_select3(pminus_ds1_filter_init, X13, X14) = init ) ) ) & ( ( forall X15 X16. ( ( leq(n0, X15) & ( leq(n0, X16) & ( leq(X15, n5) & leq(X16, n5) ) ) ) => ( ( ( X15 = pv63 ) & gt(pv64, X16) ) => ( a_select3(id_ds1_filter_init, X15, X16) = init ) ) ) ) & ( ( forall X17 X18. ( ( leq(n0, X17) & ( leq(n0, X18) & ( leq(X17, n5) & leq(X18, n5) ) ) ) => ( gt(pv63, X17) => ( a_select3(id_ds1_filter_init, X17, X18) = init ) ) ) ) & ( forall X19. ( ( leq(n0, X19) & leq(X19, pred(pv63)) ) => ( forall X20. ( ( leq(n0, X20) & leq(X20, n5) ) => ( a_select3(id_ds1_filter_init, X19, X20) = init ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) => ( forall X21 X22. ( ( leq(n0, X21) & ( leq(n0, X22) & ( leq(X21, n5) & leq(X22, n5) ) ) ) => ( ( ( ~ ( pv64 = X22 ) ) & ( ( X21 = pv63 ) & leq(X22, pv64) ) ) => ( a_select3(id_ds1_filter_init, X21, X22) = init ) ) ) ) ))
+
+  =>
+
+% n91, conjecture.
+(( ~ ( ~ ( ( ( ~ ( pv63 = pv64 ) ) & ( leq(n0, pv5) & ( leq(n0, pv63) & ( leq(n0, pv64) & ( leq(pv5, n998) & ( leq(pv63, n5) & ( leq(pv64, n5) & ( ( forall X1 X2. ( ( leq(n0, X1) & ( leq(n0, X2) & ( leq(X1, n2) & leq(X2, n5) ) ) ) => ( a_select3(h_ds1_filter_init, X1, X2) = init ) ) ) & ( ( forall X3 X4. ( ( leq(n0, X3) & ( leq(n0, X4) & ( leq(X3, n5) & leq(X4, n5) ) ) ) => ( a_select3(phi_ds1_filter_init, X3, X4) = init ) ) ) & ( ( forall X5 X6. ( ( leq(n0, X5) & ( leq(n0, X6) & ( leq(X5, n5) & leq(X6, n0) ) ) ) => ( a_select3(dv_ds1_filter_init, X5, X6) = init ) ) ) & ( ( forall X7 X8. ( ( leq(n0, X7) & ( leq(n0, X8) & ( leq(X7, n5) & leq(X8, n5) ) ) ) => ( a_select3(q_ds1_filter_init, X7, X8) = init ) ) ) & ( ( forall X9 X10. ( ( leq(n0, X9) & ( leq(n0, X10) & ( leq(X9, n2) & leq(X10, n2) ) ) ) => ( a_select3(r_ds1_filter_init, X9, X10) = init ) ) ) & ( ( forall X11 X12. ( ( leq(n0, X11) & ( leq(n0, X12) & ( leq(X11, n5) & leq(X12, n0) ) ) ) => ( a_select3(xhatmin_ds1_filter_init, X11, X12) = init ) ) ) & ( ( forall X13 X14. ( ( leq(n0, X13) & ( leq(n0, X14) & ( leq(X13, n5) & leq(X14, n5) ) ) ) => ( a_select3(pminus_ds1_filter_init, X13, X14) = init ) ) ) & ( ( forall X15 X16. ( ( leq(n0, X15) & ( leq(n0, X16) & ( leq(X15, n5) & leq(X16, n5) ) ) ) => ( ( ( X15 = pv63 ) & gt(pv64, X16) ) => ( a_select3(id_ds1_filter_init, X15, X16) = init ) ) ) ) & ( ( forall X17 X18. ( ( leq(n0, X17) & ( leq(n0, X18) & ( leq(X17, n5) & leq(X18, n5) ) ) ) => ( gt(pv63, X17) => ( a_select3(id_ds1_filter_init, X17, X18) = init ) ) ) ) & ( forall X19. ( ( leq(n0, X19) & leq(X19, pred(pv63)) ) => ( forall X20. ( ( leq(n0, X20) & leq(X20, n5) ) => ( a_select3(id_ds1_filter_init, X19, X20) = init ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) => ( forall X21 X22. ( ( leq(n0, X21) & ( leq(n0, X22) & ( leq(X21, n5) & leq(X22, n5) ) ) ) => ( ( ( ~ ( pv64 = X22 ) ) & ( ( X21 = pv63 ) & leq(X22, pv64) ) ) => ( a_select3(id_ds1_filter_init, X21, X22) = init ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

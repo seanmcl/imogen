@@ -1,0 +1,35 @@
+% File     : SYN353+1 : ILTP v1.1.2
+% Domain   : Syntactic
+% Problem  : Church problem 46.18 (5)
+% Version  : Especial.
+% English  : 
+% Refs     : [Chu56] Church (1956), Introduction to Mathematical Logic I
+% Source   : [Chu56]
+% Names    : 46.18 (5) [Chu56]
+% Status   : Theorem
+% Rating   : 0.33 v3.1.0, 0.67 v2.7.0, 0.33 v2.6.0, 0.00 v2.5.0, 0.33 v2.4.0, 0.33 v2.2.1, 0.00 v2.1.0
+%
+% Status (intuit.) : Non-Theorem
+% Rating (intuit.) : 0.75 v1.0.0
+%
+% Syntax   : Number of formulae    :    1 (   0 unit)
+%            Number of atoms       :   20 (   0 equality)
+%            Maximal formula depth :   14 (  14 average)
+%            Number of connectives :   20 (   1 ~  ;   1  |;   4  &)
+%                                         (   4 <=>;  10 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    1 (   0 propositional; 3-3 arity)
+%            Number of functors    :    0 (   0 constant; --- arity)
+%            Number of variables   :    5 (   0 singleton;   2 !;   3 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% church_46_18_5, conjecture.
+(( forall X. ( exists Y1 Y2 Y3. ( forall Z. ( ( big_f(Y1, Y2, Y3) => ( big_f(X, X, Z) => ( big_f(Y2, Y3, Y1) | big_f(Y3, Y1, Y2) ) ) ) => ( ( ( big_f(Y3, Y1, Y2) => ( big_f(Y1, Y2, Y3) & big_f(Y2, Y3, Y1) ) ) <=> big_f(Y2, Y1, Z) ) => ( ( ( big_f(Y2, Y3, Y1) => ( big_f(Y1, Y2, Y3) & big_f(Y3, Y1, Y2) ) ) <=> big_f(Y1, Z, Y2) ) => ( ( ( ( big_f(Y3, Y1, Y2) => ( ~ big_f(Y2, Y3, Y1) ) ) => big_f(Y1, Y2, Y3) ) <=> big_f(Z, Y2, Y1) ) => ( ( big_f(Y1, Y2, Y3) & ( big_f(Y2, Y3, Y1) & big_f(Y3, Y1, Y2) ) ) <=> big_f(Z, Z, Z) ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

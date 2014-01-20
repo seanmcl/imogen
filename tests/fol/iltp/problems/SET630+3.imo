@@ -1,0 +1,178 @@
+% File     : SET630+3 : ILTP v1.1.2
+% Domain   : Set Theory (Boolean properties)
+% Problem  : X ^ Y is disjoint from X sym\ Y
+% Version  : [Try89] axioms : Reduced > Incomplete.
+% English  : The intersection of X and Y is disjoint from the symmetric 
+%            difference of X and Y.
+% Refs     : [ILF] The ILF Group (1998), The ILF System: A Tool for the Int
+%          : [Try89] Trybulec (1989), Tarski Grothendieck Set Theory
+%          : [TS89]  Trybulec & Swieczkowska (1989), Boolean Properties of
+% Source   : [ILF]
+% Names    : BOOLE (112) [TS89] 
+% Status   : Theorem
+% Rating   : 0.36 v3.1.0, 0.44 v2.7.0, 0.33 v2.6.0, 0.43 v2.5.0, 0.38 v2.4.0, 0.50 v2.3.0, 0.33 v2.2.1
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.75 v1.1.0, 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :   12 (   6 unit)
+%            Number of atoms       :   22 (   5 equality)
+%            Maximal formula depth :    6 (   4 average)
+%            Number of connectives :   11 (   1 ~  ;   1  |;   2  &)
+%                                         (   6 <=>;   1 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    4 (   0 propositional; 2-2 arity)
+%            Number of functors    :    4 (   0 constant; 2-2 arity)
+%            Number of variables   :   28 (   0 singleton;  27 !;   1 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% difference_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(A, C) = difference(B, C) ) ) ))
+
+  =>
+
+% difference_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(C, A) = difference(C, B) ) ) ))
+
+  =>
+
+% intersection_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( intersection(A, C) = intersection(B, C) ) ) ))
+
+  =>
+
+% intersection_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( intersection(C, A) = intersection(C, B) ) ) ))
+
+  =>
+
+% symmetric_difference_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( symmetric_difference(A, C) = symmetric_difference(B, C) ) ) ))
+
+  =>
+
+% symmetric_difference_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( symmetric_difference(C, A) = symmetric_difference(C, B) ) ) ))
+
+  =>
+
+% union_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( union(A, C) = union(B, C) ) ) ))
+
+  =>
+
+% union_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( union(C, A) = union(C, B) ) ) ))
+
+  =>
+
+% disjoint_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & disjoint(A, C) ) => disjoint(B, C) ) ))
+
+  =>
+
+% disjoint_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & disjoint(C, A) ) => disjoint(C, B) ) ))
+
+  =>
+
+% intersect_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & intersect(A, C) ) => intersect(B, C) ) ))
+
+  =>
+
+% intersect_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & intersect(C, A) ) => intersect(C, B) ) ))
+
+  =>
+
+% member_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & member(A, C) ) => member(B, C) ) ))
+
+  =>
+
+% member_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & member(C, A) ) => member(C, B) ) ))
+
+  =>
+
+% symmetric_difference_defn, axiom.
+(( forall B C. ( symmetric_difference(B, C) = union(difference(B, C), difference(C, B)) ) ))
+
+  =>
+
+% intersect_with_union, axiom.
+(( forall B C D. ( intersect(B, union(C, D)) <=> ( intersect(B, C) | intersect(B, D) ) ) ))
+
+  =>
+
+% intersection_and_union_disjoint, axiom.
+(( forall B C. disjoint(intersection(B, C), difference(B, C)) ))
+
+  =>
+
+% intersection_defn, axiom.
+(( forall B C D. ( member(D, intersection(B, C)) <=> ( member(D, B) & member(D, C) ) ) ))
+
+  =>
+
+% intersect_defn, axiom.
+(( forall B C. ( intersect(B, C) <=> ( exists D. ( member(D, B) & member(D, C) ) ) ) ))
+
+  =>
+
+% disjoint_defn, axiom.
+(( forall B C. ( disjoint(B, C) <=> ( ~ intersect(B, C) ) ) ))
+
+  =>
+
+% commutativity_of_union, axiom.
+(( forall B C. ( union(B, C) = union(C, B) ) ))
+
+  =>
+
+% commutativity_of_intersection, axiom.
+(( forall B C. ( intersection(B, C) = intersection(C, B) ) ))
+
+  =>
+
+% commutativity_of_symmetric_difference, axiom.
+(( forall B C. ( symmetric_difference(B, C) = symmetric_difference(C, B) ) ))
+
+  =>
+
+% symmetry_of_intersect, axiom.
+(( forall B C. ( intersect(B, C) => intersect(C, B) ) ))
+
+  =>
+
+% equal_member_defn, axiom.
+(( forall B C. ( ( B = C ) <=> ( forall D. ( member(D, B) <=> member(D, C) ) ) ) ))
+
+  =>
+
+% prove_intersection_and_symmetric_difference_disjoint, conjecture.
+(( forall B C. disjoint(intersection(B, C), symmetric_difference(B, C)) ))
+
+ 
+
+%------------------------------------------------------------------------------

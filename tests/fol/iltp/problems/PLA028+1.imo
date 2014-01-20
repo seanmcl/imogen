@@ -1,0 +1,258 @@
+% File     : PLA028+1 : ILTP v1.1.2
+% Domain   : Planning
+% Problem  : Blocks A, B => A/B
+% Version  : [Bau99] axioms.
+% English  :
+% Refs     : [Bau99] Baumgartner (1999), FTP'2000 - Problem Sets
+%            [KS96]  Kautz & Selman (1996), Pushing the Envelope: Planning,
+%            [KS92]  Kautz & Selman (1992), Planning as Satisfiability
+% Source   : [Bau99]
+% Names    : tiny [Bau99]
+% Status   : CounterSatisfiable
+% Rating   : 0.00 v3.1.0, 0.50 v2.7.0, 0.00 v2.6.0, 0.33 v2.5.0
+%
+% Status (intuit.) : Unsolved
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   45 (  16 unit)
+%            Number of atoms       :  153 (   0 equality)
+%            Maximal formula depth :   10 (   5 average)
+%            Number of connectives :  133 (  25 ~  ;   6  |;  45  &)
+%                                         (   0 <=>;  57 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   12 (   0 propositional; 1-3 arity)
+%            Number of functors    :    5 (   4 constant; 0-1 arity)
+%            Number of variables   :   70 (   0 singleton;  70 !;   0 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments :
+% Bugfixes : v2.5.0 - Combined multiple conjecture formulae.
+%------------------------------------------------------------------------------
+
+ 
+
+% place_object_block_on_destination, axiom.
+(( forall I X. ( nonfixed(X) => ( forall Z. ( ( a_block(Z) & neq(X, Z) ) => ( ( time(I) & ( object(X, I) & destination(Z, I) ) ) => on(X, Z, s(I)) ) ) ) ) ))
+
+  =>
+
+% remove_object_block_from_source, axiom.
+(( forall I X. ( nonfixed(X) => ( forall Y. ( ( a_block(Y) & neq(X, Y) ) => ( ( time(I) & ( object(X, I) & source(Y, I) ) ) => ( ~ on(X, Y, s(I)) ) ) ) ) ) ))
+
+  =>
+
+% clear_source_after_removal, axiom.
+(( forall I Y. ( nonfixed(Y) => ( ( time(I) & source(Y, I) ) => clear(Y, s(I)) ) ) ))
+
+  =>
+
+% not_clear_destination_after_placement, axiom.
+(( forall I Z. ( nonfixed(Z) => ( ( time(I) & destination(Z, I) ) => ( ~ clear(Z, s(I)) ) ) ) ))
+
+  =>
+
+% object_block_on_source, axiom.
+(( forall I X. ( nonfixed(X) => ( forall Y. ( ( a_block(Y) & neq(X, Y) ) => ( ( object(X, I) & source(Y, I) ) => on(X, Y, I) ) ) ) ) ))
+
+  =>
+
+% object_block_is_clear, axiom.
+(( forall I X. ( nonfixed(X) => ( object(X, I) => clear(X, I) ) ) ))
+
+  =>
+
+% destination_block_is_clear, axiom.
+(( forall I Z. ( nonfixed(Z) => ( destination(Z, I) => clear(Z, I) ) ) ))
+
+  =>
+
+% non_destination_remains_clear, axiom.
+(( forall I W. ( nonfixed(W) => ( ( time(I) & ( ( ~ destination(W, I) ) & clear(W, I) ) ) => clear(W, s(I)) ) ) ))
+
+  =>
+
+% non_object_remains_on, axiom.
+(( forall I V. ( nonfixed(V) => ( forall W. ( ( a_block(W) & neq(V, W) ) => ( ( time(I) & ( ( ~ object(V, I) ) & on(V, W, I) ) ) => on(V, W, s(I)) ) ) ) ) ))
+
+  =>
+
+% non_source_remains_not_clear, axiom.
+(( forall I W. ( nonfixed(W) => ( ( time(I) & ( ( ~ source(W, I) ) & ( ~ clear(W, I) ) ) ) => ( ~ clear(W, s(I)) ) ) ) ))
+
+  =>
+
+% non_object_remains_not_on, axiom.
+(( forall I V. ( nonfixed(V) => ( forall W. ( ( a_block(W) & neq(V, W) ) => ( ( time(I) & ( ( ~ object(V, I) ) & ( ~ on(V, W, I) ) ) ) => ( ~ on(V, W, s(I)) ) ) ) ) ) ))
+
+  =>
+
+% non_destination_remains_not_on, axiom.
+(( forall I V. ( nonfixed(V) => ( forall W. ( ( a_block(W) & neq(V, W) ) => ( ( time(I) & ( ( ~ destination(W, I) ) & ( ~ on(V, W, I) ) ) ) => ( ~ on(V, W, s(I)) ) ) ) ) ) ))
+
+  =>
+
+% only_one_object_block, axiom.
+(( forall I X1. ( nonfixed(X1) => ( forall X2. ( ( a_block(X2) & neq(X1, X2) ) => ( ~ ( object(X1, I) & object(X2, I) ) ) ) ) ) ))
+
+  =>
+
+% only_one_source_block, axiom.
+(( forall I Y1. ( a_block(Y1) => ( forall Y2. ( ( a_block(Y2) & neq(Y1, Y2) ) => ( ~ ( source(Y1, I) & source(Y2, I) ) ) ) ) ) ))
+
+  =>
+
+% only_one_destination_block, axiom.
+(( forall I Z1. ( a_block(Z1) => ( forall Z2. ( ( a_block(Z2) & neq(Z1, Z2) ) => ( ~ ( destination(Z1, I) & destination(Z2, I) ) ) ) ) ) ))
+
+  =>
+
+% object_is_not_source, axiom.
+(( forall I X. ( nonfixed(X) => ( ~ ( object(X, I) & source(X, I) ) ) ) ))
+
+  =>
+
+% object_is_not_destination, axiom.
+(( forall I X. ( nonfixed(X) => ( ~ ( object(X, I) & destination(X, I) ) ) ) ))
+
+  =>
+
+% source_is_not_destination, axiom.
+(( forall I Y. ( a_block(Y) => ( ~ ( source(Y, I) & destination(Y, I) ) ) ) ))
+
+  =>
+
+% not_on_each_other, axiom.
+(( forall I X. ( a_block(X) => ( forall Y. ( ( a_block(Y) & neq(X, Y) ) => ( ~ ( on(X, Y, I) & on(Y, X, I) ) ) ) ) ) ))
+
+  =>
+
+% not_on_self, axiom.
+(( forall I X. ( a_block(X) => ( ~ on(X, X, I) ) ) ))
+
+  =>
+
+% only_one_on, axiom.
+(( forall I X. ( nonfixed(X) => ( forall Y. ( ( nonfixed(Y) & neq(X, Y) ) => ( forall Z. ( ( nonfixed(Z) & ( neq(X, Z) & neq(Y, Z) ) ) => ( ~ ( on(X, Y, I) & on(Z, Y, I) ) ) ) ) ) ) ) ))
+
+  =>
+
+% only_on_one_thing, axiom.
+(( forall I X. ( nonfixed(X) => ( forall Y. ( ( a_block(Y) & neq(X, Y) ) => ( forall Z. ( ( a_block(Z) & ( neq(X, Z) & neq(Y, Z) ) ) => ( ~ ( on(X, Y, I) & on(X, Z, I) ) ) ) ) ) ) ) ))
+
+  =>
+
+% not_clear_if_something_on, axiom.
+(( forall I X. ( nonfixed(X) => ( forall Y. ( nonfixed(Y) => ( ~ ( on(X, Y, I) & clear(Y, I) ) ) ) ) ) ))
+
+  =>
+
+% fixed_not_on_anything, axiom.
+(( forall I X. ( a_block(X) => ( forall Y. ( fixed(Y) => ( ~ on(Y, X, I) ) ) ) ) ))
+
+  =>
+
+% different_not_equal, hypothesis.
+(( forall Y X. ( ( different(X, Y) | different(Y, X) ) => neq(X, Y) ) ))
+
+  =>
+
+% block_1_not_block_2, hypothesis.
+(different(block_1, block_2))
+
+  =>
+
+% block_1_not_table, hypothesis.
+(different(block_1, table))
+
+  =>
+
+% block_2_not_table, hypothesis.
+(different(block_2, table))
+
+  =>
+
+% block_1, hypothesis.
+(a_block(block_1))
+
+  =>
+
+% block_2, hypothesis.
+(a_block(block_2))
+
+  =>
+
+% table, hypothesis.
+(a_block(table))
+
+  =>
+
+% fixed_table, hypothesis.
+(fixed(table))
+
+  =>
+
+% nonfixed_block_1, hypothesis.
+(nonfixed(block_1))
+
+  =>
+
+% nonfixed_block_2, hypothesis.
+(nonfixed(block_2))
+
+  =>
+
+% time_0, hypothesis.
+(time(time_0))
+
+  =>
+
+% time_1, hypothesis.
+(time(s(time_0)))
+
+  =>
+
+% some_source, hypothesis.
+(( forall I. ( time(I) => ( source(block_1, I) | ( source(block_2, I) | source(table, I) ) ) ) ))
+
+  =>
+
+% some_destination, hypothesis.
+(( forall I. ( time(I) => ( destination(block_1, I) | ( destination(block_2, I) | destination(table, I) ) ) ) ))
+
+  =>
+
+% some_object, hypothesis.
+(( forall I. ( time(I) => ( object(block_1, I) | object(block_2, I) ) ) ))
+
+  =>
+
+% initial_1_on_table, hypothesis.
+(on(block_1, table, time_0))
+
+  =>
+
+% initial_clear_1, hypothesis.
+(clear(block_1, time_0))
+
+  =>
+
+% initial_2_on_table, hypothesis.
+(on(block_2, table, time_0))
+
+  =>
+
+% initial_clear_2, hypothesis.
+(clear(block_2, time_0))
+
+  =>
+
+% goal_time_1, hypothesis.
+(goal_time(s(time_0)))
+
+  =>
+
+% goal_state, conjecture.
+(( forall S. ( goal_time(S) => ( clear(block_1, S) & ( on(block_1, block_2, S) & on(block_2, table, S) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

@@ -1,0 +1,239 @@
+% File     : MGT038+2 : ILTP v1.1.2
+% Domain   : Management (Organisation Theory)
+% Problem  : FMs become extinct in stable environments
+% Version  : [PM93] axioms.
+% English  : First movers become extinct past a certain point in time 
+%            in stable environments. 
+% Refs     : [PM93]  Peli & Masuch (1993), The Logic of Propogation Strateg
+%          : [PM94]  Peli & Masuch (1994), The Logic of Propogation Strateg
+%          : [PB+94] Peli et al. (1994), A Logical Approach to Formalizing
+% Source   : [PM93]
+% Names    : THEOREM 7 [PM93]
+%          : T7 [PB+94]
+% Status   : CounterSatisfiable
+%
+% Status (intuit.) : Unsolved
+% Rating (intuit.) : 1.00 v1.1.0
+% Rating (intuit.) : 1.00 v1.1
+%
+% Syntax   : Number of formulae    :   16 (   1 unit)
+%            Number of atoms       :   70 (   4 equality)
+%            Maximal formula depth :   10 (   6 average)
+%            Number of connectives :   54 (   0 ~  ;   3  |;  32  &)
+%                                         (   1 <=>;  18 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    9 (   0 propositional; 1-4 arity)
+%            Number of functors    :   11 (   7 constant; 0-2 arity)
+%            Number of variables   :   36 (   0 singleton;  30 !;   6 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% appear_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( appear(A, C) = appear(B, C) ) ) ))
+
+  =>
+
+% appear_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( appear(C, A) = appear(C, B) ) ) ))
+
+  =>
+
+% cardinality_at_time_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( cardinality_at_time(A, C) = cardinality_at_time(B, C) ) ) ))
+
+  =>
+
+% cardinality_at_time_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( cardinality_at_time(C, A) = cardinality_at_time(C, B) ) ) ))
+
+  =>
+
+% equilibrium_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( equilibrium(A) = equilibrium(B) ) ) ))
+
+  =>
+
+% growth_rate_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( growth_rate(A, C) = growth_rate(B, C) ) ) ))
+
+  =>
+
+% growth_rate_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( growth_rate(C, A) = growth_rate(C, B) ) ) ))
+
+  =>
+
+% contracts_from_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & contracts_from(A, C) ) => contracts_from(B, C) ) ))
+
+  =>
+
+% contracts_from_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & contracts_from(C, A) ) => contracts_from(C, B) ) ))
+
+  =>
+
+% environment_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & environment(A) ) => environment(B) ) ))
+
+  =>
+
+% finite_set_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & finite_set(A) ) => finite_set(B) ) ))
+
+  =>
+
+% greater_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(A, C) ) => greater(B, C) ) ))
+
+  =>
+
+% greater_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(C, A) ) => greater(C, B) ) ))
+
+  =>
+
+% greater_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(A, C) ) => greater_or_equal(B, C) ) ))
+
+  =>
+
+% greater_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(C, A) ) => greater_or_equal(C, B) ) ))
+
+  =>
+
+% in_environment_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(A, C) ) => in_environment(B, C) ) ))
+
+  =>
+
+% in_environment_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(C, A) ) => in_environment(C, B) ) ))
+
+  =>
+
+% stable_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & stable(A) ) => stable(B) ) ))
+
+  =>
+
+% subpopulations_substitution_1, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(A, C, D, E) ) => subpopulations(B, C, D, E) ) ))
+
+  =>
+
+% subpopulations_substitution_2, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, A, D, E) ) => subpopulations(C, B, D, E) ) ))
+
+  =>
+
+% subpopulations_substitution_3, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, D, A, E) ) => subpopulations(C, D, B, E) ) ))
+
+  =>
+
+% subpopulations_substitution_4, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, D, E, A) ) => subpopulations(C, D, E, B) ) ))
+
+  =>
+
+% mp7_first_movers_exist, axiom.
+(finite_set(first_movers))
+
+  =>
+
+% mp_contracting_time, axiom.
+(( forall S To. ( ( finite_set(S) & contracts_from(To, S) ) => ( exists T2. ( greater(T2, To) & ( cardinality_at_time(s, t2) = zero ) ) ) ) ))
+
+  =>
+
+% mp_contracts_from, axiom.
+(( forall E To. ( ( environment(E) & ( stable(E) & ( in_environment(E, To) & ( forall T. ( ( greater(cardinality_at_time(first_movers, T), zero) & greater_or_equal(T, To) ) => greater(zero, growth_rate(first_movers, T)) ) ) ) ) ) => contracts_from(To, first_movers) ) ))
+
+  =>
+
+% mp_contains_FM_and_EP, axiom.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & ( greater(cardinality_at_time(first_movers, T), zero) & greater(cardinality_at_time(efficient_producers, T), zero) ) ) ) => subpopulations(first_movers, efficient_producers, E, T) ) ))
+
+  =>
+
+% mp_long_stable_environments, axiom.
+(( forall E T1 T2. ( ( environment(E) & ( stable(E) & ( in_environment(E, T1) & greater(T2, T1) ) ) ) => in_environment(E, T2) ) ))
+
+  =>
+
+% mp_stable_first_movers, axiom.
+(( forall E. ( ( environment(E) & stable(E) ) => in_environment(E, appear(first_movers, E)) ) ))
+
+  =>
+
+% mp_stable_efficient_producers, axiom.
+(( forall E. ( ( environment(E) & stable(E) ) => in_environment(E, appear(efficient_producers, E)) ) ))
+
+  =>
+
+% mp_first_movers_negative_growth, axiom.
+(( forall E. ( ( environment(E) & ( stable(E) & ( exists T1. ( in_environment(E, T1) & ( forall T. ( ( subpopulations(first_movers, efficient_producers, E, T) & greater_or_equal(T, T1) ) => greater(zero, growth_rate(first_movers, T)) ) ) ) ) ) ) => ( exists T2. ( greater(T2, appear(efficient_producers, E)) & ( forall T. ( ( subpopulations(first_movers, efficient_producers, E, T) & greater_or_equal(T, T2) ) => greater(zero, growth_rate(first_movers, T)) ) ) ) ) ) ))
+
+  =>
+
+% mp_greater_transitivity, axiom.
+(( forall X Y Z. ( ( greater(X, Y) & greater(Y, Z) ) => greater(X, Z) ) ))
+
+  =>
+
+% mp_times_in_environment, axiom.
+(( forall E T1 T2. ( ( in_environment(E, T1) & in_environment(E, T2) ) => ( greater(T2, T1) | ( ( T2 = T1 ) | greater(T1, T2) ) ) ) ))
+
+  =>
+
+% mp_greater_or_equal, axiom.
+(( forall X Y. ( greater_or_equal(X, Y) <=> ( greater(X, Y) | ( X = Y ) ) ) ))
+
+  =>
+
+% a3, hypothesis.
+(( forall E. ( environment(E) => greater(appear(efficient_producers, e), appear(first_movers, E)) ) ))
+
+  =>
+
+% a5, hypothesis.
+(( forall E. ( ( environment(E) & stable(E) ) => ( exists T. ( in_environment(E, T) & greater_or_equal(T, equilibrium(E)) ) ) ) ))
+
+  =>
+
+% t6, hypothesis.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & greater_or_equal(T, appear(efficient_producers, E)) ) ) => greater(cardinality_at_time(efficient_producers, T), zero) ) ))
+
+  =>
+
+% l1, hypothesis.
+(( forall E. ( ( environment(E) & stable(E) ) => ( exists To. ( in_environment(E, To) & ( forall T. ( ( subpopulations(first_movers, efficient_producers, E, T) & greater_or_equal(T, To) ) => greater(growth_rate(efficient_producers, T), growth_rate(first_movers, T)) ) ) ) ) ) ))
+
+  =>
+
+% prove_t7, conjecture.
+(( forall E. ( ( environment(E) & stable(E) ) => ( exists To. ( in_environment(E, To) & ( greater(To, appear(first_movers, E)) & ( cardinality_at_time(first_movers, to) = zero ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

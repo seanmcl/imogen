@@ -1,0 +1,183 @@
+% File     : KRS129+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : An example combinging owl:oneOf and owl:inverseOf
+% Version  : Especial.
+% English  : 
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : positive_I4.5-Manifest001 [Bec03]
+% Status   : Theorem
+% Rating   : 0.11 v3.1.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   27 (   8 unit)
+%            Number of atoms       :   67 (  18 equality)
+%            Maximal formula depth :    8 (   4 average)
+%            Number of connectives :   44 (   4 ~  ;   5  |;  17  &)
+%                                         (   5 <=>;  13 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   11 (   0 propositional; 1-2 arity)
+%            Number of functors    :    7 (   7 constant; 0-0 arity)
+%            Number of variables   :   39 (   0 singleton;  38 !;   1 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% cEUCountry_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cEUCountry(A) ) => cEUCountry(B) ) ))
+
+  =>
+
+% cEuroMP_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cEuroMP(A) ) => cEuroMP(B) ) ))
+
+  =>
+
+% cEuropeanCountry_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cEuropeanCountry(A) ) => cEuropeanCountry(B) ) ))
+
+  =>
+
+% cPerson_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cPerson(A) ) => cPerson(B) ) ))
+
+  =>
+
+% cowlNothing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlNothing(A) ) => cowlNothing(B) ) ))
+
+  =>
+
+% cowlThing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlThing(A) ) => cowlThing(B) ) ))
+
+  =>
+
+% rhasEuroMP_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rhasEuroMP(A, C) ) => rhasEuroMP(B, C) ) ))
+
+  =>
+
+% rhasEuroMP_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rhasEuroMP(C, A) ) => rhasEuroMP(C, B) ) ))
+
+  =>
+
+% risEuroMPFrom_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & risEuroMPFrom(A, C) ) => risEuroMPFrom(B, C) ) ))
+
+  =>
+
+% risEuroMPFrom_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & risEuroMPFrom(C, A) ) => risEuroMPFrom(C, B) ) ))
+
+  =>
+
+% xsd_integer_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_integer(A) ) => xsd_integer(B) ) ))
+
+  =>
+
+% xsd_string_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_string(A) ) => xsd_string(B) ) ))
+
+  =>
+
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(( forall X. ( cEUCountry(X) <=> ( ( X = iBE ) | ( ( X = iFR ) | ( ( X = iES ) | ( ( X = iUK ) | ( ( X = iNL ) | ( X = iPT ) ) ) ) ) ) ) ))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X. ( cEuroMP(X) <=> ( exists Y. ( risEuroMPFrom(X, Y) & cowlThing(Y) ) ) ) ))
+
+  =>
+
+% axiom_4, axiom.
+(( forall X Y. ( rhasEuroMP(X, Y) => cEUCountry(X) ) ))
+
+  =>
+
+% axiom_5, axiom.
+(( forall X Y. ( risEuroMPFrom(X, Y) <=> rhasEuroMP(Y, X) ) ))
+
+  =>
+
+% axiom_6, axiom.
+(cEuropeanCountry(iBE))
+
+  =>
+
+% axiom_7, axiom.
+(cEuropeanCountry(iES))
+
+  =>
+
+% axiom_8, axiom.
+(cEuropeanCountry(iFR))
+
+  =>
+
+% axiom_9, axiom.
+(cPerson(iKinnock))
+
+  =>
+
+% axiom_10, axiom.
+(cEuropeanCountry(iNL))
+
+  =>
+
+% axiom_11, axiom.
+(cEuropeanCountry(iPT))
+
+  =>
+
+% axiom_12, axiom.
+(cEuropeanCountry(iUK))
+
+  =>
+
+% axiom_13, axiom.
+(rhasEuroMP(iUK, iKinnock))
+
+  =>
+
+% the_axiom, conjecture.
+(( ( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ) & ( ( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ) & cEuroMP(iKinnock) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

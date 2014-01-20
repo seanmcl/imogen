@@ -1,0 +1,183 @@
+% File     : MGT024+1 : ILTP v1.1.2
+% Domain   : Management (Organisation Theory)
+% Problem  : Subpopulation growth rates are in equilibria
+% Version  : [PB+94] axioms : Reduced & Augmented > Complete.
+% English  : If a subpopulation has positive growth rate, then the other 
+%            subpopulation must have negative growth rate in equilibrium. 
+% Refs     : [PM93]  Peli & Masuch (1993), The Logic of Propogation Strateg
+%          : [PM94]  Peli & Masuch (1994), The Logic of Propogation Strateg
+%          : [Kam95] Kamps (1995), Email to G. Sutcliffe
+% Source   : [Kam95]
+% Names    : 
+% Status   : Theorem
+% Rating   : 0.09 v3.1.0, 0.00 v2.5.0, 0.12 v2.4.0, 0.25 v2.3.0, 0.33 v2.2.1, 0.00 v2.1.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :    7 (   0 unit)
+%            Number of atoms       :   40 (   4 equality)
+%            Maximal formula depth :    7 (   6 average)
+%            Number of connectives :   36 (   3 ~  ;   4  |;  18  &)
+%                                         (   0 <=>;  11 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    8 (   0 propositional; 1-4 arity)
+%            Number of functors    :    7 (   3 constant; 0-2 arity)
+%            Number of variables   :   14 (   0 singleton;  14 !;   0 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% equilibrium_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( equilibrium(A) = equilibrium(B) ) ) ))
+
+  =>
+
+% growth_rate_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( growth_rate(A, C) = growth_rate(B, C) ) ) ))
+
+  =>
+
+% growth_rate_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( growth_rate(C, A) = growth_rate(C, B) ) ) ))
+
+  =>
+
+% number_of_organizations_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_organizations(A, C) = number_of_organizations(B, C) ) ) ))
+
+  =>
+
+% number_of_organizations_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_organizations(C, A) = number_of_organizations(C, B) ) ) ))
+
+  =>
+
+% resources_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( resources(A, C) = resources(B, C) ) ) ))
+
+  =>
+
+% resources_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( resources(C, A) = resources(C, B) ) ) ))
+
+  =>
+
+% constant_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & constant(A) ) => constant(B) ) ))
+
+  =>
+
+% decreases_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & decreases(A) ) => decreases(B) ) ))
+
+  =>
+
+% environment_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & environment(A) ) => environment(B) ) ))
+
+  =>
+
+% greater_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(A, C) ) => greater(B, C) ) ))
+
+  =>
+
+% greater_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(C, A) ) => greater(C, B) ) ))
+
+  =>
+
+% greater_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(A, C) ) => greater_or_equal(B, C) ) ))
+
+  =>
+
+% greater_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(C, A) ) => greater_or_equal(C, B) ) ))
+
+  =>
+
+% in_environment_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(A, C) ) => in_environment(B, C) ) ))
+
+  =>
+
+% in_environment_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(C, A) ) => in_environment(C, B) ) ))
+
+  =>
+
+% subpopulations_substitution_1, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(A, C, D, E) ) => subpopulations(B, C, D, E) ) ))
+
+  =>
+
+% subpopulations_substitution_2, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, A, D, E) ) => subpopulations(C, B, D, E) ) ))
+
+  =>
+
+% subpopulations_substitution_3, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, D, A, E) ) => subpopulations(C, D, B, E) ) ))
+
+  =>
+
+% subpopulations_substitution_4, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, D, E, A) ) => subpopulations(C, D, E, B) ) ))
+
+  =>
+
+% mp_time_point_occur, axiom.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => in_environment(E, T) ) ))
+
+  =>
+
+% mp_positive_number_of_organizations, axiom.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => greater(number_of_organizations(E, T), zero) ) ))
+
+  =>
+
+% mp_equilibrium, axiom.
+(( forall E T. ( ( environment(E) & greater_or_equal(T, equilibrium(E)) ) => ( ~ greater(equilibrium(E), T) ) ) ))
+
+  =>
+
+% a3, hypothesis.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & greater(number_of_organizations(E, T), zero) ) ) => ( ( greater(equilibrium(E), T) => decreases(resources(E, T)) ) & ( ( ~ greater(equilibrium(E), T) ) => constant(resources(E, T)) ) ) ) ))
+
+  =>
+
+% a6, hypothesis.
+(( forall E T. ( ( environment(E) & in_environment(E, T) ) => ( ( decreases(resources(E, T)) => ( ~ decreases(number_of_organizations(E, T)) ) ) & ( constant(resources(E, T)) => constant(number_of_organizations(E, T)) ) ) ) ))
+
+  =>
+
+% l7, hypothesis.
+(( forall E T. ( ( environment(E) & ( subpopulations(first_movers, efficient_producers, E, T) & constant(number_of_organizations(E, T)) ) ) => ( ( ( growth_rate(first_movers, T) = zero ) & ( growth_rate(efficient_producers, T) = zero ) ) | ( ( greater(growth_rate(first_movers, T), zero) & greater(zero, growth_rate(efficient_producers, T)) ) | ( greater(growth_rate(efficient_producers, T), zero) & greater(zero, growth_rate(first_movers, T)) ) ) ) ) ))
+
+  =>
+
+% prove_l6, conjecture.
+(( forall E T. ( ( environment(E) & ( subpopulations(first_movers, efficient_producers, E, T) & greater_or_equal(T, equilibrium(E)) ) ) => ( ( ( growth_rate(first_movers, T) = zero ) & ( growth_rate(efficient_producers, T) = zero ) ) | ( ( greater(growth_rate(first_movers, T), zero) & greater(zero, growth_rate(efficient_producers, T)) ) | ( greater(growth_rate(efficient_producers, T), zero) & greater(zero, growth_rate(first_movers, T)) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

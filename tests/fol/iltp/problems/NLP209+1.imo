@@ -1,0 +1,1159 @@
+% File     : NLP209+1 : ILTP v1.1.2
+% Domain   : Natural Language Processing
+% Problem  : An old dirty white Chevy, problem 96
+% Version  : [Bos00b] axioms.
+% English  : Eliminating inconsistent interpretations in the statement
+%            "An old dirty white chevy barrels down a lonely street in 
+%            hollywood. Two young fellas are in the front seat. They are 
+%            wearing cheap black coats. Jules is behind the wheel."
+% Refs     : [Bos00a] Bos (2000), DORIS: Discourse Oriented Representation a
+%            [Bos00b] Bos (2000), Applied Theorem Proving - Natural Language
+% Source   : [Bos00b]
+% Names    : doris186 [Bos00b]
+% Status   : CounterSatisfiable
+% Rating   : 0.25 v3.1.0, 0.33 v2.7.0, 0.50 v2.6.0, 0.25 v2.5.0, 0.33 v2.4.0
+%
+% Status (intuit.) : Unsolved
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   72 (   1 unit)
+%            Number of atoms       :  204 (   7 equality)
+%            Maximal formula depth :   52 (   5 average)
+%            Number of connectives :  149 (  17 ~  ;   1  |;  55  &)
+%                                         (   1 <=>;  75 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   72 (   0 propositional; 1-4 arity)
+%            Number of functors    :    0 (   0 constant; --- arity)
+%            Number of variables   :  173 (   0 singleton; 153 !;  20 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% abstraction_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & abstraction(A, C) ) => abstraction(B, C) ) ))
+
+  =>
+
+% abstraction_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & abstraction(C, A) ) => abstraction(C, B) ) ))
+
+  =>
+
+% actual_world_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & actual_world(A) ) => actual_world(B) ) ))
+
+  =>
+
+% agent_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & agent(A, C, D) ) => agent(B, C, D) ) ))
+
+  =>
+
+% agent_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & agent(C, A, D) ) => agent(C, B, D) ) ))
+
+  =>
+
+% agent_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & agent(C, D, A) ) => agent(C, D, B) ) ))
+
+  =>
+
+% animate_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & animate(A, C) ) => animate(B, C) ) ))
+
+  =>
+
+% animate_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & animate(C, A) ) => animate(C, B) ) ))
+
+  =>
+
+% artifact_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & artifact(A, C) ) => artifact(B, C) ) ))
+
+  =>
+
+% artifact_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & artifact(C, A) ) => artifact(C, B) ) ))
+
+  =>
+
+% barrel_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & barrel(A, C) ) => barrel(B, C) ) ))
+
+  =>
+
+% barrel_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & barrel(C, A) ) => barrel(C, B) ) ))
+
+  =>
+
+% be_substitution_1, axiom.
+(( forall A B C D E. ( ( ( A = B ) & be(A, C, D, E) ) => be(B, C, D, E) ) ))
+
+  =>
+
+% be_substitution_2, axiom.
+(( forall A B C D E. ( ( ( A = B ) & be(C, A, D, E) ) => be(C, B, D, E) ) ))
+
+  =>
+
+% be_substitution_3, axiom.
+(( forall A B C D E. ( ( ( A = B ) & be(C, D, A, E) ) => be(C, D, B, E) ) ))
+
+  =>
+
+% be_substitution_4, axiom.
+(( forall A B C D E. ( ( ( A = B ) & be(C, D, E, A) ) => be(C, D, E, B) ) ))
+
+  =>
+
+% behind_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & behind(A, C, D) ) => behind(B, C, D) ) ))
+
+  =>
+
+% behind_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & behind(C, A, D) ) => behind(C, B, D) ) ))
+
+  =>
+
+% behind_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & behind(C, D, A) ) => behind(C, D, B) ) ))
+
+  =>
+
+% black_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & black(A, C) ) => black(B, C) ) ))
+
+  =>
+
+% black_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & black(C, A) ) => black(C, B) ) ))
+
+  =>
+
+% car_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & car(A, C) ) => car(B, C) ) ))
+
+  =>
+
+% car_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & car(C, A) ) => car(C, B) ) ))
+
+  =>
+
+% cheap_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & cheap(A, C) ) => cheap(B, C) ) ))
+
+  =>
+
+% cheap_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & cheap(C, A) ) => cheap(C, B) ) ))
+
+  =>
+
+% chevy_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & chevy(A, C) ) => chevy(B, C) ) ))
+
+  =>
+
+% chevy_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & chevy(C, A) ) => chevy(C, B) ) ))
+
+  =>
+
+% city_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & city(A, C) ) => city(B, C) ) ))
+
+  =>
+
+% city_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & city(C, A) ) => city(C, B) ) ))
+
+  =>
+
+% clothes_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & clothes(A, C) ) => clothes(B, C) ) ))
+
+  =>
+
+% clothes_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & clothes(C, A) ) => clothes(C, B) ) ))
+
+  =>
+
+% coat_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & coat(A, C) ) => coat(B, C) ) ))
+
+  =>
+
+% coat_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & coat(C, A) ) => coat(C, B) ) ))
+
+  =>
+
+% device_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & device(A, C) ) => device(B, C) ) ))
+
+  =>
+
+% device_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & device(C, A) ) => device(C, B) ) ))
+
+  =>
+
+% dirty_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & dirty(A, C) ) => dirty(B, C) ) ))
+
+  =>
+
+% dirty_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & dirty(C, A) ) => dirty(C, B) ) ))
+
+  =>
+
+% down_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & down(A, C, D) ) => down(B, C, D) ) ))
+
+  =>
+
+% down_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & down(C, A, D) ) => down(C, B, D) ) ))
+
+  =>
+
+% down_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & down(C, D, A) ) => down(C, D, B) ) ))
+
+  =>
+
+% entity_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & entity(A, C) ) => entity(B, C) ) ))
+
+  =>
+
+% entity_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & entity(C, A) ) => entity(C, B) ) ))
+
+  =>
+
+% event_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & event(A, C) ) => event(B, C) ) ))
+
+  =>
+
+% event_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & event(C, A) ) => event(C, B) ) ))
+
+  =>
+
+% eventuality_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & eventuality(A, C) ) => eventuality(B, C) ) ))
+
+  =>
+
+% eventuality_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & eventuality(C, A) ) => eventuality(C, B) ) ))
+
+  =>
+
+% existent_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & existent(A, C) ) => existent(B, C) ) ))
+
+  =>
+
+% existent_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & existent(C, A) ) => existent(C, B) ) ))
+
+  =>
+
+% fellow_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & fellow(A, C) ) => fellow(B, C) ) ))
+
+  =>
+
+% fellow_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & fellow(C, A) ) => fellow(C, B) ) ))
+
+  =>
+
+% forename_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & forename(A, C) ) => forename(B, C) ) ))
+
+  =>
+
+% forename_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & forename(C, A) ) => forename(C, B) ) ))
+
+  =>
+
+% frontseat_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & frontseat(A, C) ) => frontseat(B, C) ) ))
+
+  =>
+
+% frontseat_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & frontseat(C, A) ) => frontseat(C, B) ) ))
+
+  =>
+
+% furniture_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & furniture(A, C) ) => furniture(B, C) ) ))
+
+  =>
+
+% furniture_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & furniture(C, A) ) => furniture(C, B) ) ))
+
+  =>
+
+% general_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & general(A, C) ) => general(B, C) ) ))
+
+  =>
+
+% general_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & general(C, A) ) => general(C, B) ) ))
+
+  =>
+
+% group_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & group(A, C) ) => group(B, C) ) ))
+
+  =>
+
+% group_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & group(C, A) ) => group(C, B) ) ))
+
+  =>
+
+% hollywood_placename_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & hollywood_placename(A, C) ) => hollywood_placename(B, C) ) ))
+
+  =>
+
+% hollywood_placename_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & hollywood_placename(C, A) ) => hollywood_placename(C, B) ) ))
+
+  =>
+
+% human_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & human(A, C) ) => human(B, C) ) ))
+
+  =>
+
+% human_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & human(C, A) ) => human(C, B) ) ))
+
+  =>
+
+% human_person_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & human_person(A, C) ) => human_person(B, C) ) ))
+
+  =>
+
+% human_person_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & human_person(C, A) ) => human_person(C, B) ) ))
+
+  =>
+
+% impartial_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & impartial(A, C) ) => impartial(B, C) ) ))
+
+  =>
+
+% impartial_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & impartial(C, A) ) => impartial(C, B) ) ))
+
+  =>
+
+% in_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & in(A, C, D) ) => in(B, C, D) ) ))
+
+  =>
+
+% in_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & in(C, A, D) ) => in(C, B, D) ) ))
+
+  =>
+
+% in_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & in(C, D, A) ) => in(C, D, B) ) ))
+
+  =>
+
+% instrumentality_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & instrumentality(A, C) ) => instrumentality(B, C) ) ))
+
+  =>
+
+% instrumentality_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & instrumentality(C, A) ) => instrumentality(C, B) ) ))
+
+  =>
+
+% jules_forename_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & jules_forename(A, C) ) => jules_forename(B, C) ) ))
+
+  =>
+
+% jules_forename_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & jules_forename(C, A) ) => jules_forename(C, B) ) ))
+
+  =>
+
+% living_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & living(A, C) ) => living(B, C) ) ))
+
+  =>
+
+% living_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & living(C, A) ) => living(C, B) ) ))
+
+  =>
+
+% location_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & location(A, C) ) => location(B, C) ) ))
+
+  =>
+
+% location_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & location(C, A) ) => location(C, B) ) ))
+
+  =>
+
+% lonely_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & lonely(A, C) ) => lonely(B, C) ) ))
+
+  =>
+
+% lonely_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & lonely(C, A) ) => lonely(C, B) ) ))
+
+  =>
+
+% male_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & male(A, C) ) => male(B, C) ) ))
+
+  =>
+
+% male_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & male(C, A) ) => male(C, B) ) ))
+
+  =>
+
+% man_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & man(A, C) ) => man(B, C) ) ))
+
+  =>
+
+% man_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & man(C, A) ) => man(C, B) ) ))
+
+  =>
+
+% member_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & member(A, C, D) ) => member(B, C, D) ) ))
+
+  =>
+
+% member_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & member(C, A, D) ) => member(C, B, D) ) ))
+
+  =>
+
+% member_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & member(C, D, A) ) => member(C, D, B) ) ))
+
+  =>
+
+% multiple_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & multiple(A, C) ) => multiple(B, C) ) ))
+
+  =>
+
+% multiple_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & multiple(C, A) ) => multiple(C, B) ) ))
+
+  =>
+
+% nonexistent_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & nonexistent(A, C) ) => nonexistent(B, C) ) ))
+
+  =>
+
+% nonexistent_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & nonexistent(C, A) ) => nonexistent(C, B) ) ))
+
+  =>
+
+% nonhuman_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & nonhuman(A, C) ) => nonhuman(B, C) ) ))
+
+  =>
+
+% nonhuman_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & nonhuman(C, A) ) => nonhuman(C, B) ) ))
+
+  =>
+
+% nonliving_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & nonliving(A, C) ) => nonliving(B, C) ) ))
+
+  =>
+
+% nonliving_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & nonliving(C, A) ) => nonliving(C, B) ) ))
+
+  =>
+
+% nonreflexive_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & nonreflexive(A, C) ) => nonreflexive(B, C) ) ))
+
+  =>
+
+% nonreflexive_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & nonreflexive(C, A) ) => nonreflexive(C, B) ) ))
+
+  =>
+
+% object_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & object(A, C) ) => object(B, C) ) ))
+
+  =>
+
+% object_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & object(C, A) ) => object(C, B) ) ))
+
+  =>
+
+% of_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & of(A, C, D) ) => of(B, C, D) ) ))
+
+  =>
+
+% of_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & of(C, A, D) ) => of(C, B, D) ) ))
+
+  =>
+
+% of_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & of(C, D, A) ) => of(C, D, B) ) ))
+
+  =>
+
+% old_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & old(A, C) ) => old(B, C) ) ))
+
+  =>
+
+% old_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & old(C, A) ) => old(C, B) ) ))
+
+  =>
+
+% organism_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & organism(A, C) ) => organism(B, C) ) ))
+
+  =>
+
+% organism_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & organism(C, A) ) => organism(C, B) ) ))
+
+  =>
+
+% patient_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & patient(A, C, D) ) => patient(B, C, D) ) ))
+
+  =>
+
+% patient_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & patient(C, A, D) ) => patient(C, B, D) ) ))
+
+  =>
+
+% patient_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & patient(C, D, A) ) => patient(C, D, B) ) ))
+
+  =>
+
+% placename_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & placename(A, C) ) => placename(B, C) ) ))
+
+  =>
+
+% placename_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & placename(C, A) ) => placename(C, B) ) ))
+
+  =>
+
+% present_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & present(A, C) ) => present(B, C) ) ))
+
+  =>
+
+% present_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & present(C, A) ) => present(C, B) ) ))
+
+  =>
+
+% relation_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & relation(A, C) ) => relation(B, C) ) ))
+
+  =>
+
+% relation_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & relation(C, A) ) => relation(C, B) ) ))
+
+  =>
+
+% relname_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & relname(A, C) ) => relname(B, C) ) ))
+
+  =>
+
+% relname_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & relname(C, A) ) => relname(C, B) ) ))
+
+  =>
+
+% seat_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & seat(A, C) ) => seat(B, C) ) ))
+
+  =>
+
+% seat_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & seat(C, A) ) => seat(C, B) ) ))
+
+  =>
+
+% set_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & set(A, C) ) => set(B, C) ) ))
+
+  =>
+
+% set_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & set(C, A) ) => set(C, B) ) ))
+
+  =>
+
+% singleton_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & singleton(A, C) ) => singleton(B, C) ) ))
+
+  =>
+
+% singleton_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & singleton(C, A) ) => singleton(C, B) ) ))
+
+  =>
+
+% specific_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & specific(A, C) ) => specific(B, C) ) ))
+
+  =>
+
+% specific_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & specific(C, A) ) => specific(C, B) ) ))
+
+  =>
+
+% state_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & state(A, C) ) => state(B, C) ) ))
+
+  =>
+
+% state_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & state(C, A) ) => state(C, B) ) ))
+
+  =>
+
+% street_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & street(A, C) ) => street(B, C) ) ))
+
+  =>
+
+% street_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & street(C, A) ) => street(C, B) ) ))
+
+  =>
+
+% thing_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & thing(A, C) ) => thing(B, C) ) ))
+
+  =>
+
+% thing_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & thing(C, A) ) => thing(C, B) ) ))
+
+  =>
+
+% transport_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & transport(A, C) ) => transport(B, C) ) ))
+
+  =>
+
+% transport_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & transport(C, A) ) => transport(C, B) ) ))
+
+  =>
+
+% two_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & two(A, C) ) => two(B, C) ) ))
+
+  =>
+
+% two_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & two(C, A) ) => two(C, B) ) ))
+
+  =>
+
+% unisex_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & unisex(A, C) ) => unisex(B, C) ) ))
+
+  =>
+
+% unisex_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & unisex(C, A) ) => unisex(C, B) ) ))
+
+  =>
+
+% vehicle_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & vehicle(A, C) ) => vehicle(B, C) ) ))
+
+  =>
+
+% vehicle_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & vehicle(C, A) ) => vehicle(C, B) ) ))
+
+  =>
+
+% way_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & way(A, C) ) => way(B, C) ) ))
+
+  =>
+
+% way_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & way(C, A) ) => way(C, B) ) ))
+
+  =>
+
+% wear_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & wear(A, C) ) => wear(B, C) ) ))
+
+  =>
+
+% wear_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & wear(C, A) ) => wear(C, B) ) ))
+
+  =>
+
+% wheel_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & wheel(A, C) ) => wheel(B, C) ) ))
+
+  =>
+
+% wheel_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & wheel(C, A) ) => wheel(C, B) ) ))
+
+  =>
+
+% white_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & white(A, C) ) => white(B, C) ) ))
+
+  =>
+
+% white_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & white(C, A) ) => white(C, B) ) ))
+
+  =>
+
+% young_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & young(A, C) ) => young(B, C) ) ))
+
+  =>
+
+% young_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & young(C, A) ) => young(C, B) ) ))
+
+  =>
+
+% ax1, axiom.
+(( forall U V. ( jules_forename(U, V) => forename(U, V) ) ))
+
+  =>
+
+% ax2, axiom.
+(( forall U V. ( forename(U, V) => relname(U, V) ) ))
+
+  =>
+
+% ax3, axiom.
+(( forall U V. ( furniture(U, V) => instrumentality(U, V) ) ))
+
+  =>
+
+% ax4, axiom.
+(( forall U V. ( seat(U, V) => furniture(U, V) ) ))
+
+  =>
+
+% ax5, axiom.
+(( forall U V. ( frontseat(U, V) => seat(U, V) ) ))
+
+  =>
+
+% ax6, axiom.
+(( forall U V. ( location(U, V) => object(U, V) ) ))
+
+  =>
+
+% ax7, axiom.
+(( forall U V. ( city(U, V) => location(U, V) ) ))
+
+  =>
+
+% ax8, axiom.
+(( forall U V. ( hollywood_placename(U, V) => placename(U, V) ) ))
+
+  =>
+
+% ax9, axiom.
+(( forall U V. ( abstraction(U, V) => unisex(U, V) ) ))
+
+  =>
+
+% ax10, axiom.
+(( forall U V. ( abstraction(U, V) => general(U, V) ) ))
+
+  =>
+
+% ax11, axiom.
+(( forall U V. ( abstraction(U, V) => nonhuman(U, V) ) ))
+
+  =>
+
+% ax12, axiom.
+(( forall U V. ( abstraction(U, V) => thing(U, V) ) ))
+
+  =>
+
+% ax13, axiom.
+(( forall U V. ( relation(U, V) => abstraction(U, V) ) ))
+
+  =>
+
+% ax14, axiom.
+(( forall U V. ( relname(U, V) => relation(U, V) ) ))
+
+  =>
+
+% ax15, axiom.
+(( forall U V. ( placename(U, V) => relname(U, V) ) ))
+
+  =>
+
+% ax16, axiom.
+(( forall U V. ( transport(U, V) => instrumentality(U, V) ) ))
+
+  =>
+
+% ax17, axiom.
+(( forall U V. ( vehicle(U, V) => transport(U, V) ) ))
+
+  =>
+
+% ax18, axiom.
+(( forall U V. ( car(U, V) => vehicle(U, V) ) ))
+
+  =>
+
+% ax19, axiom.
+(( forall U V. ( chevy(U, V) => car(U, V) ) ))
+
+  =>
+
+% ax20, axiom.
+(( forall U V. ( way(U, V) => artifact(U, V) ) ))
+
+  =>
+
+% ax21, axiom.
+(( forall U V. ( street(U, V) => way(U, V) ) ))
+
+  =>
+
+% ax22, axiom.
+(( forall U V. ( barrel(U, V) => event(U, V) ) ))
+
+  =>
+
+% ax23, axiom.
+(( forall U V. ( two(U, V) => group(U, V) ) ))
+
+  =>
+
+% ax24, axiom.
+(( forall U V. ( man(U, V) => male(U, V) ) ))
+
+  =>
+
+% ax25, axiom.
+(( forall U V. ( human_person(U, V) => animate(U, V) ) ))
+
+  =>
+
+% ax26, axiom.
+(( forall U V. ( human_person(U, V) => human(U, V) ) ))
+
+  =>
+
+% ax27, axiom.
+(( forall U V. ( organism(U, V) => living(U, V) ) ))
+
+  =>
+
+% ax28, axiom.
+(( forall U V. ( organism(U, V) => impartial(U, V) ) ))
+
+  =>
+
+% ax29, axiom.
+(( forall U V. ( organism(U, V) => entity(U, V) ) ))
+
+  =>
+
+% ax30, axiom.
+(( forall U V. ( human_person(U, V) => organism(U, V) ) ))
+
+  =>
+
+% ax31, axiom.
+(( forall U V. ( man(U, V) => human_person(U, V) ) ))
+
+  =>
+
+% ax32, axiom.
+(( forall U V. ( fellow(U, V) => man(U, V) ) ))
+
+  =>
+
+% ax33, axiom.
+(( forall U V. ( wear(U, V) => event(U, V) ) ))
+
+  =>
+
+% ax34, axiom.
+(( forall U V. ( set(U, V) => multiple(U, V) ) ))
+
+  =>
+
+% ax35, axiom.
+(( forall U V. ( group(U, V) => set(U, V) ) ))
+
+  =>
+
+% ax36, axiom.
+(( forall U V. ( clothes(U, V) => artifact(U, V) ) ))
+
+  =>
+
+% ax37, axiom.
+(( forall U V. ( coat(U, V) => clothes(U, V) ) ))
+
+  =>
+
+% ax38, axiom.
+(( forall U V. ( object(U, V) => unisex(U, V) ) ))
+
+  =>
+
+% ax39, axiom.
+(( forall U V. ( object(U, V) => impartial(U, V) ) ))
+
+  =>
+
+% ax40, axiom.
+(( forall U V. ( object(U, V) => nonliving(U, V) ) ))
+
+  =>
+
+% ax41, axiom.
+(( forall U V. ( entity(U, V) => existent(U, V) ) ))
+
+  =>
+
+% ax42, axiom.
+(( forall U V. ( entity(U, V) => specific(U, V) ) ))
+
+  =>
+
+% ax43, axiom.
+(( forall U V. ( entity(U, V) => thing(U, V) ) ))
+
+  =>
+
+% ax44, axiom.
+(( forall U V. ( object(U, V) => entity(U, V) ) ))
+
+  =>
+
+% ax45, axiom.
+(( forall U V. ( artifact(U, V) => object(U, V) ) ))
+
+  =>
+
+% ax46, axiom.
+(( forall U V. ( instrumentality(U, V) => artifact(U, V) ) ))
+
+  =>
+
+% ax47, axiom.
+(( forall U V. ( device(U, V) => instrumentality(U, V) ) ))
+
+  =>
+
+% ax48, axiom.
+(( forall U V. ( wheel(U, V) => device(U, V) ) ))
+
+  =>
+
+% ax49, axiom.
+(( forall U V. ( event(U, V) => eventuality(U, V) ) ))
+
+  =>
+
+% ax50, axiom.
+(( forall U V. ( state(U, V) => event(U, V) ) ))
+
+  =>
+
+% ax51, axiom.
+(( forall U V. ( eventuality(U, V) => unisex(U, V) ) ))
+
+  =>
+
+% ax52, axiom.
+(( forall U V. ( eventuality(U, V) => nonexistent(U, V) ) ))
+
+  =>
+
+% ax53, axiom.
+(( forall U V. ( eventuality(U, V) => specific(U, V) ) ))
+
+  =>
+
+% ax54, axiom.
+(( forall U V. ( thing(U, V) => singleton(U, V) ) ))
+
+  =>
+
+% ax55, axiom.
+(( forall U V. ( eventuality(U, V) => thing(U, V) ) ))
+
+  =>
+
+% ax56, axiom.
+(( forall U V. ( state(U, V) => eventuality(U, V) ) ))
+
+  =>
+
+% ax57, axiom.
+(( forall U V. ( animate(U, V) => ( ~ nonliving(U, V) ) ) ))
+
+  =>
+
+% ax58, axiom.
+(( forall U V. ( existent(U, V) => ( ~ nonexistent(U, V) ) ) ))
+
+  =>
+
+% ax59, axiom.
+(( forall U V. ( nonhuman(U, V) => ( ~ human(U, V) ) ) ))
+
+  =>
+
+% ax60, axiom.
+(( forall U V. ( nonliving(U, V) => ( ~ living(U, V) ) ) ))
+
+  =>
+
+% ax61, axiom.
+(( forall U V. ( singleton(U, V) => ( ~ multiple(U, V) ) ) ))
+
+  =>
+
+% ax62, axiom.
+(( forall U V. ( specific(U, V) => ( ~ general(U, V) ) ) ))
+
+  =>
+
+% ax63, axiom.
+(( forall U V. ( unisex(U, V) => ( ~ male(U, V) ) ) ))
+
+  =>
+
+% ax64, axiom.
+(( forall U V. ( white(U, V) => ( ~ black(U, V) ) ) ))
+
+  =>
+
+% ax65, axiom.
+(( forall U V. ( young(U, V) => ( ~ old(U, V) ) ) ))
+
+  =>
+
+% ax66, axiom.
+(( forall U V W. ( ( entity(U, V) & ( forename(U, W) & of(U, W, V) ) ) => ( ~ ( exists X. ( forename(U, X) & ( ( ~ ( X = W ) ) & of(U, X, V) ) ) ) ) ) ))
+
+  =>
+
+% ax67, axiom.
+(( forall U V W. ( ( entity(U, V) & ( placename(U, W) & of(U, W, V) ) ) => ( ~ ( exists X. ( placename(U, X) & ( ( ~ ( X = W ) ) & of(U, X, V) ) ) ) ) ) ))
+
+  =>
+
+% ax68, axiom.
+(( forall U V. ( two(U, V) <=> ( exists W. ( member(U, W, V) & ( exists X. ( member(U, X, V) & ( ( ~ ( X = W ) ) & ( forall Y. ( member(U, Y, V) => ( ( Y = X ) | ( Y = W ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax69, axiom.
+(( forall U V W X. ( ( nonreflexive(U, V) & ( agent(U, V, W) & patient(U, V, X) ) ) => ( ~ ( W = X ) ) ) ))
+
+  =>
+
+% ax70, axiom.
+(( forall U. ( ~ ( exists V. member(U, V, V) ) ) ))
+
+  =>
+
+% ax71, axiom.
+(( forall U V W X. ( be(U, V, W, X) => ( W = X ) ) ))
+
+  =>
+
+% co1, conjecture.
+(( ~ ( exists U. ( actual_world(U) & ( exists V W X Y Z X1 X2 X3 X4 X5 X6. ( of(U, W, V) & ( man(U, V) & ( jules_forename(U, W) & ( forename(U, W) & ( wheel(U, X) & ( frontseat(U, Y) & ( chevy(U, Y) & ( white(U, Y) & ( dirty(U, Y) & ( old(U, Y) & ( of(U, Z, X1) & ( city(U, X1) & ( hollywood_placename(U, Z) & ( placename(U, Z) & ( street(U, X1) & ( lonely(U, X1) & ( event(U, X2) & ( agent(U, X2, Y) & ( present(U, X2) & ( barrel(U, X2) & ( down(U, X2, X1) & ( in(U, X2, X1) & ( ( forall X7. ( member(U, X7, X3) => ( exists X8 X9. ( state(U, X8) & ( be(U, X8, X7, X9) & in(U, X9, Y) ) ) ) ) ) & ( two(U, X3) & ( group(U, X3) & ( ( forall X10. ( member(U, X10, X3) => ( fellow(U, X10) & young(U, X10) ) ) ) & ( ( forall X11. ( member(U, X11, X4) => ( forall X12. ( member(U, X12, X3) => ( exists X13. ( event(U, X13) & ( agent(U, X13, X12) & ( patient(U, X13, X11) & ( present(U, X13) & ( nonreflexive(U, X13) & wear(U, X13) ) ) ) ) ) ) ) ) ) ) & ( group(U, X4) & ( ( forall X14. ( member(U, X14, X4) => ( coat(U, X14) & ( black(U, X14) & cheap(U, X14) ) ) ) ) & ( state(U, X5) & ( be(U, X5, V, X6) & behind(U, X6, X) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

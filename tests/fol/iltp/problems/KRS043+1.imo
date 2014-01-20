@@ -1,0 +1,380 @@
+% File     : KRS043+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : DL Test: t1.1
+% Version  : Especial.
+% English  : 
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : consistent_description-logic-Manifest606 [Bec03]
+% Status   : Satisfiable
+% Rating   : 0.00 v3.1.0
+%
+% Status (intuit.) : Unsolved (Problem negated)
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   66 (   1 unit)
+%            Number of atoms       :  181 (  40 equality)
+%            Maximal formula depth :    8 (   5 average)
+%            Number of connectives :  124 (   9 ~  ;   0  |;  50  &)
+%                                         (  21 <=>;  44 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   31 (   0 propositional; 1-2 arity)
+%            Number of functors    :    1 (   1 constant; 0-0 arity)
+%            Number of variables   :  141 (   0 singleton; 125 !;  16 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+¬ (
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% cSatisfiable_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cSatisfiable(A) ) => cSatisfiable(B) ) ))
+
+  =>
+
+% ca_Ax14_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & ca_Ax14(A) ) => ca_Ax14(B) ) ))
+
+  =>
+
+% ca_Cx1_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & ca_Cx1(A) ) => ca_Cx1(B) ) ))
+
+  =>
+
+% ca_Cx1xcomp_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & ca_Cx1xcomp(A) ) => ca_Cx1xcomp(B) ) ))
+
+  =>
+
+% ca_Cx2_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & ca_Cx2(A) ) => ca_Cx2(B) ) ))
+
+  =>
+
+% ca_Cx2xcomp_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & ca_Cx2xcomp(A) ) => ca_Cx2xcomp(B) ) ))
+
+  =>
+
+% ca_Cx3_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & ca_Cx3(A) ) => ca_Cx3(B) ) ))
+
+  =>
+
+% ca_Cx3xcomp_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & ca_Cx3xcomp(A) ) => ca_Cx3xcomp(B) ) ))
+
+  =>
+
+% cowlNothing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlNothing(A) ) => cowlNothing(B) ) ))
+
+  =>
+
+% cowlThing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlThing(A) ) => cowlThing(B) ) ))
+
+  =>
+
+% cp1_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cp1(A) ) => cp1(B) ) ))
+
+  =>
+
+% cp2_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cp2(A) ) => cp2(B) ) ))
+
+  =>
+
+% cp2xcomp_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cp2xcomp(A) ) => cp2xcomp(B) ) ))
+
+  =>
+
+% cp3_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cp3(A) ) => cp3(B) ) ))
+
+  =>
+
+% cp3xcomp_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cp3xcomp(A) ) => cp3xcomp(B) ) ))
+
+  =>
+
+% cp4_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cp4(A) ) => cp4(B) ) ))
+
+  =>
+
+% cp4xcomp_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cp4xcomp(A) ) => cp4xcomp(B) ) ))
+
+  =>
+
+% cp5_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cp5(A) ) => cp5(B) ) ))
+
+  =>
+
+% cp5xcomp_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cp5xcomp(A) ) => cp5xcomp(B) ) ))
+
+  =>
+
+% ra_Px1_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px1(A, C) ) => ra_Px1(B, C) ) ))
+
+  =>
+
+% ra_Px1_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px1(C, A) ) => ra_Px1(C, B) ) ))
+
+  =>
+
+% ra_Px2_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px2(A, C) ) => ra_Px2(B, C) ) ))
+
+  =>
+
+% ra_Px2_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px2(C, A) ) => ra_Px2(C, B) ) ))
+
+  =>
+
+% ra_Px3_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px3(A, C) ) => ra_Px3(B, C) ) ))
+
+  =>
+
+% ra_Px3_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px3(C, A) ) => ra_Px3(C, B) ) ))
+
+  =>
+
+% ra_Px4_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px4(A, C) ) => ra_Px4(B, C) ) ))
+
+  =>
+
+% ra_Px4_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px4(C, A) ) => ra_Px4(C, B) ) ))
+
+  =>
+
+% ra_Px5_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px5(A, C) ) => ra_Px5(B, C) ) ))
+
+  =>
+
+% ra_Px5_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px5(C, A) ) => ra_Px5(C, B) ) ))
+
+  =>
+
+% ra_Px6_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px6(A, C) ) => ra_Px6(B, C) ) ))
+
+  =>
+
+% ra_Px6_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px6(C, A) ) => ra_Px6(C, B) ) ))
+
+  =>
+
+% ra_Px7_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px7(A, C) ) => ra_Px7(B, C) ) ))
+
+  =>
+
+% ra_Px7_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & ra_Px7(C, A) ) => ra_Px7(C, B) ) ))
+
+  =>
+
+% rinvR_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rinvR(A, C) ) => rinvR(B, C) ) ))
+
+  =>
+
+% rinvR_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rinvR(C, A) ) => rinvR(C, B) ) ))
+
+  =>
+
+% rr_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rr(A, C) ) => rr(B, C) ) ))
+
+  =>
+
+% rr_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rr(C, A) ) => rr(C, B) ) ))
+
+  =>
+
+% xsd_integer_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_integer(A) ) => xsd_integer(B) ) ))
+
+  =>
+
+% xsd_string_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_string(A) ) => xsd_string(B) ) ))
+
+  =>
+
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(( forall X. ( cSatisfiable(X) <=> ( exists Y. ( rinvR(X, Y) & ca_Ax14(Y) ) ) ) ))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X. ( cp1(X) => ca_Cx1(X) ) ))
+
+  =>
+
+% axiom_4, axiom.
+(( forall X. ( cp2(X) <=> ( exists Y0. ra_Px5(X, Y0) ) ) ))
+
+  =>
+
+% axiom_5, axiom.
+(( forall X. ( cp2(X) => ca_Cx2(X) ) ))
+
+  =>
+
+% axiom_6, axiom.
+(( forall X. ( cp2xcomp(X) <=> ( ~ ( exists Y. ra_Px5(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_7, axiom.
+(( forall X. ( cp3(X) <=> ( exists Y0. ra_Px6(X, Y0) ) ) ))
+
+  =>
+
+% axiom_8, axiom.
+(( forall X. ( cp3(X) => ca_Cx3(X) ) ))
+
+  =>
+
+% axiom_9, axiom.
+(( forall X. ( cp3xcomp(X) <=> ( ~ ( exists Y. ra_Px6(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_10, axiom.
+(( forall X. ( cp4(X) <=> ( ~ ( exists Y. ra_Px7(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_11, axiom.
+(( forall X. ( cp4(X) => cp5xcomp(X) ) ))
+
+  =>
+
+% axiom_12, axiom.
+(( forall X. ( cp4xcomp(X) <=> ( exists Y0. ra_Px7(X, Y0) ) ) ))
+
+  =>
+
+% axiom_13, axiom.
+(( forall X. ( cp5(X) <=> ( ~ ( exists Y. ra_Px4(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_14, axiom.
+(( forall X. ( cp5xcomp(X) <=> ( exists Y0. ra_Px4(X, Y0) ) ) ))
+
+  =>
+
+% axiom_15, axiom.
+(( forall X. ( ca_Ax14(X) <=> ( ( exists Y. ( rr(X, Y) & cp1(Y) ) ) & ( forall Y0 Y1. ( ( rr(X, Y0) & rr(X, Y1) ) => ( Y0 = Y1 ) ) ) ) ) ))
+
+  =>
+
+% axiom_16, axiom.
+(( forall X. ( ca_Cx1(X) <=> ( exists Y0. ra_Px1(X, Y0) ) ) ))
+
+  =>
+
+% axiom_17, axiom.
+(( forall X. ( ca_Cx1(X) <=> ( cp5xcomp(X) & ( cp2xcomp(X) & ( cp3xcomp(X) & cp4xcomp(X) ) ) ) ) ))
+
+  =>
+
+% axiom_18, axiom.
+(( forall X. ( ca_Cx1xcomp(X) <=> ( ~ ( exists Y. ra_Px1(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_19, axiom.
+(( forall X. ( ca_Cx2(X) <=> ( ~ ( exists Y. ra_Px2(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_20, axiom.
+(( forall X. ( ca_Cx2(X) <=> ( cp5xcomp(X) & ( cp3xcomp(X) & cp4xcomp(X) ) ) ) ))
+
+  =>
+
+% axiom_21, axiom.
+(( forall X. ( ca_Cx2xcomp(X) <=> ( exists Y0. ra_Px2(X, Y0) ) ) ))
+
+  =>
+
+% axiom_22, axiom.
+(( forall X. ( ca_Cx3(X) <=> ( cp5xcomp(X) & cp4xcomp(X) ) ) ))
+
+  =>
+
+% axiom_23, axiom.
+(( forall X. ( ca_Cx3(X) <=> ( ~ ( exists Y. ra_Px3(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_24, axiom.
+(( forall X. ( ca_Cx3xcomp(X) <=> ( exists Y0. ra_Px3(X, Y0) ) ) ))
+
+  =>
+
+% axiom_25, axiom.
+(( forall X Y. ( rinvR(X, Y) <=> rr(Y, X) ) ))
+
+  =>
+
+% axiom_26, axiom.
+(cSatisfiable(i2003_11_14_17_16_14536))
+
+)
+ 
+
+%------------------------------------------------------------------------------

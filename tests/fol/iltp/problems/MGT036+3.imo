@@ -1,0 +1,51 @@
+% File     : MGT036+3 : ILTP v1.1.2
+% Domain   : Management (Organisation Theory)
+% Problem  : First movers never outcompete efficient producers. 
+% Version  : [PM93] axioms.
+% English  : 
+% Refs     : [PM93]  Peli & Masuch (1993), The Logic of Propogation Strateg
+%          : [PM94]  Peli & Masuch (1994), The Logic of Propogation Strateg
+% Source   : [PM93]
+% Names    : THEOREM 5* [PM93]
+% Status   : Theorem
+% Rating   : 0.00 v2.1.0
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.00 v1.0.0
+%
+% Syntax   : Number of formulae    :    4 (   0 unit)
+%            Number of atoms       :   15 (   0 equality)
+%            Maximal formula depth :    8 (   6 average)
+%            Number of connectives :   11 (   0 ~  ;   0  |;   8  &)
+%                                         (   1 <=>;   2 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    5 (   0 propositional; 1-4 arity)
+%            Number of functors    :    4 (   3 constant; 0-2 arity)
+%            Number of variables   :   12 (   0 singleton;   8 !;   4 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% mp_symmetry_of_subpopulations, axiom.
+(( forall E S1 S2 T. ( ( environment(E) & subpopulations(S1, S2, E, T) ) => subpopulations(S2, S1, E, T) ) ))
+
+  =>
+
+% d2, hypothesis.
+(( forall E S1 S2 T. ( ( environment(E) & subpopulations(S1, S2, E, T) ) => ( ( greater_or_equal(growth_rate(S2, T), zero) & greater(zero, growth_rate(S1, T)) ) <=> outcompetes(S2, S1, T) ) ) ))
+
+  =>
+
+% a13_star, hypothesis.
+(( exists E T. ( environment(E) & ( subpopulations(first_movers, efficient_producers, E, T) & ( greater_or_equal(growth_rate(first_movers, T), zero) & greater(zero, growth_rate(efficient_producers, T)) ) ) ) ))
+
+  =>
+
+% prove_t5_star, conjecture.
+(( exists E T. ( environment(E) & ( subpopulations(first_movers, efficient_producers, E, T) & outcompetes(first_movers, efficient_producers, T) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

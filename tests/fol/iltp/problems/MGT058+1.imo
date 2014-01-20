@@ -1,0 +1,169 @@
+% File     : MGT058+1 : ILTP v1.1.2
+% Domain   : Management (Organisation Theory)
+% Problem  : An organization's position cannot be both fragile and robust
+% Version  : [Han98] axioms.
+% English  : 
+% Refs     : [Kam00] Kamps (2000), Email to G. Sutcliffe
+%            [CH00]  Carroll & Hannan (2000), The Demography of Corporation
+%            [Han98] Hannan (1998), Rethinking Age Dependence in Organizati
+% Source   : [Kam00]
+% Names    : LEMMA 10 [Han98]
+% Status   : Theorem
+% Rating   : 0.18 v3.1.0, 0.22 v2.7.0, 0.33 v2.5.0, 0.17 v2.4.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :    9 (   0 unit)
+%            Number of atoms       :   32 (   4 equality)
+%            Maximal formula depth :    7 (   6 average)
+%            Number of connectives :   27 (   4 ~  ;   4  |;   8  &)
+%                                         (   5 <=>;   6 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    9 (   0 propositional; 1-2 arity)
+%            Number of functors    :    4 (   3 constant; 0-2 arity)
+%            Number of variables   :   19 (   0 singleton;  18 !;   1 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : See MGT042+1.p for the mnemonic names.
+%--- Case: Fragile and robust positions in drifting environments.
+%--- Retracting A16!
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% age_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( age(A, C) = age(B, C) ) ) ))
+
+  =>
+
+% age_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( age(C, A) = age(C, B) ) ) ))
+
+  =>
+
+% fragile_position_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & fragile_position(A) ) => fragile_position(B) ) ))
+
+  =>
+
+% greater_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(A, C) ) => greater(B, C) ) ))
+
+  =>
+
+% greater_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(C, A) ) => greater(C, B) ) ))
+
+  =>
+
+% greater_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(A, C) ) => greater_or_equal(B, C) ) ))
+
+  =>
+
+% greater_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(C, A) ) => greater_or_equal(C, B) ) ))
+
+  =>
+
+% organization_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & organization(A) ) => organization(B) ) ))
+
+  =>
+
+% positional_advantage_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & positional_advantage(A, C) ) => positional_advantage(B, C) ) ))
+
+  =>
+
+% positional_advantage_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & positional_advantage(C, A) ) => positional_advantage(C, B) ) ))
+
+  =>
+
+% robust_position_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & robust_position(A) ) => robust_position(B) ) ))
+
+  =>
+
+% smaller_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & smaller(A, C) ) => smaller(B, C) ) ))
+
+  =>
+
+% smaller_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & smaller(C, A) ) => smaller(C, B) ) ))
+
+  =>
+
+% smaller_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & smaller_or_equal(A, C) ) => smaller_or_equal(B, C) ) ))
+
+  =>
+
+% smaller_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & smaller_or_equal(C, A) ) => smaller_or_equal(C, B) ) ))
+
+  =>
+
+% definition_smaller_or_equal, axiom.
+(( forall X Y. ( smaller_or_equal(X, Y) <=> ( smaller(X, Y) | ( X = Y ) ) ) ))
+
+  =>
+
+% definition_greater_or_equal, axiom.
+(( forall X Y. ( greater_or_equal(X, Y) <=> ( greater(X, Y) | ( X = Y ) ) ) ))
+
+  =>
+
+% definition_smaller, axiom.
+(( forall X Y. ( smaller(X, Y) <=> greater(Y, X) ) ))
+
+  =>
+
+% meaning_postulate_greater_strict, axiom.
+(( forall X Y. ( ~ ( greater(X, Y) & greater(Y, X) ) ) ))
+
+  =>
+
+% meaning_postulate_greater_transitive, axiom.
+(( forall X Y Z. ( ( greater(X, Y) & greater(Y, Z) ) => greater(X, Z) ) ))
+
+  =>
+
+% meaning_postulate_greater_comparable, axiom.
+(( forall X Y. ( smaller(X, Y) | ( ( X = Y ) | greater(X, Y) ) ) ))
+
+  =>
+
+% definition_3, axiom.
+(( forall X. ( fragile_position(X) <=> ( forall T. ( ( smaller_or_equal(age(X, T), sigma) => positional_advantage(X, T) ) & ( greater(age(X, T), sigma) => ( ~ positional_advantage(X, T) ) ) ) ) ) ))
+
+  =>
+
+% definition_4, axiom.
+(( forall X. ( robust_position(X) <=> ( forall T. ( ( smaller_or_equal(age(X, T), tau) => ( ~ positional_advantage(X, T) ) ) & ( greater(age(X, T), tau) => positional_advantage(X, T) ) ) ) ) ))
+
+  =>
+
+% lemma_10, conjecture.
+(( forall X. ( ( organization(X) & ( ( exists T0. ( age(X, T0) = zero ) ) & ( greater_or_equal(sigma, zero) & greater_or_equal(tau, zero) ) ) ) => ( ~ ( fragile_position(X) & robust_position(X) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

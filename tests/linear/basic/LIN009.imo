@@ -1,0 +1,5 @@
+
+% Status : Theorem
+% Rating  : 0.00
+
+(exists Y. forall X. p(X, Y)) -o (forall X. exists Y. p(X, Y))

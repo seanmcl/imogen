@@ -1,0 +1,200 @@
+% File     : MGT021+1 : ILTP v1.1.2
+% Domain   : Management (Organisation Theory)
+% Problem  : Difference between disbanding rates does not decrease
+% Version  : [PB+94] axioms.
+% English  : The difference between the disbanding rates of first movers 
+%            and efficient producers does not decrease with time. 
+% Refs     : [PM93]  Peli & Masuch (1993), The Logic of Propogation Strateg
+%          : [PM94]  Peli & Masuch (1994), The Logic of Propogation Strateg
+%          : [PB+94] Peli et al. (1994), A Logical Approach to Formalizing
+%          : [Kam95] Kamps (1995), Email to G. Sutcliffe
+% Source   : [Kam95]
+% Names    : LEMMA 3 [PM93]
+%          : L3 [PB+94]
+% Status   : Theorem
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.75 v1.0.0
+% Rating (intuit.) : 0.75 v1.1
+%
+% Syntax   : Number of formulae    :    7 (   0 unit)
+%            Number of atoms       :   27 (   1 equality)
+%            Maximal formula depth :    7 (   5 average)
+%            Number of connectives :   24 (   4 ~  ;   1  |;   8  &)
+%                                         (   0 <=>;  11 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    9 (   0 propositional; 1-4 arity)
+%            Number of functors    :    8 (   3 constant; 0-2 arity)
+%            Number of variables   :   13 (   0 singleton;  13 !;   0 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments : Same as version with [PM93] axioms.
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% difference_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(A, C) = difference(B, C) ) ) ))
+
+  =>
+
+% difference_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(C, A) = difference(C, B) ) ) ))
+
+  =>
+
+% disbanding_rate_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( disbanding_rate(A, C) = disbanding_rate(B, C) ) ) ))
+
+  =>
+
+% disbanding_rate_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( disbanding_rate(C, A) = disbanding_rate(C, B) ) ) ))
+
+  =>
+
+% equilibrium_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( equilibrium(A) = equilibrium(B) ) ) ))
+
+  =>
+
+% number_of_organizations_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_organizations(A, C) = number_of_organizations(B, C) ) ) ))
+
+  =>
+
+% number_of_organizations_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_organizations(C, A) = number_of_organizations(C, B) ) ) ))
+
+  =>
+
+% resources_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( resources(A, C) = resources(B, C) ) ) ))
+
+  =>
+
+% resources_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( resources(C, A) = resources(C, B) ) ) ))
+
+  =>
+
+% constant_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & constant(A) ) => constant(B) ) ))
+
+  =>
+
+% decreases_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & decreases(A) ) => decreases(B) ) ))
+
+  =>
+
+% environment_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & environment(A) ) => environment(B) ) ))
+
+  =>
+
+% greater_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(A, C) ) => greater(B, C) ) ))
+
+  =>
+
+% greater_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(C, A) ) => greater(C, B) ) ))
+
+  =>
+
+% greater_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(A, C) ) => greater_or_equal(B, C) ) ))
+
+  =>
+
+% greater_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(C, A) ) => greater_or_equal(C, B) ) ))
+
+  =>
+
+% in_environment_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(A, C) ) => in_environment(B, C) ) ))
+
+  =>
+
+% in_environment_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(C, A) ) => in_environment(C, B) ) ))
+
+  =>
+
+% increases_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & increases(A) ) => increases(B) ) ))
+
+  =>
+
+% subpopulations_substitution_1, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(A, C, D, E) ) => subpopulations(B, C, D, E) ) ))
+
+  =>
+
+% subpopulations_substitution_2, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, A, D, E) ) => subpopulations(C, B, D, E) ) ))
+
+  =>
+
+% subpopulations_substitution_3, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, D, A, E) ) => subpopulations(C, D, B, E) ) ))
+
+  =>
+
+% subpopulations_substitution_4, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, D, E, A) ) => subpopulations(C, D, E, B) ) ))
+
+  =>
+
+% mp_time_point_in_environment, axiom.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => in_environment(E, T) ) ))
+
+  =>
+
+% mp_environment_not_empty, axiom.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => greater(number_of_organizations(E, T), zero) ) ))
+
+  =>
+
+% mp_increase_not_decrease, axiom.
+(( forall X. ( increases(X) => ( ~ decreases(X) ) ) ))
+
+  =>
+
+% mp_greater_or_equal, axiom.
+(( forall X Y. ( greater_or_equal(X, Y) => ( greater(X, Y) | ( X = Y ) ) ) ))
+
+  =>
+
+% a3, hypothesis.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & greater(number_of_organizations(E, T), zero) ) ) => ( ( greater(equilibrium(E), T) => decreases(resources(E, T)) ) & ( ( ~ greater(equilibrium(E), T) ) => constant(resources(E, T)) ) ) ) ))
+
+  =>
+
+% l4, hypothesis.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => ( ( decreases(resources(E, T)) => increases(difference(disbanding_rate(first_movers, T), disbanding_rate(efficient_producers, T))) ) & ( constant(resources(E, T)) => ( ~ decreases(difference(disbanding_rate(first_movers, T), disbanding_rate(efficient_producers, T))) ) ) ) ) ))
+
+  =>
+
+% prove_l3, conjecture.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => ( ~ decreases(difference(disbanding_rate(first_movers, T), disbanding_rate(efficient_producers, T))) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

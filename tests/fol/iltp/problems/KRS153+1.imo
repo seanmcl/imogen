@@ -1,0 +1,1038 @@
+% File     : KRS153+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : DL Test: k_poly ABox test from DL98 systems comparison
+% Version  : Especial.
+% English  : 
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : positive_description-logic-Manifest208 [Bec03]
+% Status   : Theorem
+% Rating   : 0.33 v3.1.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :  201 (  99 unit)
+%            Number of atoms       :  408 (   0 equality)
+%            Maximal formula depth :   47 (   3 average)
+%            Number of connectives :  333 ( 126 ~  ;   0  |; 106  &)
+%                                         (  60 <=>;  41 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   72 (   0 propositional; 1-2 arity)
+%            Number of functors    :   16 (  16 constant; 0-0 arity)
+%            Number of variables   :  131 (   0 singleton; 103 !;  28 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(( forall X. ( cC10(X) <=> ( cC8(X) & cC6(X) ) ) ))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X. ( cC100(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC98(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_4, axiom.
+(( forall X. ( cC104(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC102(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_5, axiom.
+(( forall X. ( cC106(X) <=> ( ( ~ cC100(X) ) & cC104(X) ) ) ))
+
+  =>
+
+% axiom_6, axiom.
+(( forall X. ( cC108(X) <=> ( cC28(X) & cC106(X) ) ) ))
+
+  =>
+
+% axiom_7, axiom.
+(( forall X. ( cC110(X) <=> ( ( ~ cC12(X) ) & ( ~ cC4(X) ) ) ) ))
+
+  =>
+
+% axiom_8, axiom.
+(( forall X. ( cC112(X) <=> ( ( ~ cC102(X) ) & cC110(X) ) ) ))
+
+  =>
+
+% axiom_9, axiom.
+(( forall X. ( cC116(X) <=> ( cC112(X) & ( ~ cC114(X) ) ) ) ))
+
+  =>
+
+% axiom_10, axiom.
+(( forall X. ( cC120(X) <=> ( cC116(X) & ( ~ cC118(X) ) ) ) ))
+
+  =>
+
+% axiom_11, axiom.
+(( forall X. ( cC122(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC120(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_12, axiom.
+(( forall X. ( cC124(X) <=> ( exists Y. ( rR1(X, Y) & cC122(Y) ) ) ) ))
+
+  =>
+
+% axiom_13, axiom.
+(( forall X. ( cC126(X) <=> ( exists Y. ( rR1(X, Y) & cC124(Y) ) ) ) ))
+
+  =>
+
+% axiom_14, axiom.
+(( forall X. ( cC128(X) <=> ( exists Y. ( rR1(X, Y) & cC126(Y) ) ) ) ))
+
+  =>
+
+% axiom_15, axiom.
+(( forall X. ( cC130(X) <=> ( exists Y. ( rR1(X, Y) & cC128(Y) ) ) ) ))
+
+  =>
+
+% axiom_16, axiom.
+(( forall X. ( cC14(X) <=> ( cC10(X) & cC12(X) ) ) ))
+
+  =>
+
+% axiom_17, axiom.
+(( forall X. ( cC18(X) <=> ( cC14(X) & cC16(X) ) ) ))
+
+  =>
+
+% axiom_18, axiom.
+(( forall X. ( cC20(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC18(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_19, axiom.
+(( forall X. ( cC22(X) <=> ( exists Y. ( rR1(X, Y) & cC20(Y) ) ) ) ))
+
+  =>
+
+% axiom_20, axiom.
+(( forall X. ( cC24(X) <=> ( exists Y. ( rR1(X, Y) & cC22(Y) ) ) ) ))
+
+  =>
+
+% axiom_21, axiom.
+(( forall X. ( cC26(X) <=> ( exists Y. ( rR1(X, Y) & cC24(Y) ) ) ) ))
+
+  =>
+
+% axiom_22, axiom.
+(( forall X. ( cC28(X) <=> ( exists Y. ( rR1(X, Y) & cC26(Y) ) ) ) ))
+
+  =>
+
+% axiom_23, axiom.
+(( forall X. ( cC30(X) <=> ( cC4(X) & cC2(X) ) ) ))
+
+  =>
+
+% axiom_24, axiom.
+(( forall X. ( cC32(X) <=> ( ( ~ cC2(X) ) & ( ~ cC4(X) ) ) ) ))
+
+  =>
+
+% axiom_25, axiom.
+(( forall X. ( cC34(X) <=> ( ( ~ cC32(X) ) & ( ~ cC30(X) ) ) ) ))
+
+  =>
+
+% axiom_26, axiom.
+(( forall X. ( cC36(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC34(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_27, axiom.
+(( forall X. ( cC38(X) <=> ( ( ~ cC36(X) ) & cTOP(X) ) ) ))
+
+  =>
+
+% axiom_28, axiom.
+(( forall X. ( cC40(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC38(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_29, axiom.
+(( forall X. ( cC42(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC8(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_30, axiom.
+(( forall X. ( cC44(X) <=> ( ( ~ cC40(X) ) & cC42(X) ) ) ))
+
+  =>
+
+% axiom_31, axiom.
+(( forall X. ( cC46(X) <=> ( cC8(X) & cC4(X) ) ) ))
+
+  =>
+
+% axiom_32, axiom.
+(( forall X. ( cC48(X) <=> ( ( ~ cC8(X) ) & ( ~ cC4(X) ) ) ) ))
+
+  =>
+
+% axiom_33, axiom.
+(( forall X. ( cC50(X) <=> ( ( ~ cC46(X) ) & ( ~ cC48(X) ) ) ) ))
+
+  =>
+
+% axiom_34, axiom.
+(( forall X. ( cC52(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC50(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_35, axiom.
+(( forall X. ( cC54(X) <=> ( exists Y. ( rR1(X, Y) & cC52(Y) ) ) ) ))
+
+  =>
+
+% axiom_36, axiom.
+(( forall X. ( cC56(X) <=> ( cC44(X) & ( ~ cC54(X) ) ) ) ))
+
+  =>
+
+% axiom_37, axiom.
+(( forall X. ( cC58(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC56(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_38, axiom.
+(( forall X. ( cC6(X) <=> ( cC4(X) & cC2(X) ) ) ))
+
+  =>
+
+% axiom_39, axiom.
+(( forall X. ( cC60(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC12(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_40, axiom.
+(( forall X. ( cC62(X) <=> ( cC60(X) & ( ~ cC58(X) ) ) ) ))
+
+  =>
+
+% axiom_41, axiom.
+(( forall X. ( cC64(X) <=> ( cC8(X) & cC12(X) ) ) ))
+
+  =>
+
+% axiom_42, axiom.
+(( forall X. ( cC66(X) <=> ( ( ~ cC8(X) ) & ( ~ cC12(X) ) ) ) ))
+
+  =>
+
+% axiom_43, axiom.
+(( forall X. ( cC68(X) <=> ( ( ~ cC64(X) ) & ( ~ cC66(X) ) ) ) ))
+
+  =>
+
+% axiom_44, axiom.
+(( forall X. ( cC70(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC68(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_45, axiom.
+(( forall X. ( cC72(X) <=> ( exists Y. ( rR1(X, Y) & cC70(Y) ) ) ) ))
+
+  =>
+
+% axiom_46, axiom.
+(( forall X. ( cC74(X) <=> ( exists Y. ( rR1(X, Y) & cC72(Y) ) ) ) ))
+
+  =>
+
+% axiom_47, axiom.
+(( forall X. ( cC76(X) <=> ( ( ~ cC74(X) ) & cC62(X) ) ) ))
+
+  =>
+
+% axiom_48, axiom.
+(( forall X. ( cC78(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC76(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_49, axiom.
+(( forall X. ( cC80(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC16(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_50, axiom.
+(( forall X. ( cC82(X) <=> ( ( ~ cC78(X) ) & cC80(X) ) ) ))
+
+  =>
+
+% axiom_51, axiom.
+(( forall X. ( cC84(X) <=> ( cC2(X) & cC12(X) ) ) ))
+
+  =>
+
+% axiom_52, axiom.
+(( forall X. ( cC86(X) <=> ( ( ~ cC12(X) ) & ( ~ cC2(X) ) ) ) ))
+
+  =>
+
+% axiom_53, axiom.
+(( forall X. ( cC88(X) <=> ( ( ~ cC84(X) ) & ( ~ cC86(X) ) ) ) ))
+
+  =>
+
+% axiom_54, axiom.
+(( forall X. ( cC90(X) <=> ( exists Y. ( rR1(X, Y) & ( ~ cC88(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_55, axiom.
+(( forall X. ( cC92(X) <=> ( exists Y. ( rR1(X, Y) & cC90(Y) ) ) ) ))
+
+  =>
+
+% axiom_56, axiom.
+(( forall X. ( cC94(X) <=> ( exists Y. ( rR1(X, Y) & cC92(Y) ) ) ) ))
+
+  =>
+
+% axiom_57, axiom.
+(( forall X. ( cC96(X) <=> ( exists Y. ( rR1(X, Y) & cC94(Y) ) ) ) ))
+
+  =>
+
+% axiom_58, axiom.
+(( forall X. ( cC98(X) <=> ( ( ~ cC96(X) ) & cC82(X) ) ) ))
+
+  =>
+
+% axiom_59, axiom.
+(( forall X. ( cTEST(X) <=> ( cC108(X) & cC130(X) ) ) ))
+
+  =>
+
+% axiom_60, axiom.
+(( forall X. ( rR1(iV16439, X) => cC98(X) ) ))
+
+  =>
+
+% axiom_61, axiom.
+(cTEST(iV16439))
+
+  =>
+
+% axiom_62, axiom.
+(( ~ cC100(iV16439) ))
+
+  =>
+
+% axiom_63, axiom.
+(cowlThing(iV16439))
+
+  =>
+
+% axiom_64, axiom.
+(rR1(iV16439, iV16440))
+
+  =>
+
+% axiom_65, axiom.
+(rR1(iV16439, iV16442))
+
+  =>
+
+% axiom_66, axiom.
+(rR1(iV16439, iV16441))
+
+  =>
+
+% axiom_67, axiom.
+(( forall X. ( rR1(iV16440, X) => cC76(X) ) ))
+
+  =>
+
+% axiom_68, axiom.
+(( forall X. ( rR1(iV16440, X) => ( ~ cC94(X) ) ) ))
+
+  =>
+
+% axiom_69, axiom.
+(( ~ cC102(iV16440) ))
+
+  =>
+
+% axiom_70, axiom.
+(( ~ cC78(iV16440) ))
+
+  =>
+
+% axiom_71, axiom.
+(( ~ cC96(iV16440) ))
+
+  =>
+
+% axiom_72, axiom.
+(cowlThing(iV16440))
+
+  =>
+
+% axiom_73, axiom.
+(rR1(iV16440, iV16463))
+
+  =>
+
+% axiom_74, axiom.
+(cowlThing(iV16441))
+
+  =>
+
+% axiom_75, axiom.
+(cowlThing(iV16442))
+
+  =>
+
+% axiom_76, axiom.
+(( ~ cC36(iV16448) ))
+
+  =>
+
+% axiom_77, axiom.
+(( forall X. ( rR1(iV16448, X) => cC68(X) ) ))
+
+  =>
+
+% axiom_78, axiom.
+(( forall X. ( rR1(iV16448, X) => cC34(X) ) ))
+
+  =>
+
+% axiom_79, axiom.
+(cTOP(iV16448))
+
+  =>
+
+% axiom_80, axiom.
+(( forall X. ( rR1(iV16448, X) => cC50(X) ) ))
+
+  =>
+
+% axiom_81, axiom.
+(( ~ cC52(iV16448) ))
+
+  =>
+
+% axiom_82, axiom.
+(( ~ cC70(iV16448) ))
+
+  =>
+
+% axiom_83, axiom.
+(( ~ cC90(iV16448) ))
+
+  =>
+
+% axiom_84, axiom.
+(cowlThing(iV16448))
+
+  =>
+
+% axiom_85, axiom.
+(( forall X. ( rR1(iV16448, X) => cC88(X) ) ))
+
+  =>
+
+% axiom_86, axiom.
+(rR1(iV16448, iV16449))
+
+  =>
+
+% axiom_87, axiom.
+(cowlThing(iV16449))
+
+  =>
+
+% axiom_88, axiom.
+(( forall X. ( rR1(iV16453, X) => ( ~ cC92(X) ) ) ))
+
+  =>
+
+% axiom_89, axiom.
+(( forall X. ( rR1(iV16453, X) => ( ~ cC72(X) ) ) ))
+
+  =>
+
+% axiom_90, axiom.
+(( ~ cC16(iV16453) ))
+
+  =>
+
+% axiom_91, axiom.
+(( ~ cC58(iV16453) ))
+
+  =>
+
+% axiom_92, axiom.
+(( ~ cC74(iV16453) ))
+
+  =>
+
+% axiom_93, axiom.
+(( forall X. ( rR1(iV16453, X) => cC56(X) ) ))
+
+  =>
+
+% axiom_94, axiom.
+(cowlThing(iV16453))
+
+  =>
+
+% axiom_95, axiom.
+(( ~ cC94(iV16453) ))
+
+  =>
+
+% axiom_96, axiom.
+(rR1(iV16453, iV16461))
+
+  =>
+
+% axiom_97, axiom.
+(( ~ cC12(iV16455) ))
+
+  =>
+
+% axiom_98, axiom.
+(( ~ cC40(iV16455) ))
+
+  =>
+
+% axiom_99, axiom.
+(( forall X. ( rR1(iV16455, X) => ( ~ cC90(X) ) ) ))
+
+  =>
+
+% axiom_100, axiom.
+(( forall X. ( rR1(iV16455, X) => ( ~ cC70(X) ) ) ))
+
+  =>
+
+% axiom_101, axiom.
+(( forall X. ( rR1(iV16455, X) => ( ~ cC52(X) ) ) ))
+
+  =>
+
+% axiom_102, axiom.
+(( ~ cC72(iV16455) ))
+
+  =>
+
+% axiom_103, axiom.
+(( ~ cC54(iV16455) ))
+
+  =>
+
+% axiom_104, axiom.
+(( ~ cC92(iV16455) ))
+
+  =>
+
+% axiom_105, axiom.
+(cowlThing(iV16455))
+
+  =>
+
+% axiom_106, axiom.
+(( forall X. ( rR1(iV16455, X) => cC38(X) ) ))
+
+  =>
+
+% axiom_107, axiom.
+(rR1(iV16455, iV16460))
+
+  =>
+
+% axiom_108, axiom.
+(( ~ cC36(iV16457) ))
+
+  =>
+
+% axiom_109, axiom.
+(( forall X. ( rR1(iV16457, X) => cC88(X) ) ))
+
+  =>
+
+% axiom_110, axiom.
+(( ~ cC52(iV16457) ))
+
+  =>
+
+% axiom_111, axiom.
+(( forall X. ( rR1(iV16457, X) => cC68(X) ) ))
+
+  =>
+
+% axiom_112, axiom.
+(( forall X. ( rR1(iV16457, X) => cC34(X) ) ))
+
+  =>
+
+% axiom_113, axiom.
+(cTOP(iV16457))
+
+  =>
+
+% axiom_114, axiom.
+(( ~ cC90(iV16457) ))
+
+  =>
+
+% axiom_115, axiom.
+(( ~ cC70(iV16457) ))
+
+  =>
+
+% axiom_116, axiom.
+(( forall X. ( rR1(iV16457, X) => cC50(X) ) ))
+
+  =>
+
+% axiom_117, axiom.
+(cowlThing(iV16457))
+
+  =>
+
+% axiom_118, axiom.
+(( ~ cC8(iV16457) ))
+
+  =>
+
+% axiom_119, axiom.
+(cC4(iV16459))
+
+  =>
+
+% axiom_120, axiom.
+(( ~ cC48(iV16459) ))
+
+  =>
+
+% axiom_121, axiom.
+(( ~ cC30(iV16459) ))
+
+  =>
+
+% axiom_122, axiom.
+(( ~ cC6(iV16459) ))
+
+  =>
+
+% axiom_123, axiom.
+(( ~ cC86(iV16459) ))
+
+  =>
+
+% axiom_124, axiom.
+(( ~ cC46(iV16459) ))
+
+  =>
+
+% axiom_125, axiom.
+(( ~ cC14(iV16459) ))
+
+  =>
+
+% axiom_126, axiom.
+(( ~ cC18(iV16459) ))
+
+  =>
+
+% axiom_127, axiom.
+(( ~ cC66(iV16459) ))
+
+  =>
+
+% axiom_128, axiom.
+(cC12(iV16459))
+
+  =>
+
+% axiom_129, axiom.
+(( ~ cC8(iV16459) ))
+
+  =>
+
+% axiom_130, axiom.
+(( ~ cC2(iV16459) ))
+
+  =>
+
+% axiom_131, axiom.
+(( ~ cC10(iV16459) ))
+
+  =>
+
+% axiom_132, axiom.
+(( ~ cC84(iV16459) ))
+
+  =>
+
+% axiom_133, axiom.
+(( ~ cC64(iV16459) ))
+
+  =>
+
+% axiom_134, axiom.
+(cowlThing(iV16459))
+
+  =>
+
+% axiom_135, axiom.
+(( ~ cC32(iV16459) ))
+
+  =>
+
+% axiom_136, axiom.
+(( ~ cC90(iV16460) ))
+
+  =>
+
+% axiom_137, axiom.
+(( ~ cC36(iV16460) ))
+
+  =>
+
+% axiom_138, axiom.
+(( forall X. ( rR1(iV16460, X) => cC68(X) ) ))
+
+  =>
+
+% axiom_139, axiom.
+(( ~ cC52(iV16460) ))
+
+  =>
+
+% axiom_140, axiom.
+(cTOP(iV16460))
+
+  =>
+
+% axiom_141, axiom.
+(( ~ cC8(iV16460) ))
+
+  =>
+
+% axiom_142, axiom.
+(( ~ cC70(iV16460) ))
+
+  =>
+
+% axiom_143, axiom.
+(( forall X. ( rR1(iV16460, X) => cC88(X) ) ))
+
+  =>
+
+% axiom_144, axiom.
+(( forall X. ( rR1(iV16460, X) => cC50(X) ) ))
+
+  =>
+
+% axiom_145, axiom.
+(( forall X. ( rR1(iV16460, X) => cC34(X) ) ))
+
+  =>
+
+% axiom_146, axiom.
+(cowlThing(iV16460))
+
+  =>
+
+% axiom_147, axiom.
+(( ~ cC40(iV16461) ))
+
+  =>
+
+% axiom_148, axiom.
+(( forall X. ( rR1(iV16461, X) => ( ~ cC52(X) ) ) ))
+
+  =>
+
+% axiom_149, axiom.
+(( ~ cC92(iV16461) ))
+
+  =>
+
+% axiom_150, axiom.
+(( forall X. ( rR1(iV16461, X) => ( ~ cC90(X) ) ) ))
+
+  =>
+
+% axiom_151, axiom.
+(( ~ cC12(iV16461) ))
+
+  =>
+
+% axiom_152, axiom.
+(( ~ cC54(iV16461) ))
+
+  =>
+
+% axiom_153, axiom.
+(( forall X. ( rR1(iV16461, X) => ( ~ cC70(X) ) ) ))
+
+  =>
+
+% axiom_154, axiom.
+(( forall X. ( rR1(iV16461, X) => cC38(X) ) ))
+
+  =>
+
+% axiom_155, axiom.
+(cowlThing(iV16461))
+
+  =>
+
+% axiom_156, axiom.
+(( ~ cC72(iV16461) ))
+
+  =>
+
+% axiom_157, axiom.
+(rR1(iV16461, iV16462))
+
+  =>
+
+% axiom_158, axiom.
+(( ~ cC52(iV16462) ))
+
+  =>
+
+% axiom_159, axiom.
+(( ~ cC8(iV16462) ))
+
+  =>
+
+% axiom_160, axiom.
+(( forall X. ( rR1(iV16462, X) => cC68(X) ) ))
+
+  =>
+
+% axiom_161, axiom.
+(( ~ cC36(iV16462) ))
+
+  =>
+
+% axiom_162, axiom.
+(cTOP(iV16462))
+
+  =>
+
+% axiom_163, axiom.
+(( ~ cC90(iV16462) ))
+
+  =>
+
+% axiom_164, axiom.
+(( forall X. ( rR1(iV16462, X) => cC34(X) ) ))
+
+  =>
+
+% axiom_165, axiom.
+(( forall X. ( rR1(iV16462, X) => cC50(X) ) ))
+
+  =>
+
+% axiom_166, axiom.
+(( forall X. ( rR1(iV16462, X) => cC88(X) ) ))
+
+  =>
+
+% axiom_167, axiom.
+(( ~ cC70(iV16462) ))
+
+  =>
+
+% axiom_168, axiom.
+(cowlThing(iV16462))
+
+  =>
+
+% axiom_169, axiom.
+(( forall X. ( rR1(iV16463, X) => ( ~ cC92(X) ) ) ))
+
+  =>
+
+% axiom_170, axiom.
+(( ~ cC94(iV16463) ))
+
+  =>
+
+% axiom_171, axiom.
+(( forall X. ( rR1(iV16463, X) => cC56(X) ) ))
+
+  =>
+
+% axiom_172, axiom.
+(( forall X. ( rR1(iV16463, X) => ( ~ cC72(X) ) ) ))
+
+  =>
+
+% axiom_173, axiom.
+(( ~ cC74(iV16463) ))
+
+  =>
+
+% axiom_174, axiom.
+(( ~ cC58(iV16463) ))
+
+  =>
+
+% axiom_175, axiom.
+(( ~ cC16(iV16463) ))
+
+  =>
+
+% axiom_176, axiom.
+(cowlThing(iV16463))
+
+  =>
+
+% axiom_177, axiom.
+(rR1(iV16463, iV16464))
+
+  =>
+
+% axiom_178, axiom.
+(( ~ cC72(iV16464) ))
+
+  =>
+
+% axiom_179, axiom.
+(( ~ cC40(iV16464) ))
+
+  =>
+
+% axiom_180, axiom.
+(( forall X. ( rR1(iV16464, X) => ( ~ cC70(X) ) ) ))
+
+  =>
+
+% axiom_181, axiom.
+(( ~ cC54(iV16464) ))
+
+  =>
+
+% axiom_182, axiom.
+(( forall X. ( rR1(iV16464, X) => cC38(X) ) ))
+
+  =>
+
+% axiom_183, axiom.
+(( ~ cC12(iV16464) ))
+
+  =>
+
+% axiom_184, axiom.
+(( ~ cC92(iV16464) ))
+
+  =>
+
+% axiom_185, axiom.
+(( forall X. ( rR1(iV16464, X) => ( ~ cC90(X) ) ) ))
+
+  =>
+
+% axiom_186, axiom.
+(( forall X. ( rR1(iV16464, X) => ( ~ cC52(X) ) ) ))
+
+  =>
+
+% axiom_187, axiom.
+(cowlThing(iV16464))
+
+  =>
+
+% axiom_188, axiom.
+(rR1(iV16464, iV16465))
+
+  =>
+
+% axiom_189, axiom.
+(( forall X. ( rR1(iV16465, X) => cC68(X) ) ))
+
+  =>
+
+% axiom_190, axiom.
+(( ~ cC70(iV16465) ))
+
+  =>
+
+% axiom_191, axiom.
+(( ~ cC52(iV16465) ))
+
+  =>
+
+% axiom_192, axiom.
+(( forall X. ( rR1(iV16465, X) => cC88(X) ) ))
+
+  =>
+
+% axiom_193, axiom.
+(( forall X. ( rR1(iV16465, X) => cC34(X) ) ))
+
+  =>
+
+% axiom_194, axiom.
+(( ~ cC8(iV16465) ))
+
+  =>
+
+% axiom_195, axiom.
+(( ~ cC36(iV16465) ))
+
+  =>
+
+% axiom_196, axiom.
+(cTOP(iV16465))
+
+  =>
+
+% axiom_197, axiom.
+(( forall X. ( rR1(iV16465, X) => cC50(X) ) ))
+
+  =>
+
+% axiom_198, axiom.
+(cowlThing(iV16465))
+
+  =>
+
+% axiom_199, axiom.
+(( ~ cC90(iV16465) ))
+
+  =>
+
+% the_axiom, conjecture.
+(( ( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ) & ( ( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ) & ( cC106(iV16439) & ( cC28(iV16439) & ( cC130(iV16439) & ( cowlThing(iV16439) & ( cC108(iV16439) & ( cC104(iV16439) & ( cC80(iV16440) & ( cowlThing(iV16440) & ( cC82(iV16440) & ( cC98(iV16440) & ( cowlThing(iV16448) & ( cC38(iV16448) & ( cC62(iV16453) & ( cowlThing(iV16453) & ( cC76(iV16453) & ( cC60(iV16453) & ( cC44(iV16455) & ( cowlThing(iV16455) & ( cC56(iV16455) & ( cC42(iV16455) & ( cowlThing(iV16457) & ( cC38(iV16457) & ( cC68(iV16459) & ( cowlThing(iV16459) & ( cC88(iV16459) & ( cC50(iV16459) & ( cC34(iV16459) & ( cowlThing(iV16460) & ( cC38(iV16460) & ( cC44(iV16461) & ( cowlThing(iV16461) & ( cC56(iV16461) & ( cC42(iV16461) & ( cowlThing(iV16462) & ( cC38(iV16462) & ( cC62(iV16463) & ( cowlThing(iV16463) & ( cC76(iV16463) & ( cC60(iV16463) & ( cC44(iV16464) & ( cowlThing(iV16464) & ( cC56(iV16464) & ( cC42(iV16464) & ( cowlThing(iV16465) & cC38(iV16465) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

@@ -1,0 +1,109 @@
+% File     : KRS143+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : An owl:cardinality constraint is simply shorthand
+% Version  : Especial.
+% English  : An owl:cardinality constraint is simply shorthand for a pair of 
+%            owl:minCardinality and owl:maxCardinality constraints.
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : positive_cardinality-Manifest002 [Bec03]
+% Status   : Theorem
+% Rating   : 0.11 v3.1.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   12 (   0 unit)
+%            Number of atoms       :   40 (   9 equality)
+%            Maximal formula depth :   10 (   6 average)
+%            Number of connectives :   32 (   4 ~  ;   0  |;  14  &)
+%                                         (   2 <=>;  12 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    7 (   0 propositional; 1-2 arity)
+%            Number of functors    :    0 (   0 constant; --- arity)
+%            Number of variables   :   29 (   0 singleton;  27 !;   2 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% cc_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cc(A) ) => cc(B) ) ))
+
+  =>
+
+% cowlNothing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlNothing(A) ) => cowlNothing(B) ) ))
+
+  =>
+
+% cowlThing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlThing(A) ) => cowlThing(B) ) ))
+
+  =>
+
+% rp_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rp(A, C) ) => rp(B, C) ) ))
+
+  =>
+
+% rp_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rp(C, A) ) => rp(C, B) ) ))
+
+  =>
+
+% xsd_integer_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_integer(A) ) => xsd_integer(B) ) ))
+
+  =>
+
+% xsd_string_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_string(A) ) => xsd_string(B) ) ))
+
+  =>
+
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(( forall X. ( cc(X) => ( exists Y0. rp(X, Y0) ) ) ))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X. ( cc(X) => ( forall Y0 Y1. ( ( rp(X, Y0) & rp(X, Y1) ) => ( Y0 = Y1 ) ) ) ) ))
+
+  =>
+
+% the_axiom, conjecture.
+(( ( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ) & ( ( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ) & ( forall X. ( cc(X) => ( ( exists Y0. rp(X, Y0) ) & ( forall Y0 Y1. ( ( rp(X, Y0) & rp(X, Y1) ) => ( Y0 = Y1 ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

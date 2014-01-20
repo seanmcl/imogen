@@ -1,0 +1,159 @@
+% File     : SET621+3 : ILTP v1.1.2
+% Domain   : Set Theory (Boolean properties)
+% Problem  : (X sym\ Y) \ Z = (X \ (Y U Z)) U (Y \ (X U Z))
+% Version  : [Try89] axioms : Reduced > Incomplete.
+% English  : The difference of (the symmetric difference of X and Y) and Z 
+%            is the union of (the difference of X and (the union of Y and Z)) 
+%            and (the difference of Y and (the union of X and Z)).
+% Refs     : [ILF] The ILF Group (1998), The ILF System: A Tool for the Int
+%          : [Try89] Trybulec (1989), Tarski Grothendieck Set Theory
+%          : [TS89]  Trybulec & Swieczkowska (1989), Boolean Properties of
+% Source   : [ILF]
+% Names    : BOOLE (97) [TS89] 
+% Status   : Theorem
+% Rating   : 0.36 v3.1.0, 0.33 v2.7.0, 0.17 v2.6.0, 0.00 v2.2.1
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :   12 (   7 unit)
+%            Number of atoms       :   22 (   8 equality)
+%            Maximal formula depth :    7 (   4 average)
+%            Number of connectives :   11 (   1 ~  ;   1  |;   2  &)
+%                                         (   6 <=>;   1 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    3 (   0 propositional; 2-2 arity)
+%            Number of functors    :    3 (   0 constant; 2-2 arity)
+%            Number of variables   :   30 (   0 singleton;  30 !;   0 ?)
+%            Maximal term depth    :    4 (   2 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% difference_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(A, C) = difference(B, C) ) ) ))
+
+  =>
+
+% difference_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(C, A) = difference(C, B) ) ) ))
+
+  =>
+
+% symmetric_difference_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( symmetric_difference(A, C) = symmetric_difference(B, C) ) ) ))
+
+  =>
+
+% symmetric_difference_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( symmetric_difference(C, A) = symmetric_difference(C, B) ) ) ))
+
+  =>
+
+% union_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( union(A, C) = union(B, C) ) ) ))
+
+  =>
+
+% union_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( union(C, A) = union(C, B) ) ) ))
+
+  =>
+
+% member_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & member(A, C) ) => member(B, C) ) ))
+
+  =>
+
+% member_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & member(C, A) ) => member(C, B) ) ))
+
+  =>
+
+% subset_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(A, C) ) => subset(B, C) ) ))
+
+  =>
+
+% subset_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(C, A) ) => subset(C, B) ) ))
+
+  =>
+
+% symmetric_difference_defn, axiom.
+(( forall B C. ( symmetric_difference(B, C) = union(difference(B, C), difference(C, B)) ) ))
+
+  =>
+
+% difference_difference_union, axiom.
+(( forall B C D. ( difference(difference(B, C), D) = difference(B, union(C, D)) ) ))
+
+  =>
+
+% difference_distributes_over_union, axiom.
+(( forall B C D. ( difference(union(B, C), D) = union(difference(B, D), difference(C, D)) ) ))
+
+  =>
+
+% union_defn, axiom.
+(( forall B C D. ( member(D, union(B, C)) <=> ( member(D, B) | member(D, C) ) ) ))
+
+  =>
+
+% difference_defn, axiom.
+(( forall B C D. ( member(D, difference(B, C)) <=> ( member(D, B) & ( ~ member(D, C) ) ) ) ))
+
+  =>
+
+% equal_defn, axiom.
+(( forall B C. ( ( B = C ) <=> ( subset(B, C) & subset(C, B) ) ) ))
+
+  =>
+
+% commutativity_of_union, axiom.
+(( forall B C. ( union(B, C) = union(C, B) ) ))
+
+  =>
+
+% commutativity_of_symmetric_difference, axiom.
+(( forall B C. ( symmetric_difference(B, C) = symmetric_difference(C, B) ) ))
+
+  =>
+
+% equal_member_defn, axiom.
+(( forall B C. ( ( B = C ) <=> ( forall D. ( member(D, B) <=> member(D, C) ) ) ) ))
+
+  =>
+
+% subset_defn, axiom.
+(( forall B C. ( subset(B, C) <=> ( forall D. ( member(D, B) => member(D, C) ) ) ) ))
+
+  =>
+
+% reflexivity_of_subset, axiom.
+(( forall B. subset(B, B) ))
+
+  =>
+
+% prove_th97, conjecture.
+(( forall B C D. ( difference(symmetric_difference(B, C), D) = union(difference(B, union(C, D)), difference(C, union(B, D))) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

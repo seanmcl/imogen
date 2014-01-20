@@ -1,0 +1,6 @@
+
+% Problem : FOL018+1
+% Status  : NonTheorem
+% Rating  : 0.0
+
+exists X. forall Y. exists Z1 Z2. f(X,Y,Z1,Z2,Z1) => f(Z1,X,Y,Z1,Z2)

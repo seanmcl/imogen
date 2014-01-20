@@ -1,0 +1,68 @@
+% File     : MGT036+2 : ILTP v1.1.2
+% Domain   : Management (Organisation Theory)
+% Problem  : First movers never outcompete efficient producers. 
+% Version  : [PM93] axioms.
+% English  : 
+% Refs     : [PM93]  Peli & Masuch (1993), The Logic of Propogation Strateg
+%          : [PM94]  Peli & Masuch (1994), The Logic of Propogation Strateg
+%          : [PB+94] Peli et al. (1994), A Logical Approach to Formalizing
+% Source   : [PM93]
+% Names    : THEOREM 5 [PM93]
+%          : T5 [PB+94]
+% Status   : Theorem
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.75 v1.1.0, 0.50 v1.0.0
+% Rating (intuit.) : 0.75 v1.1
+%
+% Syntax   : Number of formulae    :    7 (   1 unit)
+%            Number of atoms       :   24 (   0 equality)
+%            Maximal formula depth :   10 (   6 average)
+%            Number of connectives :   21 (   4 ~  ;   0  |;   9  &)
+%                                         (   2 <=>;   6 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    6 (   0 propositional; 1-4 arity)
+%            Number of functors    :    5 (   3 constant; 0-2 arity)
+%            Number of variables   :   20 (   0 singleton;  20 !;   0 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% mp_symmetry_of_subpopulations, axiom.
+(( forall E S1 S2 T. ( ( environment(E) & subpopulations(S1, S2, E, T) ) => subpopulations(S2, S1, E, T) ) ))
+
+  =>
+
+% mp_time_point_occur, axiom.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => in_environment(E, T) ) ))
+
+  =>
+
+% mp_growth_rate_relationships, axiom.
+(( forall E S1 S2 T. ( ( ( environment(E) & subpopulations(S1, S2, E, T) ) => greater_or_equal(growth_rate(S1, T), zero) ) <=> ( ~ greater(zero, growth_rate(S1, T)) ) ) ))
+
+  =>
+
+% d2, hypothesis.
+(( forall E S1 S2 T. ( ( environment(E) & subpopulations(S1, S2, E, T) ) => ( ( greater_or_equal(growth_rate(S2, T), zero) & greater(zero, growth_rate(S1, T)) ) <=> outcompetes(S2, S1, T) ) ) ))
+
+  =>
+
+% a2, hypothesis.
+(greater(resilience(efficient_producers), resilience(first_movers)))
+
+  =>
+
+% a13, hypothesis.
+(( forall E S1 S2 T. ( ( environment(E) & ( in_environment(E, T) & ( ( ~ greater(zero, growth_rate(S1, T)) ) & greater(resilience(S2), resilience(S1)) ) ) ) => ( ~ greater(zero, growth_rate(S2, T)) ) ) ))
+
+  =>
+
+% prove_t5, conjecture.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => ( ~ outcompetes(first_movers, efficient_producers, T) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

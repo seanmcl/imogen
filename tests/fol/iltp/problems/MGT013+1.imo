@@ -1,0 +1,163 @@
+% File     : MGT013+1 : ILTP v1.1.2
+% Domain   : Management (Organisation Theory)
+% Problem  : If organization complexity increases, its size cannot decrease 
+% Version  : [PB+94] axioms.
+% English  : If the complexity of an organization gets bigger, its size
+%            cannot get smaller (in lack of reorganization).
+% Refs     : [PB+94] Peli et al. (1994), A Logical Approach to Formalizing 
+%          : [Kam94] Kamps (1994), Email to G. Sutcliffe
+%          : [Kam95] Kamps (1995), Email to G. Sutcliffe
+% Source   : [Kam94]
+% Names    :
+% Status   : Theorem
+% Rating   : 0.00 v2.1.0
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.75 v1.0.0
+%
+% Syntax   : Number of formulae    :    9 (   0 unit)
+%            Number of atoms       :   42 (   4 equality)
+%            Maximal formula depth :   16 (   8 average)
+%            Number of connectives :   38 (   5 ~  ;   2  |;  24  &)
+%                                         (   0 <=>;   7 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    7 (   0 propositional; 1-3 arity)
+%            Number of functors    :    0 (   0 constant; --- arity)
+%            Number of variables   :   33 (   0 singleton;  33 !;   0 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : "Not published due to publication constraints." [Kam95].
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% complexity_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & complexity(A, C, D) ) => complexity(B, C, D) ) ))
+
+  =>
+
+% complexity_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & complexity(C, A, D) ) => complexity(C, B, D) ) ))
+
+  =>
+
+% complexity_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & complexity(C, D, A) ) => complexity(C, D, B) ) ))
+
+  =>
+
+% greater_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(A, C) ) => greater(B, C) ) ))
+
+  =>
+
+% greater_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(C, A) ) => greater(C, B) ) ))
+
+  =>
+
+% organization_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & organization(A, C) ) => organization(B, C) ) ))
+
+  =>
+
+% organization_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & organization(C, A) ) => organization(C, B) ) ))
+
+  =>
+
+% reorganization_free_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & reorganization_free(A, C, D) ) => reorganization_free(B, C, D) ) ))
+
+  =>
+
+% reorganization_free_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & reorganization_free(C, A, D) ) => reorganization_free(C, B, D) ) ))
+
+  =>
+
+% reorganization_free_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & reorganization_free(C, D, A) ) => reorganization_free(C, D, B) ) ))
+
+  =>
+
+% size_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & size(A, C, D) ) => size(B, C, D) ) ))
+
+  =>
+
+% size_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & size(C, A, D) ) => size(C, B, D) ) ))
+
+  =>
+
+% size_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & size(C, D, A) ) => size(C, D, B) ) ))
+
+  =>
+
+% time_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & time(A) ) => time(B) ) ))
+
+  =>
+
+% mp6_1, axiom.
+(( forall X Y. ( ~ ( greater(X, Y) & ( X = Y ) ) ) ))
+
+  =>
+
+% mp6_2, axiom.
+(( forall X Y. ( ~ ( greater(X, Y) & greater(Y, X) ) ) ))
+
+  =>
+
+% mp15, axiom.
+(( forall X T. ( organization(X, T) => time(T) ) ))
+
+  =>
+
+% mp16, axiom.
+(( forall T1 T2. ( ( time(T1) & time(T2) ) => ( greater(T1, T2) | ( ( T1 = T2 ) | greater(T2, T1) ) ) ) ))
+
+  =>
+
+% mp17, axiom.
+(( forall X T1 T2. ( reorganization_free(X, T1, T2) => reorganization_free(X, T2, T1) ) ))
+
+  =>
+
+% mp18, axiom.
+(( forall X C1 C2 T1 T2. ( ( organization(X, T1) & ( organization(X, T2) & ( complexity(X, C1, T1) & ( complexity(X, C2, T2) & ( T1 = T2 ) ) ) ) ) => ( C1 = C2 ) ) ))
+
+  =>
+
+% t11_FOL, hypothesis.
+(( forall X S1 S2 T1 T2. ( ( organization(X, T1) & ( organization(X, T2) & ( reorganization_free(X, T1, T2) & ( size(X, S1, T1) & ( size(X, S2, T2) & greater(T2, T1) ) ) ) ) ) => ( ~ greater(S1, S2) ) ) ))
+
+  =>
+
+% t12_FOL, hypothesis.
+(( forall X C1 C2 T1 T2. ( ( organization(X, T1) & ( organization(X, T2) & ( reorganization_free(X, T1, T2) & ( complexity(X, C1, T1) & ( complexity(X, C2, T2) & greater(T2, T1) ) ) ) ) ) => ( ~ greater(C1, C2) ) ) ))
+
+  =>
+
+% t13_FOL, conjecture.
+(( forall X C1 C2 S1 S2 T1 T2. ( ( organization(X, T1) & ( organization(X, T2) & ( reorganization_free(X, T1, T2) & ( complexity(X, C1, T1) & ( complexity(X, C2, T2) & ( size(X, S1, T1) & ( size(X, S2, T2) & greater(C2, C1) ) ) ) ) ) ) ) => ( ~ greater(S1, S2) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

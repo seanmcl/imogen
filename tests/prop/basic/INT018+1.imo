@@ -1,0 +1,5 @@
+% Problem : INT018+1
+% Status  : Theorem
+% Rating  : 0.0
+
+p => ~ ~p

@@ -1,0 +1,47 @@
+% File     : SYJ033+1 : ILTP v1.1.2
+% Domain   : Intuitionistic Syntactic
+% Problem  : Simple
+% Version  : Especial.
+% English  : 
+% Refs     : [SFH92] Dan Sahlin, Torkel Franzén and Seif Haridi. An
+%            Intuitionistic Predicate Logic Theorem Prover, Journal of
+%            Logic and Computation, Vol. 2, No. 5, pp 619-656, 1992.
+%            http://www.sm.luth.se/~torkel/eget/ft/ft1.23/benchmarks.pred
+% Source   : [SFH92]
+% Names    : ft6.15 : Ft benchmark formulae (pred.) (1992)
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.00 v1.0.0
+%
+% Comments : "...just some short formulae, written sown more or less at
+%            random..." [SFH92]
+%------------------------------------------------------------------------------
+
+ 
+
+% axiom1, axiom.
+(( forall X. ( p(X) => ( ~ ( exists Y. ( q(Y) & r(X, Y) ) ) ) ) ))
+
+  =>
+
+% axiom2, axiom.
+(( forall X1. ( t(X1) => ( exists Y1. ( s(Y1) & r(X1, Y1) ) ) ) ))
+
+  =>
+
+% axiom3, axiom.
+(( forall X2. ( p(X2) => ( ~ ( ~ t(X2) ) ) ) ))
+
+  =>
+
+% axiom4, axiom.
+(( forall Y2. ( s(Y2) => q(Y2) ) ))
+
+  =>
+
+% con, conjecture.
+(( ~ ( exists X3. p(X3) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

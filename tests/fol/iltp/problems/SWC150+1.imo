@@ -1,0 +1,700 @@
+% File     : SWC150+1 : ILTP v1.1.2
+% Domain   : Software Creation
+% Problem  : cond_pr_works_on_pairs_x_tail1
+% Version  : [Wei00] axioms.
+% English  : Find components in a software library that match a given target
+%            specification given in first-order logic. The components are
+%            specified in first-order logic as well. The problem represents
+%            a test of one library module specification against a target
+%            specification.
+% Refs     : [Wei00] Weidenbach (2000), Software Reuse of List Functions Ve
+%          : [FSS98] Fischer et al. (1998), Deduction-Based Software Compon
+% Source   : [Wei00]
+% Names    : cond_pr_works_on_pairs_x_tail1 [Wei00]
+% Status   : Theorem
+% Rating   : 0.00 v2.4.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :   96 (   9 unit)
+%            Number of atoms       :  403 (  73 equality)
+%            Maximal formula depth :   17 (   7 average)
+%            Number of connectives :  334 (  27 ~  ;  12  |;  38  &)
+%                                         (  26 <=>; 231 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   20 (   0 propositional; 1-2 arity)
+%            Number of functors    :    5 (   1 constant; 0-2 arity)
+%            Number of variables   :  207 (   0 singleton; 194 !;  13 ?)
+%            Maximal term depth    :    4 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% app_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( app(A, C) = app(B, C) ) ) ))
+
+  =>
+
+% app_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( app(C, A) = app(C, B) ) ) ))
+
+  =>
+
+% cons_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( cons(A, C) = cons(B, C) ) ) ))
+
+  =>
+
+% cons_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( cons(C, A) = cons(C, B) ) ) ))
+
+  =>
+
+% hd_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( hd(A) = hd(B) ) ) ))
+
+  =>
+
+% tl_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( tl(A) = tl(B) ) ) ))
+
+  =>
+
+% cyclefreeP_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cyclefreeP(A) ) => cyclefreeP(B) ) ))
+
+  =>
+
+% duplicatefreeP_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & duplicatefreeP(A) ) => duplicatefreeP(B) ) ))
+
+  =>
+
+% equalelemsP_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & equalelemsP(A) ) => equalelemsP(B) ) ))
+
+  =>
+
+% frontsegP_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & frontsegP(A, C) ) => frontsegP(B, C) ) ))
+
+  =>
+
+% frontsegP_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & frontsegP(C, A) ) => frontsegP(C, B) ) ))
+
+  =>
+
+% geq_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & geq(A, C) ) => geq(B, C) ) ))
+
+  =>
+
+% geq_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & geq(C, A) ) => geq(C, B) ) ))
+
+  =>
+
+% gt_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & gt(A, C) ) => gt(B, C) ) ))
+
+  =>
+
+% gt_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & gt(C, A) ) => gt(C, B) ) ))
+
+  =>
+
+% leq_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & leq(A, C) ) => leq(B, C) ) ))
+
+  =>
+
+% leq_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & leq(C, A) ) => leq(C, B) ) ))
+
+  =>
+
+% lt_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & lt(A, C) ) => lt(B, C) ) ))
+
+  =>
+
+% lt_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & lt(C, A) ) => lt(C, B) ) ))
+
+  =>
+
+% memberP_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & memberP(A, C) ) => memberP(B, C) ) ))
+
+  =>
+
+% memberP_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & memberP(C, A) ) => memberP(C, B) ) ))
+
+  =>
+
+% neq_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & neq(A, C) ) => neq(B, C) ) ))
+
+  =>
+
+% neq_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & neq(C, A) ) => neq(C, B) ) ))
+
+  =>
+
+% rearsegP_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rearsegP(A, C) ) => rearsegP(B, C) ) ))
+
+  =>
+
+% rearsegP_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rearsegP(C, A) ) => rearsegP(C, B) ) ))
+
+  =>
+
+% segmentP_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & segmentP(A, C) ) => segmentP(B, C) ) ))
+
+  =>
+
+% segmentP_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & segmentP(C, A) ) => segmentP(C, B) ) ))
+
+  =>
+
+% singletonP_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & singletonP(A) ) => singletonP(B) ) ))
+
+  =>
+
+% ssItem_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & ssItem(A) ) => ssItem(B) ) ))
+
+  =>
+
+% ssList_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & ssList(A) ) => ssList(B) ) ))
+
+  =>
+
+% strictorderP_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & strictorderP(A) ) => strictorderP(B) ) ))
+
+  =>
+
+% strictorderedP_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & strictorderedP(A) ) => strictorderedP(B) ) ))
+
+  =>
+
+% totalorderP_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & totalorderP(A) ) => totalorderP(B) ) ))
+
+  =>
+
+% totalorderedP_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & totalorderedP(A) ) => totalorderedP(B) ) ))
+
+  =>
+
+% ax1, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( neq(U, V) <=> ( ~ ( U = V ) ) ) ) ) ) ))
+
+  =>
+
+% ax2, axiom.
+(( exists U. ( ssItem(U) & ( exists V. ( ssItem(V) & ( ~ ( U = V ) ) ) ) ) ))
+
+  =>
+
+% ax3, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssItem(V) => ( memberP(U, V) <=> ( exists W. ( ssList(W) & ( exists X. ( ssList(X) & ( app(W, cons(V, X)) = U ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax4, axiom.
+(( forall U. ( ssList(U) => ( singletonP(U) <=> ( exists V. ( ssItem(V) & ( cons(V, nil) = U ) ) ) ) ) ))
+
+  =>
+
+% ax5, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( frontsegP(U, V) <=> ( exists W. ( ssList(W) & ( app(V, W) = U ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax6, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( rearsegP(U, V) <=> ( exists W. ( ssList(W) & ( app(W, V) = U ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax7, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( segmentP(U, V) <=> ( exists W. ( ssList(W) & ( exists X. ( ssList(X) & ( app(app(W, V), X) = U ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax8, axiom.
+(( forall U. ( ssList(U) => ( cyclefreeP(U) <=> ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( forall X. ( ssList(X) => ( forall Y. ( ssList(Y) => ( forall Z. ( ssList(Z) => ( ( app(app(X, cons(V, Y)), cons(W, Z)) = U ) => ( ~ ( leq(V, W) & leq(W, V) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax9, axiom.
+(( forall U. ( ssList(U) => ( totalorderP(U) <=> ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( forall X. ( ssList(X) => ( forall Y. ( ssList(Y) => ( forall Z. ( ssList(Z) => ( ( app(app(X, cons(V, Y)), cons(W, Z)) = U ) => ( leq(V, W) | leq(W, V) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax10, axiom.
+(( forall U. ( ssList(U) => ( strictorderP(U) <=> ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( forall X. ( ssList(X) => ( forall Y. ( ssList(Y) => ( forall Z. ( ssList(Z) => ( ( app(app(X, cons(V, Y)), cons(W, Z)) = U ) => ( lt(V, W) | lt(W, V) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax11, axiom.
+(( forall U. ( ssList(U) => ( totalorderedP(U) <=> ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( forall X. ( ssList(X) => ( forall Y. ( ssList(Y) => ( forall Z. ( ssList(Z) => ( ( app(app(X, cons(V, Y)), cons(W, Z)) = U ) => leq(V, W) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax12, axiom.
+(( forall U. ( ssList(U) => ( strictorderedP(U) <=> ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( forall X. ( ssList(X) => ( forall Y. ( ssList(Y) => ( forall Z. ( ssList(Z) => ( ( app(app(X, cons(V, Y)), cons(W, Z)) = U ) => lt(V, W) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax13, axiom.
+(( forall U. ( ssList(U) => ( duplicatefreeP(U) <=> ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( forall X. ( ssList(X) => ( forall Y. ( ssList(Y) => ( forall Z. ( ssList(Z) => ( ( app(app(X, cons(V, Y)), cons(W, Z)) = U ) => ( ~ ( V = W ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax14, axiom.
+(( forall U. ( ssList(U) => ( equalelemsP(U) <=> ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( forall X. ( ssList(X) => ( forall Y. ( ssList(Y) => ( ( app(X, cons(V, cons(W, Y))) = U ) => ( V = W ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax15, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( neq(U, V) <=> ( ~ ( U = V ) ) ) ) ) ) ))
+
+  =>
+
+% ax16, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssItem(V) => ssList(cons(V, U)) ) ) ) ))
+
+  =>
+
+% ax17, axiom.
+(ssList(nil))
+
+  =>
+
+% ax18, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssItem(V) => ( ~ ( cons(V, U) = U ) ) ) ) ) ))
+
+  =>
+
+% ax19, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssItem(W) => ( forall X. ( ssItem(X) => ( ( cons(W, U) = cons(X, V) ) => ( ( W = X ) & ( V = U ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax20, axiom.
+(( forall U. ( ssList(U) => ( ( nil = U ) | ( exists V. ( ssList(V) & ( exists W. ( ssItem(W) & ( cons(W, V) = U ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax21, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssItem(V) => ( ~ ( nil = cons(V, U) ) ) ) ) ) ))
+
+  =>
+
+% ax22, axiom.
+(( forall U. ( ssList(U) => ( ( ~ ( nil = U ) ) => ssItem(hd(U)) ) ) ))
+
+  =>
+
+% ax23, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssItem(V) => ( hd(cons(V, U)) = V ) ) ) ) ))
+
+  =>
+
+% ax24, axiom.
+(( forall U. ( ssList(U) => ( ( ~ ( nil = U ) ) => ssList(tl(U)) ) ) ))
+
+  =>
+
+% ax25, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssItem(V) => ( tl(cons(V, U)) = U ) ) ) ) ))
+
+  =>
+
+% ax26, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ssList(app(U, V)) ) ) ) ))
+
+  =>
+
+% ax27, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssItem(W) => ( cons(W, app(V, U)) = app(cons(W, V), U) ) ) ) ) ) ) ))
+
+  =>
+
+% ax28, axiom.
+(( forall U. ( ssList(U) => ( app(nil, U) = U ) ) ))
+
+  =>
+
+% ax29, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( ( leq(U, V) & leq(V, U) ) => ( U = V ) ) ) ) ) ))
+
+  =>
+
+% ax30, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( ( leq(U, V) & leq(V, W) ) => leq(U, W) ) ) ) ) ) ) ))
+
+  =>
+
+% ax31, axiom.
+(( forall U. ( ssItem(U) => leq(U, U) ) ))
+
+  =>
+
+% ax32, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( geq(U, V) <=> leq(V, U) ) ) ) ) ))
+
+  =>
+
+% ax33, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( lt(U, V) => ( ~ lt(V, U) ) ) ) ) ) ))
+
+  =>
+
+% ax34, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( ( lt(U, V) & lt(V, W) ) => lt(U, W) ) ) ) ) ) ) ))
+
+  =>
+
+% ax35, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( gt(U, V) <=> lt(V, U) ) ) ) ) ))
+
+  =>
+
+% ax36, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssList(V) => ( forall W. ( ssList(W) => ( memberP(app(V, W), U) <=> ( memberP(V, U) | memberP(W, U) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax37, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( forall W. ( ssList(W) => ( memberP(cons(V, W), U) <=> ( ( U = V ) | memberP(W, U) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax38, axiom.
+(( forall U. ( ssItem(U) => ( ~ memberP(nil, U) ) ) ))
+
+  =>
+
+% ax39, axiom.
+(( ~ singletonP(nil) ))
+
+  =>
+
+% ax40, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssList(W) => ( ( frontsegP(U, V) & frontsegP(V, W) ) => frontsegP(U, W) ) ) ) ) ) ) ))
+
+  =>
+
+% ax41, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( ( frontsegP(U, V) & frontsegP(V, U) ) => ( U = V ) ) ) ) ) ))
+
+  =>
+
+% ax42, axiom.
+(( forall U. ( ssList(U) => frontsegP(U, U) ) ))
+
+  =>
+
+% ax43, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssList(W) => ( frontsegP(U, V) => frontsegP(app(U, W), V) ) ) ) ) ) ) ))
+
+  =>
+
+% ax44, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( forall W. ( ssList(W) => ( forall X. ( ssList(X) => ( frontsegP(cons(U, W), cons(V, X)) <=> ( ( U = V ) & frontsegP(W, X) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax45, axiom.
+(( forall U. ( ssList(U) => frontsegP(U, nil) ) ))
+
+  =>
+
+% ax46, axiom.
+(( forall U. ( ssList(U) => ( frontsegP(nil, U) <=> ( nil = U ) ) ) ))
+
+  =>
+
+% ax47, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssList(W) => ( ( rearsegP(U, V) & rearsegP(V, W) ) => rearsegP(U, W) ) ) ) ) ) ) ))
+
+  =>
+
+% ax48, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( ( rearsegP(U, V) & rearsegP(V, U) ) => ( U = V ) ) ) ) ) ))
+
+  =>
+
+% ax49, axiom.
+(( forall U. ( ssList(U) => rearsegP(U, U) ) ))
+
+  =>
+
+% ax50, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssList(W) => ( rearsegP(U, V) => rearsegP(app(W, U), V) ) ) ) ) ) ) ))
+
+  =>
+
+% ax51, axiom.
+(( forall U. ( ssList(U) => rearsegP(U, nil) ) ))
+
+  =>
+
+% ax52, axiom.
+(( forall U. ( ssList(U) => ( rearsegP(nil, U) <=> ( nil = U ) ) ) ))
+
+  =>
+
+% ax53, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssList(W) => ( ( segmentP(U, V) & segmentP(V, W) ) => segmentP(U, W) ) ) ) ) ) ) ))
+
+  =>
+
+% ax54, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( ( segmentP(U, V) & segmentP(V, U) ) => ( U = V ) ) ) ) ) ))
+
+  =>
+
+% ax55, axiom.
+(( forall U. ( ssList(U) => segmentP(U, U) ) ))
+
+  =>
+
+% ax56, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssList(W) => ( forall X. ( ssList(X) => ( segmentP(U, V) => segmentP(app(app(W, U), X), V) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax57, axiom.
+(( forall U. ( ssList(U) => segmentP(U, nil) ) ))
+
+  =>
+
+% ax58, axiom.
+(( forall U. ( ssList(U) => ( segmentP(nil, U) <=> ( nil = U ) ) ) ))
+
+  =>
+
+% ax59, axiom.
+(( forall U. ( ssItem(U) => cyclefreeP(cons(U, nil)) ) ))
+
+  =>
+
+% ax60, axiom.
+(cyclefreeP(nil))
+
+  =>
+
+% ax61, axiom.
+(( forall U. ( ssItem(U) => totalorderP(cons(U, nil)) ) ))
+
+  =>
+
+% ax62, axiom.
+(totalorderP(nil))
+
+  =>
+
+% ax63, axiom.
+(( forall U. ( ssItem(U) => strictorderP(cons(U, nil)) ) ))
+
+  =>
+
+% ax64, axiom.
+(strictorderP(nil))
+
+  =>
+
+% ax65, axiom.
+(( forall U. ( ssItem(U) => totalorderedP(cons(U, nil)) ) ))
+
+  =>
+
+% ax66, axiom.
+(totalorderedP(nil))
+
+  =>
+
+% ax67, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssList(V) => ( totalorderedP(cons(U, V)) <=> ( ( nil = V ) | ( ( ~ ( nil = V ) ) & ( totalorderedP(V) & leq(U, hd(V)) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax68, axiom.
+(( forall U. ( ssItem(U) => strictorderedP(cons(U, nil)) ) ))
+
+  =>
+
+% ax69, axiom.
+(strictorderedP(nil))
+
+  =>
+
+% ax70, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssList(V) => ( strictorderedP(cons(U, V)) <=> ( ( nil = V ) | ( ( ~ ( nil = V ) ) & ( strictorderedP(V) & lt(U, hd(V)) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax71, axiom.
+(( forall U. ( ssItem(U) => duplicatefreeP(cons(U, nil)) ) ))
+
+  =>
+
+% ax72, axiom.
+(duplicatefreeP(nil))
+
+  =>
+
+% ax73, axiom.
+(( forall U. ( ssItem(U) => equalelemsP(cons(U, nil)) ) ))
+
+  =>
+
+% ax74, axiom.
+(equalelemsP(nil))
+
+  =>
+
+% ax75, axiom.
+(( forall U. ( ssList(U) => ( ( ~ ( nil = U ) ) => ( exists V. ( ssItem(V) & ( hd(U) = V ) ) ) ) ) ))
+
+  =>
+
+% ax76, axiom.
+(( forall U. ( ssList(U) => ( ( ~ ( nil = U ) ) => ( exists V. ( ssList(V) & ( tl(U) = V ) ) ) ) ) ))
+
+  =>
+
+% ax77, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( ( ( ~ ( nil = V ) ) & ( ( ~ ( nil = U ) ) & ( ( hd(V) = hd(U) ) & ( tl(V) = tl(U) ) ) ) ) => ( V = U ) ) ) ) ) ))
+
+  =>
+
+% ax78, axiom.
+(( forall U. ( ssList(U) => ( ( ~ ( nil = U ) ) => ( cons(hd(U), tl(U)) = U ) ) ) ))
+
+  =>
+
+% ax79, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssList(W) => ( ( app(W, V) = app(U, V) ) => ( W = U ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax80, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssList(W) => ( ( app(V, W) = app(V, U) ) => ( W = U ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax81, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssItem(V) => ( cons(V, U) = app(cons(V, nil), U) ) ) ) ) ))
+
+  =>
+
+% ax82, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssList(W) => ( app(app(U, V), W) = app(U, app(V, W)) ) ) ) ) ) ) ))
+
+  =>
+
+% ax83, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( ( nil = app(U, V) ) <=> ( ( nil = V ) & ( nil = U ) ) ) ) ) ) ))
+
+  =>
+
+% ax84, axiom.
+(( forall U. ( ssList(U) => ( app(U, nil) = U ) ) ))
+
+  =>
+
+% ax85, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( ( ~ ( nil = U ) ) => ( hd(app(U, V)) = hd(U) ) ) ) ) ) ))
+
+  =>
+
+% ax86, axiom.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( ( ~ ( nil = U ) ) => ( tl(app(U, V)) = app(tl(U), V) ) ) ) ) ) ))
+
+  =>
+
+% ax87, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( ( geq(U, V) & geq(V, U) ) => ( U = V ) ) ) ) ) ))
+
+  =>
+
+% ax88, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( ( geq(U, V) & geq(V, W) ) => geq(U, W) ) ) ) ) ) ) ))
+
+  =>
+
+% ax89, axiom.
+(( forall U. ( ssItem(U) => geq(U, U) ) ))
+
+  =>
+
+% ax90, axiom.
+(( forall U. ( ssItem(U) => ( ~ lt(U, U) ) ) ))
+
+  =>
+
+% ax91, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( ( leq(U, V) & lt(V, W) ) => lt(U, W) ) ) ) ) ) ) ))
+
+  =>
+
+% ax92, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( leq(U, V) => ( ( U = V ) | lt(U, V) ) ) ) ) ) ))
+
+  =>
+
+% ax93, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( lt(U, V) <=> ( ( ~ ( U = V ) ) & leq(U, V) ) ) ) ) ) ))
+
+  =>
+
+% ax94, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( gt(U, V) => ( ~ gt(V, U) ) ) ) ) ) ))
+
+  =>
+
+% ax95, axiom.
+(( forall U. ( ssItem(U) => ( forall V. ( ssItem(V) => ( forall W. ( ssItem(W) => ( ( gt(U, V) & gt(V, W) ) => gt(U, W) ) ) ) ) ) ) ))
+
+  =>
+
+% co1, conjecture.
+(( forall U. ( ssList(U) => ( forall V. ( ssList(V) => ( forall W. ( ssList(W) => ( forall X. ( ssList(X) => ( ( ~ ( V = X ) ) | ( ( ~ ( U = W ) ) | ( ( ~ neq(V, nil) ) | ( neq(X, nil) | singletonP(V) ) ) ) ) ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

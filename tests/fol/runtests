@@ -1,0 +1,461 @@
+#!/bin/bash
+
+source ../common.sh
+
+status=0
+TIMEFORMAT="    %R seconds"
+
+function prop {
+    echo "Running propositional tests"
+    cmd=$1; shift
+    echo "  Command: $cmd"
+    dir=$IMOGEN_HOME/tests/prop/basic
+    files=$(cd $dir; ls *.imo)
+    for file in $files; do
+        emit "$file"
+        if ! eval "$cmd -proof $dir/$file &> /dev/null"; then
+            echo " failed"
+            status=1
+        fi
+    done
+    emit "\r"
+}
+
+function basic {
+    echo "Running basic tests"
+    cmd=$1; shift
+    echo "  Command: $cmd"
+    dir=$IMOGEN_HOME/tests/fol/basic
+    files=$(cd $dir; ls *.imo)
+    #echo "FILES: $files"
+    for file in $files; do
+        emit "$file"
+        if ! eval "$cmd -proof $dir/$file &> /dev/null"; then
+            echo " failed"
+            status=1
+        fi
+    done
+    emit "\r"
+}
+
+function iltp_quick {
+    echo "Running iltp quick tests"
+    cmd=$1; shift
+    echo "  Command: $cmd"
+    quick="
+ALG211+1
+
+LCL181+1
+LCL230+1
+
+SYJ013+1
+SYJ014+1
+SYJ015+1
+SYJ016+1
+SYJ017+1
+SYJ019+1
+SYJ020+1
+SYJ021+1
+SYJ022+1
+SYJ023+1
+SYJ024+1
+SYJ025+1
+SYJ026+1
+SYJ028+1
+SYJ029+1
+SYJ030+1
+SYJ031+1
+SYJ033+1
+SYJ034+1
+SYJ035+1
+SYJ038+1
+SYJ039+1
+SYJ108+1
+SYJ109+1
+SYJ110+1
+SYJ111+1
+SYJ112+1
+SYJ113+1
+SYJ114+1
+SYJ115+1
+SYJ117+1
+SYJ118+1
+SYJ119+1
+SYJ120+1
+SYJ121+1
+SYJ122+1
+SYJ123+1
+SYJ124+1
+SYJ125+1
+
+SYN001+1
+SYN036+1
+SYN036+2
+SYN040+1
+SYN041+1
+SYN044+1
+SYN045+1
+SYN046+1
+SYN047+1
+SYN048+1
+SYN049+1
+SYN050+1
+SYN051+1
+SYN052+1
+SYN053+1
+SYN054+1
+SYN055+1
+SYN056+1
+SYN057+1
+SYN058+1
+SYN059+1
+SYN060+1
+SYN061+1
+SYN062+1
+SYN063+1
+SYN064+1
+SYN065+1
+SYN066+1
+SYN067+1
+SYN068+1
+SYN069+1
+SYN070+1
+SYN071+1
+SYN072+1
+SYN073+1
+SYN078+1
+SYN079+1
+SYN080+1
+SYN082+1
+SYN083+1
+SYN084+1
+SYN315+1
+SYN315+1
+SYN316+1
+SYN317+1
+SYN318+1
+SYN320+1
+SYN321+1
+SYN322+1
+SYN323+1
+SYN324+1
+SYN325+1
+SYN326+1
+SYN327+1
+SYN329+1
+SYN333+1
+SYN336+1
+SYN337+1
+SYN338+1
+SYN339+1
+SYN340+1
+SYN341+1
+SYN342+1
+SYN343+1
+SYN344+1
+SYN345+1
+SYN346+1
+SYN351+1
+SYN355+1
+SYN356+1
+SYN357+1
+SYN358+1
+SYN359+1
+SYN360+1
+SYN361+1
+SYN362+1
+SYN363+1
+SYN364+1
+SYN365+1
+SYN366+1
+SYN367+1
+SYN368+1
+SYN369+1
+SYN370+1
+SYN371+1
+SYN372+1
+SYN373+1
+SYN374+1
+SYN375+1
+SYN376+1
+SYN377+1
+SYN378+1
+SYN379+1
+SYN380+1
+SYN381+1
+SYN382+1
+SYN383+1
+SYN384+1
+SYN385+1
+
+SYN391+1
+SYN392+1
+SYN393+1
+SYN394+1
+SYN395+1
+SYN396+1
+SYN397+1
+SYN398+1
+SYN399+1
+SYN400+1
+SYN401+1
+SYN402+1
+SYN403+1
+SYN404+1
+SYN405+1
+SYN406+1
+SYN407+1
+SYN408+1
+SYN409+1
+SYN410+1
+SYN411+1
+SYN412+1
+SYN413+1
+SYN414+1
+SYN415+1
+SYN416+1
+SYN549+1
+SYN550+1
+SYN721+1
+SYN722+1
+SYN723+1
+SYN724+1
+SYN725+1
+SYN727+1
+SYN728+1
+SYN729+1
+SYN730+1
+SYN731+1
+SYN732+1
+SYN733+1
+SYN915+1
+SYN916+1
+SYN917+1
+SYN918+1
+SYN919+1
+SYN920+1
+SYN921+1
+SYN922+1
+SYN923+1
+SYN924+1
+SYN925+1
+SYN926+1
+SYN927+1
+SYN928+1
+SYN929+1
+SYN930+1
+SYN931+1
+SYN932+1
+SYN933+1
+SYN934+1
+SYN935+1
+SYN936+1
+SYN937+1
+SYN938+1
+SYN939+1
+SYN940+1
+SYN941+1
+SYN942+1
+SYN943+1
+SYN944+1
+SYN945+1
+SYN946+1
+SYN947+1
+SYN948+1
+SYN949+1
+SYN950+1
+SYN951+1
+SYN952+1
+SYN953+1
+SYN954+1
+SYN955+1
+SYN956+1
+SYN957+1
+SYN958+1
+SYN959+1
+SYN960+1
+SYN961+1
+SYN962+1
+SYN963+1
+SYN964+1
+SYN965+1
+SYN966+1
+SYN967+1
+SYN968+1
+SYN969+1
+SYN970+1
+SYN971+1
+SYN972+1
+SYN973+1
+SYN974+1
+SYN975+1
+SYN976+1
+SYN977+1
+SYN978+1
+SYN979+1
+SYN980+1
+SYN981+1
+
+
+TOP021+1
+TOP022+1
+"
+    dir=$IMOGEN_HOME/tests/fol/iltp/problems
+    for prob in $quick; do
+        emit "$prob"
+        if ! eval "$cmd $dir/$prob.imo -proof &> /dev/null "; then
+            echo " failed"
+            status=1
+        fi
+    done
+    emit "\r"
+}
+
+bugs_partial=""
+bugs_cascade=""
+bugs_both="SYN364+1"
+
+function iltp_solved {
+    echo "Running iltp tests"
+    cmd=$1; shift
+    echo "  Command: $cmd"
+    solved="
+AGT001+1
+AGT001+2
+AGT002+1
+AGT002+2
+AGT015+1
+AGT015+2
+AGT017+1
+AGT017+2
+
+LCL414+1
+SYJ001+1.006
+SYJ002+1.007
+SYJ003+1.005
+SYJ004+1.020
+SYJ101+1
+SYJ102+1
+SYJ103+1
+SYJ104+1
+SYJ105+1.004
+SYJ106+1
+SYJ107+1.004
+SYJ116+1.004
+SYJ201+1.006
+SYN551+1
+"
+    dir=$IMOGEN_HOME/tests/fol/iltp
+    args="-no-assertions -h optimize"
+    if (( $# > 0 )); then
+        prob=$1; shift
+        $cmd $dir/$prob.imo $args $@
+    else
+        # do them all
+        echo "Running iltp tests"
+        for prob in $solved; do
+            emit "$prob"
+            if ! eval "$cmd $dir/$prob.imo -proof &> /dev/null "; then
+                echo " failed"
+                status=1
+            fi
+        done
+        emit "\r"
+    fi
+}
+
+function iltp {
+    echo "Running iltp tests"
+    cmd=$1; shift
+    echo "  Command: $cmd"
+    dir=$IMOGEN_HOME/tests/fol/iltp
+    args="-no-assertions -h optimize"
+    if (( $# > 0 )); then
+        prob=$1; shift
+        $cmd $dir/$prob.imo $args $@
+    else
+        # do them all
+        echo "Running iltp tests"
+        files=$(cd $dir; ls *.imo | grep -E -v "SYJ202\+1.0(1|2|09)")
+        for file in $files; do
+            printf "  %-20s " $file
+            $cmd $dir/$file $args $@
+        done
+    fi
+}
+
+function usage {
+    echo "Usage: runtests Args"
+    echo "       Args       ::= Prover? Cmd?"
+    echo "       Prover     ::= cascade | partial"
+    echo "       Cmd        ::= basic | iltp IltpArgs? | iltp-quick | random RandomArgs?"
+    echo "       IlptArgs   ::= SYJ201+1 | ..."
+    echo "       RandomArgs ::= Size ImogenArgs"
+}
+
+prover="both"
+if (( $# > 0 )); then
+    case $1 in
+        "cascade"|"partial")
+            prover="$1"; shift
+            ;;
+    esac
+fi
+
+cascade_cmd="imogen fol cascade"
+partial_cmd="imogen fol prove"
+
+function run_prover {
+    class=$1; shift
+    case $prover in
+        "cascade")
+            $class "$cascade_cmd" $@
+            ;;
+        "partial")
+            $class "$partial_cmd" $@
+            ;;
+        "both")
+            $class "$partial_cmd" $@
+            $class "$cascade_cmd" $@
+            ;;
+        *)
+            echo "Unknown prover $prover"
+            usage
+            exit 1
+            ;;
+    esac
+}
+
+if (( $# > 0 )); then
+    sub=$1; shift
+    case $sub in
+        "help"|"-help"|"--help")
+            usage
+            ;;
+        "prop")
+            run_prover prop $@
+            ;;
+        "basic")
+            run_prover basic $@
+            ;;
+        "iltp-quick")
+            run_prover iltp_quick $@
+            ;;
+        "iltp-solved")
+            run_prover iltp_solved $@
+            ;;
+        "iltp")
+            run_prover iltp $@
+            ;;
+        *)
+            echo "Unknown problem class: $1"
+            usage
+            exit 1
+            ;;
+    esac
+else
+    run_prover basic
+    run_prover iltp_quick
+fi
+
+exit $status
