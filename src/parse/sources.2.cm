@@ -1,0 +1,16 @@
+(* The mlyacc lexer and parser. *)
+
+Library
+   structure Parser
+   structure Types
+is
+   sources.1.cm
+
+   $/basis.cm
+   $/ml-yacc-lib.cm
+
+   imogen.lex
+   imogen.grm
+
+   parser.sig
+   parser.sml

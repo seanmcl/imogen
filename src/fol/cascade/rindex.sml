@@ -1,0 +1,2 @@
+
+structure RIndex = RIndexFn(TermIndex)

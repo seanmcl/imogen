@@ -1,0 +1,11 @@
+
+local
+   ../std/sources.mlb
+   cascade/sources.mlb
+   partial/sources.mlb
+
+   test.sml
+   export.sml
+in
+   structure Prop
+end

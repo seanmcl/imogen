@@ -1,0 +1,32 @@
+
+ann
+   "forceUsed"
+in
+   local
+      $(SML_LIB)/basis/basis.mlb
+      list1.sml
+
+      ann
+         "forceUsed"
+      in
+         real.sig
+         real1.sml
+      end
+
+      lazy.sig
+      lazy.sml
+
+      pair.sig
+      pair.sml
+
+      pp.sig
+      pp.sml
+
+      timing.sig
+      timing-off.sml
+   in
+      structure Timing
+      structure Counting
+      structure TimeLimit
+   end
+end

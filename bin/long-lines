@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Find overly-long lines in SML code
+
+find . -name '*.sml' -o -name '*.sig' -o -name '*.fun' \
+  | grep -v '\.cm' \
+  | grep -v '\.lex\.sml' \
+  | grep -v '\.grm\.sml' \
+  | grep -v '/old/' \
+  | grep -v '\.old\.' \
+  | grep -v 'bug\.sml' \
+  | xargs grep -nE ".{80}."

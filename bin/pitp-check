@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Run pitp on a problem.  Exit 0 if provable, 1 if unprovable
+
+pitp=pitp
+#pitp=pitpinv
+status=$("$pitp" -f "$1" | grep provable | sed 's/search result = //')
+
+if [ $status = provable ]; then
+    exit 0
+else
+    exit 1
+fi

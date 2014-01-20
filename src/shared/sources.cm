@@ -1,0 +1,164 @@
+Library
+  signature Id
+  signature Fixable
+  signature Fixable'
+  signature Backend
+  signature Frontend
+  signature Prover
+  signature Unif
+
+  structure Util
+  structure Parameters
+
+  structure Var
+  structure Param
+  structure Func
+  structure Pred
+  structure Atom
+  structure Label
+
+  structure CSubst
+  structure Domain
+  structure CFormula
+  structure Id
+  structure RuleId
+  structure Sort
+  structure Atoms
+  structure Ctx
+  structure Signat
+  structure Term
+  structure Subst
+  structure Rel
+  structure Formula
+  structure PFormula
+  structure LFormula
+  structure Classical
+  structure Transform
+  structure Sublabels
+  structure Conflicts
+  structure Heuristics
+  structure ND
+  structure SC
+  structure Fragment
+  structure Focus
+  structure BackendUtil
+
+  functor ProverFn
+  functor CmdProveFn
+
+  structure CmdUtil
+  functor CmdShowFn
+
+  functor SubstTestFn
+
+  structure State
+  structure Shared
+  structure Unif
+
+  (* Debug *)
+  structure Parse
+  structure General
+  structure PP
+is
+  ../std/sources.cm
+  ../parse/sources.cm
+
+  sym.sig
+  sym.sml
+
+  util.sig
+  util.sml
+
+  parameters.sml
+
+  id.sig
+  id.sml
+
+  domain.sig
+  domain.sml
+
+  sort.sig
+  sort.sml
+
+  atoms.sig
+  atoms.sml
+
+  signat.sig
+  signat.sml
+
+  ctx.sig
+  ctx.sml
+
+  term.sig
+  term.sml
+
+  subst.sig
+  subst.sml
+  subst-test.fun
+
+  rel.sig
+  rel.sml
+
+  unif.sig
+  unif.sml
+
+  formula.sig
+  formula.sml
+
+  cformula.sig
+  cformula.sml
+
+  csubst.sig
+  csubst.sml
+
+  pformula.sig
+  pformula.sml
+
+  lformula.sig
+  lformula.sml
+
+  transform.sig
+  transform.sml
+
+  classical.sig
+  classical.sml
+
+  sublabels.sig
+  sublabels.sml
+
+  conflicts.sig
+  conflicts.sml
+
+  heuristics.sig
+  heuristics.sml
+
+  nd.sig
+  nd.sml
+
+  sc.sig
+  sc.sml
+
+  fragment.sig
+  fragment.sml
+
+  focus.sig
+  focus.sml
+
+  backend.sig
+  frontend.sig
+
+  prover.sig
+  prover.fun
+
+  cmd-util.sig
+  cmd-util.sml
+
+  cmd-show.fun
+  cmd-prove.fun
+
+  state.sig
+  state.sml
+
+  sym-test.sml
+  test.sml
+  export.sml

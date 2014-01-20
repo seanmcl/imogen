@@ -1,0 +1,65 @@
+-*- mode: org -*-
+
+* Printing
+
+|         | Unfixed | Fixed | Pos | Neg   |
+|---------+---------+-------+-----+-------|
+| Var X   | X       | X#    | ·   | ·     |
+| Param a | @a      | @a#   | ·   | ·     |
+| Func    | f, c    | ·     | ·   | ·     |
+| Pred p  | ·       | ·     | p   | P, 'p |
+
+* Substitutions
+
+Q1 ... QN
+
+H1 ... HN
+----------
+   H
+
+One at a time:
+
+Q1 ~ H1 ---> R1, θ1
+
+ H2θ1 ... HNθ1
+-------------
+   R1+Hθ1
+
+Q2 ~ H2 ---> R2, θ2
+
+ H3(θ1·θ2) ... HN(θ1·θ2)
+--------------------------
+    R2+(R1θ2+H(θ1θ2))
+
+...
+
+
+* Focus
+
+Make sure you're matching/contracting against the global rels
+
+
+* Fixing
+
+Sequents in the active and kept databases never have fixed parameters.
+
+* Logging
+
+** Critical
+messages that virtually guarantee search will fail
+e.g. huge numbers of sequents/contracts/rules/etc
+
+** Error
+basic starting and ending info
+
+** Warning
+detailed starting and ending info
+
+** Info
+summary info of prover state every N iterations
+
+** Debug
+detailed info of present interest at every iteration
+
+** Trace
+all output

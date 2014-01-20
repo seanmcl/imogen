@@ -1,0 +1,12 @@
+
+* Imogen
+** Parsing bug <->
+
+* Commandline should handle -- flags
+
+* Enable minimal logic by replacing false with a new atom a.  Positive or negative?
+
+e = vd
+
+(Unicode.use-abbrevs)
+vd

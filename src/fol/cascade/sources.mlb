@@ -1,0 +1,39 @@
+
+local
+   ../../std/sources.mlb
+   ../../parse/sources.mlb
+   ../../shared/sources.mlb
+   ../shared/sources.mlb
+
+   rseq.sig
+   rseq.sml
+
+   rindex.sig
+   rindex.fun
+   rindex.sml
+
+   rule-input.sig
+   rule-input.sml
+
+   proof.sig
+   proof.sml
+
+   active.sig
+   active.sml
+
+   kept.sig
+   kept.sml
+
+   rule.sig
+   rule.sml
+
+   backend.sml
+
+   rseq-test.fun
+   prover.sml
+
+   test.sml
+   export.sml
+in
+   structure Cascade
+end

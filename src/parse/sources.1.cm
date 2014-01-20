@@ -1,0 +1,10 @@
+(* Code needed by the mlyacc parser. *)
+
+Library
+  structure Types
+  structure Interface
+is
+   ../std/sources.cm
+
+   types.sml
+   interface.sml
