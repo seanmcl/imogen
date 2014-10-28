@@ -1,0 +1,6 @@
+
+% Problem : FOL006+1
+% Status  : Theorem
+% Rating  : 0.0
+
+(forall Z. p(Z)) => p(c)

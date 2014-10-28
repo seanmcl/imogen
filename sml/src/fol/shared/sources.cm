@@ -1,0 +1,47 @@
+
+Library
+  structure Frontend
+
+  signature TermIndex
+  structure TermIndex
+  structure RuleTermIndex
+
+  structure Seq
+  structure Index
+  structure RuleIndex
+
+  structure ListIndex
+  structure SharedTest
+
+  (* Debug *)
+  structure PP
+  structure UnitTest
+  structure Term
+  structure Subst
+is
+
+../../std/sources.cm
+../../parse/sources.cm
+../../shared/sources.cm
+
+frontend.sml
+
+seq.sig
+seq.sml
+
+term-index.sig
+
+list-index.sml
+
+path.sig
+path.fun
+path-index.sml
+
+index.sig
+index.fun
+index.sml
+
+unif-test.fun
+term-index-test.fun
+index-test.fun
+test.sml

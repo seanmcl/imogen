@@ -1,0 +1,41 @@
+
+local
+   (* mlyacc-lib needs stuff from the old basis which I don't want in my
+      basis. *)
+   $(SML_LIB)/basis/basis.mlb
+   $(SML_LIB)/mlyacc-lib/mlyacc-lib.mlb
+
+   local
+      ../std/sources.mlb
+   in
+      types.sml
+      interface.sml
+   end
+
+   ann
+      "warnUnused false"
+   in
+      imogen.grm.sig
+      imogen.grm.sml
+      imogen.lex.sml
+   end
+
+   local
+      ../std/sources.mlb
+   in
+      parser.sig
+      parser.sml
+
+      meta.sig
+      meta.sml
+
+      parse.sig
+      parse.sml
+
+      test.sml
+      export.sml
+   end
+in
+   structure Parse
+end
+

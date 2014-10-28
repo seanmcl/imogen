@@ -1,0 +1,15 @@
+
+% Problem : FOL021+1
+% Status  : NonTheorem
+% Rating  : 0.0
+
+forall X. 
+exists Y. 
+forall Z.
+f(Y,X) => 
+
+( f(X,Z) => f(X,Y) ) 
+
+& 
+
+( f(X,Y) => ~ f(X,Z) => f(Y,X) & f(Z,Y) )

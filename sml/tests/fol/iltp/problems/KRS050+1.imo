@@ -1,0 +1,90 @@
+% File     : KRS050+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : DL Test: t8.1
+% Version  : Especial.
+% English  : 
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : consistent_description-logic-Manifest634 [Bec03]
+% Status   : Satisfiable
+% Rating   : 0.00 v3.1.0
+%
+% Status (intuit.) : Unsolved (Problem negated)
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   11 (   1 unit)
+%            Number of atoms       :   28 (   0 equality)
+%            Maximal formula depth :    6 (   4 average)
+%            Number of connectives :   20 (   3 ~  ;   0  |;   4  &)
+%                                         (   9 <=>;   4 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   15 (   0 propositional; 1-2 arity)
+%            Number of functors    :    1 (   1 constant; 0-0 arity)
+%            Number of variables   :   19 (   0 singleton;  15 !;   4 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+¬ (
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(( forall X. ( cSatisfiable(X) <=> ( ( exists Y. ( rr(X, Y) & ca_Vx4(Y) ) ) & ( exists Y. ( rr(X, Y) & ca_Vx5(Y) ) ) ) ) ))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X. ( cp(X) <=> ( ~ ( exists Y. ra_Px1(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_4, axiom.
+(( forall X. ( cpxcomp(X) <=> ( exists Y0. ra_Px1(X, Y0) ) ) ))
+
+  =>
+
+% axiom_5, axiom.
+(( forall X. ( ca_Vx2(X) <=> ( forall Y. ( rr1(X, Y) => cp(Y) ) ) ) ))
+
+  =>
+
+% axiom_6, axiom.
+(( forall X. ( ca_Vx3(X) <=> ( forall Y. ( rr1(X, Y) => cpxcomp(Y) ) ) ) ))
+
+  =>
+
+% axiom_7, axiom.
+(( forall X. ( ca_Vx4(X) <=> ( forall Y. ( rinvR(X, Y) => ca_Vx2(Y) ) ) ) ))
+
+  =>
+
+% axiom_8, axiom.
+(( forall X. ( ca_Vx5(X) <=> ( forall Y. ( rinvR(X, Y) => ca_Vx3(Y) ) ) ) ))
+
+  =>
+
+% axiom_9, axiom.
+(( forall X Y. ( rinvR(X, Y) <=> rr(Y, X) ) ))
+
+  =>
+
+% axiom_10, axiom.
+(cSatisfiable(i2003_11_14_17_16_39209))
+
+)
+ 
+
+%------------------------------------------------------------------------------

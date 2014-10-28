@@ -1,0 +1,13 @@
+
+% Problem : FOL025+1
+% Status  : Theorem
+% Rating  : 0.0
+
+q(a1,a2,a3,a1,a2,a3) =>
+                (exists X1 X2 X3 Y1 Y2 Y3.
+                       p(X1)
+                        & p(X2)
+                        & p(X3)
+                    =>  p(Y2)
+                        & p(Y3)
+               & q(X1,X2,X3,Y1,Y2,Y3) )

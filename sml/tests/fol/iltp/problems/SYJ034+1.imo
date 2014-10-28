@@ -1,0 +1,31 @@
+% File     : SYJ034+1 : ILTP v1.1.2
+% Domain   : Intuitionistic Syntactic
+% Problem  : formula being Problematic for Ft-Algorithm
+% Version  : Especial.
+% English  : 
+% Refs     : [SFH92] Dan Sahlin, Torkel Franzén and Seif Haridi. An
+%            Intuitionistic Predicate Logic Theorem Prover, Journal of
+%            Logic and Computation, Vol. 2, No. 5, pp 619-656, 1992.
+%            http://www.sm.luth.se/~torkel/eget/ft/ft1.23/benchmarks.pred
+% Source   : [SFH92]
+% Names    : ft7a : Ft benchmark formulae (pred.) (1992)
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.00 v1.0.0
+%
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% axiom1, axiom.
+(q(a1, a2, a1, a2))
+
+  =>
+
+% con, conjecture.
+(( exists X1. ( exists X2. ( exists Y1. ( exists Y2. ( ( ( p(X1) & p(X2) ) <=> ( p(Y1) & p(Y2) ) ) & q(X1, X2, Y1, Y2) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

@@ -1,0 +1,40 @@
+
+Library
+  structure Partial
+
+  (* Debug *)
+  (* structure Bug *)
+  (* structure Debug *)
+  (* structure Param *)
+is
+
+../../std/sources.cm
+../../parse/sources.cm
+../../shared/sources.cm
+../shared/sources.cm
+
+rule.sig
+rule.sml
+
+pdb.sig
+pdb.sml
+
+asd.sig
+asd.sml
+
+ksd.sig
+ksd.sml
+
+ard.sig
+ard.sml
+
+krd.sig
+krd.sml
+
+backend.sml
+prover.sml
+
+test.sml
+export.sml
+
+bug.sml

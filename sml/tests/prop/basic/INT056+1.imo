@@ -1,0 +1,6 @@
+% Problem : INT056+1
+% Status  : Theorem
+% Rating  : 0.00
+
+
+(d => a) => (d => a | b)

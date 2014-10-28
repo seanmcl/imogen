@@ -1,0 +1,5 @@
+% Problem : MOD001
+% Status [K,P] : Theorem
+% Rating  : 0.00
+
+box p => box p

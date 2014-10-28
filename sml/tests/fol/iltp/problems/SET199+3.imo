@@ -1,0 +1,108 @@
+% File     : SET199+3 : ILTP v1.1.2
+% Domain   : Set Theory (Boolean properties)
+% Problem  : If Z (= X and Z (= Y, then Z (= X ^ Y
+% Version  : [Try89] axioms : Reduced > Incomplete.
+% English  : If Z is a subset of X and Z is a subset of Y, then Z is a 
+%            subset of the intersection of X and Y.
+% Refs     : [ILF] The ILF Group (1998), The ILF System: A Tool for the Int
+%          : [Try89] Trybulec (1989), Tarski Grothendieck Set Theory
+%          : [TS89]  Trybulec & Swieczkowska (1989), Boolean Properties of
+% Source   : [ILF]
+% Names    : BOOLE (39) [TS89] 
+% Status   : Theorem
+% Rating   : 0.18 v3.1.0, 0.11 v2.7.0, 0.00 v2.2.1
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.1.0, 0.75 v1.0.0
+%
+% Syntax   : Number of formulae    :    6 (   2 unit)
+%            Number of atoms       :   14 (   2 equality)
+%            Maximal formula depth :    6 (   5 average)
+%            Number of connectives :    8 (   0 ~  ;   0  |;   2  &)
+%                                         (   4 <=>;   2 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    3 (   0 propositional; 2-2 arity)
+%            Number of functors    :    1 (   0 constant; 2-2 arity)
+%            Number of variables   :   15 (   0 singleton;  15 !;   0 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% intersection_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( intersection(A, C) = intersection(B, C) ) ) ))
+
+  =>
+
+% intersection_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( intersection(C, A) = intersection(C, B) ) ) ))
+
+  =>
+
+% member_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & member(A, C) ) => member(B, C) ) ))
+
+  =>
+
+% member_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & member(C, A) ) => member(C, B) ) ))
+
+  =>
+
+% subset_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(A, C) ) => subset(B, C) ) ))
+
+  =>
+
+% subset_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(C, A) ) => subset(C, B) ) ))
+
+  =>
+
+% intersection_defn, axiom.
+(( forall B C D. ( member(D, intersection(B, C)) <=> ( member(D, B) & member(D, C) ) ) ))
+
+  =>
+
+% subset_defn, axiom.
+(( forall B C. ( subset(B, C) <=> ( forall D. ( member(D, B) => member(D, C) ) ) ) ))
+
+  =>
+
+% commutativity_of_intersection, axiom.
+(( forall B C. ( intersection(B, C) = intersection(C, B) ) ))
+
+  =>
+
+% reflexivity_of_subset, axiom.
+(( forall B. subset(B, B) ))
+
+  =>
+
+% equal_member_defn, axiom.
+(( forall B C. ( ( B = C ) <=> ( forall D. ( member(D, B) <=> member(D, C) ) ) ) ))
+
+  =>
+
+% prove_intersection_of_subsets, conjecture.
+(( forall B C D. ( ( subset(B, C) & subset(B, D) ) => subset(B, intersection(C, D)) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

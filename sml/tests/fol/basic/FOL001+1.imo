@@ -1,0 +1,5 @@
+% Problem : FOL001
+% Status  : Theorem
+% Rating  : 0.00
+
+forall X. p(X) => p(X)

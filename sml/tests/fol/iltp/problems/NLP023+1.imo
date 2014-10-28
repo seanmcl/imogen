@@ -1,0 +1,717 @@
+% File     : NLP023+1 : ILTP v1.1.2
+% Domain   : Natural Language Processing
+% Problem  : Mia wants to dance, problem 1
+% Version  : [Bos00b] axioms.
+% English  : Eliminating inconsistent interpretations in the statement
+%            "Mia wants to dance."
+% Refs     : [Bos00a] Bos (2000), DORIS: Discourse Oriented Representation a
+%            [Bos00b] Bos (2000), Applied Theorem Proving - Natural Language
+% Source   : [Bos00b]
+% Names    : doris000 [Bos00b]
+% Status   : CounterSatisfiable
+% Rating   : 0.00 v3.1.0, 0.17 v2.6.0, 0.00 v2.4.0
+%
+% Status (intuit.) : Unsolved
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   66 (   0 unit)
+%            Number of atoms       :  185 (   2 equality)
+%            Maximal formula depth :   22 (   6 average)
+%            Number of connectives :  126 (   7 ~  ;   0  |;  54  &)
+%                                         (   0 <=>;  65 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   34 (   0 propositional; 1-3 arity)
+%            Number of functors    :    0 (   0 constant; --- arity)
+%            Number of variables   :  175 (   0 singleton; 168 !;   7 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% abstraction_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & abstraction(A, C) ) => abstraction(B, C) ) ))
+
+  =>
+
+% abstraction_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & abstraction(C, A) ) => abstraction(C, B) ) ))
+
+  =>
+
+% accessible_world_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & accessible_world(A, C) ) => accessible_world(B, C) ) ))
+
+  =>
+
+% accessible_world_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & accessible_world(C, A) ) => accessible_world(C, B) ) ))
+
+  =>
+
+% actual_world_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & actual_world(A) ) => actual_world(B) ) ))
+
+  =>
+
+% agent_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & agent(A, C, D) ) => agent(B, C, D) ) ))
+
+  =>
+
+% agent_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & agent(C, A, D) ) => agent(C, B, D) ) ))
+
+  =>
+
+% agent_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & agent(C, D, A) ) => agent(C, D, B) ) ))
+
+  =>
+
+% animate_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & animate(A, C) ) => animate(B, C) ) ))
+
+  =>
+
+% animate_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & animate(C, A) ) => animate(C, B) ) ))
+
+  =>
+
+% dance_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & dance(A, C) ) => dance(B, C) ) ))
+
+  =>
+
+% dance_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & dance(C, A) ) => dance(C, B) ) ))
+
+  =>
+
+% desire_want_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & desire_want(A, C) ) => desire_want(B, C) ) ))
+
+  =>
+
+% desire_want_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & desire_want(C, A) ) => desire_want(C, B) ) ))
+
+  =>
+
+% entity_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & entity(A, C) ) => entity(B, C) ) ))
+
+  =>
+
+% entity_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & entity(C, A) ) => entity(C, B) ) ))
+
+  =>
+
+% event_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & event(A, C) ) => event(B, C) ) ))
+
+  =>
+
+% event_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & event(C, A) ) => event(C, B) ) ))
+
+  =>
+
+% eventuality_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & eventuality(A, C) ) => eventuality(B, C) ) ))
+
+  =>
+
+% eventuality_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & eventuality(C, A) ) => eventuality(C, B) ) ))
+
+  =>
+
+% existent_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & existent(A, C) ) => existent(B, C) ) ))
+
+  =>
+
+% existent_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & existent(C, A) ) => existent(C, B) ) ))
+
+  =>
+
+% female_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & female(A, C) ) => female(B, C) ) ))
+
+  =>
+
+% female_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & female(C, A) ) => female(C, B) ) ))
+
+  =>
+
+% forename_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & forename(A, C) ) => forename(B, C) ) ))
+
+  =>
+
+% forename_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & forename(C, A) ) => forename(C, B) ) ))
+
+  =>
+
+% general_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & general(A, C) ) => general(B, C) ) ))
+
+  =>
+
+% general_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & general(C, A) ) => general(C, B) ) ))
+
+  =>
+
+% human_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & human(A, C) ) => human(B, C) ) ))
+
+  =>
+
+% human_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & human(C, A) ) => human(C, B) ) ))
+
+  =>
+
+% human_person_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & human_person(A, C) ) => human_person(B, C) ) ))
+
+  =>
+
+% human_person_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & human_person(C, A) ) => human_person(C, B) ) ))
+
+  =>
+
+% impartial_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & impartial(A, C) ) => impartial(B, C) ) ))
+
+  =>
+
+% impartial_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & impartial(C, A) ) => impartial(C, B) ) ))
+
+  =>
+
+% living_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & living(A, C) ) => living(B, C) ) ))
+
+  =>
+
+% living_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & living(C, A) ) => living(C, B) ) ))
+
+  =>
+
+% mia_forename_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & mia_forename(A, C) ) => mia_forename(B, C) ) ))
+
+  =>
+
+% mia_forename_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & mia_forename(C, A) ) => mia_forename(C, B) ) ))
+
+  =>
+
+% nonexistent_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & nonexistent(A, C) ) => nonexistent(B, C) ) ))
+
+  =>
+
+% nonexistent_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & nonexistent(C, A) ) => nonexistent(C, B) ) ))
+
+  =>
+
+% nonhuman_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & nonhuman(A, C) ) => nonhuman(B, C) ) ))
+
+  =>
+
+% nonhuman_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & nonhuman(C, A) ) => nonhuman(C, B) ) ))
+
+  =>
+
+% of_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & of(A, C, D) ) => of(B, C, D) ) ))
+
+  =>
+
+% of_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & of(C, A, D) ) => of(C, B, D) ) ))
+
+  =>
+
+% of_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & of(C, D, A) ) => of(C, D, B) ) ))
+
+  =>
+
+% organism_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & organism(A, C) ) => organism(B, C) ) ))
+
+  =>
+
+% organism_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & organism(C, A) ) => organism(C, B) ) ))
+
+  =>
+
+% present_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & present(A, C) ) => present(B, C) ) ))
+
+  =>
+
+% present_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & present(C, A) ) => present(C, B) ) ))
+
+  =>
+
+% proposition_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & proposition(A, C) ) => proposition(B, C) ) ))
+
+  =>
+
+% proposition_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & proposition(C, A) ) => proposition(C, B) ) ))
+
+  =>
+
+% relation_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & relation(A, C) ) => relation(B, C) ) ))
+
+  =>
+
+% relation_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & relation(C, A) ) => relation(C, B) ) ))
+
+  =>
+
+% relname_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & relname(A, C) ) => relname(B, C) ) ))
+
+  =>
+
+% relname_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & relname(C, A) ) => relname(C, B) ) ))
+
+  =>
+
+% singleton_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & singleton(A, C) ) => singleton(B, C) ) ))
+
+  =>
+
+% singleton_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & singleton(C, A) ) => singleton(C, B) ) ))
+
+  =>
+
+% specific_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & specific(A, C) ) => specific(B, C) ) ))
+
+  =>
+
+% specific_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & specific(C, A) ) => specific(C, B) ) ))
+
+  =>
+
+% theme_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & theme(A, C, D) ) => theme(B, C, D) ) ))
+
+  =>
+
+% theme_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & theme(C, A, D) ) => theme(C, B, D) ) ))
+
+  =>
+
+% theme_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & theme(C, D, A) ) => theme(C, D, B) ) ))
+
+  =>
+
+% thing_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & thing(A, C) ) => thing(B, C) ) ))
+
+  =>
+
+% thing_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & thing(C, A) ) => thing(C, B) ) ))
+
+  =>
+
+% unisex_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & unisex(A, C) ) => unisex(B, C) ) ))
+
+  =>
+
+% unisex_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & unisex(C, A) ) => unisex(C, B) ) ))
+
+  =>
+
+% woman_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & woman(A, C) ) => woman(B, C) ) ))
+
+  =>
+
+% woman_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & woman(C, A) ) => woman(C, B) ) ))
+
+  =>
+
+% ax1, axiom.
+(( forall U V. ( woman(U, V) => female(U, V) ) ))
+
+  =>
+
+% ax2, axiom.
+(( forall U V. ( human_person(U, V) => animate(U, V) ) ))
+
+  =>
+
+% ax3, axiom.
+(( forall U V. ( human_person(U, V) => human(U, V) ) ))
+
+  =>
+
+% ax4, axiom.
+(( forall U V. ( organism(U, V) => living(U, V) ) ))
+
+  =>
+
+% ax5, axiom.
+(( forall U V. ( organism(U, V) => impartial(U, V) ) ))
+
+  =>
+
+% ax6, axiom.
+(( forall U V. ( entity(U, V) => existent(U, V) ) ))
+
+  =>
+
+% ax7, axiom.
+(( forall U V. ( entity(U, V) => specific(U, V) ) ))
+
+  =>
+
+% ax8, axiom.
+(( forall U V. ( entity(U, V) => thing(U, V) ) ))
+
+  =>
+
+% ax9, axiom.
+(( forall U V. ( organism(U, V) => entity(U, V) ) ))
+
+  =>
+
+% ax10, axiom.
+(( forall U V. ( human_person(U, V) => organism(U, V) ) ))
+
+  =>
+
+% ax11, axiom.
+(( forall U V. ( woman(U, V) => human_person(U, V) ) ))
+
+  =>
+
+% ax12, axiom.
+(( forall U V. ( mia_forename(U, V) => forename(U, V) ) ))
+
+  =>
+
+% ax13, axiom.
+(( forall U V. ( relname(U, V) => relation(U, V) ) ))
+
+  =>
+
+% ax14, axiom.
+(( forall U V. ( forename(U, V) => relname(U, V) ) ))
+
+  =>
+
+% ax15, axiom.
+(( forall U V. ( abstraction(U, V) => unisex(U, V) ) ))
+
+  =>
+
+% ax16, axiom.
+(( forall U V. ( abstraction(U, V) => general(U, V) ) ))
+
+  =>
+
+% ax17, axiom.
+(( forall U V. ( abstraction(U, V) => nonhuman(U, V) ) ))
+
+  =>
+
+% ax18, axiom.
+(( forall U V. ( abstraction(U, V) => thing(U, V) ) ))
+
+  =>
+
+% ax19, axiom.
+(( forall U V. ( relation(U, V) => abstraction(U, V) ) ))
+
+  =>
+
+% ax20, axiom.
+(( forall U V. ( proposition(U, V) => relation(U, V) ) ))
+
+  =>
+
+% ax21, axiom.
+(( forall U V. ( desire_want(U, V) => event(U, V) ) ))
+
+  =>
+
+% ax22, axiom.
+(( forall U V. ( eventuality(U, V) => unisex(U, V) ) ))
+
+  =>
+
+% ax23, axiom.
+(( forall U V. ( eventuality(U, V) => nonexistent(U, V) ) ))
+
+  =>
+
+% ax24, axiom.
+(( forall U V. ( eventuality(U, V) => specific(U, V) ) ))
+
+  =>
+
+% ax25, axiom.
+(( forall U V. ( thing(U, V) => singleton(U, V) ) ))
+
+  =>
+
+% ax26, axiom.
+(( forall U V. ( eventuality(U, V) => thing(U, V) ) ))
+
+  =>
+
+% ax27, axiom.
+(( forall U V. ( event(U, V) => eventuality(U, V) ) ))
+
+  =>
+
+% ax28, axiom.
+(( forall U V. ( dance(U, V) => event(U, V) ) ))
+
+  =>
+
+% ax29, axiom.
+(( forall U V. ( existent(U, V) => ( ~ nonexistent(U, V) ) ) ))
+
+  =>
+
+% ax30, axiom.
+(( forall U V. ( nonhuman(U, V) => ( ~ human(U, V) ) ) ))
+
+  =>
+
+% ax31, axiom.
+(( forall U V. ( specific(U, V) => ( ~ general(U, V) ) ) ))
+
+  =>
+
+% ax32, axiom.
+(( forall U V. ( unisex(U, V) => ( ~ female(U, V) ) ) ))
+
+  =>
+
+% ax33, axiom.
+(( forall U V W X. ( ( accessible_world(W, X) & of(W, U, V) ) => of(X, U, V) ) ))
+
+  =>
+
+% ax34, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & female(V, U) ) => female(W, U) ) ))
+
+  =>
+
+% ax35, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & animate(V, U) ) => animate(W, U) ) ))
+
+  =>
+
+% ax36, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & human(V, U) ) => human(W, U) ) ))
+
+  =>
+
+% ax37, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & living(V, U) ) => living(W, U) ) ))
+
+  =>
+
+% ax38, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & impartial(V, U) ) => impartial(W, U) ) ))
+
+  =>
+
+% ax39, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & existent(V, U) ) => existent(W, U) ) ))
+
+  =>
+
+% ax40, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & entity(V, U) ) => entity(W, U) ) ))
+
+  =>
+
+% ax41, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & organism(V, U) ) => organism(W, U) ) ))
+
+  =>
+
+% ax42, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & human_person(V, U) ) => human_person(W, U) ) ))
+
+  =>
+
+% ax43, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & woman(V, U) ) => woman(W, U) ) ))
+
+  =>
+
+% ax44, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & mia_forename(V, U) ) => mia_forename(W, U) ) ))
+
+  =>
+
+% ax45, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & relname(V, U) ) => relname(W, U) ) ))
+
+  =>
+
+% ax46, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & forename(V, U) ) => forename(W, U) ) ))
+
+  =>
+
+% ax47, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & general(V, U) ) => general(W, U) ) ))
+
+  =>
+
+% ax48, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & nonhuman(V, U) ) => nonhuman(W, U) ) ))
+
+  =>
+
+% ax49, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & abstraction(V, U) ) => abstraction(W, U) ) ))
+
+  =>
+
+% ax50, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & relation(V, U) ) => relation(W, U) ) ))
+
+  =>
+
+% ax51, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & proposition(V, U) ) => proposition(W, U) ) ))
+
+  =>
+
+% ax52, axiom.
+(( forall U V W X. ( ( accessible_world(W, X) & theme(W, U, V) ) => theme(X, U, V) ) ))
+
+  =>
+
+% ax53, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & desire_want(V, U) ) => desire_want(W, U) ) ))
+
+  =>
+
+% ax54, axiom.
+(( forall U V W X. ( ( accessible_world(W, X) & agent(W, U, V) ) => agent(X, U, V) ) ))
+
+  =>
+
+% ax55, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & present(V, U) ) => present(W, U) ) ))
+
+  =>
+
+% ax56, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & unisex(V, U) ) => unisex(W, U) ) ))
+
+  =>
+
+% ax57, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & nonexistent(V, U) ) => nonexistent(W, U) ) ))
+
+  =>
+
+% ax58, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & specific(V, U) ) => specific(W, U) ) ))
+
+  =>
+
+% ax59, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & singleton(V, U) ) => singleton(W, U) ) ))
+
+  =>
+
+% ax60, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & thing(V, U) ) => thing(W, U) ) ))
+
+  =>
+
+% ax61, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & eventuality(V, U) ) => eventuality(W, U) ) ))
+
+  =>
+
+% ax62, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & event(V, U) ) => event(W, U) ) ))
+
+  =>
+
+% ax63, axiom.
+(( forall U V W. ( ( accessible_world(V, W) & dance(V, U) ) => dance(W, U) ) ))
+
+  =>
+
+% ax64, axiom.
+(( forall U V W. ( ( entity(U, V) & ( forename(U, W) & of(U, W, V) ) ) => ( ~ ( exists X. ( forename(U, X) & ( ( ~ ( X = W ) ) & of(U, X, V) ) ) ) ) ) ))
+
+  =>
+
+% ax65, axiom.
+(( forall U V W X Y. ( ( desire_want(U, V) & ( proposition(U, X) & ( theme(U, V, X) & ( desire_want(U, W) & ( proposition(U, Y) & theme(U, W, Y) ) ) ) ) ) => ( X = Y ) ) ))
+
+  =>
+
+% co1, conjecture.
+(( ~ ( exists U. ( actual_world(U) & ( exists V W X Y. ( of(U, W, V) & ( woman(U, V) & ( mia_forename(U, W) & ( forename(U, W) & ( proposition(U, X) & ( present(U, Y) & ( theme(U, Y, X) & ( desire_want(U, Y) & ( agent(U, Y, V) & ( accessible_world(U, X) & ( exists Z. ( event(X, Z) & ( agent(X, Z, V) & ( present(X, Z) & dance(X, Z) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

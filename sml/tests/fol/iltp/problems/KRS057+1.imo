@@ -1,0 +1,106 @@
+% File     : KRS057+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : A possible mapping of the EquivalentClasses axiom
+% Version  : Especial.
+% English  : A possible mapping of the EquivalentClasses axiom, which is 
+%            connected but without a Hamiltonian path.
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : consistent_equivalentClass-Manifest009 [Bec03]
+% Status   : Satisfiable
+% Rating   : 0.00 v3.1.0
+%
+% Status (intuit.) : Unsolved (Problem negated)
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   11 (   1 unit)
+%            Number of atoms       :   38 (  10 equality)
+%            Maximal formula depth :    9 (   5 average)
+%            Number of connectives :   32 (   5 ~  ;   0  |;  13  &)
+%                                         (   7 <=>;   7 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    8 (   0 propositional; 1-2 arity)
+%            Number of functors    :    1 (   1 constant; 0-0 arity)
+%            Number of variables   :   17 (   0 singleton;  17 !;   0 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+¬ (
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% cB_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cB(A) ) => cB(B) ) ))
+
+  =>
+
+% cC_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cC(A) ) => cC(B) ) ))
+
+  =>
+
+% cD_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cD(A) ) => cD(B) ) ))
+
+  =>
+
+% cowlNothing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlNothing(A) ) => cowlNothing(B) ) ))
+
+  =>
+
+% cowlThing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlThing(A) ) => cowlThing(B) ) ))
+
+  =>
+
+% xsd_integer_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_integer(A) ) => xsd_integer(B) ) ))
+
+  =>
+
+% xsd_string_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_string(A) ) => xsd_string(B) ) ))
+
+  =>
+
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(cowlThing(iA))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X. ( ( cB(X) <=> cC(X) ) & ( ( cB(X) <=> ( X = iA ) ) & ( ( cB(X) <=> ( ~ cD(X) ) ) & ( ( cC(X) <=> ( X = iA ) ) & ( ( cC(X) <=> ( ~ cD(X) ) ) & ( ( X = iA ) <=> ( ~ cD(X) ) ) ) ) ) ) ) ))
+
+)
+ 
+
+%------------------------------------------------------------------------------

@@ -1,0 +1,309 @@
+% File     : MGT035+2 : ILTP v1.1.2
+% Domain   : Management (Organisation Theory)
+% Problem  : EPs outcompete FMs in stable environments
+% Version  : [PM93] axioms.
+% English  : Efficient producers outcompete first movers past a certain
+%            time in stable environments. 
+% Refs     : [PM93]  Peli & Masuch (1993), The Logic of Propogation Strateg
+%          : [PM94]  Peli & Masuch (1994), The Logic of Propogation Strateg
+%          : [PB+94] Peli et al. (1994), A Logical Approach to Formalizing
+% Source   : [PM93]
+% Names    : THEOREM 4 [PM93]
+%          : T4 [PB+94]
+% Status   : Theorem
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+% Rating (intuit.) : 1.00 v1.1
+%
+% Syntax   : Number of formulae    :   20 (   0 unit)
+%            Number of atoms       :   95 (  10 equality)
+%            Maximal formula depth :    9 (   6 average)
+%            Number of connectives :   80 (   5 ~  ;   7  |;  39  &)
+%                                         (   2 <=>;  27 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   12 (   0 propositional; 1-4 arity)
+%            Number of functors    :    9 (   3 constant; 0-2 arity)
+%            Number of variables   :   50 (   0 singleton;  47 !;   3 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% cardinality_at_time_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( cardinality_at_time(A, C) = cardinality_at_time(B, C) ) ) ))
+
+  =>
+
+% cardinality_at_time_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( cardinality_at_time(C, A) = cardinality_at_time(C, B) ) ) ))
+
+  =>
+
+% equilibrium_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( equilibrium(A) = equilibrium(B) ) ) ))
+
+  =>
+
+% growth_rate_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( growth_rate(A, C) = growth_rate(B, C) ) ) ))
+
+  =>
+
+% growth_rate_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( growth_rate(C, A) = growth_rate(C, B) ) ) ))
+
+  =>
+
+% number_of_organizations_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_organizations(A, C) = number_of_organizations(B, C) ) ) ))
+
+  =>
+
+% number_of_organizations_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_organizations(C, A) = number_of_organizations(C, B) ) ) ))
+
+  =>
+
+% resources_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( resources(A, C) = resources(B, C) ) ) ))
+
+  =>
+
+% resources_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( resources(C, A) = resources(C, B) ) ) ))
+
+  =>
+
+% sum_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( sum(A, C) = sum(B, C) ) ) ))
+
+  =>
+
+% sum_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( sum(C, A) = sum(C, B) ) ) ))
+
+  =>
+
+% constant_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & constant(A) ) => constant(B) ) ))
+
+  =>
+
+% decreases_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & decreases(A) ) => decreases(B) ) ))
+
+  =>
+
+% environment_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & environment(A) ) => environment(B) ) ))
+
+  =>
+
+% greater_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(A, C) ) => greater(B, C) ) ))
+
+  =>
+
+% greater_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(C, A) ) => greater(C, B) ) ))
+
+  =>
+
+% greater_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(A, C) ) => greater_or_equal(B, C) ) ))
+
+  =>
+
+% greater_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(C, A) ) => greater_or_equal(C, B) ) ))
+
+  =>
+
+% in_environment_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(A, C) ) => in_environment(B, C) ) ))
+
+  =>
+
+% in_environment_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(C, A) ) => in_environment(C, B) ) ))
+
+  =>
+
+% increases_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & increases(A) ) => increases(B) ) ))
+
+  =>
+
+% outcompetes_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & outcompetes(A, C, D) ) => outcompetes(B, C, D) ) ))
+
+  =>
+
+% outcompetes_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & outcompetes(C, A, D) ) => outcompetes(C, B, D) ) ))
+
+  =>
+
+% outcompetes_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & outcompetes(C, D, A) ) => outcompetes(C, D, B) ) ))
+
+  =>
+
+% stable_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & stable(A) ) => stable(B) ) ))
+
+  =>
+
+% subpopulation_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & subpopulation(A, C, D) ) => subpopulation(B, C, D) ) ))
+
+  =>
+
+% subpopulation_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & subpopulation(C, A, D) ) => subpopulation(C, B, D) ) ))
+
+  =>
+
+% subpopulation_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & subpopulation(C, D, A) ) => subpopulation(C, D, B) ) ))
+
+  =>
+
+% subpopulations_substitution_1, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(A, C, D, E) ) => subpopulations(B, C, D, E) ) ))
+
+  =>
+
+% subpopulations_substitution_2, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, A, D, E) ) => subpopulations(C, B, D, E) ) ))
+
+  =>
+
+% subpopulations_substitution_3, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, D, A, E) ) => subpopulations(C, D, B, E) ) ))
+
+  =>
+
+% subpopulations_substitution_4, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, D, E, A) ) => subpopulations(C, D, E, B) ) ))
+
+  =>
+
+% mp_time_point_in_environment, axiom.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => in_environment(E, T) ) ))
+
+  =>
+
+% mp_environment_not_empty, axiom.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => greater(number_of_organizations(E, T), zero) ) ))
+
+  =>
+
+% mp_only_members, axiom.
+(( forall E X T. ( ( environment(E) & ( subpopulation(X, E, T) & ( greater(cardinality_at_time(X, T), zero) => ( ( X = efficient_producers ) | ( X = first_movers ) ) ) ) ) => ( number_of_organizations(E, T) = sum(cardinality_at_time(first_movers, T), cardinality_at_time(efficient_producers, T)) ) ) ))
+
+  =>
+
+% mp_FM_and_EP_organisational, axiom.
+(( forall E T. ( ( environment(E) & in_environment(E, T) ) => ( subpopulation(first_movers, E, T) & subpopulation(efficient_producers, E, T) ) ) ))
+
+  =>
+
+% mp_abc_sum_increase, axiom.
+(( forall A B C. ( ( ( A = sum(B, C) ) & constant(A) ) => ( ( constant(B) & constant(C) ) | ( ( increases(B) & decreases(C) ) | ( decreases(B) & increases(C) ) ) ) ) ))
+
+  =>
+
+% mp_growth_rate, axiom.
+(( forall X E T. ( ( environment(E) & ( in_environment(E, T) & ( subpopulation(X, E, T) & greater(cardinality_at_time(X, T), zero) ) ) ) => ( ( constant(cardinality_at_time(X, T)) => ( growth_rate(X, T) = zero ) ) & ( ( increases(cardinality_at_time(X, T)) => greater(growth_rate(X, T), zero) ) & ( decreases(cardinality_at_time(X, T)) => greater(zero, growth_rate(X, T)) ) ) ) ) ))
+
+  =>
+
+% mp_positive_number_of_organizations, axiom.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => ( greater(cardinality_at_time(first_movers, T), zero) & greater(cardinality_at_time(efficient_producers, T), zero) ) ) ))
+
+  =>
+
+% mp6_1, axiom.
+(( forall X Y. ( ~ ( greater(X, Y) & ( X = Y ) ) ) ))
+
+  =>
+
+% mp6_2, axiom.
+(( forall X Y. ( ~ ( greater(X, Y) & greater(Y, X) ) ) ))
+
+  =>
+
+% mp_greater_transitivity, axiom.
+(( forall X Y Z. ( ( greater(X, Y) & greater(Y, Z) ) => greater(X, Z) ) ))
+
+  =>
+
+% mp_times_in_environment, axiom.
+(( forall E T1 T2. ( ( in_environment(E, T1) & in_environment(E, T2) ) => ( greater(T2, T1) | ( ( T2 = T1 ) | greater(T1, T2) ) ) ) ))
+
+  =>
+
+% mp_greater_or_equal, axiom.
+(( forall X Y. ( greater_or_equal(X, Y) <=> ( greater(X, Y) | ( X = Y ) ) ) ))
+
+  =>
+
+% mp_equilibrium, axiom.
+(( forall E T. ( ( environment(E) & greater_or_equal(T, equilibrium(E)) ) => ( ~ greater(equilibrium(E), T) ) ) ))
+
+  =>
+
+% d2, hypothesis.
+(( forall E S1 S2 T. ( ( environment(E) & subpopulations(S1, S2, E, T) ) => ( ( greater_or_equal(growth_rate(S2, T), zero) & greater(zero, growth_rate(S1, T)) ) <=> outcompetes(S2, S1, T) ) ) ))
+
+  =>
+
+% a4, hypothesis.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & greater(number_of_organizations(E, T), zero) ) ) => ( ( greater(equilibrium(E), T) => decreases(resources(E, T)) ) & ( ( ~ greater(equilibrium(E), T) ) => constant(resources(E, T)) ) ) ) ))
+
+  =>
+
+% a5, hypothesis.
+(( forall E. ( ( environment(E) & stable(E) ) => ( exists T. ( in_environment(E, T) & greater_or_equal(T, equilibrium(E)) ) ) ) ))
+
+  =>
+
+% a7, hypothesis.
+(( forall E T. ( ( environment(E) & in_environment(E, T) ) => ( ( decreases(resources(E, T)) => ( ~ decreases(number_of_organizations(E, T)) ) ) & ( constant(resources(E, T)) => constant(number_of_organizations(E, T)) ) ) ) ))
+
+  =>
+
+% a11, hypothesis.
+(( forall E X T. ( ( environment(E) & ( subpopulation(X, E, T) & greater(cardinality_at_time(X, T), zero) ) ) => ( ( X = efficient_producers ) | ( X = first_movers ) ) ) ))
+
+  =>
+
+% l1, hypothesis.
+(( forall E. ( ( environment(E) & stable(E) ) => ( exists To. ( in_environment(E, To) & ( forall T. ( ( subpopulations(first_movers, efficient_producers, E, T) & greater_or_equal(T, To) ) => greater(growth_rate(efficient_producers, T), growth_rate(first_movers, T)) ) ) ) ) ) ))
+
+  =>
+
+% prove_t4, conjecture.
+(( forall E. ( ( environment(E) & stable(E) ) => ( exists To. ( in_environment(E, To) & ( forall T. ( ( subpopulations(first_movers, efficient_producers, E, T) & greater_or_equal(T, To) ) => outcompetes(efficient_producers, first_movers, T) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

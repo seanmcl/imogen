@@ -1,0 +1,3 @@
+
+The TPTP2X directory on ILTP is hosed.  It doesn't understand | for instance.
+I copied the TPTP2X dir from TPTP, and made a patch so everything should work.

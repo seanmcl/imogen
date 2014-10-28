@@ -1,0 +1,20 @@
+
+Library
+  structure Ordered
+is
+
+../std/sources.cm
+../shared/sources.cm
+../linear/sources.cm
+
+formula.sig
+formula.sml
+
+world.sig
+world.sml
+
+frame.sig
+frame.sml
+
+entails.sml
+export.sml

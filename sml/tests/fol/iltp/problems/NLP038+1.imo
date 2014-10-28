@@ -1,0 +1,687 @@
+% File     : NLP038+1 : ILTP v1.1.2
+% Domain   : Natural Language Processing
+% Problem  : Three young guys, problem 13
+% Version  : [Bos00b] axioms.
+% English  : Eliminating inconsistent interpretations in the statement
+%            "Three young guys sit at a table with hamburgers."
+% Refs     : [Bos00a] Bos (2000), DORIS: Discourse Oriented Representation a
+%            [Bos00b] Bos (2000), Applied Theorem Proving - Natural Language
+% Source   : [Bos00b]
+% Names    : doris015 [Bos00b]
+% Status   : CounterSatisfiable
+% Rating   : 0.00 v3.1.0, 0.33 v2.7.0, 0.50 v2.6.0, 0.25 v2.5.0, 0.33 v2.4.0
+%
+% Status (intuit.) : Unsolved
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   43 (   1 unit)
+%            Number of atoms       :  110 (   6 equality)
+%            Maximal formula depth :   20 (   5 average)
+%            Number of connectives :   77 (  10 ~  ;   2  |;  19  &)
+%                                         (   1 <=>;  45 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   42 (   0 propositional; 1-3 arity)
+%            Number of functors    :    0 (   0 constant; --- arity)
+%            Number of variables   :   97 (   0 singleton;  88 !;   9 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% actual_world_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & actual_world(A) ) => actual_world(B) ) ))
+
+  =>
+
+% agent_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & agent(A, C, D) ) => agent(B, C, D) ) ))
+
+  =>
+
+% agent_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & agent(C, A, D) ) => agent(C, B, D) ) ))
+
+  =>
+
+% agent_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & agent(C, D, A) ) => agent(C, D, B) ) ))
+
+  =>
+
+% animate_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & animate(A, C) ) => animate(B, C) ) ))
+
+  =>
+
+% animate_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & animate(C, A) ) => animate(C, B) ) ))
+
+  =>
+
+% artifact_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & artifact(A, C) ) => artifact(B, C) ) ))
+
+  =>
+
+% artifact_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & artifact(C, A) ) => artifact(C, B) ) ))
+
+  =>
+
+% at_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & at(A, C, D) ) => at(B, C, D) ) ))
+
+  =>
+
+% at_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & at(C, A, D) ) => at(C, B, D) ) ))
+
+  =>
+
+% at_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & at(C, D, A) ) => at(C, D, B) ) ))
+
+  =>
+
+% burger_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & burger(A, C) ) => burger(B, C) ) ))
+
+  =>
+
+% burger_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & burger(C, A) ) => burger(C, B) ) ))
+
+  =>
+
+% entity_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & entity(A, C) ) => entity(B, C) ) ))
+
+  =>
+
+% entity_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & entity(C, A) ) => entity(C, B) ) ))
+
+  =>
+
+% event_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & event(A, C) ) => event(B, C) ) ))
+
+  =>
+
+% event_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & event(C, A) ) => event(C, B) ) ))
+
+  =>
+
+% eventuality_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & eventuality(A, C) ) => eventuality(B, C) ) ))
+
+  =>
+
+% eventuality_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & eventuality(C, A) ) => eventuality(C, B) ) ))
+
+  =>
+
+% existent_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & existent(A, C) ) => existent(B, C) ) ))
+
+  =>
+
+% existent_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & existent(C, A) ) => existent(C, B) ) ))
+
+  =>
+
+% food_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & food(A, C) ) => food(B, C) ) ))
+
+  =>
+
+% food_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & food(C, A) ) => food(C, B) ) ))
+
+  =>
+
+% furniture_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & furniture(A, C) ) => furniture(B, C) ) ))
+
+  =>
+
+% furniture_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & furniture(C, A) ) => furniture(C, B) ) ))
+
+  =>
+
+% group_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & group(A, C) ) => group(B, C) ) ))
+
+  =>
+
+% group_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & group(C, A) ) => group(C, B) ) ))
+
+  =>
+
+% guy_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & guy(A, C) ) => guy(B, C) ) ))
+
+  =>
+
+% guy_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & guy(C, A) ) => guy(C, B) ) ))
+
+  =>
+
+% hamburger_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & hamburger(A, C) ) => hamburger(B, C) ) ))
+
+  =>
+
+% hamburger_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & hamburger(C, A) ) => hamburger(C, B) ) ))
+
+  =>
+
+% human_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & human(A, C) ) => human(B, C) ) ))
+
+  =>
+
+% human_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & human(C, A) ) => human(C, B) ) ))
+
+  =>
+
+% human_person_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & human_person(A, C) ) => human_person(B, C) ) ))
+
+  =>
+
+% human_person_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & human_person(C, A) ) => human_person(C, B) ) ))
+
+  =>
+
+% impartial_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & impartial(A, C) ) => impartial(B, C) ) ))
+
+  =>
+
+% impartial_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & impartial(C, A) ) => impartial(C, B) ) ))
+
+  =>
+
+% instrumentality_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & instrumentality(A, C) ) => instrumentality(B, C) ) ))
+
+  =>
+
+% instrumentality_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & instrumentality(C, A) ) => instrumentality(C, B) ) ))
+
+  =>
+
+% living_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & living(A, C) ) => living(B, C) ) ))
+
+  =>
+
+% living_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & living(C, A) ) => living(C, B) ) ))
+
+  =>
+
+% male_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & male(A, C) ) => male(B, C) ) ))
+
+  =>
+
+% male_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & male(C, A) ) => male(C, B) ) ))
+
+  =>
+
+% man_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & man(A, C) ) => man(B, C) ) ))
+
+  =>
+
+% man_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & man(C, A) ) => man(C, B) ) ))
+
+  =>
+
+% meat_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & meat(A, C) ) => meat(B, C) ) ))
+
+  =>
+
+% meat_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & meat(C, A) ) => meat(C, B) ) ))
+
+  =>
+
+% member_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & member(A, C, D) ) => member(B, C, D) ) ))
+
+  =>
+
+% member_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & member(C, A, D) ) => member(C, B, D) ) ))
+
+  =>
+
+% member_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & member(C, D, A) ) => member(C, D, B) ) ))
+
+  =>
+
+% multiple_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & multiple(A, C) ) => multiple(B, C) ) ))
+
+  =>
+
+% multiple_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & multiple(C, A) ) => multiple(C, B) ) ))
+
+  =>
+
+% nonexistent_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & nonexistent(A, C) ) => nonexistent(B, C) ) ))
+
+  =>
+
+% nonexistent_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & nonexistent(C, A) ) => nonexistent(C, B) ) ))
+
+  =>
+
+% nonliving_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & nonliving(A, C) ) => nonliving(B, C) ) ))
+
+  =>
+
+% nonliving_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & nonliving(C, A) ) => nonliving(C, B) ) ))
+
+  =>
+
+% object_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & object(A, C) ) => object(B, C) ) ))
+
+  =>
+
+% object_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & object(C, A) ) => object(C, B) ) ))
+
+  =>
+
+% organism_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & organism(A, C) ) => organism(B, C) ) ))
+
+  =>
+
+% organism_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & organism(C, A) ) => organism(C, B) ) ))
+
+  =>
+
+% present_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & present(A, C) ) => present(B, C) ) ))
+
+  =>
+
+% present_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & present(C, A) ) => present(C, B) ) ))
+
+  =>
+
+% set_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & set(A, C) ) => set(B, C) ) ))
+
+  =>
+
+% set_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & set(C, A) ) => set(C, B) ) ))
+
+  =>
+
+% singleton_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & singleton(A, C) ) => singleton(B, C) ) ))
+
+  =>
+
+% singleton_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & singleton(C, A) ) => singleton(C, B) ) ))
+
+  =>
+
+% sit_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & sit(A, C) ) => sit(B, C) ) ))
+
+  =>
+
+% sit_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & sit(C, A) ) => sit(C, B) ) ))
+
+  =>
+
+% specific_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & specific(A, C) ) => specific(B, C) ) ))
+
+  =>
+
+% specific_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & specific(C, A) ) => specific(C, B) ) ))
+
+  =>
+
+% substance_matter_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & substance_matter(A, C) ) => substance_matter(B, C) ) ))
+
+  =>
+
+% substance_matter_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & substance_matter(C, A) ) => substance_matter(C, B) ) ))
+
+  =>
+
+% table_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & table(A, C) ) => table(B, C) ) ))
+
+  =>
+
+% table_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & table(C, A) ) => table(C, B) ) ))
+
+  =>
+
+% thing_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & thing(A, C) ) => thing(B, C) ) ))
+
+  =>
+
+% thing_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & thing(C, A) ) => thing(C, B) ) ))
+
+  =>
+
+% three_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & three(A, C) ) => three(B, C) ) ))
+
+  =>
+
+% three_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & three(C, A) ) => three(C, B) ) ))
+
+  =>
+
+% unisex_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & unisex(A, C) ) => unisex(B, C) ) ))
+
+  =>
+
+% unisex_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & unisex(C, A) ) => unisex(C, B) ) ))
+
+  =>
+
+% with_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & with(A, C, D) ) => with(B, C, D) ) ))
+
+  =>
+
+% with_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & with(C, A, D) ) => with(C, B, D) ) ))
+
+  =>
+
+% with_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & with(C, D, A) ) => with(C, D, B) ) ))
+
+  =>
+
+% young_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & young(A, C) ) => young(B, C) ) ))
+
+  =>
+
+% young_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & young(C, A) ) => young(C, B) ) ))
+
+  =>
+
+% ax1, axiom.
+(( forall U V. ( artifact(U, V) => object(U, V) ) ))
+
+  =>
+
+% ax2, axiom.
+(( forall U V. ( instrumentality(U, V) => artifact(U, V) ) ))
+
+  =>
+
+% ax3, axiom.
+(( forall U V. ( furniture(U, V) => instrumentality(U, V) ) ))
+
+  =>
+
+% ax4, axiom.
+(( forall U V. ( table(U, V) => furniture(U, V) ) ))
+
+  =>
+
+% ax5, axiom.
+(( forall U V. ( eventuality(U, V) => unisex(U, V) ) ))
+
+  =>
+
+% ax6, axiom.
+(( forall U V. ( eventuality(U, V) => nonexistent(U, V) ) ))
+
+  =>
+
+% ax7, axiom.
+(( forall U V. ( eventuality(U, V) => specific(U, V) ) ))
+
+  =>
+
+% ax8, axiom.
+(( forall U V. ( eventuality(U, V) => thing(U, V) ) ))
+
+  =>
+
+% ax9, axiom.
+(( forall U V. ( event(U, V) => eventuality(U, V) ) ))
+
+  =>
+
+% ax10, axiom.
+(( forall U V. ( sit(U, V) => event(U, V) ) ))
+
+  =>
+
+% ax11, axiom.
+(( forall U V. ( object(U, V) => unisex(U, V) ) ))
+
+  =>
+
+% ax12, axiom.
+(( forall U V. ( object(U, V) => impartial(U, V) ) ))
+
+  =>
+
+% ax13, axiom.
+(( forall U V. ( object(U, V) => nonliving(U, V) ) ))
+
+  =>
+
+% ax14, axiom.
+(( forall U V. ( object(U, V) => entity(U, V) ) ))
+
+  =>
+
+% ax15, axiom.
+(( forall U V. ( substance_matter(U, V) => object(U, V) ) ))
+
+  =>
+
+% ax16, axiom.
+(( forall U V. ( food(U, V) => substance_matter(U, V) ) ))
+
+  =>
+
+% ax17, axiom.
+(( forall U V. ( meat(U, V) => food(U, V) ) ))
+
+  =>
+
+% ax18, axiom.
+(( forall U V. ( burger(U, V) => meat(U, V) ) ))
+
+  =>
+
+% ax19, axiom.
+(( forall U V. ( hamburger(U, V) => burger(U, V) ) ))
+
+  =>
+
+% ax20, axiom.
+(( forall U V. ( three(U, V) => group(U, V) ) ))
+
+  =>
+
+% ax21, axiom.
+(( forall U V. ( set(U, V) => multiple(U, V) ) ))
+
+  =>
+
+% ax22, axiom.
+(( forall U V. ( group(U, V) => set(U, V) ) ))
+
+  =>
+
+% ax23, axiom.
+(( forall U V. ( man(U, V) => male(U, V) ) ))
+
+  =>
+
+% ax24, axiom.
+(( forall U V. ( human_person(U, V) => animate(U, V) ) ))
+
+  =>
+
+% ax25, axiom.
+(( forall U V. ( human_person(U, V) => human(U, V) ) ))
+
+  =>
+
+% ax26, axiom.
+(( forall U V. ( organism(U, V) => living(U, V) ) ))
+
+  =>
+
+% ax27, axiom.
+(( forall U V. ( organism(U, V) => impartial(U, V) ) ))
+
+  =>
+
+% ax28, axiom.
+(( forall U V. ( entity(U, V) => existent(U, V) ) ))
+
+  =>
+
+% ax29, axiom.
+(( forall U V. ( entity(U, V) => specific(U, V) ) ))
+
+  =>
+
+% ax30, axiom.
+(( forall U V. ( thing(U, V) => singleton(U, V) ) ))
+
+  =>
+
+% ax31, axiom.
+(( forall U V. ( entity(U, V) => thing(U, V) ) ))
+
+  =>
+
+% ax32, axiom.
+(( forall U V. ( organism(U, V) => entity(U, V) ) ))
+
+  =>
+
+% ax33, axiom.
+(( forall U V. ( human_person(U, V) => organism(U, V) ) ))
+
+  =>
+
+% ax34, axiom.
+(( forall U V. ( man(U, V) => human_person(U, V) ) ))
+
+  =>
+
+% ax35, axiom.
+(( forall U V. ( guy(U, V) => man(U, V) ) ))
+
+  =>
+
+% ax36, axiom.
+(( forall U V. ( animate(U, V) => ( ~ nonliving(U, V) ) ) ))
+
+  =>
+
+% ax37, axiom.
+(( forall U V. ( existent(U, V) => ( ~ nonexistent(U, V) ) ) ))
+
+  =>
+
+% ax38, axiom.
+(( forall U V. ( nonliving(U, V) => ( ~ living(U, V) ) ) ))
+
+  =>
+
+% ax39, axiom.
+(( forall U V. ( singleton(U, V) => ( ~ multiple(U, V) ) ) ))
+
+  =>
+
+% ax40, axiom.
+(( forall U V. ( unisex(U, V) => ( ~ male(U, V) ) ) ))
+
+  =>
+
+% ax41, axiom.
+(( forall U V. ( three(U, V) <=> ( exists W. ( member(U, W, V) & ( exists X. ( member(U, X, V) & ( ( ~ ( X = W ) ) & ( exists Y. ( member(U, Y, V) & ( ( ~ ( Y = X ) ) & ( ( ~ ( Y = W ) ) & ( forall Z. ( member(U, Z, V) => ( ( Z = Y ) | ( ( Z = X ) | ( Z = W ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax42, axiom.
+(( forall U. ( ~ ( exists V. member(U, V, V) ) ) ))
+
+  =>
+
+% co1, conjecture.
+(( ~ ( exists U. ( actual_world(U) & ( exists V W. ( table(U, V) & ( ( forall X. ( member(U, X, W) => ( exists Y. ( ( forall Z. ( member(U, Z, Y) => ( exists X1. ( event(U, X1) & ( agent(U, X1, X) & ( present(U, X1) & ( sit(U, X1) & ( at(U, X1, V) & with(U, X1, Z) ) ) ) ) ) ) ) ) & ( group(U, Y) & ( forall X2. ( member(U, X2, Y) => hamburger(U, X2) ) ) ) ) ) ) ) & ( three(U, W) & ( group(U, W) & ( forall X3. ( member(U, X3, W) => ( guy(U, X3) & young(U, X3) ) ) ) ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

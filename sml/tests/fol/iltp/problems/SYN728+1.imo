@@ -1,0 +1,35 @@
+% File     : SYN728+1 : ILTP v1.1.2
+% Domain   : Syntactic
+% Problem  : Peter Andrews Problem THM69
+% Version  : Especial.
+% English  : 
+% Refs     : [And97] Andrews (1994), Email to G. Sutcliffe
+% Source   : [And97]
+% Names    : THM69 [And97]
+% Status   : Theorem
+% Rating   : 0.00 v2.5.0
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.25 v1.0.0
+%
+% Syntax   : Number of formulae    :    1 (   0 unit)
+%            Number of atoms       :    9 (   0 equality)
+%            Maximal formula depth :    8 (   8 average)
+%            Number of connectives :    9 (   1 ~  ;   1  |;   4  &)
+%                                         (   0 <=>;   3 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    3 (   0 propositional; 1-2 arity)
+%            Number of functors    :    2 (   0 constant; 1-2 arity)
+%            Number of variables   :    8 (   0 singleton;   5 !;   3 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% thm69, conjecture.
+(( ( ( forall X. ( ( exists Y. p(X, Y) ) => ( forall Z. p(Z, Z) ) ) ) & ( ( forall R. ( exists S. ( p(R, S) | ( m(R) & q(f(R, S)) ) ) ) ) & ( forall W. ( q(W) => ( ~ m(g(W)) ) ) ) ) ) => ( forall U. ( exists V. ( p(g(U), V) & p(U, U) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

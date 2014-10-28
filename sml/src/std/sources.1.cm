@@ -1,0 +1,156 @@
+
+Group is
+  $/basis.cm
+  $/smlnj-lib.cm
+  $/regexp-lib.cm
+
+  string.sig
+  string1.sml
+  string2.sml
+
+  either.sig
+  either.sml
+
+  option.sig
+  option.sml
+
+  bool.sig
+  bool.sml
+
+  fun.sig
+  fun.sml
+
+  list.sig
+  list1.sml
+
+  array.sig
+  array1.sml
+
+  vector.sig
+  vector.sml
+
+  pair.sig
+  pair.sml
+
+  ref.sig
+  ref.sml
+
+  real.sig
+  real1.sml
+
+  order.sig
+  order.sml
+
+  textio.sig
+  textio.sml
+
+  os.sml
+
+  pp.sig
+  pp.sml
+  pp-test.sml
+
+  int.sig
+  int1.sml
+
+  word.sig
+  word1.sml
+
+  time.sig
+  time1.sml
+
+  timer.sig
+  timer1.sml
+
+  with-return.sig
+  with-return.sml
+
+  heap.sig
+  heap.fun
+
+  clock.sig
+  clock.sml
+
+  univ.sig
+  univ.sml
+
+  type-class.sig
+  type-class.sml
+
+  hash-table.sig
+  hash-table.sml
+
+  hash-set.sig
+  hash-set.fun
+  hash-set.sml
+
+  deque.sig
+  deque.sml
+
+  lazy.sig
+  lazy.sml
+
+  stream.sig
+  stream.sml
+
+  pos.sig
+  pos.sml
+
+  parsing.sig
+  parsing.sml
+
+  tokens.sig
+  tokens.sml
+
+  command.sig
+  command.sml
+  cmd.sig
+
+  ord-key.sig
+
+  ord-set.sig
+  ord-set.fun
+
+  ord-map.sig
+  ord-map.fun
+
+  fifo.sig
+  fifo.sml
+
+  atom.sml
+
+  timing.sig
+  timing.sml
+
+  unit-test.sig
+  unit-test.sml
+  test.sig
+
+  unicode.sml
+
+  debug.sig
+  debug.sml
+
+  general.sig
+  general.sml
+
+  result.sml
+
+  re.sig
+  re.sml
+
+  log.sig
+  log.sml
+
+  process.sig
+  process.sml
+
+  dlist.sig
+  dlist.sml
+
+  printf.sig
+
+  mlton-nj.sml
+
+  basis1.sml
+

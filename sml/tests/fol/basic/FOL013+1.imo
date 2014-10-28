@@ -1,0 +1,12 @@
+
+% Problem : FOL013+1
+% Status  : NonTheorem
+% Rating  : 0.0
+
+forall X1 X2. 
+exists Y.
+forall Z.
+p(X1,Y) =>  
+p(Z,X1) => 
+p(Z,Y) => 
+( p(X2,Y) | p(X2,Z) )

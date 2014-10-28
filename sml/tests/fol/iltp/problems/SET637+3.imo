@@ -1,0 +1,137 @@
+% File     : SET637+3 : ILTP v1.1.2
+% Domain   : Set Theory (Boolean properties)
+% Problem  : Trybulec's 119th Boolean property of sets
+% Version  : [Try89] axioms : Reduced > Incomplete.
+% English  : 
+% Refs     : [ILF] The ILF Group (1998), The ILF System: A Tool for the Int
+%          : [Try89] Trybulec (1989), Tarski Grothendieck Set Theory
+%          : [TS89]  Trybulec & Swieczkowska (1989), Boolean Properties of
+% Source   : [ILF]
+% Names    : BOOLE (119) [TS89] 
+% Status   : Theorem
+% Rating   : 0.36 v3.1.0, 0.22 v2.7.0, 0.17 v2.6.0, 0.14 v2.5.0, 0.25 v2.4.0, 0.25 v2.3.0, 0.33 v2.2.1
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :    9 (   2 unit)
+%            Number of atoms       :   19 (   3 equality)
+%            Maximal formula depth :    6 (   5 average)
+%            Number of connectives :   13 (   3 ~  ;   0  |;   2  &)
+%                                         (   7 <=>;   1 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    5 (   0 propositional; 1-2 arity)
+%            Number of functors    :    2 (   1 constant; 0-2 arity)
+%            Number of variables   :   20 (   0 singleton;  19 !;   1 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% intersection_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( intersection(A, C) = intersection(B, C) ) ) ))
+
+  =>
+
+% intersection_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( intersection(C, A) = intersection(C, B) ) ) ))
+
+  =>
+
+% empty_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & empty(A) ) => empty(B) ) ))
+
+  =>
+
+% intersect_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & intersect(A, C) ) => intersect(B, C) ) ))
+
+  =>
+
+% intersect_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & intersect(C, A) ) => intersect(C, B) ) ))
+
+  =>
+
+% member_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & member(A, C) ) => member(B, C) ) ))
+
+  =>
+
+% member_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & member(C, A) ) => member(C, B) ) ))
+
+  =>
+
+% not_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & not_equal(A, C) ) => not_equal(B, C) ) ))
+
+  =>
+
+% not_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & not_equal(C, A) ) => not_equal(C, B) ) ))
+
+  =>
+
+% intersection_defn, axiom.
+(( forall B C D. ( member(D, intersection(B, C)) <=> ( member(D, B) & member(D, C) ) ) ))
+
+  =>
+
+% intersect_defn, axiom.
+(( forall B C. ( intersect(B, C) <=> ( exists D. ( member(D, B) & member(D, C) ) ) ) ))
+
+  =>
+
+% empty_set_defn, axiom.
+(( forall B. ( ~ member(B, empty_set) ) ))
+
+  =>
+
+% equal_member_defn, axiom.
+(( forall B C. ( ( B = C ) <=> ( forall D. ( member(D, B) <=> member(D, C) ) ) ) ))
+
+  =>
+
+% not_equal_defn, axiom.
+(( forall B C. ( not_equal(B, C) <=> ( ~ ( B = C ) ) ) ))
+
+  =>
+
+% commutativity_of_intersection, axiom.
+(( forall B C. ( intersection(B, C) = intersection(C, B) ) ))
+
+  =>
+
+% symmetry_of_intersect, axiom.
+(( forall B C. ( intersect(B, C) => intersect(C, B) ) ))
+
+  =>
+
+% empty_defn, axiom.
+(( forall B. ( empty(B) <=> ( forall C. ( ~ member(C, B) ) ) ) ))
+
+  =>
+
+% prove_th119, conjecture.
+(( forall B C. ( intersect(B, C) <=> not_equal(intersection(B, C), empty_set) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

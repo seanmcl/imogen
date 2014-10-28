@@ -1,0 +1,6 @@
+
+% Problem : FOL011+1
+% Status  : Theorem
+% Rating  : 0.0
+
+(forall X Y. p(X,Y)) <=> (forall Y X.  p(Y,X))

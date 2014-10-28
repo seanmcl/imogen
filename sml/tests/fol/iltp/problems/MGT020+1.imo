@@ -1,0 +1,194 @@
+% File     : MGT020+1 : ILTP v1.1.2
+% Domain   : Management (Organisation Theory)
+% Problem  : First movers exceeds efficient producers disbanding rate
+% Version  : [PB+94] axioms.
+% English  : 
+% Refs     : [PM93]  Peli & Masuch (1993), The Logic of Propogation Strateg
+%          : [PM94]  Peli & Masuch (1994), The Logic of Propogation Strateg
+%          : [PB+94] Peli et al. (1994), A Logical Approach to Formalizing
+%          : [Kam95] Kamps (1995), Email to G. Sutcliffe
+% Source   : [Kam95]
+% Names    : LEMMA 2 [PM93]
+%          : L2 [PB+94]
+% Status   : Theorem
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+% Rating (intuit.) : 1.00 v1.1
+%
+% Syntax   : Number of formulae    :   11 (   0 unit)
+%            Number of atoms       :   42 (   1 equality)
+%            Maximal formula depth :   10 (   6 average)
+%            Number of connectives :   33 (   2 ~  ;   1  |;  16  &)
+%                                         (   0 <=>;  14 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    7 (   0 propositional; 1-4 arity)
+%            Number of functors    :    6 (   2 constant; 0-2 arity)
+%            Number of variables   :   26 (   0 singleton;  26 !;   0 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments : Same as version with [PM93] axioms.
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% difference_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(A, C) = difference(B, C) ) ) ))
+
+  =>
+
+% difference_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(C, A) = difference(C, B) ) ) ))
+
+  =>
+
+% disbanding_rate_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( disbanding_rate(A, C) = disbanding_rate(B, C) ) ) ))
+
+  =>
+
+% disbanding_rate_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( disbanding_rate(C, A) = disbanding_rate(C, B) ) ) ))
+
+  =>
+
+% initial_FM_EP_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( initial_FM_EP(A) = initial_FM_EP(B) ) ) ))
+
+  =>
+
+% start_time_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( start_time(A) = start_time(B) ) ) ))
+
+  =>
+
+% decreases_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & decreases(A) ) => decreases(B) ) ))
+
+  =>
+
+% environment_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & environment(A) ) => environment(B) ) ))
+
+  =>
+
+% greater_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(A, C) ) => greater(B, C) ) ))
+
+  =>
+
+% greater_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(C, A) ) => greater(C, B) ) ))
+
+  =>
+
+% greater_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(A, C) ) => greater_or_equal(B, C) ) ))
+
+  =>
+
+% greater_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(C, A) ) => greater_or_equal(C, B) ) ))
+
+  =>
+
+% in_environment_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(A, C) ) => in_environment(B, C) ) ))
+
+  =>
+
+% in_environment_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(C, A) ) => in_environment(C, B) ) ))
+
+  =>
+
+% subpopulations_substitution_1, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(A, C, D, E) ) => subpopulations(B, C, D, E) ) ))
+
+  =>
+
+% subpopulations_substitution_2, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, A, D, E) ) => subpopulations(C, B, D, E) ) ))
+
+  =>
+
+% subpopulations_substitution_3, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, D, A, E) ) => subpopulations(C, D, B, E) ) ))
+
+  =>
+
+% subpopulations_substitution_4, axiom.
+(( forall A B C D E. ( ( ( A = B ) & subpopulations(C, D, E, A) ) => subpopulations(C, D, E, B) ) ))
+
+  =>
+
+% l3, axiom.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => ( ~ decreases(difference(disbanding_rate(first_movers, T), disbanding_rate(efficient_producers, T))) ) ) ))
+
+  =>
+
+% mp_earliest_time_point, axiom.
+(( forall E T. ( environment(E) => ( ( in_environment(E, initial_FM_EP(E)) => subpopulations(first_movers, efficient_producers, E, initial_FM_EP(E)) ) & ( subpopulations(first_movers, efficient_producers, E, T) => greater_or_equal(T, initial_FM_EP(E)) ) ) ) ))
+
+  =>
+
+% mp_positive_function_difference, axiom.
+(( forall E T T1 T2. ( ( environment(E) & ( greater_or_equal(T, T1) & ( greater_or_equal(T2, T) & ( subpopulations(first_movers, efficient_producers, E, T2) & greater(disbanding_rate(first_movers, T1), disbanding_rate(efficient_producers, T1)) ) ) ) ) => ( ( ~ decreases(difference(disbanding_rate(first_movers, T), disbanding_rate(efficient_producers, T))) ) => greater(disbanding_rate(first_movers, T2), disbanding_rate(efficient_producers, T2)) ) ) ))
+
+  =>
+
+% mp_time_point_occurs, axiom.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => in_environment(E, T) ) ))
+
+  =>
+
+% mp_initial_time, axiom.
+(( forall E. ( environment(E) => greater_or_equal(initial_FM_EP(E), start_time(E)) ) ))
+
+  =>
+
+% mp_times_in_order, axiom.
+(( forall E T1 T2. ( ( environment(E) & ( greater_or_equal(T1, start_time(E)) & ( greater(T2, T1) & in_environment(E, T2) ) ) ) => in_environment(E, T1) ) ))
+
+  =>
+
+% mp_greater_transitivity, axiom.
+(( forall X Y Z. ( ( greater(X, Y) & greater(Y, Z) ) => greater(X, Z) ) ))
+
+  =>
+
+% mp_greater_or_equal, axiom.
+(( forall X Y. ( greater_or_equal(X, Y) => ( greater(X, Y) | ( X = Y ) ) ) ))
+
+  =>
+
+% a8, hypothesis.
+(( forall E. ( environment(E) => greater(disbanding_rate(first_movers, initial_FM_EP(E)), disbanding_rate(efficient_producers, initial_FM_EP(E))) ) ))
+
+  =>
+
+% a10, hypothesis.
+(( forall E T1 T2 T. ( ( environment(E) & ( subpopulations(first_movers, efficient_producers, E, T1) & ( subpopulations(first_movers, efficient_producers, E, T2) & ( greater_or_equal(T, T1) & greater_or_equal(T2, T) ) ) ) ) => subpopulations(first_movers, efficient_producers, E, T) ) ))
+
+  =>
+
+% prove_l2, conjecture.
+(( forall E T. ( ( environment(E) & subpopulations(first_movers, efficient_producers, E, T) ) => greater(disbanding_rate(first_movers, T), disbanding_rate(efficient_producers, T)) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

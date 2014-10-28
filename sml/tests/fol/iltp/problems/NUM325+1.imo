@@ -1,0 +1,2200 @@
+% File     : NUM325+1 : ILTP v1.1.2
+% Domain   : Number Theory (RDN arithmetic)
+% Problem  : ? + -2 = 3
+% Version  : Especial.
+% English  : 
+% Refs     : 
+% Source   : [TPTP]
+% Names    : 
+% Status   : Theorem
+% Rating   : 0.82 v3.1.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :  402 ( 375 unit)
+%            Number of atoms       :  473 (   5 equality)
+%            Maximal formula depth :   19 (   1 average)
+%            Number of connectives :   73 (   2 ~  ;   1  |;  43  &)
+%                                         (   3 <=>;  24 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   11 (   0 propositional; 1-4 arity)
+%            Number of functors    :  260 ( 256 constant; 0-2 arity)
+%            Number of variables   :  122 (   0 singleton; 121 !;   1 ?)
+%            Maximal term depth    :    5 (   2 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% rdn_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( rdn(A, C) = rdn(B, C) ) ) ))
+
+  =>
+
+% rdn_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( rdn(C, A) = rdn(C, B) ) ) ))
+
+  =>
+
+% rdn_neg_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( rdn_neg(A) = rdn_neg(B) ) ) ))
+
+  =>
+
+% rdn_pos_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( rdn_pos(A) = rdn_pos(B) ) ) ))
+
+  =>
+
+% rdnn_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( rdnn(A) = rdnn(B) ) ) ))
+
+  =>
+
+% difference_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & difference(A, C, D) ) => difference(B, C, D) ) ))
+
+  =>
+
+% difference_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & difference(C, A, D) ) => difference(C, B, D) ) ))
+
+  =>
+
+% difference_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & difference(C, D, A) ) => difference(C, D, B) ) ))
+
+  =>
+
+% less_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & less(A, C) ) => less(B, C) ) ))
+
+  =>
+
+% less_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & less(C, A) ) => less(C, B) ) ))
+
+  =>
+
+% less_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & less_or_equal(A, C) ) => less_or_equal(B, C) ) ))
+
+  =>
+
+% less_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & less_or_equal(C, A) ) => less_or_equal(C, B) ) ))
+
+  =>
+
+% rdn_add_with_carry_substitution_1, axiom.
+(( forall A B C D E. ( ( ( A = B ) & rdn_add_with_carry(A, C, D, E) ) => rdn_add_with_carry(B, C, D, E) ) ))
+
+  =>
+
+% rdn_add_with_carry_substitution_2, axiom.
+(( forall A B C D E. ( ( ( A = B ) & rdn_add_with_carry(C, A, D, E) ) => rdn_add_with_carry(C, B, D, E) ) ))
+
+  =>
+
+% rdn_add_with_carry_substitution_3, axiom.
+(( forall A B C D E. ( ( ( A = B ) & rdn_add_with_carry(C, D, A, E) ) => rdn_add_with_carry(C, D, B, E) ) ))
+
+  =>
+
+% rdn_add_with_carry_substitution_4, axiom.
+(( forall A B C D E. ( ( ( A = B ) & rdn_add_with_carry(C, D, E, A) ) => rdn_add_with_carry(C, D, E, B) ) ))
+
+  =>
+
+% rdn_digit_add_substitution_1, axiom.
+(( forall A B C D E. ( ( ( A = B ) & rdn_digit_add(A, C, D, E) ) => rdn_digit_add(B, C, D, E) ) ))
+
+  =>
+
+% rdn_digit_add_substitution_2, axiom.
+(( forall A B C D E. ( ( ( A = B ) & rdn_digit_add(C, A, D, E) ) => rdn_digit_add(C, B, D, E) ) ))
+
+  =>
+
+% rdn_digit_add_substitution_3, axiom.
+(( forall A B C D E. ( ( ( A = B ) & rdn_digit_add(C, D, A, E) ) => rdn_digit_add(C, D, B, E) ) ))
+
+  =>
+
+% rdn_digit_add_substitution_4, axiom.
+(( forall A B C D E. ( ( ( A = B ) & rdn_digit_add(C, D, E, A) ) => rdn_digit_add(C, D, E, B) ) ))
+
+  =>
+
+% rdn_non_zero_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & rdn_non_zero(A) ) => rdn_non_zero(B) ) ))
+
+  =>
+
+% rdn_non_zero_digit_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & rdn_non_zero_digit(A) ) => rdn_non_zero_digit(B) ) ))
+
+  =>
+
+% rdn_positive_less_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rdn_positive_less(A, C) ) => rdn_positive_less(B, C) ) ))
+
+  =>
+
+% rdn_positive_less_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rdn_positive_less(C, A) ) => rdn_positive_less(C, B) ) ))
+
+  =>
+
+% rdn_translate_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rdn_translate(A, C) ) => rdn_translate(B, C) ) ))
+
+  =>
+
+% rdn_translate_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rdn_translate(C, A) ) => rdn_translate(C, B) ) ))
+
+  =>
+
+% sum_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & sum(A, C, D) ) => sum(B, C, D) ) ))
+
+  =>
+
+% sum_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & sum(C, A, D) ) => sum(C, B, D) ) ))
+
+  =>
+
+% sum_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & sum(C, D, A) ) => sum(C, D, B) ) ))
+
+  =>
+
+% rdn0, axiom.
+(rdn_translate(n0, rdn_pos(rdnn(n0))))
+
+  =>
+
+% rdn1, axiom.
+(rdn_translate(n1, rdn_pos(rdnn(n1))))
+
+  =>
+
+% rdn2, axiom.
+(rdn_translate(n2, rdn_pos(rdnn(n2))))
+
+  =>
+
+% rdn3, axiom.
+(rdn_translate(n3, rdn_pos(rdnn(n3))))
+
+  =>
+
+% rdn4, axiom.
+(rdn_translate(n4, rdn_pos(rdnn(n4))))
+
+  =>
+
+% rdn5, axiom.
+(rdn_translate(n5, rdn_pos(rdnn(n5))))
+
+  =>
+
+% rdn6, axiom.
+(rdn_translate(n6, rdn_pos(rdnn(n6))))
+
+  =>
+
+% rdn7, axiom.
+(rdn_translate(n7, rdn_pos(rdnn(n7))))
+
+  =>
+
+% rdn8, axiom.
+(rdn_translate(n8, rdn_pos(rdnn(n8))))
+
+  =>
+
+% rdn9, axiom.
+(rdn_translate(n9, rdn_pos(rdnn(n9))))
+
+  =>
+
+% rdn10, axiom.
+(rdn_translate(n10, rdn_pos(rdn(rdnn(n0), rdnn(n1)))))
+
+  =>
+
+% rdn11, axiom.
+(rdn_translate(n11, rdn_pos(rdn(rdnn(n1), rdnn(n1)))))
+
+  =>
+
+% rdn12, axiom.
+(rdn_translate(n12, rdn_pos(rdn(rdnn(n2), rdnn(n1)))))
+
+  =>
+
+% rdn13, axiom.
+(rdn_translate(n13, rdn_pos(rdn(rdnn(n3), rdnn(n1)))))
+
+  =>
+
+% rdn14, axiom.
+(rdn_translate(n14, rdn_pos(rdn(rdnn(n4), rdnn(n1)))))
+
+  =>
+
+% rdn15, axiom.
+(rdn_translate(n15, rdn_pos(rdn(rdnn(n5), rdnn(n1)))))
+
+  =>
+
+% rdn16, axiom.
+(rdn_translate(n16, rdn_pos(rdn(rdnn(n6), rdnn(n1)))))
+
+  =>
+
+% rdn17, axiom.
+(rdn_translate(n17, rdn_pos(rdn(rdnn(n7), rdnn(n1)))))
+
+  =>
+
+% rdn18, axiom.
+(rdn_translate(n18, rdn_pos(rdn(rdnn(n8), rdnn(n1)))))
+
+  =>
+
+% rdn19, axiom.
+(rdn_translate(n19, rdn_pos(rdn(rdnn(n9), rdnn(n1)))))
+
+  =>
+
+% rdn20, axiom.
+(rdn_translate(n20, rdn_pos(rdn(rdnn(n0), rdnn(n2)))))
+
+  =>
+
+% rdn21, axiom.
+(rdn_translate(n21, rdn_pos(rdn(rdnn(n1), rdnn(n2)))))
+
+  =>
+
+% rdn22, axiom.
+(rdn_translate(n22, rdn_pos(rdn(rdnn(n2), rdnn(n2)))))
+
+  =>
+
+% rdn23, axiom.
+(rdn_translate(n23, rdn_pos(rdn(rdnn(n3), rdnn(n2)))))
+
+  =>
+
+% rdn24, axiom.
+(rdn_translate(n24, rdn_pos(rdn(rdnn(n4), rdnn(n2)))))
+
+  =>
+
+% rdn25, axiom.
+(rdn_translate(n25, rdn_pos(rdn(rdnn(n5), rdnn(n2)))))
+
+  =>
+
+% rdn26, axiom.
+(rdn_translate(n26, rdn_pos(rdn(rdnn(n6), rdnn(n2)))))
+
+  =>
+
+% rdn27, axiom.
+(rdn_translate(n27, rdn_pos(rdn(rdnn(n7), rdnn(n2)))))
+
+  =>
+
+% rdn28, axiom.
+(rdn_translate(n28, rdn_pos(rdn(rdnn(n8), rdnn(n2)))))
+
+  =>
+
+% rdn29, axiom.
+(rdn_translate(n29, rdn_pos(rdn(rdnn(n9), rdnn(n2)))))
+
+  =>
+
+% rdn30, axiom.
+(rdn_translate(n30, rdn_pos(rdn(rdnn(n0), rdnn(n3)))))
+
+  =>
+
+% rdn31, axiom.
+(rdn_translate(n31, rdn_pos(rdn(rdnn(n1), rdnn(n3)))))
+
+  =>
+
+% rdn32, axiom.
+(rdn_translate(n32, rdn_pos(rdn(rdnn(n2), rdnn(n3)))))
+
+  =>
+
+% rdn33, axiom.
+(rdn_translate(n33, rdn_pos(rdn(rdnn(n3), rdnn(n3)))))
+
+  =>
+
+% rdn34, axiom.
+(rdn_translate(n34, rdn_pos(rdn(rdnn(n4), rdnn(n3)))))
+
+  =>
+
+% rdn35, axiom.
+(rdn_translate(n35, rdn_pos(rdn(rdnn(n5), rdnn(n3)))))
+
+  =>
+
+% rdn36, axiom.
+(rdn_translate(n36, rdn_pos(rdn(rdnn(n6), rdnn(n3)))))
+
+  =>
+
+% rdn37, axiom.
+(rdn_translate(n37, rdn_pos(rdn(rdnn(n7), rdnn(n3)))))
+
+  =>
+
+% rdn38, axiom.
+(rdn_translate(n38, rdn_pos(rdn(rdnn(n8), rdnn(n3)))))
+
+  =>
+
+% rdn39, axiom.
+(rdn_translate(n39, rdn_pos(rdn(rdnn(n9), rdnn(n3)))))
+
+  =>
+
+% rdn40, axiom.
+(rdn_translate(n40, rdn_pos(rdn(rdnn(n0), rdnn(n4)))))
+
+  =>
+
+% rdn41, axiom.
+(rdn_translate(n41, rdn_pos(rdn(rdnn(n1), rdnn(n4)))))
+
+  =>
+
+% rdn42, axiom.
+(rdn_translate(n42, rdn_pos(rdn(rdnn(n2), rdnn(n4)))))
+
+  =>
+
+% rdn43, axiom.
+(rdn_translate(n43, rdn_pos(rdn(rdnn(n3), rdnn(n4)))))
+
+  =>
+
+% rdn44, axiom.
+(rdn_translate(n44, rdn_pos(rdn(rdnn(n4), rdnn(n4)))))
+
+  =>
+
+% rdn45, axiom.
+(rdn_translate(n45, rdn_pos(rdn(rdnn(n5), rdnn(n4)))))
+
+  =>
+
+% rdn46, axiom.
+(rdn_translate(n46, rdn_pos(rdn(rdnn(n6), rdnn(n4)))))
+
+  =>
+
+% rdn47, axiom.
+(rdn_translate(n47, rdn_pos(rdn(rdnn(n7), rdnn(n4)))))
+
+  =>
+
+% rdn48, axiom.
+(rdn_translate(n48, rdn_pos(rdn(rdnn(n8), rdnn(n4)))))
+
+  =>
+
+% rdn49, axiom.
+(rdn_translate(n49, rdn_pos(rdn(rdnn(n9), rdnn(n4)))))
+
+  =>
+
+% rdn50, axiom.
+(rdn_translate(n50, rdn_pos(rdn(rdnn(n0), rdnn(n5)))))
+
+  =>
+
+% rdn51, axiom.
+(rdn_translate(n51, rdn_pos(rdn(rdnn(n1), rdnn(n5)))))
+
+  =>
+
+% rdn52, axiom.
+(rdn_translate(n52, rdn_pos(rdn(rdnn(n2), rdnn(n5)))))
+
+  =>
+
+% rdn53, axiom.
+(rdn_translate(n53, rdn_pos(rdn(rdnn(n3), rdnn(n5)))))
+
+  =>
+
+% rdn54, axiom.
+(rdn_translate(n54, rdn_pos(rdn(rdnn(n4), rdnn(n5)))))
+
+  =>
+
+% rdn55, axiom.
+(rdn_translate(n55, rdn_pos(rdn(rdnn(n5), rdnn(n5)))))
+
+  =>
+
+% rdn56, axiom.
+(rdn_translate(n56, rdn_pos(rdn(rdnn(n6), rdnn(n5)))))
+
+  =>
+
+% rdn57, axiom.
+(rdn_translate(n57, rdn_pos(rdn(rdnn(n7), rdnn(n5)))))
+
+  =>
+
+% rdn58, axiom.
+(rdn_translate(n58, rdn_pos(rdn(rdnn(n8), rdnn(n5)))))
+
+  =>
+
+% rdn59, axiom.
+(rdn_translate(n59, rdn_pos(rdn(rdnn(n9), rdnn(n5)))))
+
+  =>
+
+% rdn60, axiom.
+(rdn_translate(n60, rdn_pos(rdn(rdnn(n0), rdnn(n6)))))
+
+  =>
+
+% rdn61, axiom.
+(rdn_translate(n61, rdn_pos(rdn(rdnn(n1), rdnn(n6)))))
+
+  =>
+
+% rdn62, axiom.
+(rdn_translate(n62, rdn_pos(rdn(rdnn(n2), rdnn(n6)))))
+
+  =>
+
+% rdn63, axiom.
+(rdn_translate(n63, rdn_pos(rdn(rdnn(n3), rdnn(n6)))))
+
+  =>
+
+% rdn64, axiom.
+(rdn_translate(n64, rdn_pos(rdn(rdnn(n4), rdnn(n6)))))
+
+  =>
+
+% rdn65, axiom.
+(rdn_translate(n65, rdn_pos(rdn(rdnn(n5), rdnn(n6)))))
+
+  =>
+
+% rdn66, axiom.
+(rdn_translate(n66, rdn_pos(rdn(rdnn(n6), rdnn(n6)))))
+
+  =>
+
+% rdn67, axiom.
+(rdn_translate(n67, rdn_pos(rdn(rdnn(n7), rdnn(n6)))))
+
+  =>
+
+% rdn68, axiom.
+(rdn_translate(n68, rdn_pos(rdn(rdnn(n8), rdnn(n6)))))
+
+  =>
+
+% rdn69, axiom.
+(rdn_translate(n69, rdn_pos(rdn(rdnn(n9), rdnn(n6)))))
+
+  =>
+
+% rdn70, axiom.
+(rdn_translate(n70, rdn_pos(rdn(rdnn(n0), rdnn(n7)))))
+
+  =>
+
+% rdn71, axiom.
+(rdn_translate(n71, rdn_pos(rdn(rdnn(n1), rdnn(n7)))))
+
+  =>
+
+% rdn72, axiom.
+(rdn_translate(n72, rdn_pos(rdn(rdnn(n2), rdnn(n7)))))
+
+  =>
+
+% rdn73, axiom.
+(rdn_translate(n73, rdn_pos(rdn(rdnn(n3), rdnn(n7)))))
+
+  =>
+
+% rdn74, axiom.
+(rdn_translate(n74, rdn_pos(rdn(rdnn(n4), rdnn(n7)))))
+
+  =>
+
+% rdn75, axiom.
+(rdn_translate(n75, rdn_pos(rdn(rdnn(n5), rdnn(n7)))))
+
+  =>
+
+% rdn76, axiom.
+(rdn_translate(n76, rdn_pos(rdn(rdnn(n6), rdnn(n7)))))
+
+  =>
+
+% rdn77, axiom.
+(rdn_translate(n77, rdn_pos(rdn(rdnn(n7), rdnn(n7)))))
+
+  =>
+
+% rdn78, axiom.
+(rdn_translate(n78, rdn_pos(rdn(rdnn(n8), rdnn(n7)))))
+
+  =>
+
+% rdn79, axiom.
+(rdn_translate(n79, rdn_pos(rdn(rdnn(n9), rdnn(n7)))))
+
+  =>
+
+% rdn80, axiom.
+(rdn_translate(n80, rdn_pos(rdn(rdnn(n0), rdnn(n8)))))
+
+  =>
+
+% rdn81, axiom.
+(rdn_translate(n81, rdn_pos(rdn(rdnn(n1), rdnn(n8)))))
+
+  =>
+
+% rdn82, axiom.
+(rdn_translate(n82, rdn_pos(rdn(rdnn(n2), rdnn(n8)))))
+
+  =>
+
+% rdn83, axiom.
+(rdn_translate(n83, rdn_pos(rdn(rdnn(n3), rdnn(n8)))))
+
+  =>
+
+% rdn84, axiom.
+(rdn_translate(n84, rdn_pos(rdn(rdnn(n4), rdnn(n8)))))
+
+  =>
+
+% rdn85, axiom.
+(rdn_translate(n85, rdn_pos(rdn(rdnn(n5), rdnn(n8)))))
+
+  =>
+
+% rdn86, axiom.
+(rdn_translate(n86, rdn_pos(rdn(rdnn(n6), rdnn(n8)))))
+
+  =>
+
+% rdn87, axiom.
+(rdn_translate(n87, rdn_pos(rdn(rdnn(n7), rdnn(n8)))))
+
+  =>
+
+% rdn88, axiom.
+(rdn_translate(n88, rdn_pos(rdn(rdnn(n8), rdnn(n8)))))
+
+  =>
+
+% rdn89, axiom.
+(rdn_translate(n89, rdn_pos(rdn(rdnn(n9), rdnn(n8)))))
+
+  =>
+
+% rdn90, axiom.
+(rdn_translate(n90, rdn_pos(rdn(rdnn(n0), rdnn(n9)))))
+
+  =>
+
+% rdn91, axiom.
+(rdn_translate(n91, rdn_pos(rdn(rdnn(n1), rdnn(n9)))))
+
+  =>
+
+% rdn92, axiom.
+(rdn_translate(n92, rdn_pos(rdn(rdnn(n2), rdnn(n9)))))
+
+  =>
+
+% rdn93, axiom.
+(rdn_translate(n93, rdn_pos(rdn(rdnn(n3), rdnn(n9)))))
+
+  =>
+
+% rdn94, axiom.
+(rdn_translate(n94, rdn_pos(rdn(rdnn(n4), rdnn(n9)))))
+
+  =>
+
+% rdn95, axiom.
+(rdn_translate(n95, rdn_pos(rdn(rdnn(n5), rdnn(n9)))))
+
+  =>
+
+% rdn96, axiom.
+(rdn_translate(n96, rdn_pos(rdn(rdnn(n6), rdnn(n9)))))
+
+  =>
+
+% rdn97, axiom.
+(rdn_translate(n97, rdn_pos(rdn(rdnn(n7), rdnn(n9)))))
+
+  =>
+
+% rdn98, axiom.
+(rdn_translate(n98, rdn_pos(rdn(rdnn(n8), rdnn(n9)))))
+
+  =>
+
+% rdn99, axiom.
+(rdn_translate(n99, rdn_pos(rdn(rdnn(n9), rdnn(n9)))))
+
+  =>
+
+% rdn100, axiom.
+(rdn_translate(n100, rdn_pos(rdn(rdnn(n0), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn101, axiom.
+(rdn_translate(n101, rdn_pos(rdn(rdnn(n1), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn102, axiom.
+(rdn_translate(n102, rdn_pos(rdn(rdnn(n2), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn103, axiom.
+(rdn_translate(n103, rdn_pos(rdn(rdnn(n3), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn104, axiom.
+(rdn_translate(n104, rdn_pos(rdn(rdnn(n4), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn105, axiom.
+(rdn_translate(n105, rdn_pos(rdn(rdnn(n5), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn106, axiom.
+(rdn_translate(n106, rdn_pos(rdn(rdnn(n6), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn107, axiom.
+(rdn_translate(n107, rdn_pos(rdn(rdnn(n7), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn108, axiom.
+(rdn_translate(n108, rdn_pos(rdn(rdnn(n8), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn109, axiom.
+(rdn_translate(n109, rdn_pos(rdn(rdnn(n9), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn110, axiom.
+(rdn_translate(n110, rdn_pos(rdn(rdnn(n0), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn111, axiom.
+(rdn_translate(n111, rdn_pos(rdn(rdnn(n1), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn112, axiom.
+(rdn_translate(n112, rdn_pos(rdn(rdnn(n2), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn113, axiom.
+(rdn_translate(n113, rdn_pos(rdn(rdnn(n3), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn114, axiom.
+(rdn_translate(n114, rdn_pos(rdn(rdnn(n4), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn115, axiom.
+(rdn_translate(n115, rdn_pos(rdn(rdnn(n5), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn116, axiom.
+(rdn_translate(n116, rdn_pos(rdn(rdnn(n6), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn117, axiom.
+(rdn_translate(n117, rdn_pos(rdn(rdnn(n7), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn118, axiom.
+(rdn_translate(n118, rdn_pos(rdn(rdnn(n8), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn119, axiom.
+(rdn_translate(n119, rdn_pos(rdn(rdnn(n9), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn120, axiom.
+(rdn_translate(n120, rdn_pos(rdn(rdnn(n0), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn121, axiom.
+(rdn_translate(n121, rdn_pos(rdn(rdnn(n1), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn122, axiom.
+(rdn_translate(n122, rdn_pos(rdn(rdnn(n2), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn123, axiom.
+(rdn_translate(n123, rdn_pos(rdn(rdnn(n3), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn124, axiom.
+(rdn_translate(n124, rdn_pos(rdn(rdnn(n4), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn125, axiom.
+(rdn_translate(n125, rdn_pos(rdn(rdnn(n5), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn126, axiom.
+(rdn_translate(n126, rdn_pos(rdn(rdnn(n6), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn127, axiom.
+(rdn_translate(n127, rdn_pos(rdn(rdnn(n7), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn1, axiom.
+(rdn_translate(nn1, rdn_neg(rdnn(n1))))
+
+  =>
+
+% rdnn2, axiom.
+(rdn_translate(nn2, rdn_neg(rdnn(n2))))
+
+  =>
+
+% rdnn3, axiom.
+(rdn_translate(nn3, rdn_neg(rdnn(n3))))
+
+  =>
+
+% rdnn4, axiom.
+(rdn_translate(nn4, rdn_neg(rdnn(n4))))
+
+  =>
+
+% rdnn5, axiom.
+(rdn_translate(nn5, rdn_neg(rdnn(n5))))
+
+  =>
+
+% rdnn6, axiom.
+(rdn_translate(nn6, rdn_neg(rdnn(n6))))
+
+  =>
+
+% rdnn7, axiom.
+(rdn_translate(nn7, rdn_neg(rdnn(n7))))
+
+  =>
+
+% rdnn8, axiom.
+(rdn_translate(nn8, rdn_neg(rdnn(n8))))
+
+  =>
+
+% rdnn9, axiom.
+(rdn_translate(nn9, rdn_neg(rdnn(n9))))
+
+  =>
+
+% rdnn10, axiom.
+(rdn_translate(nn10, rdn_neg(rdn(rdnn(n0), rdnn(n1)))))
+
+  =>
+
+% rdnn11, axiom.
+(rdn_translate(nn11, rdn_neg(rdn(rdnn(n1), rdnn(n1)))))
+
+  =>
+
+% rdnn12, axiom.
+(rdn_translate(nn12, rdn_neg(rdn(rdnn(n2), rdnn(n1)))))
+
+  =>
+
+% rdnn13, axiom.
+(rdn_translate(nn13, rdn_neg(rdn(rdnn(n3), rdnn(n1)))))
+
+  =>
+
+% rdnn14, axiom.
+(rdn_translate(nn14, rdn_neg(rdn(rdnn(n4), rdnn(n1)))))
+
+  =>
+
+% rdnn15, axiom.
+(rdn_translate(nn15, rdn_neg(rdn(rdnn(n5), rdnn(n1)))))
+
+  =>
+
+% rdnn16, axiom.
+(rdn_translate(nn16, rdn_neg(rdn(rdnn(n6), rdnn(n1)))))
+
+  =>
+
+% rdnn17, axiom.
+(rdn_translate(nn17, rdn_neg(rdn(rdnn(n7), rdnn(n1)))))
+
+  =>
+
+% rdnn18, axiom.
+(rdn_translate(nn18, rdn_neg(rdn(rdnn(n8), rdnn(n1)))))
+
+  =>
+
+% rdnn19, axiom.
+(rdn_translate(nn19, rdn_neg(rdn(rdnn(n9), rdnn(n1)))))
+
+  =>
+
+% rdnn20, axiom.
+(rdn_translate(nn20, rdn_neg(rdn(rdnn(n0), rdnn(n2)))))
+
+  =>
+
+% rdnn21, axiom.
+(rdn_translate(nn21, rdn_neg(rdn(rdnn(n1), rdnn(n2)))))
+
+  =>
+
+% rdnn22, axiom.
+(rdn_translate(nn22, rdn_neg(rdn(rdnn(n2), rdnn(n2)))))
+
+  =>
+
+% rdnn23, axiom.
+(rdn_translate(nn23, rdn_neg(rdn(rdnn(n3), rdnn(n2)))))
+
+  =>
+
+% rdnn24, axiom.
+(rdn_translate(nn24, rdn_neg(rdn(rdnn(n4), rdnn(n2)))))
+
+  =>
+
+% rdnn25, axiom.
+(rdn_translate(nn25, rdn_neg(rdn(rdnn(n5), rdnn(n2)))))
+
+  =>
+
+% rdnn26, axiom.
+(rdn_translate(nn26, rdn_neg(rdn(rdnn(n6), rdnn(n2)))))
+
+  =>
+
+% rdnn27, axiom.
+(rdn_translate(nn27, rdn_neg(rdn(rdnn(n7), rdnn(n2)))))
+
+  =>
+
+% rdnn28, axiom.
+(rdn_translate(nn28, rdn_neg(rdn(rdnn(n8), rdnn(n2)))))
+
+  =>
+
+% rdnn29, axiom.
+(rdn_translate(nn29, rdn_neg(rdn(rdnn(n9), rdnn(n2)))))
+
+  =>
+
+% rdnn30, axiom.
+(rdn_translate(nn30, rdn_neg(rdn(rdnn(n0), rdnn(n3)))))
+
+  =>
+
+% rdnn31, axiom.
+(rdn_translate(nn31, rdn_neg(rdn(rdnn(n1), rdnn(n3)))))
+
+  =>
+
+% rdnn32, axiom.
+(rdn_translate(nn32, rdn_neg(rdn(rdnn(n2), rdnn(n3)))))
+
+  =>
+
+% rdnn33, axiom.
+(rdn_translate(nn33, rdn_neg(rdn(rdnn(n3), rdnn(n3)))))
+
+  =>
+
+% rdnn34, axiom.
+(rdn_translate(nn34, rdn_neg(rdn(rdnn(n4), rdnn(n3)))))
+
+  =>
+
+% rdnn35, axiom.
+(rdn_translate(nn35, rdn_neg(rdn(rdnn(n5), rdnn(n3)))))
+
+  =>
+
+% rdnn36, axiom.
+(rdn_translate(nn36, rdn_neg(rdn(rdnn(n6), rdnn(n3)))))
+
+  =>
+
+% rdnn37, axiom.
+(rdn_translate(nn37, rdn_neg(rdn(rdnn(n7), rdnn(n3)))))
+
+  =>
+
+% rdnn38, axiom.
+(rdn_translate(nn38, rdn_neg(rdn(rdnn(n8), rdnn(n3)))))
+
+  =>
+
+% rdnn39, axiom.
+(rdn_translate(nn39, rdn_neg(rdn(rdnn(n9), rdnn(n3)))))
+
+  =>
+
+% rdnn40, axiom.
+(rdn_translate(nn40, rdn_neg(rdn(rdnn(n0), rdnn(n4)))))
+
+  =>
+
+% rdnn41, axiom.
+(rdn_translate(nn41, rdn_neg(rdn(rdnn(n1), rdnn(n4)))))
+
+  =>
+
+% rdnn42, axiom.
+(rdn_translate(nn42, rdn_neg(rdn(rdnn(n2), rdnn(n4)))))
+
+  =>
+
+% rdnn43, axiom.
+(rdn_translate(nn43, rdn_neg(rdn(rdnn(n3), rdnn(n4)))))
+
+  =>
+
+% rdnn44, axiom.
+(rdn_translate(nn44, rdn_neg(rdn(rdnn(n4), rdnn(n4)))))
+
+  =>
+
+% rdnn45, axiom.
+(rdn_translate(nn45, rdn_neg(rdn(rdnn(n5), rdnn(n4)))))
+
+  =>
+
+% rdnn46, axiom.
+(rdn_translate(nn46, rdn_neg(rdn(rdnn(n6), rdnn(n4)))))
+
+  =>
+
+% rdnn47, axiom.
+(rdn_translate(nn47, rdn_neg(rdn(rdnn(n7), rdnn(n4)))))
+
+  =>
+
+% rdnn48, axiom.
+(rdn_translate(nn48, rdn_neg(rdn(rdnn(n8), rdnn(n4)))))
+
+  =>
+
+% rdnn49, axiom.
+(rdn_translate(nn49, rdn_neg(rdn(rdnn(n9), rdnn(n4)))))
+
+  =>
+
+% rdnn50, axiom.
+(rdn_translate(nn50, rdn_neg(rdn(rdnn(n0), rdnn(n5)))))
+
+  =>
+
+% rdnn51, axiom.
+(rdn_translate(nn51, rdn_neg(rdn(rdnn(n1), rdnn(n5)))))
+
+  =>
+
+% rdnn52, axiom.
+(rdn_translate(nn52, rdn_neg(rdn(rdnn(n2), rdnn(n5)))))
+
+  =>
+
+% rdnn53, axiom.
+(rdn_translate(nn53, rdn_neg(rdn(rdnn(n3), rdnn(n5)))))
+
+  =>
+
+% rdnn54, axiom.
+(rdn_translate(nn54, rdn_neg(rdn(rdnn(n4), rdnn(n5)))))
+
+  =>
+
+% rdnn55, axiom.
+(rdn_translate(nn55, rdn_neg(rdn(rdnn(n5), rdnn(n5)))))
+
+  =>
+
+% rdnn56, axiom.
+(rdn_translate(nn56, rdn_neg(rdn(rdnn(n6), rdnn(n5)))))
+
+  =>
+
+% rdnn57, axiom.
+(rdn_translate(nn57, rdn_neg(rdn(rdnn(n7), rdnn(n5)))))
+
+  =>
+
+% rdnn58, axiom.
+(rdn_translate(nn58, rdn_neg(rdn(rdnn(n8), rdnn(n5)))))
+
+  =>
+
+% rdnn59, axiom.
+(rdn_translate(nn59, rdn_neg(rdn(rdnn(n9), rdnn(n5)))))
+
+  =>
+
+% rdnn60, axiom.
+(rdn_translate(nn60, rdn_neg(rdn(rdnn(n0), rdnn(n6)))))
+
+  =>
+
+% rdnn61, axiom.
+(rdn_translate(nn61, rdn_neg(rdn(rdnn(n1), rdnn(n6)))))
+
+  =>
+
+% rdnn62, axiom.
+(rdn_translate(nn62, rdn_neg(rdn(rdnn(n2), rdnn(n6)))))
+
+  =>
+
+% rdnn63, axiom.
+(rdn_translate(nn63, rdn_neg(rdn(rdnn(n3), rdnn(n6)))))
+
+  =>
+
+% rdnn64, axiom.
+(rdn_translate(nn64, rdn_neg(rdn(rdnn(n4), rdnn(n6)))))
+
+  =>
+
+% rdnn65, axiom.
+(rdn_translate(nn65, rdn_neg(rdn(rdnn(n5), rdnn(n6)))))
+
+  =>
+
+% rdnn66, axiom.
+(rdn_translate(nn66, rdn_neg(rdn(rdnn(n6), rdnn(n6)))))
+
+  =>
+
+% rdnn67, axiom.
+(rdn_translate(nn67, rdn_neg(rdn(rdnn(n7), rdnn(n6)))))
+
+  =>
+
+% rdnn68, axiom.
+(rdn_translate(nn68, rdn_neg(rdn(rdnn(n8), rdnn(n6)))))
+
+  =>
+
+% rdnn69, axiom.
+(rdn_translate(nn69, rdn_neg(rdn(rdnn(n9), rdnn(n6)))))
+
+  =>
+
+% rdnn70, axiom.
+(rdn_translate(nn70, rdn_neg(rdn(rdnn(n0), rdnn(n7)))))
+
+  =>
+
+% rdnn71, axiom.
+(rdn_translate(nn71, rdn_neg(rdn(rdnn(n1), rdnn(n7)))))
+
+  =>
+
+% rdnn72, axiom.
+(rdn_translate(nn72, rdn_neg(rdn(rdnn(n2), rdnn(n7)))))
+
+  =>
+
+% rdnn73, axiom.
+(rdn_translate(nn73, rdn_neg(rdn(rdnn(n3), rdnn(n7)))))
+
+  =>
+
+% rdnn74, axiom.
+(rdn_translate(nn74, rdn_neg(rdn(rdnn(n4), rdnn(n7)))))
+
+  =>
+
+% rdnn75, axiom.
+(rdn_translate(nn75, rdn_neg(rdn(rdnn(n5), rdnn(n7)))))
+
+  =>
+
+% rdnn76, axiom.
+(rdn_translate(nn76, rdn_neg(rdn(rdnn(n6), rdnn(n7)))))
+
+  =>
+
+% rdnn77, axiom.
+(rdn_translate(nn77, rdn_neg(rdn(rdnn(n7), rdnn(n7)))))
+
+  =>
+
+% rdnn78, axiom.
+(rdn_translate(nn78, rdn_neg(rdn(rdnn(n8), rdnn(n7)))))
+
+  =>
+
+% rdnn79, axiom.
+(rdn_translate(nn79, rdn_neg(rdn(rdnn(n9), rdnn(n7)))))
+
+  =>
+
+% rdnn80, axiom.
+(rdn_translate(nn80, rdn_neg(rdn(rdnn(n0), rdnn(n8)))))
+
+  =>
+
+% rdnn81, axiom.
+(rdn_translate(nn81, rdn_neg(rdn(rdnn(n1), rdnn(n8)))))
+
+  =>
+
+% rdnn82, axiom.
+(rdn_translate(nn82, rdn_neg(rdn(rdnn(n2), rdnn(n8)))))
+
+  =>
+
+% rdnn83, axiom.
+(rdn_translate(nn83, rdn_neg(rdn(rdnn(n3), rdnn(n8)))))
+
+  =>
+
+% rdnn84, axiom.
+(rdn_translate(nn84, rdn_neg(rdn(rdnn(n4), rdnn(n8)))))
+
+  =>
+
+% rdnn85, axiom.
+(rdn_translate(nn85, rdn_neg(rdn(rdnn(n5), rdnn(n8)))))
+
+  =>
+
+% rdnn86, axiom.
+(rdn_translate(nn86, rdn_neg(rdn(rdnn(n6), rdnn(n8)))))
+
+  =>
+
+% rdnn87, axiom.
+(rdn_translate(nn87, rdn_neg(rdn(rdnn(n7), rdnn(n8)))))
+
+  =>
+
+% rdnn88, axiom.
+(rdn_translate(nn88, rdn_neg(rdn(rdnn(n8), rdnn(n8)))))
+
+  =>
+
+% rdnn89, axiom.
+(rdn_translate(nn89, rdn_neg(rdn(rdnn(n9), rdnn(n8)))))
+
+  =>
+
+% rdnn90, axiom.
+(rdn_translate(nn90, rdn_neg(rdn(rdnn(n0), rdnn(n9)))))
+
+  =>
+
+% rdnn91, axiom.
+(rdn_translate(nn91, rdn_neg(rdn(rdnn(n1), rdnn(n9)))))
+
+  =>
+
+% rdnn92, axiom.
+(rdn_translate(nn92, rdn_neg(rdn(rdnn(n2), rdnn(n9)))))
+
+  =>
+
+% rdnn93, axiom.
+(rdn_translate(nn93, rdn_neg(rdn(rdnn(n3), rdnn(n9)))))
+
+  =>
+
+% rdnn94, axiom.
+(rdn_translate(nn94, rdn_neg(rdn(rdnn(n4), rdnn(n9)))))
+
+  =>
+
+% rdnn95, axiom.
+(rdn_translate(nn95, rdn_neg(rdn(rdnn(n5), rdnn(n9)))))
+
+  =>
+
+% rdnn96, axiom.
+(rdn_translate(nn96, rdn_neg(rdn(rdnn(n6), rdnn(n9)))))
+
+  =>
+
+% rdnn97, axiom.
+(rdn_translate(nn97, rdn_neg(rdn(rdnn(n7), rdnn(n9)))))
+
+  =>
+
+% rdnn98, axiom.
+(rdn_translate(nn98, rdn_neg(rdn(rdnn(n8), rdnn(n9)))))
+
+  =>
+
+% rdnn99, axiom.
+(rdn_translate(nn99, rdn_neg(rdn(rdnn(n9), rdnn(n9)))))
+
+  =>
+
+% rdnn100, axiom.
+(rdn_translate(nn100, rdn_neg(rdn(rdnn(n0), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn101, axiom.
+(rdn_translate(nn101, rdn_neg(rdn(rdnn(n1), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn102, axiom.
+(rdn_translate(nn102, rdn_neg(rdn(rdnn(n2), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn103, axiom.
+(rdn_translate(nn103, rdn_neg(rdn(rdnn(n3), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn104, axiom.
+(rdn_translate(nn104, rdn_neg(rdn(rdnn(n4), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn105, axiom.
+(rdn_translate(nn105, rdn_neg(rdn(rdnn(n5), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn106, axiom.
+(rdn_translate(nn106, rdn_neg(rdn(rdnn(n6), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn107, axiom.
+(rdn_translate(nn107, rdn_neg(rdn(rdnn(n7), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn108, axiom.
+(rdn_translate(nn108, rdn_neg(rdn(rdnn(n8), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn109, axiom.
+(rdn_translate(nn109, rdn_neg(rdn(rdnn(n9), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn110, axiom.
+(rdn_translate(nn110, rdn_neg(rdn(rdnn(n0), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn111, axiom.
+(rdn_translate(nn111, rdn_neg(rdn(rdnn(n1), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn112, axiom.
+(rdn_translate(nn112, rdn_neg(rdn(rdnn(n2), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn113, axiom.
+(rdn_translate(nn113, rdn_neg(rdn(rdnn(n3), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn114, axiom.
+(rdn_translate(nn114, rdn_neg(rdn(rdnn(n4), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn115, axiom.
+(rdn_translate(nn115, rdn_neg(rdn(rdnn(n5), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn116, axiom.
+(rdn_translate(nn116, rdn_neg(rdn(rdnn(n6), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn117, axiom.
+(rdn_translate(nn117, rdn_neg(rdn(rdnn(n7), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn118, axiom.
+(rdn_translate(nn118, rdn_neg(rdn(rdnn(n8), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn119, axiom.
+(rdn_translate(nn119, rdn_neg(rdn(rdnn(n9), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn120, axiom.
+(rdn_translate(nn120, rdn_neg(rdn(rdnn(n0), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn121, axiom.
+(rdn_translate(nn121, rdn_neg(rdn(rdnn(n1), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn122, axiom.
+(rdn_translate(nn122, rdn_neg(rdn(rdnn(n2), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn123, axiom.
+(rdn_translate(nn123, rdn_neg(rdn(rdnn(n3), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn124, axiom.
+(rdn_translate(nn124, rdn_neg(rdn(rdnn(n4), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn125, axiom.
+(rdn_translate(nn125, rdn_neg(rdn(rdnn(n5), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn126, axiom.
+(rdn_translate(nn126, rdn_neg(rdn(rdnn(n6), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn127, axiom.
+(rdn_translate(nn127, rdn_neg(rdn(rdnn(n7), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn128, axiom.
+(rdn_translate(nn128, rdn_neg(rdn(rdnn(n8), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn_digit1, axiom.
+(rdn_non_zero_digit(rdnn(n1)))
+
+  =>
+
+% rdn_digit2, axiom.
+(rdn_non_zero_digit(rdnn(n2)))
+
+  =>
+
+% rdn_digit3, axiom.
+(rdn_non_zero_digit(rdnn(n3)))
+
+  =>
+
+% rdn_digit4, axiom.
+(rdn_non_zero_digit(rdnn(n4)))
+
+  =>
+
+% rdn_digit5, axiom.
+(rdn_non_zero_digit(rdnn(n5)))
+
+  =>
+
+% rdn_digit6, axiom.
+(rdn_non_zero_digit(rdnn(n6)))
+
+  =>
+
+% rdn_digit7, axiom.
+(rdn_non_zero_digit(rdnn(n7)))
+
+  =>
+
+% rdn_digit8, axiom.
+(rdn_non_zero_digit(rdnn(n8)))
+
+  =>
+
+% rdn_digit9, axiom.
+(rdn_non_zero_digit(rdnn(n9)))
+
+  =>
+
+% rdn_positive_less01, axiom.
+(rdn_positive_less(rdnn(n0), rdnn(n1)))
+
+  =>
+
+% rdn_positive_less12, axiom.
+(rdn_positive_less(rdnn(n1), rdnn(n2)))
+
+  =>
+
+% rdn_positive_less23, axiom.
+(rdn_positive_less(rdnn(n2), rdnn(n3)))
+
+  =>
+
+% rdn_positive_less34, axiom.
+(rdn_positive_less(rdnn(n3), rdnn(n4)))
+
+  =>
+
+% rdn_positive_less45, axiom.
+(rdn_positive_less(rdnn(n4), rdnn(n5)))
+
+  =>
+
+% rdn_positive_less56, axiom.
+(rdn_positive_less(rdnn(n5), rdnn(n6)))
+
+  =>
+
+% rdn_positive_less67, axiom.
+(rdn_positive_less(rdnn(n6), rdnn(n7)))
+
+  =>
+
+% rdn_positive_less78, axiom.
+(rdn_positive_less(rdnn(n7), rdnn(n8)))
+
+  =>
+
+% rdn_positive_less89, axiom.
+(rdn_positive_less(rdnn(n8), rdnn(n9)))
+
+  =>
+
+% rdn_positive_less_transitivity, axiom.
+(( forall X Y Z. ( ( rdn_positive_less(rdnn(X), rdnn(Y)) & rdn_positive_less(rdnn(Y), rdnn(Z)) ) => rdn_positive_less(rdnn(X), rdnn(Z)) ) ))
+
+  =>
+
+% rdn_positive_less_multi_digit_high, axiom.
+(( forall Ds Os Db Ob. ( rdn_positive_less(Os, Ob) => rdn_positive_less(rdn(rdnn(Ds), Os), rdn(rdnn(Db), Ob)) ) ))
+
+  =>
+
+% rdn_positive_less_multi_digit_low, axiom.
+(( forall Ds O Db. ( ( rdn_positive_less(rdnn(Ds), rdnn(Db)) & rdn_non_zero(O) ) => rdn_positive_less(rdn(rdnn(Ds), O), rdn(rdnn(Db), O)) ) ))
+
+  =>
+
+% rdn_extra_digits_positive_less, axiom.
+(( forall D Db Ob. ( rdn_non_zero(Ob) => rdn_positive_less(rdnn(D), rdn(rdnn(Db), Ob)) ) ))
+
+  =>
+
+% rdn_non_zero_by_digit, axiom.
+(( forall X. ( rdn_non_zero_digit(rdnn(X)) => rdn_non_zero(rdnn(X)) ) ))
+
+  =>
+
+% rdn_non_zero_by_structure, axiom.
+(( forall D O. ( rdn_non_zero(O) => rdn_non_zero(rdn(rdnn(D), O)) ) ))
+
+  =>
+
+% less_entry_point_pos_pos, axiom.
+(( forall X Y RDN_X RDN_Y. ( ( rdn_translate(X, rdn_pos(RDN_X)) & ( rdn_translate(Y, rdn_pos(RDN_Y)) & rdn_positive_less(RDN_X, RDN_Y) ) ) => less(X, Y) ) ))
+
+  =>
+
+% less_entry_point_neg_pos, axiom.
+(( forall X Y RDN_X RDN_Y. ( ( rdn_translate(X, rdn_neg(RDN_X)) & rdn_translate(Y, rdn_pos(RDN_Y)) ) => less(X, Y) ) ))
+
+  =>
+
+% less_entry_point_neg_neg, axiom.
+(( forall X Y RDN_X RDN_Y. ( ( rdn_translate(X, rdn_neg(RDN_X)) & ( rdn_translate(Y, rdn_neg(RDN_Y)) & rdn_positive_less(RDN_Y, RDN_X) ) ) => less(X, Y) ) ))
+
+  =>
+
+% less_property, axiom.
+(( forall X Y. ( less(X, Y) <=> ( ( ~ less(Y, X) ) & ( ~ ( Y = X ) ) ) ) ))
+
+  =>
+
+% less_or_equal, axiom.
+(( forall X Y. ( less_or_equal(X, Y) <=> ( less(X, Y) | ( X = Y ) ) ) ))
+
+  =>
+
+% less_successor, axiom.
+(( forall X Y Z. ( ( sum(X, n1, Y) & less(Z, Y) ) => less_or_equal(Z, X) ) ))
+
+  =>
+
+% sum_entry_point_pos_pos, axiom.
+(( forall X Y Z RDN_X RDN_Y RDN_Z. ( ( rdn_translate(X, rdn_pos(RDN_X)) & ( rdn_translate(Y, rdn_pos(RDN_Y)) & ( rdn_add_with_carry(rdnn(n0), RDN_X, RDN_Y, RDN_Z) & rdn_translate(Z, rdn_pos(RDN_Z)) ) ) ) => sum(X, Y, Z) ) ))
+
+  =>
+
+% sum_entry_point_neg_neg, axiom.
+(( forall X Y Z RDN_X RDN_Y RDN_Z. ( ( rdn_translate(X, rdn_neg(RDN_X)) & ( rdn_translate(Y, rdn_neg(RDN_Y)) & ( rdn_add_with_carry(rdnn(n0), RDN_X, RDN_Y, RDN_Z) & rdn_translate(Z, rdn_neg(RDN_Z)) ) ) ) => sum(X, Y, Z) ) ))
+
+  =>
+
+% sum_entry_point_pos_neg_1, axiom.
+(( forall X Y Z RDN_X RDN_Y RDN_Z. ( ( rdn_translate(X, rdn_pos(RDN_X)) & ( rdn_translate(Y, rdn_neg(RDN_Y)) & ( rdn_positive_less(RDN_X, RDN_Y) & ( rdn_add_with_carry(rdnn(n0), RDN_X, RDN_Z, RDN_Y) & rdn_translate(Z, rdn_neg(RDN_Z)) ) ) ) ) => sum(X, Y, Z) ) ))
+
+  =>
+
+% sum_entry_point_pos_neg_2, axiom.
+(( forall X Y Z RDN_X RDN_Y RDN_Z. ( ( rdn_translate(X, rdn_pos(RDN_X)) & ( rdn_translate(Y, rdn_neg(RDN_Y)) & ( rdn_positive_less(RDN_Y, RDN_X) & ( rdn_add_with_carry(rdnn(n0), RDN_Y, RDN_Z, RDN_X) & rdn_translate(Z, rdn_pos(RDN_Z)) ) ) ) ) => sum(X, Y, Z) ) ))
+
+  =>
+
+% sum_entry_point_posx_negx, axiom.
+(( forall POS_X NEG_X RDN_X. ( ( rdn_translate(POS_X, rdn_pos(RDN_X)) & rdn_translate(NEG_X, rdn_neg(RDN_X)) ) => sum(POS_X, NEG_X, n0) ) ))
+
+  =>
+
+% sum_entry_point_neg_pos, axiom.
+(( forall X Y Z RDN_X RDN_Y. ( ( rdn_translate(X, rdn_neg(RDN_X)) & ( rdn_translate(Y, rdn_pos(RDN_Y)) & sum(Y, X, Z) ) ) => sum(X, Y, Z) ) ))
+
+  =>
+
+% unique_sum, axiom.
+(( forall X Y Z1 Z2. ( ( sum(X, Y, Z1) & sum(X, Y, Z2) ) => ( Z1 = Z2 ) ) ))
+
+  =>
+
+% unique_LHS, axiom.
+(( forall X1 X2 Y Z. ( ( sum(X1, Y, Z) & sum(X2, Y, Z) ) => ( X1 = X2 ) ) ))
+
+  =>
+
+% unique_RHS, axiom.
+(( forall X Y1 Y2 Z. ( ( sum(X, Y1, Z) & sum(X, Y2, Z) ) => ( Y1 = Y2 ) ) ))
+
+  =>
+
+% minus_entry_point, axiom.
+(( forall X Y Z. ( sum(Y, Z, X) <=> difference(X, Y, Z) ) ))
+
+  =>
+
+% add_digit_digit_digit, axiom.
+(( forall C D1 D2 RD ID. ( ( rdn_digit_add(rdnn(D1), rdnn(D2), rdnn(ID), rdnn(n0)) & rdn_digit_add(rdnn(ID), rdnn(C), rdnn(RD), rdnn(n0)) ) => rdn_add_with_carry(rdnn(C), rdnn(D1), rdnn(D2), rdnn(RD)) ) ))
+
+  =>
+
+% add_digit_digit_rdn, axiom.
+(( forall C D1 D2 ID RD IC1 IC2. ( ( rdn_digit_add(rdnn(D1), rdnn(D2), rdnn(ID), rdnn(IC1)) & ( rdn_digit_add(rdnn(ID), rdnn(C), rdnn(RD), rdnn(IC2)) & rdn_digit_add(rdnn(IC1), rdnn(IC2), rdnn(n1), rdnn(n0)) ) ) => rdn_add_with_carry(rdnn(C), rdnn(D1), rdnn(D2), rdn(rdnn(RD), rdnn(n1))) ) ))
+
+  =>
+
+% add_digit_rdn_rdn, axiom.
+(( forall C D1 D2 O2 RD RO ID IC1 IC2 NC. ( ( rdn_digit_add(rdnn(D1), rdnn(D2), rdnn(ID), rdnn(IC1)) & ( rdn_digit_add(rdnn(ID), rdnn(C), rdnn(RD), rdnn(IC2)) & ( rdn_digit_add(rdnn(IC1), rdnn(IC2), rdnn(NC), rdnn(n0)) & ( rdn_add_with_carry(rdnn(NC), rdnn(n0), O2, RO) & ( rdn_non_zero(O2) & rdn_non_zero(RO) ) ) ) ) ) => rdn_add_with_carry(rdnn(C), rdnn(D1), rdn(rdnn(D2), O2), rdn(rdnn(RD), RO)) ) ))
+
+  =>
+
+% add_rdn_rdn_rdn, axiom.
+(( forall C D1 O1 D2 O2 RD RO ID IC1 IC2 RC. ( ( rdn_digit_add(rdnn(D1), rdnn(D2), rdnn(ID), rdnn(IC1)) & ( rdn_digit_add(rdnn(ID), rdnn(C), rdnn(RD), rdnn(IC2)) & ( rdn_digit_add(rdnn(IC1), rdnn(IC2), rdnn(RC), rdnn(n0)) & ( rdn_add_with_carry(rdnn(RC), O1, O2, RO) & ( rdn_non_zero(O1) & ( rdn_non_zero(O2) & rdn_non_zero(RO) ) ) ) ) ) ) => rdn_add_with_carry(rdnn(C), rdn(rdnn(D1), O1), rdn(rdnn(D2), O2), rdn(rdnn(RD), RO)) ) ))
+
+  =>
+
+% add_rdn_digit_rdn, axiom.
+(( forall C D1 O1 D2 RD RO. ( rdn_add_with_carry(rdnn(C), rdnn(D2), rdn(rdnn(D1), O1), rdn(rdnn(RD), RO)) => rdn_add_with_carry(rdnn(C), rdn(rdnn(D1), O1), rdnn(D2), rdn(rdnn(RD), RO)) ) ))
+
+  =>
+
+% rdn_digit_add_n0_n0_n0_n0, axiom.
+(rdn_digit_add(rdnn(n0), rdnn(n0), rdnn(n0), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n0_n1_n1_n0, axiom.
+(rdn_digit_add(rdnn(n0), rdnn(n1), rdnn(n1), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n0_n2_n2_n0, axiom.
+(rdn_digit_add(rdnn(n0), rdnn(n2), rdnn(n2), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n0_n3_n3_n0, axiom.
+(rdn_digit_add(rdnn(n0), rdnn(n3), rdnn(n3), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n0_n4_n4_n0, axiom.
+(rdn_digit_add(rdnn(n0), rdnn(n4), rdnn(n4), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n0_n5_n5_n0, axiom.
+(rdn_digit_add(rdnn(n0), rdnn(n5), rdnn(n5), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n0_n6_n6_n0, axiom.
+(rdn_digit_add(rdnn(n0), rdnn(n6), rdnn(n6), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n0_n7_n7_n0, axiom.
+(rdn_digit_add(rdnn(n0), rdnn(n7), rdnn(n7), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n0_n8_n8_n0, axiom.
+(rdn_digit_add(rdnn(n0), rdnn(n8), rdnn(n8), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n0_n9_n9_n0, axiom.
+(rdn_digit_add(rdnn(n0), rdnn(n9), rdnn(n9), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n1_n0_n1_n0, axiom.
+(rdn_digit_add(rdnn(n1), rdnn(n0), rdnn(n1), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n1_n1_n2_n0, axiom.
+(rdn_digit_add(rdnn(n1), rdnn(n1), rdnn(n2), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n1_n2_n3_n0, axiom.
+(rdn_digit_add(rdnn(n1), rdnn(n2), rdnn(n3), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n1_n3_n4_n0, axiom.
+(rdn_digit_add(rdnn(n1), rdnn(n3), rdnn(n4), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n1_n4_n5_n0, axiom.
+(rdn_digit_add(rdnn(n1), rdnn(n4), rdnn(n5), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n1_n5_n6_n0, axiom.
+(rdn_digit_add(rdnn(n1), rdnn(n5), rdnn(n6), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n1_n6_n7_n0, axiom.
+(rdn_digit_add(rdnn(n1), rdnn(n6), rdnn(n7), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n1_n7_n8_n0, axiom.
+(rdn_digit_add(rdnn(n1), rdnn(n7), rdnn(n8), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n1_n8_n9_n0, axiom.
+(rdn_digit_add(rdnn(n1), rdnn(n8), rdnn(n9), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n1_n9_n0_n1, axiom.
+(rdn_digit_add(rdnn(n1), rdnn(n9), rdnn(n0), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n2_n0_n2_n0, axiom.
+(rdn_digit_add(rdnn(n2), rdnn(n0), rdnn(n2), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n2_n1_n3_n0, axiom.
+(rdn_digit_add(rdnn(n2), rdnn(n1), rdnn(n3), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n2_n2_n4_n0, axiom.
+(rdn_digit_add(rdnn(n2), rdnn(n2), rdnn(n4), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n2_n3_n5_n0, axiom.
+(rdn_digit_add(rdnn(n2), rdnn(n3), rdnn(n5), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n2_n4_n6_n0, axiom.
+(rdn_digit_add(rdnn(n2), rdnn(n4), rdnn(n6), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n2_n5_n7_n0, axiom.
+(rdn_digit_add(rdnn(n2), rdnn(n5), rdnn(n7), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n2_n6_n8_n0, axiom.
+(rdn_digit_add(rdnn(n2), rdnn(n6), rdnn(n8), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n2_n7_n9_n0, axiom.
+(rdn_digit_add(rdnn(n2), rdnn(n7), rdnn(n9), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n2_n8_n0_n1, axiom.
+(rdn_digit_add(rdnn(n2), rdnn(n8), rdnn(n0), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n2_n9_n1_n1, axiom.
+(rdn_digit_add(rdnn(n2), rdnn(n9), rdnn(n1), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n3_n0_n3_n0, axiom.
+(rdn_digit_add(rdnn(n3), rdnn(n0), rdnn(n3), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n3_n1_n4_n0, axiom.
+(rdn_digit_add(rdnn(n3), rdnn(n1), rdnn(n4), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n3_n2_n5_n0, axiom.
+(rdn_digit_add(rdnn(n3), rdnn(n2), rdnn(n5), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n3_n3_n6_n0, axiom.
+(rdn_digit_add(rdnn(n3), rdnn(n3), rdnn(n6), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n3_n4_n7_n0, axiom.
+(rdn_digit_add(rdnn(n3), rdnn(n4), rdnn(n7), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n3_n5_n8_n0, axiom.
+(rdn_digit_add(rdnn(n3), rdnn(n5), rdnn(n8), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n3_n6_n9_n0, axiom.
+(rdn_digit_add(rdnn(n3), rdnn(n6), rdnn(n9), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n3_n7_n0_n1, axiom.
+(rdn_digit_add(rdnn(n3), rdnn(n7), rdnn(n0), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n3_n8_n1_n1, axiom.
+(rdn_digit_add(rdnn(n3), rdnn(n8), rdnn(n1), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n3_n9_n2_n1, axiom.
+(rdn_digit_add(rdnn(n3), rdnn(n9), rdnn(n2), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n4_n0_n4_n0, axiom.
+(rdn_digit_add(rdnn(n4), rdnn(n0), rdnn(n4), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n4_n1_n5_n0, axiom.
+(rdn_digit_add(rdnn(n4), rdnn(n1), rdnn(n5), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n4_n2_n6_n0, axiom.
+(rdn_digit_add(rdnn(n4), rdnn(n2), rdnn(n6), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n4_n3_n7_n0, axiom.
+(rdn_digit_add(rdnn(n4), rdnn(n3), rdnn(n7), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n4_n4_n8_n0, axiom.
+(rdn_digit_add(rdnn(n4), rdnn(n4), rdnn(n8), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n4_n5_n9_n0, axiom.
+(rdn_digit_add(rdnn(n4), rdnn(n5), rdnn(n9), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n4_n6_n0_n1, axiom.
+(rdn_digit_add(rdnn(n4), rdnn(n6), rdnn(n0), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n4_n7_n1_n1, axiom.
+(rdn_digit_add(rdnn(n4), rdnn(n7), rdnn(n1), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n4_n8_n2_n1, axiom.
+(rdn_digit_add(rdnn(n4), rdnn(n8), rdnn(n2), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n4_n9_n3_n1, axiom.
+(rdn_digit_add(rdnn(n4), rdnn(n9), rdnn(n3), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n5_n0_n5_n0, axiom.
+(rdn_digit_add(rdnn(n5), rdnn(n0), rdnn(n5), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n5_n1_n6_n0, axiom.
+(rdn_digit_add(rdnn(n5), rdnn(n1), rdnn(n6), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n5_n2_n7_n0, axiom.
+(rdn_digit_add(rdnn(n5), rdnn(n2), rdnn(n7), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n5_n3_n8_n0, axiom.
+(rdn_digit_add(rdnn(n5), rdnn(n3), rdnn(n8), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n5_n4_n9_n0, axiom.
+(rdn_digit_add(rdnn(n5), rdnn(n4), rdnn(n9), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n5_n5_n0_n1, axiom.
+(rdn_digit_add(rdnn(n5), rdnn(n5), rdnn(n0), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n5_n6_n1_n1, axiom.
+(rdn_digit_add(rdnn(n5), rdnn(n6), rdnn(n1), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n5_n7_n2_n1, axiom.
+(rdn_digit_add(rdnn(n5), rdnn(n7), rdnn(n2), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n5_n8_n3_n1, axiom.
+(rdn_digit_add(rdnn(n5), rdnn(n8), rdnn(n3), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n5_n9_n4_n1, axiom.
+(rdn_digit_add(rdnn(n5), rdnn(n9), rdnn(n4), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n6_n0_n6_n0, axiom.
+(rdn_digit_add(rdnn(n6), rdnn(n0), rdnn(n6), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n6_n1_n7_n0, axiom.
+(rdn_digit_add(rdnn(n6), rdnn(n1), rdnn(n7), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n6_n2_n8_n0, axiom.
+(rdn_digit_add(rdnn(n6), rdnn(n2), rdnn(n8), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n6_n3_n9_n0, axiom.
+(rdn_digit_add(rdnn(n6), rdnn(n3), rdnn(n9), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n6_n4_n0_n1, axiom.
+(rdn_digit_add(rdnn(n6), rdnn(n4), rdnn(n0), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n6_n5_n1_n1, axiom.
+(rdn_digit_add(rdnn(n6), rdnn(n5), rdnn(n1), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n6_n6_n2_n1, axiom.
+(rdn_digit_add(rdnn(n6), rdnn(n6), rdnn(n2), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n6_n7_n3_n1, axiom.
+(rdn_digit_add(rdnn(n6), rdnn(n7), rdnn(n3), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n6_n8_n4_n1, axiom.
+(rdn_digit_add(rdnn(n6), rdnn(n8), rdnn(n4), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n6_n9_n5_n1, axiom.
+(rdn_digit_add(rdnn(n6), rdnn(n9), rdnn(n5), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n7_n0_n7_n0, axiom.
+(rdn_digit_add(rdnn(n7), rdnn(n0), rdnn(n7), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n7_n1_n8_n0, axiom.
+(rdn_digit_add(rdnn(n7), rdnn(n1), rdnn(n8), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n7_n2_n9_n0, axiom.
+(rdn_digit_add(rdnn(n7), rdnn(n2), rdnn(n9), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n7_n3_n0_n1, axiom.
+(rdn_digit_add(rdnn(n7), rdnn(n3), rdnn(n0), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n7_n4_n1_n1, axiom.
+(rdn_digit_add(rdnn(n7), rdnn(n4), rdnn(n1), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n7_n5_n2_n1, axiom.
+(rdn_digit_add(rdnn(n7), rdnn(n5), rdnn(n2), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n7_n6_n3_n1, axiom.
+(rdn_digit_add(rdnn(n7), rdnn(n6), rdnn(n3), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n7_n7_n4_n1, axiom.
+(rdn_digit_add(rdnn(n7), rdnn(n7), rdnn(n4), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n7_n8_n5_n1, axiom.
+(rdn_digit_add(rdnn(n7), rdnn(n8), rdnn(n5), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n7_n9_n6_n1, axiom.
+(rdn_digit_add(rdnn(n7), rdnn(n9), rdnn(n6), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n8_n0_n8_n0, axiom.
+(rdn_digit_add(rdnn(n8), rdnn(n0), rdnn(n8), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n8_n1_n9_n0, axiom.
+(rdn_digit_add(rdnn(n8), rdnn(n1), rdnn(n9), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n8_n2_n0_n1, axiom.
+(rdn_digit_add(rdnn(n8), rdnn(n2), rdnn(n0), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n8_n3_n1_n1, axiom.
+(rdn_digit_add(rdnn(n8), rdnn(n3), rdnn(n1), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n8_n4_n2_n1, axiom.
+(rdn_digit_add(rdnn(n8), rdnn(n4), rdnn(n2), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n8_n5_n3_n1, axiom.
+(rdn_digit_add(rdnn(n8), rdnn(n5), rdnn(n3), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n8_n6_n4_n1, axiom.
+(rdn_digit_add(rdnn(n8), rdnn(n6), rdnn(n4), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n8_n7_n5_n1, axiom.
+(rdn_digit_add(rdnn(n8), rdnn(n7), rdnn(n5), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n8_n8_n6_n1, axiom.
+(rdn_digit_add(rdnn(n8), rdnn(n8), rdnn(n6), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n8_n9_n7_n1, axiom.
+(rdn_digit_add(rdnn(n8), rdnn(n9), rdnn(n7), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n9_n0_n9_n0, axiom.
+(rdn_digit_add(rdnn(n9), rdnn(n0), rdnn(n9), rdnn(n0)))
+
+  =>
+
+% rdn_digit_add_n9_n1_n0_n1, axiom.
+(rdn_digit_add(rdnn(n9), rdnn(n1), rdnn(n0), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n9_n2_n1_n1, axiom.
+(rdn_digit_add(rdnn(n9), rdnn(n2), rdnn(n1), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n9_n3_n2_n1, axiom.
+(rdn_digit_add(rdnn(n9), rdnn(n3), rdnn(n2), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n9_n4_n3_n1, axiom.
+(rdn_digit_add(rdnn(n9), rdnn(n4), rdnn(n3), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n9_n5_n4_n1, axiom.
+(rdn_digit_add(rdnn(n9), rdnn(n5), rdnn(n4), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n9_n6_n5_n1, axiom.
+(rdn_digit_add(rdnn(n9), rdnn(n6), rdnn(n5), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n9_n7_n6_n1, axiom.
+(rdn_digit_add(rdnn(n9), rdnn(n7), rdnn(n6), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n9_n8_n7_n1, axiom.
+(rdn_digit_add(rdnn(n9), rdnn(n8), rdnn(n7), rdnn(n1)))
+
+  =>
+
+% rdn_digit_add_n9_n9_n8_n1, axiom.
+(rdn_digit_add(rdnn(n9), rdnn(n9), rdnn(n8), rdnn(n1)))
+
+  =>
+
+% sum_what_nn2_n3, conjecture.
+(( exists X. sum(X, nn2, n3) ))
+
+ 
+
+%------------------------------------------------------------------------------

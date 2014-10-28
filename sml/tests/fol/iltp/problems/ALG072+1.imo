@@ -1,0 +1,141 @@
+% File     : ALG072+1 : ILTP v1.1.2
+% Domain   : General Algebra
+% Problem  : Loops 5: CPROPS-SORTED-DISCRIMINANT-PROBLEM-4
+% Version  : Especial.
+% English  : 
+% Refs     : [Mei03] Meier (2003), Email to G.Sutcliffe
+%          : [CM+04] Colton et al. (2004), Automatic Generation of Classifi
+% Source   : [Mei03]
+% Names    : 
+% Status   : Theorem
+% Rating   : 0.55 v3.1.0, 0.67 v2.7.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :    9 (   2 unit)
+%            Number of atoms       :   44 (  16 equality)
+%            Maximal formula depth :   11 (   6 average)
+%            Number of connectives :   41 (   6 ~  ;   2  |;  14  &)
+%                                         (   0 <=>;  19 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    3 (   0 propositional; 1-2 arity)
+%            Number of functors    :    6 (   2 constant; 0-2 arity)
+%            Number of variables   :   22 (   0 singleton;  18 !;   4 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% h_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( h(A) = h(B) ) ) ))
+
+  =>
+
+% j_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( j(A) = j(B) ) ) ))
+
+  =>
+
+% op1_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( op1(A, C) = op1(B, C) ) ) ))
+
+  =>
+
+% op1_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( op1(C, A) = op1(C, B) ) ) ))
+
+  =>
+
+% op2_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( op2(A, C) = op2(B, C) ) ) ))
+
+  =>
+
+% op2_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( op2(C, A) = op2(C, B) ) ) ))
+
+  =>
+
+% sorti1_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & sorti1(A) ) => sorti1(B) ) ))
+
+  =>
+
+% sorti2_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & sorti2(A) ) => sorti2(B) ) ))
+
+  =>
+
+% ax1, axiom.
+(sorti1(unit1))
+
+  =>
+
+% ax2_AndLHS, axiom.
+(( forall U. ( sorti1(U) => ( ( op1(unit1, U) = U ) & ( op1(U, unit1) = U ) ) ) ))
+
+  =>
+
+% ax2_AndRHS, axiom.
+(( exists V. ( sorti1(V) & ( unit1 = V ) ) ))
+
+  =>
+
+% ax3, axiom.
+(sorti2(unit2))
+
+  =>
+
+% ax4_AndLHS, axiom.
+(( forall U. ( sorti2(U) => ( ( op2(unit2, U) = U ) & ( op2(U, unit2) = U ) ) ) ))
+
+  =>
+
+% ax4_AndRHS, axiom.
+(( exists V. ( sorti2(V) & ( unit2 = V ) ) ))
+
+  =>
+
+% ax5, axiom.
+(( forall U. ( sorti1(U) => ( forall V. ( sorti1(V) => sorti1(op1(U, V)) ) ) ) ))
+
+  =>
+
+% ax6, axiom.
+(( forall U. ( sorti2(U) => ( forall V. ( sorti2(V) => sorti2(op2(U, V)) ) ) ) ))
+
+  =>
+
+% ax7, axiom.
+(( exists U. ( sorti1(U) & ( forall V. ( sorti1(V) => ( forall W. ( sorti1(W) => ( ( ~ ( op1(V, W) = U ) ) | ( ( op1(V, U) = W ) & ( ~ ( U = unit1 ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax8, axiom.
+(( ~ ( exists U. ( sorti2(U) & ( forall V. ( sorti2(V) => ( forall W. ( sorti2(W) => ( ( ~ ( op2(V, W) = U ) ) | ( ( op2(V, U) = W ) & ( ~ ( U = unit2 ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% co1, conjecture.
+(( ( ( forall U. ( sorti1(U) => sorti2(h(U)) ) ) & ( forall V. ( sorti2(V) => sorti1(j(V)) ) ) ) => ( ~ ( ( forall W. ( sorti1(W) => ( forall X. ( sorti1(X) => ( h(op1(W, X)) = op2(h(W), h(X)) ) ) ) ) ) & ( ( forall Y. ( sorti2(Y) => ( forall Z. ( sorti2(Z) => ( j(op2(Y, Z)) = op1(j(Y), j(Z)) ) ) ) ) ) & ( ( forall X1. ( sorti2(X1) => ( h(j(X1)) = X1 ) ) ) & ( forall X2. ( sorti1(X2) => ( j(h(X2)) = X2 ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

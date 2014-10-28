@@ -1,0 +1,138 @@
+% File     : SET596+3 : ILTP v1.1.2
+% Domain   : Set Theory (Boolean properties)
+% Problem  : If X (= Y and Y ^ Z = the empty set, then X ^ Z = the empty set
+% Version  : [Try89] axioms : Reduced > Incomplete.
+% English  : If X is a subset of Y and the intersection of Y and Z is the 
+%            empty set, then the intersection of X and Z is the empty set.
+% Refs     : [ILF] The ILF Group (1998), The ILF System: A Tool for the Int
+%          : [Try89] Trybulec (1989), Tarski Grothendieck Set Theory
+%          : [TS89]  Trybulec & Swieczkowska (1989), Boolean Properties of
+% Source   : [ILF]
+% Names    : BOOLE (55) [TS89] 
+% Status   : Theorem
+% Rating   : 0.09 v3.1.0, 0.11 v2.7.0, 0.00 v2.2.1
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.75 v1.1.0, 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :   11 (   3 unit)
+%            Number of atoms       :   24 (   6 equality)
+%            Maximal formula depth :    6 (   5 average)
+%            Number of connectives :   15 (   2 ~  ;   0  |;   3  &)
+%                                         (   6 <=>;   4 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    4 (   0 propositional; 1-2 arity)
+%            Number of functors    :    2 (   1 constant; 0-2 arity)
+%            Number of variables   :   24 (   0 singleton;  24 !;   0 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% intersection_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( intersection(A, C) = intersection(B, C) ) ) ))
+
+  =>
+
+% intersection_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( intersection(C, A) = intersection(C, B) ) ) ))
+
+  =>
+
+% empty_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & empty(A) ) => empty(B) ) ))
+
+  =>
+
+% member_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & member(A, C) ) => member(B, C) ) ))
+
+  =>
+
+% member_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & member(C, A) ) => member(C, B) ) ))
+
+  =>
+
+% subset_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(A, C) ) => subset(B, C) ) ))
+
+  =>
+
+% subset_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(C, A) ) => subset(C, B) ) ))
+
+  =>
+
+% subset_of_empty_set_is_empty_set, axiom.
+(( forall B. ( subset(B, empty_set) => ( B = empty_set ) ) ))
+
+  =>
+
+% intersection_of_subset, axiom.
+(( forall B C D. ( subset(B, C) => subset(intersection(B, D), intersection(C, D)) ) ))
+
+  =>
+
+% empty_set_defn, axiom.
+(( forall B. ( ~ member(B, empty_set) ) ))
+
+  =>
+
+% intersection_defn, axiom.
+(( forall B C D. ( member(D, intersection(B, C)) <=> ( member(D, B) & member(D, C) ) ) ))
+
+  =>
+
+% subset_defn, axiom.
+(( forall B C. ( subset(B, C) <=> ( forall D. ( member(D, B) => member(D, C) ) ) ) ))
+
+  =>
+
+% equal_defn, axiom.
+(( forall B C. ( ( B = C ) <=> ( subset(B, C) & subset(C, B) ) ) ))
+
+  =>
+
+% commutativity_of_intersection, axiom.
+(( forall B C. ( intersection(B, C) = intersection(C, B) ) ))
+
+  =>
+
+% reflexivity_of_subset, axiom.
+(( forall B. subset(B, B) ))
+
+  =>
+
+% empty_defn, axiom.
+(( forall B. ( empty(B) <=> ( forall C. ( ~ member(C, B) ) ) ) ))
+
+  =>
+
+% equal_member_defn, axiom.
+(( forall B C. ( ( B = C ) <=> ( forall D. ( member(D, B) <=> member(D, C) ) ) ) ))
+
+  =>
+
+% prove_th55, conjecture.
+(( forall B C D. ( ( subset(B, C) & ( intersection(C, D) = empty_set ) ) => ( intersection(B, D) = empty_set ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

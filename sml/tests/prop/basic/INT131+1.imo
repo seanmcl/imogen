@@ -1,0 +1,6 @@
+% Problem : INT131+1
+% Status  : Theorem
+% Rating  : 0.00
+
+
+false => 'c <=> true

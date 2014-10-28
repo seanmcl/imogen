@@ -1,0 +1,160 @@
+% File     : KRS038+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : DL Test: t7f.1
+% Version  : Especial.
+% English  : 
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : consistent_description-logic-Manifest031 [Bec03]
+% Status   : Satisfiable
+% Rating   : 0.00 v3.1.0
+%
+% Status (intuit.) : Unsolved (Problem negated)
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   22 (   1 unit)
+%            Number of atoms       :   66 (  15 equality)
+%            Maximal formula depth :   14 (   6 average)
+%            Number of connectives :   47 (   3 ~  ;   1  |;  21  &)
+%                                         (   4 <=>;  18 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   11 (   0 propositional; 1-2 arity)
+%            Number of functors    :    1 (   1 constant; 0-0 arity)
+%            Number of variables   :   53 (   0 singleton;  51 !;   2 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+¬ (
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% cSatisfiable_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cSatisfiable(A) ) => cSatisfiable(B) ) ))
+
+  =>
+
+% cowlNothing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlNothing(A) ) => cowlNothing(B) ) ))
+
+  =>
+
+% cowlThing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlThing(A) ) => cowlThing(B) ) ))
+
+  =>
+
+% cp1_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cp1(A) ) => cp1(B) ) ))
+
+  =>
+
+% rf_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rf(A, C) ) => rf(B, C) ) ))
+
+  =>
+
+% rf_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rf(C, A) ) => rf(C, B) ) ))
+
+  =>
+
+% rinvF_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rinvF(A, C) ) => rinvF(B, C) ) ))
+
+  =>
+
+% rinvF_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rinvF(C, A) ) => rinvF(C, B) ) ))
+
+  =>
+
+% rinvR_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rinvR(A, C) ) => rinvR(B, C) ) ))
+
+  =>
+
+% rinvR_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rinvR(C, A) ) => rinvR(C, B) ) ))
+
+  =>
+
+% rr_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rr(A, C) ) => rr(B, C) ) ))
+
+  =>
+
+% rr_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rr(C, A) ) => rr(C, B) ) ))
+
+  =>
+
+% xsd_integer_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_integer(A) ) => xsd_integer(B) ) ))
+
+  =>
+
+% xsd_string_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_string(A) ) => xsd_string(B) ) ))
+
+  =>
+
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(( forall X. ( cSatisfiable(X) <=> ( cp1(X) & ( exists Y. ( rr(X, Y) & ( exists Z. ( rr(Y, Z) & ( cp1(Z) & ( forall W. ( rinvR(Z, W) => ( ( forall A. ( rr(W, A) => cp1(A) ) ) | ( ~ cp1(W) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X Y Z. ( ( rf(X, Y) & rf(X, Z) ) => ( Y = Z ) ) ))
+
+  =>
+
+% axiom_4, axiom.
+(( forall X Y. ( rinvF(X, Y) <=> rf(Y, X) ) ))
+
+  =>
+
+% axiom_5, axiom.
+(( forall X Y. ( rinvR(X, Y) <=> rr(Y, X) ) ))
+
+  =>
+
+% axiom_6, axiom.
+(( forall X Y Z. ( ( rr(X, Y) & rr(Y, Z) ) => rr(X, Z) ) ))
+
+  =>
+
+% axiom_7, axiom.
+(cSatisfiable(i2003_11_14_17_15_54995))
+
+)
+ 
+
+%------------------------------------------------------------------------------

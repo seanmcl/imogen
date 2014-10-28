@@ -1,0 +1,6 @@
+% Problem : INT137+1
+% Status  : NonTheorem
+% Rating  : 0.00
+
+
+(('a => 'b) => 'c) => ('a | 'c) & ('b => 'c)

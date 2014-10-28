@@ -1,0 +1,6 @@
+% Status [K] : Theorem
+% Rating  : 0.00
+
+% Distinguished Pfenning-Davies from Simpson
+
+(dia p => box q) => (box (p => q))

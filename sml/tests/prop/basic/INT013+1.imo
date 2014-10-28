@@ -1,0 +1,6 @@
+% Problem : INT013+1
+% Status  : Theorem
+% Rating  : 0.0
+
+p & q & r => r & q & p
+

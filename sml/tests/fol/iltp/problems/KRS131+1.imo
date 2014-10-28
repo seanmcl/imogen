@@ -1,0 +1,69 @@
+% File     : KRS131+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : The complement of a class can be defined
+% Version  : Especial.
+% English  : The complement of a class can be defined using OWL Lite 
+%            restrictions.
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : positive_I5.2-Manifest004 [Bec03]
+% Status   : Theorem
+% Rating   : 0.22 v3.1.0
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.75 v1.1.0
+%
+% Syntax   : Number of formulae    :    7 (   0 unit)
+%            Number of atoms       :   20 (   0 equality)
+%            Maximal formula depth :    6 (   5 average)
+%            Number of connectives :   19 (   6 ~  ;   0  |;   5  &)
+%                                         (   5 <=>;   3 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    9 (   0 propositional; 1-2 arity)
+%            Number of functors    :    0 (   0 constant; --- arity)
+%            Number of variables   :   13 (   0 singleton;  10 !;   3 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(( forall X. ( cA(X) <=> ( exists Y. ( rq(X, Y) & cowlThing(Y) ) ) ) ))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X. ( cNothing(X) => ( ~ ( exists Y. rp(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_4, axiom.
+(( forall X. ( cNothing(X) => ( exists Y0. rp(X, Y0) ) ) ))
+
+  =>
+
+% axiom_5, axiom.
+(( forall X. ( cnotA(X) <=> ( forall Y. ( rq(X, Y) => cNothing(Y) ) ) ) ))
+
+  =>
+
+% the_axiom, conjecture.
+(( ( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ) & ( ( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ) & ( forall X. ( cnotA(X) <=> ( ~ cA(X) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

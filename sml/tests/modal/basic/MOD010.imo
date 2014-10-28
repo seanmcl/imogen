@@ -1,0 +1,4 @@
+% Status [T,P] : Theorem
+% Rating  : 0.00
+
+box (box q) => q

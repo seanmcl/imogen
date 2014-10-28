@@ -1,0 +1,148 @@
+% File     : KRS089+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : A test for the interaction of one-of and inverse 
+% Version  : Especial.
+% English  : A test for the interaction of one-of and inverse using the idea 
+%            of a spy point. Everything is related to the spy via the property 
+%            p and we know that the spy has at most two invP successors, thus 
+%            limiting the cardinality of the domain to being at most 2.
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : inconsistent_description-logic-Manifest035 [Bec03]
+% Status   : Unsatisfiable
+% Rating   : 0.00 v3.1.0
+%
+% Status (intuit.) : Open (Problem negated)
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   19 (   2 unit)
+%            Number of atoms       :   57 (  18 equality)
+%            Maximal formula depth :   12 (   5 average)
+%            Number of connectives :   43 (   5 ~  ;   2  |;  20  &)
+%                                         (   2 <=>;  14 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    9 (   0 propositional; 1-2 arity)
+%            Number of functors    :    2 (   2 constant; 0-0 arity)
+%            Number of variables   :   41 (   0 singleton;  37 !;   4 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+¬ (
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% cUnsatisfiable_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cUnsatisfiable(A) ) => cUnsatisfiable(B) ) ))
+
+  =>
+
+% cowlNothing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlNothing(A) ) => cowlNothing(B) ) ))
+
+  =>
+
+% cowlThing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlThing(A) ) => cowlThing(B) ) ))
+
+  =>
+
+% rinvP_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rinvP(A, C) ) => rinvP(B, C) ) ))
+
+  =>
+
+% rinvP_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rinvP(C, A) ) => rinvP(C, B) ) ))
+
+  =>
+
+% rp_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rp(A, C) ) => rp(B, C) ) ))
+
+  =>
+
+% rp_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rp(C, A) ) => rp(C, B) ) ))
+
+  =>
+
+% rr_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rr(A, C) ) => rr(B, C) ) ))
+
+  =>
+
+% rr_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rr(C, A) ) => rr(C, B) ) ))
+
+  =>
+
+% xsd_integer_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_integer(A) ) => xsd_integer(B) ) ))
+
+  =>
+
+% xsd_string_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_string(A) ) => xsd_string(B) ) ))
+
+  =>
+
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(( forall X. ( cUnsatisfiable(X) => ( exists Y0 Y1 Y2. ( rr(X, Y0) & ( rr(X, Y1) & ( rr(X, Y2) & ( ( ~ ( Y0 = Y1 ) ) & ( ( ~ ( Y0 = Y2 ) ) & ( ~ ( Y1 = Y2 ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X. ( cowlThing(X) => ( exists Y. ( rp(X, Y) & ( Y = ispy ) ) ) ) ))
+
+  =>
+
+% axiom_4, axiom.
+(( forall X Y. ( rp(X, Y) <=> rinvP(Y, X) ) ))
+
+  =>
+
+% axiom_5, axiom.
+(( forall X0 X1 X2. ( ( rinvP(ispy, X0) & ( rinvP(ispy, X1) & rinvP(ispy, X2) ) ) => ( ( X0 = X1 ) | ( ( X0 = X2 ) | ( X1 = X2 ) ) ) ) ))
+
+  =>
+
+% axiom_6, axiom.
+(cowlThing(ispy))
+
+  =>
+
+% axiom_7, axiom.
+(cUnsatisfiable(i2003_11_14_17_19_53168))
+
+)
+ 
+
+%------------------------------------------------------------------------------

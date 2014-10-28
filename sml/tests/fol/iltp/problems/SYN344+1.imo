@@ -1,0 +1,35 @@
+% File     : SYN344+1 : ILTP v1.1.2
+% Domain   : Syntactic
+% Problem  : Church problem 46.16 (3)
+% Version  : Especial.
+% English  : 
+% Refs     : [Chu56] Church (1956), Introduction to Mathematical Logic I
+% Source   : [Chu56]
+% Names    : 46.16 (3) [Chu56]
+% Status   : CounterSatisfiable
+% Rating   : 0.00 v3.1.0, 0.33 v2.6.0, 0.25 v2.5.0, 0.33 v2.4.0, 0.00 v2.1.0
+%
+% Status (intuit.) : Unsolved
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :    1 (   0 unit)
+%            Number of atoms       :    7 (   0 equality)
+%            Maximal formula depth :    9 (   9 average)
+%            Number of connectives :    6 (   0 ~  ;   0  |;   1  &)
+%                                         (   0 <=>;   5 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    1 (   0 propositional; 2-2 arity)
+%            Number of functors    :    0 (   0 constant; --- arity)
+%            Number of variables   :    4 (   0 singleton;   2 !;   2 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% church_46_16_3, conjecture.
+(( forall X. ( exists Y1 Y2. ( forall Z. ( ( ( big_f(X, Z) => ( big_f(Y1, Z) => big_f(Y2, X) ) ) => big_f(X, X) ) => ( big_f(X, X) & ( big_f(Y1, Y2) => big_f(Z, Z) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

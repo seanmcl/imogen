@@ -1,0 +1,46 @@
+% File     : GPJ003+1 : ILTP v1.1.2
+% Domain   : Non-Clausal Group Theory
+% Problem  : section 7, Exercise 8
+% Version  : Especial.
+% English  : 
+% Refs     : [CL73] C.-L. Chang & R. C.-T. Lee. Symbolic Logic and Mechanical 
+%                   Theorem Proving. New York, Academic Press, 1973.
+%          : [T96] T. Tammet. A resolution theorem prover for intuitionistic 
+%                  logic. 13th CADE, LNAI 1104, pp. 2-16, Springer, 1996. 
+% Source   : [CL73]
+% Names    :
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.25 v1.1.0
+%
+% Comments :
+%------------------------------------------------------------------------------
+
+ 
+
+% ax1, axiom.
+(( forall X. product(inverse(X), X, identity) ))
+
+  =>
+
+% ax2, axiom.
+(( forall X. product(identity, X, X) ))
+
+  =>
+
+% ax3, axiom.
+(( forall X Y U Z V W. ( ( product(X, Y, U) & ( product(Y, Z, V) & product(U, Z, W) ) ) => product(X, V, W) ) ))
+
+  =>
+
+% ax4, axiom.
+(( forall X Y U Z V W. ( ( product(X, Y, U) & ( product(Y, Z, V) & product(X, V, W) ) ) => product(U, Z, W) ) ))
+
+  =>
+
+% con, conjecture.
+(product(a, identity, a))
+
+ 
+
+%------------------------------------------------------------------------------

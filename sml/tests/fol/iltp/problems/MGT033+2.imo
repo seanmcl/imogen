@@ -1,0 +1,239 @@
+% File     : MGT033+2 : ILTP v1.1.2
+% Domain   : Management (Organisation Theory)
+% Problem  : Selection favors FMs above EPs until EPs appear
+% Version  : [PM93] axioms.
+% English  : Selection favors first movers above efficient producers 
+%            until the appearance of efficient producers. 
+% Refs     : [PM93]  Peli & Masuch (1993), The Logic of Propogation Strateg
+%          : [PM94]  Peli & Masuch (1994), The Logic of Propogation Strateg
+%          : [PB+94] Peli et al. (1994), A Logical Approach to Formalizing
+% Source   : [PM93]
+% Names    : THEOREM 2 [PM93]
+%          : T2 [PB+94]
+% Status   : CounterSatisfiable
+%
+% Status (intuit.) : Unsolved
+% Rating (intuit.) : 1.00 v1.1.0
+% Rating (intuit.) : 1.00 v1.1
+%
+% Syntax   : Number of formulae    :   18 (   0 unit)
+%            Number of atoms       :   62 (   6 equality)
+%            Maximal formula depth :   10 (   5 average)
+%            Number of connectives :   45 (   1 ~  ;   2  |;  24  &)
+%                                         (   1 <=>;  17 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    7 (   0 propositional; 1-3 arity)
+%            Number of functors    :   10 (   6 constant; 0-2 arity)
+%            Number of variables   :   38 (   0 singleton;  37 !;   1 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% appear_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( appear(A, C) = appear(B, C) ) ) ))
+
+  =>
+
+% appear_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( appear(C, A) = appear(C, B) ) ) ))
+
+  =>
+
+% cardinality_at_time_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( cardinality_at_time(A, C) = cardinality_at_time(B, C) ) ) ))
+
+  =>
+
+% cardinality_at_time_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( cardinality_at_time(C, A) = cardinality_at_time(C, B) ) ) ))
+
+  =>
+
+% number_of_organizations_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_organizations(A, C) = number_of_organizations(B, C) ) ) ))
+
+  =>
+
+% number_of_organizations_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_organizations(C, A) = number_of_organizations(C, B) ) ) ))
+
+  =>
+
+% start_time_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( start_time(A) = start_time(B) ) ) ))
+
+  =>
+
+% environment_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & environment(A) ) => environment(B) ) ))
+
+  =>
+
+% greater_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(A, C) ) => greater(B, C) ) ))
+
+  =>
+
+% greater_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(C, A) ) => greater(C, B) ) ))
+
+  =>
+
+% greater_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(A, C) ) => greater_or_equal(B, C) ) ))
+
+  =>
+
+% greater_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(C, A) ) => greater_or_equal(C, B) ) ))
+
+  =>
+
+% in_environment_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(A, C) ) => in_environment(B, C) ) ))
+
+  =>
+
+% in_environment_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(C, A) ) => in_environment(C, B) ) ))
+
+  =>
+
+% selection_favors_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & selection_favors(A, C, D) ) => selection_favors(B, C, D) ) ))
+
+  =>
+
+% selection_favors_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & selection_favors(C, A, D) ) => selection_favors(C, B, D) ) ))
+
+  =>
+
+% selection_favors_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & selection_favors(C, D, A) ) => selection_favors(C, D, B) ) ))
+
+  =>
+
+% subpopulation_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & subpopulation(A, C, D) ) => subpopulation(B, C, D) ) ))
+
+  =>
+
+% subpopulation_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & subpopulation(C, A, D) ) => subpopulation(C, B, D) ) ))
+
+  =>
+
+% subpopulation_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & subpopulation(C, D, A) ) => subpopulation(C, D, B) ) ))
+
+  =>
+
+% mp2_favour_members, axiom.
+(( forall E S1 S2 T. ( ( environment(E) & ( subpopulation(S1, E, T) & ( subpopulation(S2, E, T) & ( greater(cardinality_at_time(S1, T), zero) & ( cardinality_at_time(S2, T) = zero ) ) ) ) ) => selection_favors(S1, S2, T) ) ))
+
+  =>
+
+% mp_number_mean_non_empty, axiom.
+(( forall E T. ( ( environment(E) & greater(number_of_organizations(E, T), zero) ) => ( exists S. ( subpopulation(S, E, T) & greater(cardinality_at_time(S, T), zero) ) ) ) ))
+
+  =>
+
+% mp_zero_is_not_positive, axiom.
+(( forall X T. ( ( cardinality_at_time(X, t) = zero ) => ( ~ greater(cardinality_at_time(X, T), zero) ) ) ))
+
+  =>
+
+% mp_not_present_before_appearance, axiom.
+(( forall E X T. ( ( environment(E) & ( in_environment(E, T) & greater(appear(X, E), T) ) ) => ( cardinality_at_time(X, T) = zero ) ) ))
+
+  =>
+
+% mp_positive_and_sustains, axiom.
+(( forall E T. ( ( environment(E) & greater(number_of_organizations(E, T), zero) ) => in_environment(E, T) ) ))
+
+  =>
+
+% mp_durations_are_time_intervals, axiom.
+(( forall E T1 T2 T. ( ( environment(E) & ( in_environment(E, T1) & ( in_environment(E, T2) & ( greater_or_equal(T2, T) & greater_or_equal(T, T1) ) ) ) ) => in_environment(E, T) ) ))
+
+  =>
+
+% mp_opening_time_in_duration, axiom.
+(( forall E. ( environment(E) => in_environment(E, start_time(E)) ) ))
+
+  =>
+
+% mp_no_FM_before_opening, axiom.
+(( forall E. ( environment(E) => greater_or_equal(appear(first_movers, E), start_time(E)) ) ))
+
+  =>
+
+% mp_FM_means_organisations, axiom.
+(( forall E. ( ( environment(E) & in_environment(E, appear(first_movers, E)) ) => in_environment(E, appear(an_organisation, E)) ) ))
+
+  =>
+
+% mp_FM_not_precede_first, axiom.
+(( forall E. ( environment(E) => greater_or_equal(appear(first_movers, E), appear(an_organisation, E)) ) ))
+
+  =>
+
+% mp_positive_number_when_appear, axiom.
+(( forall E. ( environment(E) => greater(number_of_organizations(e, appear(an_organisation, E)), zero) ) ))
+
+  =>
+
+% mp_subpopulations, axiom.
+(( forall E T. ( ( environment(E) & in_environment(E, T) ) => ( subpopulation(first_movers, E, T) & subpopulation(efficient_producers, E, T) ) ) ))
+
+  =>
+
+% mp_greater_transitivity, axiom.
+(( forall X Y Z. ( ( greater(X, Y) & greater(Y, Z) ) => greater(X, Z) ) ))
+
+  =>
+
+% mp_greater_or_equal, axiom.
+(( forall X Y. ( greater_or_equal(X, Y) <=> ( greater(X, Y) | ( X = Y ) ) ) ))
+
+  =>
+
+% a1, hypothesis.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & greater_or_equal(T, appear(an_organisation, E)) ) ) => greater(number_of_organizations(E, T), zero) ) ))
+
+  =>
+
+% a3, hypothesis.
+(( forall E. ( environment(E) => greater(appear(efficient_producers, e), appear(first_movers, E)) ) ))
+
+  =>
+
+% a11, hypothesis.
+(( forall E X T. ( ( environment(E) & ( subpopulation(X, E, T) & greater(cardinality_at_time(X, T), zero) ) ) => ( ( X = efficient_producers ) | ( X = first_movers ) ) ) ))
+
+  =>
+
+% prove_t2, conjecture.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & ( greater_or_equal(T, appear(first_movers, E)) & greater(appear(efficient_producers, E), T) ) ) ) => selection_favors(first_movers, efficient_producers, T) ) ))
+
+ 
+
+%------------------------------------------------------------------------------
