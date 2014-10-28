@@ -22,6 +22,8 @@ mlmon.out
 *.orig
 tmp.txt
 *\.\#*
+*.sbt
+project
 
 bin/imogen
 bin/imogen2

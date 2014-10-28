@@ -1,6 +1,0 @@
-% Problem : INT104+1
-% Status  : Theorem
-% Rating  : 0.00
-
-
-A & B => C <=> A => B => C

@@ -1,6 +1,0 @@
-% Problem : INT055+1
-% Status  : Theorem
-% Rating  : 0.00
-
-
-(a => c) => (b => c) => (a | b => c)

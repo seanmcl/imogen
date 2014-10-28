@@ -1,7 +1,0 @@
-
-% Problem : FOL014+1
-% Status  : NonTheorem
-% Rating  : 0.0
-
-((exists X. p(X) => q(X)) => (exists X Y. p(X) => q(Y))) &
-((exists X Y. p(X) => q(Y)) => (exists X. p(X) => q(X)))

@@ -1,6 +1,0 @@
-% Problem : INT139+1
-% Status  : NonTheorem
-% Rating  : 0.00
-
-
-(('a => false) => false) => 'a

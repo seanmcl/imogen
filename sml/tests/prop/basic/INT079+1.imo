@@ -1,6 +1,0 @@
-% Problem : INT079+1
-% Status  : NonTheorem
-% Rating  : 0.00
-
-
-(a => false) => false

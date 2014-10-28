@@ -1,6 +1,0 @@
-
-% Problem : FOL009+1
-% Status  : Theorem
-% Rating  : 0.0
-
-(exists X. p(X)) <=> (exists Y. p(Y))

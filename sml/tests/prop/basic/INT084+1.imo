@@ -1,6 +1,0 @@
-% Problem : INT084+1
-% Status  : NonTheorem
-% Rating  : 0.00
-
-
-(('a => 'b) => 'a) => 'a

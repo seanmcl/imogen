@@ -1,6 +1,0 @@
-% Problem : INT120+1
-% Status  : Theorem
-% Rating  : 0.00
-
-
-A | (B & C) <=> (A | B) & (A | C)

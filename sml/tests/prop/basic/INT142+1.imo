@@ -1,6 +1,0 @@
-% Problem : INT142+1
-% Status  : Theorem
-% Rating  : 0.00
-
-
-( q => r ) => ( r => ( p & q ) ) => ( p => ( q | r ) ) => ( p <=> q )

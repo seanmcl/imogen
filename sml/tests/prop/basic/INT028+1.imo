@@ -1,6 +1,0 @@
-% Problem : INT028+1
-% Status  : NonTheorem
-% Rating  : 0.00
-
-
-(~ ~p => p) => (p | ~p)

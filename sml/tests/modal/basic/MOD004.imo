@@ -1,4 +1,0 @@
-% Status [K4,P] : Theorem
-% Rating  : 0.00
-
-box p => box (box p)

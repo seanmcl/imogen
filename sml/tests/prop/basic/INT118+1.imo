@@ -1,6 +1,0 @@
-% Problem : INT118+1
-% Status  : NonTheorem
-% Rating  : 0.00
-
-
-('a => 'b | 'c) => ('a => 'b) | ('a => 'c)

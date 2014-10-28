@@ -1,6 +1,0 @@
-
-% Problem : FOL002
-% Status  : NonTheorem
-% Rating  : 0.00
-
-exists X. p(X)
