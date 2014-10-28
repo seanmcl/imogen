@@ -1,0 +1,61 @@
+% File     : KRS021+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : Informal semantics for RDF container are not respected by OWL
+% Version  : Especial.
+% English  : The informal semantics for RDF container vocabulary, indicated by 
+%            the comment, are not respected by the formal machinery of OWL.
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : consistent_I5.2-Manifest010 [Bec03]
+% Status   : Satisfiable
+% Rating   : 0.00 v3.1.0
+%
+% Status (intuit.) : Unsolved (Problem negated)
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :    5 (   3 unit)
+%            Number of atoms       :    7 (   0 equality)
+%            Maximal formula depth :    4 (   2 average)
+%            Number of connectives :    4 (   2 ~  ;   0  |;   1  &)
+%                                         (   1 <=>;   0 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    6 (   0 propositional; 1-2 arity)
+%            Number of functors    :    2 (   2 constant; 0-0 arity)
+%            Number of variables   :    2 (   0 singleton;   2 !;   0 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+¬ (
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(crdfBag(i2003_11_14_17_14_36685))
+
+  =>
+
+% axiom_3, axiom.
+(rrdf_1(i2003_11_14_17_14_36685, i2003_11_14_17_14_36852))
+
+  =>
+
+% axiom_4, axiom.
+(cowlThing(i2003_11_14_17_14_36852))
+
+)
+ 
+
+%------------------------------------------------------------------------------

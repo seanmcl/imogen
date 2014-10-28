@@ -1,0 +1,4874 @@
+% File     : AGT001+2 : ILTP v1.1.2
+% Domain   : Agents
+% Problem  : Problem for the CPlanT system
+% Version  : [Bar03] axioms : Especial.
+% English  :
+% Refs     : [Bar03] Barta, J. (2003), Email to G. Sutcliffe
+%          : [BT+03] Barta et al. (2003), Meta-Reasoning in CPlanT Multi-Ag
+%          : [TBP03] Tozicka et al. (2003), Meta-reasoning for Agents' Priv
+% Source   : [Bar03]
+% Names    :
+% Status   : Theorem
+% Rating   : 0.18 v3.1.0
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.50 v1.0.0
+%
+% Syntax   : Number of formulae    :  923 ( 891 unit)
+%            Number of atoms       : 1023 (   2 equality)
+%            Maximal formula depth :    8 (   1 average)
+%            Number of connectives :  148 (  48 ~  ;   1  |;  67  &)
+%                                         (  16 <=>;  16 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   17 (   0 propositional; 1-4 arity)
+%            Number of functors    :  290 ( 286 constant; 0-2 arity)
+%            Number of variables   :   70 (   0 singleton;  70 !;   0 ?)
+%            Maximal term depth    :    5 (   1 average)
+% Comments :
+% Bugfixes : v3.0.0 - Bugfixes in NUM005+1.ax
+%          : v3.1.0 - Changes to NUM005 axioms
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% rdn_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( rdn(A, C) = rdn(B, C) ) ) ))
+
+  =>
+
+% rdn_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( rdn(C, A) = rdn(C, B) ) ) ))
+
+  =>
+
+% rdn_neg_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( rdn_neg(A) = rdn_neg(B) ) ) ))
+
+  =>
+
+% rdn_pos_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( rdn_pos(A) = rdn_pos(B) ) ) ))
+
+  =>
+
+% rdnn_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( rdnn(A) = rdnn(B) ) ) ))
+
+  =>
+
+% accept_city_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & accept_city(A, C) ) => accept_city(B, C) ) ))
+
+  =>
+
+% accept_city_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & accept_city(C, A) ) => accept_city(C, B) ) ))
+
+  =>
+
+% accept_leader_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & accept_leader(A, C) ) => accept_leader(B, C) ) ))
+
+  =>
+
+% accept_leader_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & accept_leader(C, A) ) => accept_leader(C, B) ) ))
+
+  =>
+
+% accept_number_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & accept_number(A, C) ) => accept_number(B, C) ) ))
+
+  =>
+
+% accept_number_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & accept_number(C, A) ) => accept_number(C, B) ) ))
+
+  =>
+
+% accept_population_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & accept_population(A, C, D) ) => accept_population(B, C, D) ) ))
+
+  =>
+
+% accept_population_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & accept_population(C, A, D) ) => accept_population(C, B, D) ) ))
+
+  =>
+
+% accept_population_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & accept_population(C, D, A) ) => accept_population(C, D, B) ) ))
+
+  =>
+
+% accept_team_substitution_1, axiom.
+(( forall A B C D E. ( ( ( A = B ) & accept_team(A, C, D, E) ) => accept_team(B, C, D, E) ) ))
+
+  =>
+
+% accept_team_substitution_2, axiom.
+(( forall A B C D E. ( ( ( A = B ) & accept_team(C, A, D, E) ) => accept_team(C, B, D, E) ) ))
+
+  =>
+
+% accept_team_substitution_3, axiom.
+(( forall A B C D E. ( ( ( A = B ) & accept_team(C, D, A, E) ) => accept_team(C, D, B, E) ) ))
+
+  =>
+
+% accept_team_substitution_4, axiom.
+(( forall A B C D E. ( ( ( A = B ) & accept_team(C, D, E, A) ) => accept_team(C, D, E, B) ) ))
+
+  =>
+
+% any_agent_in_all_proposed_teams_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & any_agent_in_all_proposed_teams(A, C, D) ) => any_agent_in_all_proposed_teams(B, C, D) ) ))
+
+  =>
+
+% any_agent_in_all_proposed_teams_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & any_agent_in_all_proposed_teams(C, A, D) ) => any_agent_in_all_proposed_teams(C, B, D) ) ))
+
+  =>
+
+% any_agent_in_all_proposed_teams_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & any_agent_in_all_proposed_teams(C, D, A) ) => any_agent_in_all_proposed_teams(C, D, B) ) ))
+
+  =>
+
+% less_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & less(A, C) ) => less(B, C) ) ))
+
+  =>
+
+% less_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & less(C, A) ) => less(C, B) ) ))
+
+  =>
+
+% less_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & less_or_equal(A, C) ) => less_or_equal(B, C) ) ))
+
+  =>
+
+% less_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & less_or_equal(C, A) ) => less_or_equal(C, B) ) ))
+
+  =>
+
+% min_number_of_proposed_agents_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & min_number_of_proposed_agents(A, C) ) => min_number_of_proposed_agents(B, C) ) ))
+
+  =>
+
+% min_number_of_proposed_agents_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & min_number_of_proposed_agents(C, A) ) => min_number_of_proposed_agents(C, B) ) ))
+
+  =>
+
+% rdn_non_zero_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & rdn_non_zero(A) ) => rdn_non_zero(B) ) ))
+
+  =>
+
+% rdn_non_zero_digit_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & rdn_non_zero_digit(A) ) => rdn_non_zero_digit(B) ) ))
+
+  =>
+
+% rdn_positive_less_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rdn_positive_less(A, C) ) => rdn_positive_less(B, C) ) ))
+
+  =>
+
+% rdn_positive_less_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rdn_positive_less(C, A) ) => rdn_positive_less(C, B) ) ))
+
+  =>
+
+% rdn_translate_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & rdn_translate(A, C) ) => rdn_translate(B, C) ) ))
+
+  =>
+
+% rdn_translate_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & rdn_translate(C, A) ) => rdn_translate(C, B) ) ))
+
+  =>
+
+% sum_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & sum(A, C, D) ) => sum(B, C, D) ) ))
+
+  =>
+
+% sum_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & sum(C, A, D) ) => sum(C, B, D) ) ))
+
+  =>
+
+% sum_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & sum(C, D, A) ) => sum(C, D, B) ) ))
+
+  =>
+
+% the_agent_in_all_proposed_teams_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & the_agent_in_all_proposed_teams(A, C, D) ) => the_agent_in_all_proposed_teams(B, C, D) ) ))
+
+  =>
+
+% the_agent_in_all_proposed_teams_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & the_agent_in_all_proposed_teams(C, A, D) ) => the_agent_in_all_proposed_teams(C, B, D) ) ))
+
+  =>
+
+% the_agent_in_all_proposed_teams_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & the_agent_in_all_proposed_teams(C, D, A) ) => the_agent_in_all_proposed_teams(C, D, B) ) ))
+
+  =>
+
+% the_agent_not_in_any_proposed_teams_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & the_agent_not_in_any_proposed_teams(A, C, D) ) => the_agent_not_in_any_proposed_teams(B, C, D) ) ))
+
+  =>
+
+% the_agent_not_in_any_proposed_teams_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & the_agent_not_in_any_proposed_teams(C, A, D) ) => the_agent_not_in_any_proposed_teams(C, B, D) ) ))
+
+  =>
+
+% the_agent_not_in_any_proposed_teams_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & the_agent_not_in_any_proposed_teams(C, D, A) ) => the_agent_not_in_any_proposed_teams(C, D, B) ) ))
+
+  =>
+
+% a1_1, axiom.
+(( forall A C N L. ( accept_team(A, L, C, N) <=> ( accept_city(A, C) & ( accept_leader(A, L) & accept_number(A, N) ) ) ) ))
+
+  =>
+
+% a1_2, axiom.
+(( forall A N M. ( ( accept_number(A, N) & less(M, N) ) => accept_number(A, M) ) ))
+
+  =>
+
+% a1_3, axiom.
+(( forall A N M P. ( ( accept_population(A, P, N) & less(M, N) ) => accept_population(A, P, M) ) ))
+
+  =>
+
+% a1_4, axiom.
+(( forall A L C. ( the_agent_in_all_proposed_teams(A, L, C) => ( accept_leader(A, L) & accept_city(A, C) ) ) ))
+
+  =>
+
+% a1_5, axiom.
+(( forall A L C. ( any_agent_in_all_proposed_teams(A, L, C) => accept_leader(A, L) ) ))
+
+  =>
+
+% a1_6, axiom.
+(( forall A L C. ( the_agent_not_in_any_proposed_teams(A, L, C) => ( ~ ( accept_city(A, C) & accept_leader(A, L) ) ) ) ))
+
+  =>
+
+% a1_7, axiom.
+(( forall A N. ( min_number_of_proposed_agents(A, N) => accept_number(A, N) ) ))
+
+  =>
+
+% a2_1, axiom.
+(( forall A. ( ( accept_population(A, atheist, n65) & ( accept_population(A, christian, n20) & ( accept_population(A, muslim, n7) & ( accept_population(A, native, n4) & accept_population(A, other, n4) ) ) ) ) <=> accept_city(A, suffertown) ) ))
+
+  =>
+
+% a2_2, axiom.
+(( forall A. ( ( accept_population(A, atheist, n54) & ( accept_population(A, christian, n23) & ( accept_population(A, muslim, n3) & ( accept_population(A, native, n1) & accept_population(A, other, n9) ) ) ) ) <=> accept_city(A, centraltown) ) ))
+
+  =>
+
+% a2_3, axiom.
+(( forall A. ( ( accept_population(A, atheist, n30) & ( accept_population(A, christian, n8) & ( accept_population(A, muslim, n60) & ( accept_population(A, native, n1) & accept_population(A, other, n1) ) ) ) ) <=> accept_city(A, sunnysideport) ) ))
+
+  =>
+
+% a2_4, axiom.
+(( forall A. ( ( accept_population(A, atheist, n70) & ( accept_population(A, christian, n15) & ( accept_population(A, muslim, n1) & ( accept_population(A, native, n10) & accept_population(A, other, n4) ) ) ) ) <=> accept_city(A, centrallakecity) ) ))
+
+  =>
+
+% a2_5, axiom.
+(( forall A. ( ( accept_population(A, atheist, n68) & ( accept_population(A, christian, n16) & ( accept_population(A, muslim, n1) & ( accept_population(A, native, n11) & accept_population(A, other, n4) ) ) ) ) <=> accept_city(A, stjosephburgh) ) ))
+
+  =>
+
+% a2_6, axiom.
+(( forall A. ( ( accept_population(A, atheist, n70) & ( accept_population(A, christian, n13) & ( accept_population(A, muslim, n0) & ( accept_population(A, native, n15) & accept_population(A, other, n2) ) ) ) ) <=> accept_city(A, northport) ) ))
+
+  =>
+
+% a2_7, axiom.
+(( forall A. ( ( accept_population(A, atheist, n12) & ( accept_population(A, christian, n3) & ( accept_population(A, muslim, n0) & ( accept_population(A, native, n85) & accept_population(A, other, n0) ) ) ) ) <=> accept_city(A, coastvillage) ) ))
+
+  =>
+
+% a2_8, axiom.
+(( forall A. ( ( accept_population(A, atheist, n0) & ( accept_population(A, christian, n0) & ( accept_population(A, muslim, n0) & ( accept_population(A, native, n100) & accept_population(A, other, n0) ) ) ) ) <=> accept_city(A, sunsetpoint) ) ))
+
+  =>
+
+% a2_9, axiom.
+(( forall A. ( ( accept_population(A, atheist, n75) & ( accept_population(A, christian, n24) & ( accept_population(A, muslim, n1) & ( accept_population(A, native, n0) & accept_population(A, other, n0) ) ) ) ) <=> accept_city(A, towna) ) ))
+
+  =>
+
+% a2_10, axiom.
+(( forall A. ( ( accept_population(A, atheist, n75) & ( accept_population(A, christian, n25) & ( accept_population(A, muslim, n0) & ( accept_population(A, native, n0) & accept_population(A, other, n0) ) ) ) ) <=> accept_city(A, citya) ) ))
+
+  =>
+
+% a2_11, axiom.
+(( forall A. ( ( accept_population(A, atheist, n70) & ( accept_population(A, christian, n20) & ( accept_population(A, muslim, n8) & ( accept_population(A, native, n0) & accept_population(A, other, n2) ) ) ) ) <=> accept_city(A, townb) ) ))
+
+  =>
+
+% a2_12, axiom.
+(( forall A. ( ( accept_population(A, atheist, n78) & ( accept_population(A, christian, n20) & ( accept_population(A, muslim, n1) & ( accept_population(A, native, n0) & accept_population(A, other, n1) ) ) ) ) <=> accept_city(A, cityb) ) ))
+
+  =>
+
+% a2_13, axiom.
+(( forall A. ( ( accept_population(A, atheist, n30) & ( accept_population(A, christian, n0) & ( accept_population(A, muslim, n65) & ( accept_population(A, native, n0) & accept_population(A, other, n5) ) ) ) ) <=> accept_city(A, townc) ) ))
+
+  =>
+
+% event_1, axiom.
+(accept_team(countryahumanitarianorganization, countryacivilorganization, cityb, n6))
+
+  =>
+
+% event_2, axiom.
+(accept_team(countryahumanitarianorganization, countryacivilorganization, towna, n6))
+
+  =>
+
+% event_3, axiom.
+(accept_team(countryahumanitarianorganization, countryacivilorganization, coastvillage, n6))
+
+  =>
+
+% event_4, axiom.
+(accept_team(countryahumanitarianorganization, countryafirstaidorganization, coastvillage, n6))
+
+  =>
+
+% event_5, axiom.
+(the_agent_in_all_proposed_teams(countryahumanitarianorganization, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_6, axiom.
+(any_agent_in_all_proposed_teams(countryahumanitarianorganization, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_7, axiom.
+(accept_team(countryccivilorganization, countrybhumanitarianorganization, cityb, n2))
+
+  =>
+
+% event_8, axiom.
+(accept_team(muslimcountrybhumanitarianorganization, countrybhumanitarianorganization, cityb, n4))
+
+  =>
+
+% event_9, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countrycmedicalorganization, towna, n4) ))
+
+  =>
+
+% event_10, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countrycmedicalorganization, towna, n5) ))
+
+  =>
+
+% event_11, axiom.
+(the_agent_not_in_any_proposed_teams(muslimcountrybhumanitarianorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_12, axiom.
+(any_agent_in_all_proposed_teams(muslimcountrybhumanitarianorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_13, axiom.
+(accept_team(muslimcountrybhumanitarianorganization, christiancountrychumanitarianorganization, coastvillage, n5))
+
+  =>
+
+% event_14, axiom.
+(accept_team(countryamedicalorganization, countryacivilorganization, cityb, n6))
+
+  =>
+
+% event_15, axiom.
+(accept_team(christiancountrychumanitarianorganization, countrybhumanitarianorganization, cityb, n4))
+
+  =>
+
+% event_16, axiom.
+(accept_team(countryafirstaidorganization, countryacivilorganization, cityb, n6))
+
+  =>
+
+% event_17, axiom.
+(accept_number(countrybhumanitarianorganization, n4))
+
+  =>
+
+% event_18, axiom.
+(accept_team(countrybcivilorganization, countrybhumanitarianorganization, cityb, n4))
+
+  =>
+
+% event_19, axiom.
+(accept_team(christiansufferterrahumanitarianorganization, countryacivilorganization, cityb, n6))
+
+  =>
+
+% event_20, axiom.
+(accept_team(sufferterragovernment, countryacivilorganization, cityb, n6))
+
+  =>
+
+% event_21, axiom.
+(accept_number(countrybhumanitarianorganization, n1))
+
+  =>
+
+% event_22, axiom.
+(the_agent_in_all_proposed_teams(countrybhumanitarianorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_23, axiom.
+(any_agent_in_all_proposed_teams(countrybhumanitarianorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_24, axiom.
+(accept_team(countrybhumanitarianorganization, christiancountrychumanitarianorganization, coastvillage, n5))
+
+  =>
+
+% event_25, axiom.
+(accept_team(countrybhumanitarianorganization, christiancountrychumanitarianorganization, coastvillage, n6))
+
+  =>
+
+% event_26, axiom.
+(accept_team(christiansufferterrahumanitarianorganization, countryacivilorganization, towna, n6))
+
+  =>
+
+% event_27, axiom.
+(accept_team(countryamedicalorganization, countryacivilorganization, towna, n6))
+
+  =>
+
+% event_28, axiom.
+(accept_number(countryahumanitarianorganization, n2))
+
+  =>
+
+% event_29, axiom.
+(( ~ accept_team(countryamedicalorganization, countryahumanitarianorganization, coastvillage, n2) ))
+
+  =>
+
+% event_30, axiom.
+(( ~ accept_team(countryamedicalorganization, countryafirstaidorganization, coastvillage, n2) ))
+
+  =>
+
+% event_31, axiom.
+(( ~ accept_team(countryamedicalorganization, countryacivilorganization, coastvillage, n2) ))
+
+  =>
+
+% event_32, axiom.
+(( ~ accept_team(countryamedicalorganization, christiansufferterrahumanitarianorganization, coastvillage, n2) ))
+
+  =>
+
+% event_33, axiom.
+(( ~ accept_team(countryamedicalorganization, sufferterragovernment, coastvillage, n2) ))
+
+  =>
+
+% event_34, axiom.
+(( ~ accept_team(countryamedicalorganization, countryahumanitarianorganization, coastvillage, n6) ))
+
+  =>
+
+% event_35, axiom.
+(( ~ accept_team(countryamedicalorganization, countryacivilorganization, coastvillage, n6) ))
+
+  =>
+
+% event_36, axiom.
+(( ~ accept_team(countryamedicalorganization, countryafirstaidorganization, coastvillage, n6) ))
+
+  =>
+
+% event_37, axiom.
+(the_agent_not_in_any_proposed_teams(countryamedicalorganization, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_38, axiom.
+(any_agent_in_all_proposed_teams(countryamedicalorganization, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_39, axiom.
+(accept_team(countryccivilorganization, countrycmedicalorganization, towna, n4))
+
+  =>
+
+% event_40, axiom.
+(( ~ accept_team(countryccivilorganization, countrycmedicalorganization, towna, n5) ))
+
+  =>
+
+% event_41, axiom.
+(the_agent_in_all_proposed_teams(countryccivilorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_42, axiom.
+(any_agent_in_all_proposed_teams(countryccivilorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_43, axiom.
+(accept_team(countrybcivilorganization, countrycmedicalorganization, towna, n4))
+
+  =>
+
+% event_44, axiom.
+(accept_team(countrybcivilorganization, countrycmedicalorganization, towna, n5))
+
+  =>
+
+% event_45, axiom.
+(accept_number(countrybcivilorganization, n5))
+
+  =>
+
+% event_46, axiom.
+(the_agent_in_all_proposed_teams(countrybcivilorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_47, axiom.
+(any_agent_in_all_proposed_teams(countrybcivilorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_48, axiom.
+(accept_team(sufferterragovernment, countryacivilorganization, towna, n6))
+
+  =>
+
+% event_49, axiom.
+(the_agent_in_all_proposed_teams(countrycmedicalorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_50, axiom.
+(any_agent_in_all_proposed_teams(countrycmedicalorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_51, axiom.
+(accept_team(countrycmedicalorganization, christiancountrychumanitarianorganization, coastvillage, n5))
+
+  =>
+
+% event_52, axiom.
+(accept_number(countrycmedicalorganization, n4))
+
+  =>
+
+% event_53, axiom.
+(accept_team(christiancountrychumanitarianorganization, countrycmedicalorganization, towna, n4))
+
+  =>
+
+% event_54, axiom.
+(accept_number(countrycmedicalorganization, n5))
+
+  =>
+
+% event_55, axiom.
+(accept_team(christiancountrychumanitarianorganization, countrycmedicalorganization, towna, n5))
+
+  =>
+
+% event_56, axiom.
+(the_agent_in_all_proposed_teams(christiancountrychumanitarianorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_57, axiom.
+(any_agent_in_all_proposed_teams(christiancountrychumanitarianorganization, countryacivilorganization, towna))
+
+  =>
+
+% event_58, axiom.
+(accept_team(countryafirstaidorganization, countryacivilorganization, towna, n6))
+
+  =>
+
+% event_59, axiom.
+(accept_number(countryacivilorganization, n2))
+
+  =>
+
+% event_60, axiom.
+(accept_team(countryacivilorganization, countryahumanitarianorganization, coastvillage, n5))
+
+  =>
+
+% event_61, axiom.
+(accept_team(countryacivilorganization, countryahumanitarianorganization, coastvillage, n6))
+
+  =>
+
+% event_62, axiom.
+(accept_team(countryacivilorganization, countryafirstaidorganization, coastvillage, n6))
+
+  =>
+
+% event_63, axiom.
+(the_agent_in_all_proposed_teams(countryacivilorganization, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_64, axiom.
+(any_agent_in_all_proposed_teams(countryacivilorganization, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_65, axiom.
+(accept_number(countryafirstaidorganization, n2))
+
+  =>
+
+% event_66, axiom.
+(accept_team(countryafirstaidorganization, countryahumanitarianorganization, coastvillage, n5))
+
+  =>
+
+% event_67, axiom.
+(accept_team(countryafirstaidorganization, countryahumanitarianorganization, coastvillage, n6))
+
+  =>
+
+% event_68, axiom.
+(accept_team(countryafirstaidorganization, countryacivilorganization, coastvillage, n6))
+
+  =>
+
+% event_69, axiom.
+(the_agent_in_all_proposed_teams(countryafirstaidorganization, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_70, axiom.
+(any_agent_in_all_proposed_teams(countryafirstaidorganization, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_71, axiom.
+(( ~ accept_team(countryccivilorganization, christiancountrychumanitarianorganization, coastvillage, n5) ))
+
+  =>
+
+% event_72, axiom.
+(( ~ accept_team(countryccivilorganization, christiancountrychumanitarianorganization, coastvillage, n6) ))
+
+  =>
+
+% event_73, axiom.
+(accept_number(christiancountrychumanitarianorganization, n5))
+
+  =>
+
+% event_74, axiom.
+(accept_team(countrybcivilorganization, christiancountrychumanitarianorganization, coastvillage, n5))
+
+  =>
+
+% event_75, axiom.
+(accept_team(countrybcivilorganization, christiancountrychumanitarianorganization, coastvillage, n6))
+
+  =>
+
+% event_76, axiom.
+(accept_team(countrybcivilorganization, muslimcountrybhumanitarianorganization, townc, n6))
+
+  =>
+
+% event_77, axiom.
+(accept_team(countrybcivilorganization, countrybhumanitarianorganization, townc, n6))
+
+  =>
+
+% event_78, axiom.
+(accept_team(countrybcivilorganization, christiancountrychumanitarianorganization, townc, n6))
+
+  =>
+
+% event_79, axiom.
+(accept_team(countrybcivilorganization, countrycmedicalorganization, townc, n6))
+
+  =>
+
+% event_80, axiom.
+(the_agent_in_all_proposed_teams(countrybcivilorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_81, axiom.
+(any_agent_in_all_proposed_teams(countrybcivilorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_82, axiom.
+(accept_team(sufferterragovernment, countryahumanitarianorganization, coastvillage, n5))
+
+  =>
+
+% event_83, axiom.
+(accept_team(sufferterragovernment, countryahumanitarianorganization, coastvillage, n6))
+
+  =>
+
+% event_84, axiom.
+(accept_team(sufferterragovernment, countryacivilorganization, coastvillage, n6))
+
+  =>
+
+% event_85, axiom.
+(accept_team(sufferterragovernment, countryafirstaidorganization, coastvillage, n6))
+
+  =>
+
+% event_86, axiom.
+(the_agent_in_all_proposed_teams(sufferterragovernment, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_87, axiom.
+(any_agent_in_all_proposed_teams(sufferterragovernment, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_88, axiom.
+(accept_number(christiansufferterrahumanitarianorganization, n2))
+
+  =>
+
+% event_89, axiom.
+(accept_number(countryahumanitarianorganization, n5))
+
+  =>
+
+% event_90, axiom.
+(accept_team(christiansufferterrahumanitarianorganization, countryahumanitarianorganization, coastvillage, n5))
+
+  =>
+
+% event_91, axiom.
+(accept_team(christiansufferterrahumanitarianorganization, countryahumanitarianorganization, coastvillage, n6))
+
+  =>
+
+% event_92, axiom.
+(accept_team(christiansufferterrahumanitarianorganization, countryacivilorganization, coastvillage, n6))
+
+  =>
+
+% event_93, axiom.
+(accept_team(christiansufferterrahumanitarianorganization, countryafirstaidorganization, coastvillage, n6))
+
+  =>
+
+% event_94, axiom.
+(the_agent_in_all_proposed_teams(christiansufferterrahumanitarianorganization, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_95, axiom.
+(any_agent_in_all_proposed_teams(christiansufferterrahumanitarianorganization, christiancountrychumanitarianorganization, coastvillage))
+
+  =>
+
+% event_96, axiom.
+(accept_team(countrycmedicalorganization, christiancountrychumanitarianorganization, coastvillage, n6))
+
+  =>
+
+% event_97, axiom.
+(accept_team(muslimcountrybhumanitarianorganization, christiancountrychumanitarianorganization, coastvillage, n6))
+
+  =>
+
+% event_98, axiom.
+(accept_number(muslimcountrybhumanitarianorganization, n3))
+
+  =>
+
+% event_99, axiom.
+(accept_team(muslimcountrybhumanitarianorganization, countryccivilorganization, townc, n4))
+
+  =>
+
+% event_100, axiom.
+(accept_team(muslimcountrybhumanitarianorganization, countrybcivilorganization, townc, n6))
+
+  =>
+
+% event_101, axiom.
+(accept_team(muslimcountrybhumanitarianorganization, countrybhumanitarianorganization, townc, n6))
+
+  =>
+
+% event_102, axiom.
+(accept_team(muslimcountrybhumanitarianorganization, christiancountrychumanitarianorganization, townc, n6))
+
+  =>
+
+% event_103, axiom.
+(accept_team(muslimcountrybhumanitarianorganization, countrycmedicalorganization, townc, n6))
+
+  =>
+
+% event_104, axiom.
+(the_agent_in_all_proposed_teams(muslimcountrybhumanitarianorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_105, axiom.
+(any_agent_in_all_proposed_teams(muslimcountrybhumanitarianorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_106, axiom.
+(accept_team(countryacivilorganization, countryahumanitarianorganization, townc, n6))
+
+  =>
+
+% event_107, axiom.
+(accept_team(countryafirstaidorganization, countryahumanitarianorganization, townc, n6))
+
+  =>
+
+% event_108, axiom.
+(accept_team(christiancountrychumanitarianorganization, countryccivilorganization, townc, n4))
+
+  =>
+
+% event_109, axiom.
+(accept_team(christiancountrychumanitarianorganization, muslimcountrybhumanitarianorganization, townc, n6))
+
+  =>
+
+% event_110, axiom.
+(accept_team(christiancountrychumanitarianorganization, countrybcivilorganization, townc, n6))
+
+  =>
+
+% event_111, axiom.
+(accept_team(christiancountrychumanitarianorganization, countrybhumanitarianorganization, townc, n6))
+
+  =>
+
+% event_112, axiom.
+(accept_team(christiancountrychumanitarianorganization, countrycmedicalorganization, townc, n6))
+
+  =>
+
+% event_113, axiom.
+(the_agent_in_all_proposed_teams(christiancountrychumanitarianorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_114, axiom.
+(any_agent_in_all_proposed_teams(christiancountrychumanitarianorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_115, axiom.
+(( ~ accept_team(countryccivilorganization, muslimcountrybhumanitarianorganization, townc, n6) ))
+
+  =>
+
+% event_116, axiom.
+(( ~ accept_team(countryccivilorganization, countrybcivilorganization, townc, n6) ))
+
+  =>
+
+% event_117, axiom.
+(( ~ accept_team(countryccivilorganization, countrybhumanitarianorganization, townc, n6) ))
+
+  =>
+
+% event_118, axiom.
+(( ~ accept_team(countryccivilorganization, christiancountrychumanitarianorganization, townc, n6) ))
+
+  =>
+
+% event_119, axiom.
+(( ~ accept_team(countryccivilorganization, countrycmedicalorganization, townc, n6) ))
+
+  =>
+
+% event_120, axiom.
+(the_agent_in_all_proposed_teams(countryccivilorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_121, axiom.
+(any_agent_in_all_proposed_teams(countryccivilorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_122, axiom.
+(accept_team(countrybhumanitarianorganization, countrybcivilorganization, townc, n2))
+
+  =>
+
+% event_123, axiom.
+(accept_team(countrybhumanitarianorganization, muslimcountrybhumanitarianorganization, townc, n6))
+
+  =>
+
+% event_124, axiom.
+(accept_team(sufferterragovernment, countryahumanitarianorganization, townc, n6))
+
+  =>
+
+% event_125, axiom.
+(accept_team(christiansufferterrahumanitarianorganization, countryahumanitarianorganization, townc, n6))
+
+  =>
+
+% event_126, axiom.
+(accept_team(countryamedicalorganization, countryahumanitarianorganization, townc, n6))
+
+  =>
+
+% event_127, axiom.
+(accept_team(countrycmedicalorganization, countryccivilorganization, townc, n4))
+
+  =>
+
+% event_128, axiom.
+(accept_team(countrycmedicalorganization, muslimcountrybhumanitarianorganization, townc, n6))
+
+  =>
+
+% event_129, axiom.
+(accept_team(countrycmedicalorganization, countrybcivilorganization, townc, n6))
+
+  =>
+
+% event_130, axiom.
+(accept_team(countrycmedicalorganization, countrybhumanitarianorganization, townc, n6))
+
+  =>
+
+% event_131, axiom.
+(accept_team(countrycmedicalorganization, christiancountrychumanitarianorganization, townc, n6))
+
+  =>
+
+% event_132, axiom.
+(the_agent_in_all_proposed_teams(countrycmedicalorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_133, axiom.
+(any_agent_in_all_proposed_teams(countrycmedicalorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_134, axiom.
+(accept_team(countrybhumanitarianorganization, countrybcivilorganization, townc, n6))
+
+  =>
+
+% event_135, axiom.
+(accept_team(countrybhumanitarianorganization, christiancountrychumanitarianorganization, townc, n6))
+
+  =>
+
+% event_136, axiom.
+(accept_team(countrybhumanitarianorganization, countrycmedicalorganization, townc, n6))
+
+  =>
+
+% event_137, axiom.
+(the_agent_in_all_proposed_teams(countrybhumanitarianorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_138, axiom.
+(any_agent_in_all_proposed_teams(countrybhumanitarianorganization, countryahumanitarianorganization, townc))
+
+  =>
+
+% event_139, axiom.
+(accept_team(christiansufferterrahumanitarianorganization, countryahumanitarianorganization, cityb, n6))
+
+  =>
+
+% event_140, axiom.
+(accept_number(christiansufferterrahumanitarianorganization, n6))
+
+  =>
+
+% event_141, axiom.
+(the_agent_in_all_proposed_teams(christiansufferterrahumanitarianorganization, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_142, axiom.
+(any_agent_in_all_proposed_teams(christiansufferterrahumanitarianorganization, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_143, axiom.
+(( ~ accept_team(countryccivilorganization, countrybhumanitarianorganization, cityb, n5) ))
+
+  =>
+
+% event_144, axiom.
+(( ~ accept_team(countryccivilorganization, countrybhumanitarianorganization, cityb, n6) ))
+
+  =>
+
+% event_145, axiom.
+(accept_team(sufferterragovernment, countryahumanitarianorganization, cityb, n6))
+
+  =>
+
+% event_146, axiom.
+(the_agent_in_all_proposed_teams(sufferterragovernment, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_147, axiom.
+(any_agent_in_all_proposed_teams(sufferterragovernment, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_148, axiom.
+(accept_team(countryafirstaidorganization, countryahumanitarianorganization, cityb, n6))
+
+  =>
+
+% event_149, axiom.
+(accept_number(countryafirstaidorganization, n6))
+
+  =>
+
+% event_150, axiom.
+(the_agent_in_all_proposed_teams(countryafirstaidorganization, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_151, axiom.
+(any_agent_in_all_proposed_teams(countryafirstaidorganization, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_152, axiom.
+(accept_team(countryafirstaidorganization, sufferterragovernment, towna, n5))
+
+  =>
+
+% event_153, axiom.
+(accept_team(countryafirstaidorganization, sufferterragovernment, towna, n6))
+
+  =>
+
+% event_154, axiom.
+(accept_team(countrycmedicalorganization, countrybhumanitarianorganization, cityb, n5))
+
+  =>
+
+% event_155, axiom.
+(accept_team(countrycmedicalorganization, countrybhumanitarianorganization, cityb, n6))
+
+  =>
+
+% event_156, axiom.
+(accept_team(countryamedicalorganization, countryahumanitarianorganization, cityb, n6))
+
+  =>
+
+% event_157, axiom.
+(accept_number(countryamedicalorganization, n6))
+
+  =>
+
+% event_158, axiom.
+(the_agent_in_all_proposed_teams(countryamedicalorganization, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_159, axiom.
+(any_agent_in_all_proposed_teams(countryamedicalorganization, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_160, axiom.
+(accept_team(countrybcivilorganization, countrybhumanitarianorganization, cityb, n5))
+
+  =>
+
+% event_161, axiom.
+(accept_team(countrybcivilorganization, countrybhumanitarianorganization, cityb, n6))
+
+  =>
+
+% event_162, axiom.
+(accept_team(christiancountrychumanitarianorganization, countrybhumanitarianorganization, cityb, n5))
+
+  =>
+
+% event_163, axiom.
+(accept_team(christiancountrychumanitarianorganization, countrybhumanitarianorganization, cityb, n6))
+
+  =>
+
+% event_164, axiom.
+(the_agent_in_all_proposed_teams(countryahumanitarianorganization, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_165, axiom.
+(any_agent_in_all_proposed_teams(countryahumanitarianorganization, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_166, axiom.
+(accept_number(countryahumanitarianorganization, n6))
+
+  =>
+
+% event_167, axiom.
+(accept_team(countryacivilorganization, countryahumanitarianorganization, cityb, n6))
+
+  =>
+
+% event_168, axiom.
+(accept_number(countryacivilorganization, n6))
+
+  =>
+
+% event_169, axiom.
+(the_agent_in_all_proposed_teams(countryacivilorganization, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_170, axiom.
+(any_agent_in_all_proposed_teams(countryacivilorganization, countrybhumanitarianorganization, cityb))
+
+  =>
+
+% event_171, axiom.
+(accept_number(countrybhumanitarianorganization, n5))
+
+  =>
+
+% event_172, axiom.
+(accept_team(muslimcountrybhumanitarianorganization, countrybhumanitarianorganization, cityb, n5))
+
+  =>
+
+% event_173, axiom.
+(accept_team(muslimcountrybhumanitarianorganization, countrybhumanitarianorganization, cityb, n6))
+
+  =>
+
+% event_174, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countrybcivilorganization, towna, n2) ))
+
+  =>
+
+% event_175, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countrycmedicalorganization, towna, n2) ))
+
+  =>
+
+% event_176, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, christiancountrychumanitarianorganization, towna, n2) ))
+
+  =>
+
+% event_177, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countryccivilorganization, towna, n2) ))
+
+  =>
+
+% event_178, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countrybcivilorganization, towna, n3) ))
+
+  =>
+
+% event_179, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, christiancountrychumanitarianorganization, towna, n3) ))
+
+  =>
+
+% event_180, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countrycmedicalorganization, towna, n3) ))
+
+  =>
+
+% event_181, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countryccivilorganization, towna, n3) ))
+
+  =>
+
+% event_182, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countrybhumanitarianorganization, towna, n2) ))
+
+  =>
+
+% event_183, axiom.
+(accept_number(muslimcountrybhumanitarianorganization, n2))
+
+  =>
+
+% event_184, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countryccivilorganization, towna, n4) ))
+
+  =>
+
+% event_185, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countrybcivilorganization, towna, n6) ))
+
+  =>
+
+% event_186, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countrybhumanitarianorganization, towna, n6) ))
+
+  =>
+
+% event_187, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, christiancountrychumanitarianorganization, towna, n6) ))
+
+  =>
+
+% event_188, axiom.
+(accept_team(countryamedicalorganization, sufferterragovernment, towna, n5))
+
+  =>
+
+% event_189, axiom.
+(accept_team(countryamedicalorganization, sufferterragovernment, towna, n6))
+
+  =>
+
+% event_190, axiom.
+(accept_team(countryahumanitarianorganization, sufferterragovernment, towna, n5))
+
+  =>
+
+% event_191, axiom.
+(accept_team(countryahumanitarianorganization, sufferterragovernment, towna, n6))
+
+  =>
+
+% event_192, axiom.
+(accept_number(christiancountrychumanitarianorganization, n2))
+
+  =>
+
+% event_193, axiom.
+(accept_team(countrybhumanitarianorganization, countrybcivilorganization, towna, n3))
+
+  =>
+
+% event_194, axiom.
+(accept_team(countrybhumanitarianorganization, christiancountrychumanitarianorganization, towna, n3))
+
+  =>
+
+% event_195, axiom.
+(accept_team(countrybhumanitarianorganization, countrycmedicalorganization, towna, n3))
+
+  =>
+
+% event_196, axiom.
+(accept_team(countrybhumanitarianorganization, countryccivilorganization, towna, n3))
+
+  =>
+
+% event_197, axiom.
+(accept_number(countrybhumanitarianorganization, n2))
+
+  =>
+
+% event_198, axiom.
+(accept_team(countrybhumanitarianorganization, countrybcivilorganization, towna, n6))
+
+  =>
+
+% event_199, axiom.
+(accept_team(countrybhumanitarianorganization, christiancountrychumanitarianorganization, towna, n6))
+
+  =>
+
+% event_200, axiom.
+(accept_team(countrybhumanitarianorganization, countrycmedicalorganization, towna, n6))
+
+  =>
+
+% event_201, axiom.
+(the_agent_in_all_proposed_teams(countrybhumanitarianorganization, sufferterragovernment, towna))
+
+  =>
+
+% event_202, axiom.
+(any_agent_in_all_proposed_teams(countrybhumanitarianorganization, sufferterragovernment, towna))
+
+  =>
+
+% event_203, axiom.
+(accept_number(countrybcivilorganization, n2))
+
+  =>
+
+% event_204, axiom.
+(accept_number(countrybcivilorganization, n3))
+
+  =>
+
+% event_205, axiom.
+(accept_team(countrybcivilorganization, countryccivilorganization, towna, n4))
+
+  =>
+
+% event_206, axiom.
+(accept_team(countrybcivilorganization, countrybhumanitarianorganization, towna, n6))
+
+  =>
+
+% event_207, axiom.
+(accept_team(countrybcivilorganization, christiancountrychumanitarianorganization, towna, n6))
+
+  =>
+
+% event_208, axiom.
+(accept_team(countrybcivilorganization, countrycmedicalorganization, towna, n6))
+
+  =>
+
+% event_209, axiom.
+(the_agent_in_all_proposed_teams(countrybcivilorganization, sufferterragovernment, towna))
+
+  =>
+
+% event_210, axiom.
+(any_agent_in_all_proposed_teams(countrybcivilorganization, sufferterragovernment, towna))
+
+  =>
+
+% event_211, axiom.
+(accept_number(sufferterragovernment, n2))
+
+  =>
+
+% event_212, axiom.
+(( ~ accept_team(christiansufferterrahumanitarianorganization, sufferterragovernment, towna, n2) ))
+
+  =>
+
+% event_213, axiom.
+(( ~ accept_team(christiansufferterrahumanitarianorganization, sufferterragovernment, towna, n6) ))
+
+  =>
+
+% event_214, axiom.
+(accept_number(countryccivilorganization, n2))
+
+  =>
+
+% event_215, axiom.
+(accept_number(countryccivilorganization, n3))
+
+  =>
+
+% event_216, axiom.
+(( ~ accept_team(countryccivilorganization, countrybcivilorganization, towna, n6) ))
+
+  =>
+
+% event_217, axiom.
+(( ~ accept_team(countryccivilorganization, countrybhumanitarianorganization, towna, n6) ))
+
+  =>
+
+% event_218, axiom.
+(( ~ accept_team(countryccivilorganization, christiancountrychumanitarianorganization, towna, n6) ))
+
+  =>
+
+% event_219, axiom.
+(( ~ accept_team(countryccivilorganization, countrycmedicalorganization, towna, n6) ))
+
+  =>
+
+% event_220, axiom.
+(the_agent_in_all_proposed_teams(countryccivilorganization, sufferterragovernment, towna))
+
+  =>
+
+% event_221, axiom.
+(any_agent_in_all_proposed_teams(countryccivilorganization, sufferterragovernment, towna))
+
+  =>
+
+% event_222, axiom.
+(accept_number(sufferterragovernment, n5))
+
+  =>
+
+% event_223, axiom.
+(accept_team(countryacivilorganization, sufferterragovernment, towna, n5))
+
+  =>
+
+% event_224, axiom.
+(accept_number(sufferterragovernment, n6))
+
+  =>
+
+% event_225, axiom.
+(accept_team(countryacivilorganization, sufferterragovernment, towna, n6))
+
+  =>
+
+% event_226, axiom.
+(accept_number(countrycmedicalorganization, n2))
+
+  =>
+
+% event_227, axiom.
+(accept_number(countrycmedicalorganization, n3))
+
+  =>
+
+% event_228, axiom.
+(accept_team(countrycmedicalorganization, countryccivilorganization, towna, n4))
+
+  =>
+
+% event_229, axiom.
+(accept_team(countrycmedicalorganization, countrybcivilorganization, towna, n6))
+
+  =>
+
+% event_230, axiom.
+(accept_team(countrycmedicalorganization, countrybhumanitarianorganization, towna, n6))
+
+  =>
+
+% event_231, axiom.
+(accept_team(countrycmedicalorganization, christiancountrychumanitarianorganization, towna, n6))
+
+  =>
+
+% event_232, axiom.
+(the_agent_in_all_proposed_teams(countrycmedicalorganization, sufferterragovernment, towna))
+
+  =>
+
+% event_233, axiom.
+(any_agent_in_all_proposed_teams(countrycmedicalorganization, sufferterragovernment, towna))
+
+  =>
+
+% event_234, axiom.
+(accept_number(christiancountrychumanitarianorganization, n3))
+
+  =>
+
+% event_235, axiom.
+(accept_number(countryccivilorganization, n4))
+
+  =>
+
+% event_236, axiom.
+(accept_team(christiancountrychumanitarianorganization, countryccivilorganization, towna, n4))
+
+  =>
+
+% event_237, axiom.
+(accept_number(countrybcivilorganization, n6))
+
+  =>
+
+% event_238, axiom.
+(accept_team(christiancountrychumanitarianorganization, countrybcivilorganization, towna, n6))
+
+  =>
+
+% event_239, axiom.
+(accept_number(countrybhumanitarianorganization, n6))
+
+  =>
+
+% event_240, axiom.
+(accept_team(christiancountrychumanitarianorganization, countrybhumanitarianorganization, towna, n6))
+
+  =>
+
+% event_241, axiom.
+(accept_team(christiancountrychumanitarianorganization, countrycmedicalorganization, towna, n6))
+
+  =>
+
+% event_242, axiom.
+(accept_number(christiancountrychumanitarianorganization, n6))
+
+  =>
+
+% event_243, axiom.
+(the_agent_in_all_proposed_teams(christiancountrychumanitarianorganization, sufferterragovernment, towna))
+
+  =>
+
+% event_244, axiom.
+(any_agent_in_all_proposed_teams(christiancountrychumanitarianorganization, sufferterragovernment, towna))
+
+  =>
+
+% event_245, axiom.
+(accept_number(countrycmedicalorganization, n6))
+
+  =>
+
+% event_246, axiom.
+(( ~ accept_team(muslimcountrybhumanitarianorganization, countrycmedicalorganization, towna, n6) ))
+
+  =>
+
+% event_247, axiom.
+(accept_number(muslimcountrybhumanitarianorganization, n6))
+
+  =>
+
+% event_248, axiom.
+(the_agent_not_in_any_proposed_teams(muslimcountrybhumanitarianorganization, sufferterragovernment, towna))
+
+  =>
+
+% event_249, axiom.
+(any_agent_in_all_proposed_teams(muslimcountrybhumanitarianorganization, sufferterragovernment, towna))
+
+  =>
+
+% deduced_1, axiom.
+(accept_leader(christiancountrychumanitarianorganization, countryacivilorganization))
+
+  =>
+
+% deduced_2, axiom.
+(accept_leader(christiancountrychumanitarianorganization, muslimcountrybhumanitarianorganization))
+
+  =>
+
+% deduced_3, axiom.
+(accept_population(christiancountrychumanitarianorganization, other, n5))
+
+  =>
+
+% deduced_4, axiom.
+(accept_population(christiancountrychumanitarianorganization, muslim, n65))
+
+  =>
+
+% deduced_5, axiom.
+(accept_population(christiancountrychumanitarianorganization, christian, n0))
+
+  =>
+
+% deduced_6, axiom.
+(accept_population(christiancountrychumanitarianorganization, atheist, n30))
+
+  =>
+
+% deduced_7, axiom.
+(accept_city(christiancountrychumanitarianorganization, townc))
+
+  =>
+
+% deduced_8, axiom.
+(accept_leader(christiancountrychumanitarianorganization, countryahumanitarianorganization))
+
+  =>
+
+% deduced_9, axiom.
+(accept_population(christiancountrychumanitarianorganization, other, n1))
+
+  =>
+
+% deduced_10, axiom.
+(accept_population(christiancountrychumanitarianorganization, christian, n20))
+
+  =>
+
+% deduced_11, axiom.
+(accept_population(christiancountrychumanitarianorganization, atheist, n78))
+
+  =>
+
+% deduced_12, axiom.
+(accept_city(christiancountrychumanitarianorganization, cityb))
+
+  =>
+
+% deduced_13, axiom.
+(( ~ accept_city(countryamedicalorganization, coastvillage) ))
+
+  =>
+
+% deduced_14, axiom.
+(accept_leader(countryamedicalorganization, christiancountrychumanitarianorganization))
+
+  =>
+
+% deduced_15, axiom.
+(accept_population(countryamedicalorganization, other, n5))
+
+  =>
+
+% deduced_16, axiom.
+(accept_population(countryamedicalorganization, muslim, n65))
+
+  =>
+
+% deduced_17, axiom.
+(accept_population(countryamedicalorganization, christian, n0))
+
+  =>
+
+% deduced_18, axiom.
+(accept_population(countryamedicalorganization, atheist, n30))
+
+  =>
+
+% deduced_19, axiom.
+(accept_leader(countryamedicalorganization, countryahumanitarianorganization))
+
+  =>
+
+% deduced_20, axiom.
+(accept_city(countryamedicalorganization, townc))
+
+  =>
+
+% deduced_21, axiom.
+(accept_leader(countryahumanitarianorganization, countryamedicalorganization))
+
+  =>
+
+% deduced_22, axiom.
+(accept_leader(countryahumanitarianorganization, countryafirstaidorganization))
+
+  =>
+
+% deduced_23, axiom.
+(accept_population(countryahumanitarianorganization, native, n85))
+
+  =>
+
+% deduced_24, axiom.
+(accept_population(countryahumanitarianorganization, muslim, n0))
+
+  =>
+
+% deduced_25, axiom.
+(accept_population(countryahumanitarianorganization, christian, n3))
+
+  =>
+
+% deduced_26, axiom.
+(accept_population(countryahumanitarianorganization, atheist, n12))
+
+  =>
+
+% deduced_27, axiom.
+(accept_city(countryahumanitarianorganization, coastvillage))
+
+  =>
+
+% deduced_28, axiom.
+(accept_leader(countryahumanitarianorganization, christiancountrychumanitarianorganization))
+
+  =>
+
+% deduced_29, axiom.
+(accept_leader(countryafirstaidorganization, countryamedicalorganization))
+
+  =>
+
+% deduced_30, axiom.
+(accept_leader(christiansufferterrahumanitarianorganization, countryamedicalorganization))
+
+  =>
+
+% deduced_31, axiom.
+(accept_leader(countrycmedicalorganization, countryacivilorganization))
+
+  =>
+
+% deduced_32, axiom.
+(accept_population(countrycmedicalorganization, native, n85))
+
+  =>
+
+% deduced_33, axiom.
+(accept_population(countrycmedicalorganization, muslim, n0))
+
+  =>
+
+% deduced_34, axiom.
+(accept_population(countrycmedicalorganization, christian, n3))
+
+  =>
+
+% deduced_35, axiom.
+(accept_population(countrycmedicalorganization, atheist, n12))
+
+  =>
+
+% deduced_36, axiom.
+(accept_city(countrycmedicalorganization, coastvillage))
+
+  =>
+
+% deduced_37, axiom.
+(accept_leader(countrybcivilorganization, countryacivilorganization))
+
+  =>
+
+% deduced_38, axiom.
+(accept_population(countrybcivilorganization, native, n85))
+
+  =>
+
+% deduced_39, axiom.
+(accept_population(countrybcivilorganization, muslim, n0))
+
+  =>
+
+% deduced_40, axiom.
+(accept_population(countrybcivilorganization, christian, n3))
+
+  =>
+
+% deduced_41, axiom.
+(accept_population(countrybcivilorganization, atheist, n12))
+
+  =>
+
+% deduced_42, axiom.
+(accept_city(countrybcivilorganization, coastvillage))
+
+  =>
+
+% deduced_43, axiom.
+(accept_leader(countrybcivilorganization, muslimcountrybhumanitarianorganization))
+
+  =>
+
+% deduced_44, axiom.
+(accept_population(countrybcivilorganization, other, n5))
+
+  =>
+
+% deduced_45, axiom.
+(accept_population(countrybcivilorganization, muslim, n65))
+
+  =>
+
+% deduced_46, axiom.
+(accept_population(countrybcivilorganization, christian, n0))
+
+  =>
+
+% deduced_47, axiom.
+(accept_population(countrybcivilorganization, atheist, n30))
+
+  =>
+
+% deduced_48, axiom.
+(accept_city(countrybcivilorganization, townc))
+
+  =>
+
+% deduced_49, axiom.
+(accept_leader(countrybcivilorganization, countryahumanitarianorganization))
+
+  =>
+
+% deduced_50, axiom.
+(accept_population(countrybcivilorganization, other, n1))
+
+  =>
+
+% deduced_51, axiom.
+(accept_population(countrybcivilorganization, christian, n20))
+
+  =>
+
+% deduced_52, axiom.
+(accept_population(countrybcivilorganization, atheist, n78))
+
+  =>
+
+% deduced_53, axiom.
+(accept_city(countrybcivilorganization, cityb))
+
+  =>
+
+% deduced_54, axiom.
+(accept_leader(sufferterragovernment, countryamedicalorganization))
+
+  =>
+
+% deduced_55, axiom.
+(accept_population(sufferterragovernment, christian, n24))
+
+  =>
+
+% deduced_56, axiom.
+(accept_population(sufferterragovernment, atheist, n75))
+
+  =>
+
+% deduced_57, axiom.
+(accept_city(sufferterragovernment, towna))
+
+  =>
+
+% deduced_58, axiom.
+(( ~ accept_number(countryccivilorganization, n5) ))
+
+  =>
+
+% deduced_59, axiom.
+(accept_population(countryccivilorganization, other, n1))
+
+  =>
+
+% deduced_60, axiom.
+(accept_population(countryccivilorganization, christian, n20))
+
+  =>
+
+% deduced_61, axiom.
+(accept_population(countryccivilorganization, atheist, n78))
+
+  =>
+
+% deduced_62, axiom.
+(( ~ accept_number(countryccivilorganization, n6) ))
+
+  =>
+
+% deduced_63, axiom.
+(accept_leader(countryccivilorganization, countrybhumanitarianorganization))
+
+  =>
+
+% deduced_64, axiom.
+(accept_city(countryccivilorganization, cityb))
+
+  =>
+
+% deduced_65, axiom.
+(accept_leader(countryccivilorganization, countryacivilorganization))
+
+  =>
+
+% deduced_66, axiom.
+(accept_leader(countryacivilorganization, countryamedicalorganization))
+
+  =>
+
+% deduced_67, axiom.
+(accept_leader(countryacivilorganization, countryafirstaidorganization))
+
+  =>
+
+% deduced_68, axiom.
+(accept_population(countryacivilorganization, native, n85))
+
+  =>
+
+% deduced_69, axiom.
+(accept_population(countryacivilorganization, muslim, n0))
+
+  =>
+
+% deduced_70, axiom.
+(accept_population(countryacivilorganization, christian, n3))
+
+  =>
+
+% deduced_71, axiom.
+(accept_population(countryacivilorganization, atheist, n12))
+
+  =>
+
+% deduced_72, axiom.
+(accept_city(countryacivilorganization, coastvillage))
+
+  =>
+
+% deduced_73, axiom.
+(accept_leader(countryacivilorganization, christiancountrychumanitarianorganization))
+
+  =>
+
+% deduced_74, axiom.
+(accept_population(countryacivilorganization, other, n5))
+
+  =>
+
+% deduced_75, axiom.
+(accept_population(countryacivilorganization, muslim, n65))
+
+  =>
+
+% deduced_76, axiom.
+(accept_population(countryacivilorganization, christian, n0))
+
+  =>
+
+% deduced_77, axiom.
+(accept_population(countryacivilorganization, atheist, n30))
+
+  =>
+
+% deduced_78, axiom.
+(accept_leader(countryacivilorganization, countryahumanitarianorganization))
+
+  =>
+
+% deduced_79, axiom.
+(accept_city(countryacivilorganization, townc))
+
+  =>
+
+% deduced_80, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, christian, n24))
+
+  =>
+
+% deduced_81, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, atheist, n75))
+
+  =>
+
+% deduced_82, axiom.
+(( ~ accept_leader(christiansufferterrahumanitarianorganization, sufferterragovernment) ))
+
+  =>
+
+% deduced_83, axiom.
+(accept_city(christiansufferterrahumanitarianorganization, towna))
+
+  =>
+
+% deduced_84, axiom.
+(accept_leader(christiansufferterrahumanitarianorganization, countryafirstaidorganization))
+
+  =>
+
+% deduced_85, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, other, n0))
+
+  =>
+
+% deduced_86, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, native, n85))
+
+  =>
+
+% deduced_87, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, muslim, n0))
+
+  =>
+
+% deduced_88, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, christian, n3))
+
+  =>
+
+% deduced_89, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, atheist, n12))
+
+  =>
+
+% deduced_90, axiom.
+(accept_city(christiansufferterrahumanitarianorganization, coastvillage))
+
+  =>
+
+% deduced_91, axiom.
+(accept_leader(christiansufferterrahumanitarianorganization, christiancountrychumanitarianorganization))
+
+  =>
+
+% deduced_92, axiom.
+(accept_leader(muslimcountrybhumanitarianorganization, countryacivilorganization))
+
+  =>
+
+% deduced_93, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, other, n0))
+
+  =>
+
+% deduced_94, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, native, n85))
+
+  =>
+
+% deduced_95, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, muslim, n0))
+
+  =>
+
+% deduced_96, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, christian, n3))
+
+  =>
+
+% deduced_97, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, atheist, n12))
+
+  =>
+
+% deduced_98, axiom.
+(accept_city(muslimcountrybhumanitarianorganization, coastvillage))
+
+  =>
+
+% deduced_99, axiom.
+(accept_population(countryafirstaidorganization, native, n85))
+
+  =>
+
+% deduced_100, axiom.
+(accept_population(countryafirstaidorganization, muslim, n0))
+
+  =>
+
+% deduced_101, axiom.
+(accept_population(countryafirstaidorganization, christian, n3))
+
+  =>
+
+% deduced_102, axiom.
+(accept_population(countryafirstaidorganization, atheist, n12))
+
+  =>
+
+% deduced_103, axiom.
+(accept_city(countryafirstaidorganization, coastvillage))
+
+  =>
+
+% deduced_104, axiom.
+(accept_leader(countryafirstaidorganization, christiancountrychumanitarianorganization))
+
+  =>
+
+% deduced_105, axiom.
+(accept_population(countryafirstaidorganization, other, n5))
+
+  =>
+
+% deduced_106, axiom.
+(accept_population(countryafirstaidorganization, muslim, n65))
+
+  =>
+
+% deduced_107, axiom.
+(accept_population(countryafirstaidorganization, christian, n0))
+
+  =>
+
+% deduced_108, axiom.
+(accept_population(countryafirstaidorganization, atheist, n30))
+
+  =>
+
+% deduced_109, axiom.
+(accept_leader(countryafirstaidorganization, countryahumanitarianorganization))
+
+  =>
+
+% deduced_110, axiom.
+(accept_city(countryafirstaidorganization, townc))
+
+  =>
+
+% deduced_111, axiom.
+(accept_leader(countryafirstaidorganization, countryacivilorganization))
+
+  =>
+
+% deduced_112, axiom.
+(accept_population(countryafirstaidorganization, other, n1))
+
+  =>
+
+% deduced_113, axiom.
+(accept_population(countryafirstaidorganization, christian, n20))
+
+  =>
+
+% deduced_114, axiom.
+(accept_population(countryafirstaidorganization, atheist, n78))
+
+  =>
+
+% deduced_115, axiom.
+(accept_city(countryafirstaidorganization, cityb))
+
+  =>
+
+% deduced_116, axiom.
+(accept_leader(countryafirstaidorganization, countrybhumanitarianorganization))
+
+  =>
+
+% deduced_117, axiom.
+(accept_leader(countrybhumanitarianorganization, countryacivilorganization))
+
+  =>
+
+% deduced_118, axiom.
+(accept_population(countrybhumanitarianorganization, native, n85))
+
+  =>
+
+% deduced_119, axiom.
+(accept_population(countrybhumanitarianorganization, muslim, n0))
+
+  =>
+
+% deduced_120, axiom.
+(accept_population(countrybhumanitarianorganization, christian, n3))
+
+  =>
+
+% deduced_121, axiom.
+(accept_population(countrybhumanitarianorganization, atheist, n12))
+
+  =>
+
+% deduced_122, axiom.
+(accept_city(countrybhumanitarianorganization, coastvillage))
+
+  =>
+
+% deduced_123, axiom.
+(accept_leader(countrybhumanitarianorganization, muslimcountrybhumanitarianorganization))
+
+  =>
+
+% deduced_124, axiom.
+(accept_population(countrybhumanitarianorganization, other, n5))
+
+  =>
+
+% deduced_125, axiom.
+(accept_population(countrybhumanitarianorganization, muslim, n65))
+
+  =>
+
+% deduced_126, axiom.
+(accept_population(countrybhumanitarianorganization, christian, n0))
+
+  =>
+
+% deduced_127, axiom.
+(accept_population(countrybhumanitarianorganization, atheist, n30))
+
+  =>
+
+% deduced_128, axiom.
+(accept_city(countrybhumanitarianorganization, townc))
+
+  =>
+
+% deduced_129, axiom.
+(accept_leader(countrybhumanitarianorganization, countryahumanitarianorganization))
+
+  =>
+
+% deduced_130, axiom.
+(accept_leader(countrybhumanitarianorganization, countryccivilorganization))
+
+  =>
+
+% deduced_131, axiom.
+(accept_leader(countrybhumanitarianorganization, countrybcivilorganization))
+
+  =>
+
+% deduced_132, axiom.
+(accept_leader(countrybhumanitarianorganization, christiancountrychumanitarianorganization))
+
+  =>
+
+% deduced_133, axiom.
+(accept_leader(countrybhumanitarianorganization, countrycmedicalorganization))
+
+  =>
+
+% deduced_134, axiom.
+(accept_population(countrybhumanitarianorganization, other, n0))
+
+  =>
+
+% deduced_135, axiom.
+(accept_population(countrybhumanitarianorganization, native, n0))
+
+  =>
+
+% deduced_136, axiom.
+(accept_population(countrybhumanitarianorganization, muslim, n1))
+
+  =>
+
+% deduced_137, axiom.
+(accept_population(countrybhumanitarianorganization, christian, n24))
+
+  =>
+
+% deduced_138, axiom.
+(accept_population(countrybhumanitarianorganization, atheist, n75))
+
+  =>
+
+% deduced_139, axiom.
+(accept_city(countrybhumanitarianorganization, towna))
+
+  =>
+
+% deduced_140, axiom.
+(accept_leader(countrybhumanitarianorganization, sufferterragovernment))
+
+  =>
+
+% deduced_141, axiom.
+(accept_leader(sufferterragovernment, countryafirstaidorganization))
+
+  =>
+
+% deduced_142, axiom.
+(accept_population(sufferterragovernment, other, n0))
+
+  =>
+
+% deduced_143, axiom.
+(accept_population(sufferterragovernment, native, n85))
+
+  =>
+
+% deduced_144, axiom.
+(accept_population(sufferterragovernment, muslim, n0))
+
+  =>
+
+% deduced_145, axiom.
+(accept_population(sufferterragovernment, christian, n3))
+
+  =>
+
+% deduced_146, axiom.
+(accept_population(sufferterragovernment, atheist, n12))
+
+  =>
+
+% deduced_147, axiom.
+(accept_city(sufferterragovernment, coastvillage))
+
+  =>
+
+% deduced_148, axiom.
+(accept_leader(sufferterragovernment, christiancountrychumanitarianorganization))
+
+  =>
+
+% deduced_149, axiom.
+(accept_population(sufferterragovernment, other, n5))
+
+  =>
+
+% deduced_150, axiom.
+(accept_population(sufferterragovernment, muslim, n65))
+
+  =>
+
+% deduced_151, axiom.
+(accept_population(sufferterragovernment, christian, n0))
+
+  =>
+
+% deduced_152, axiom.
+(accept_population(sufferterragovernment, atheist, n30))
+
+  =>
+
+% deduced_153, axiom.
+(accept_leader(sufferterragovernment, countryahumanitarianorganization))
+
+  =>
+
+% deduced_154, axiom.
+(accept_city(sufferterragovernment, townc))
+
+  =>
+
+% deduced_155, axiom.
+(accept_leader(muslimcountrybhumanitarianorganization, countryccivilorganization))
+
+  =>
+
+% deduced_156, axiom.
+(accept_leader(muslimcountrybhumanitarianorganization, countrybcivilorganization))
+
+  =>
+
+% deduced_157, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, other, n5))
+
+  =>
+
+% deduced_158, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, muslim, n65))
+
+  =>
+
+% deduced_159, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, christian, n0))
+
+  =>
+
+% deduced_160, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, atheist, n30))
+
+  =>
+
+% deduced_161, axiom.
+(accept_leader(christiansufferterrahumanitarianorganization, countryahumanitarianorganization))
+
+  =>
+
+% deduced_162, axiom.
+(accept_city(christiansufferterrahumanitarianorganization, townc))
+
+  =>
+
+% deduced_163, axiom.
+(accept_leader(christiansufferterrahumanitarianorganization, countryacivilorganization))
+
+  =>
+
+% deduced_164, axiom.
+(accept_number(christiansufferterrahumanitarianorganization, n5))
+
+  =>
+
+% deduced_165, axiom.
+(accept_number(christiansufferterrahumanitarianorganization, n4))
+
+  =>
+
+% deduced_166, axiom.
+(accept_number(christiansufferterrahumanitarianorganization, n3))
+
+  =>
+
+% deduced_167, axiom.
+(accept_number(christiansufferterrahumanitarianorganization, n2))
+
+  =>
+
+% deduced_168, axiom.
+(accept_number(christiansufferterrahumanitarianorganization, n1))
+
+  =>
+
+% deduced_169, axiom.
+(accept_number(christiansufferterrahumanitarianorganization, n6))
+
+  =>
+
+% deduced_170, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, other, n1))
+
+  =>
+
+% deduced_171, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, native, n0))
+
+  =>
+
+% deduced_172, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, muslim, n1))
+
+  =>
+
+% deduced_173, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, christian, n20))
+
+  =>
+
+% deduced_174, axiom.
+(accept_population(christiansufferterrahumanitarianorganization, atheist, n78))
+
+  =>
+
+% deduced_175, axiom.
+(accept_city(christiansufferterrahumanitarianorganization, cityb))
+
+  =>
+
+% deduced_176, axiom.
+(accept_leader(christiansufferterrahumanitarianorganization, countrybhumanitarianorganization))
+
+  =>
+
+% deduced_177, axiom.
+(accept_population(countryccivilorganization, other, n5))
+
+  =>
+
+% deduced_178, axiom.
+(accept_population(countryccivilorganization, muslim, n65))
+
+  =>
+
+% deduced_179, axiom.
+(accept_population(countryccivilorganization, christian, n0))
+
+  =>
+
+% deduced_180, axiom.
+(accept_population(countryccivilorganization, atheist, n30))
+
+  =>
+
+% deduced_181, axiom.
+(accept_city(countryccivilorganization, townc))
+
+  =>
+
+% deduced_182, axiom.
+(accept_leader(countryccivilorganization, countryahumanitarianorganization))
+
+  =>
+
+% deduced_183, axiom.
+(accept_leader(countrycmedicalorganization, muslimcountrybhumanitarianorganization))
+
+  =>
+
+% deduced_184, axiom.
+(accept_population(countrycmedicalorganization, other, n5))
+
+  =>
+
+% deduced_185, axiom.
+(accept_population(countrycmedicalorganization, muslim, n65))
+
+  =>
+
+% deduced_186, axiom.
+(accept_population(countrycmedicalorganization, christian, n0))
+
+  =>
+
+% deduced_187, axiom.
+(accept_population(countrycmedicalorganization, atheist, n30))
+
+  =>
+
+% deduced_188, axiom.
+(accept_city(countrycmedicalorganization, townc))
+
+  =>
+
+% deduced_189, axiom.
+(accept_leader(countrycmedicalorganization, countryahumanitarianorganization))
+
+  =>
+
+% deduced_190, axiom.
+(accept_population(countrycmedicalorganization, other, n1))
+
+  =>
+
+% deduced_191, axiom.
+(accept_population(countrycmedicalorganization, christian, n20))
+
+  =>
+
+% deduced_192, axiom.
+(accept_population(countrycmedicalorganization, atheist, n78))
+
+  =>
+
+% deduced_193, axiom.
+(accept_city(countrycmedicalorganization, cityb))
+
+  =>
+
+% deduced_194, axiom.
+(accept_leader(muslimcountrybhumanitarianorganization, countrycmedicalorganization))
+
+  =>
+
+% deduced_195, axiom.
+(accept_leader(muslimcountrybhumanitarianorganization, christiancountrychumanitarianorganization))
+
+  =>
+
+% deduced_196, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, other, n5))
+
+  =>
+
+% deduced_197, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, muslim, n65))
+
+  =>
+
+% deduced_198, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, christian, n0))
+
+  =>
+
+% deduced_199, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, atheist, n30))
+
+  =>
+
+% deduced_200, axiom.
+(accept_city(muslimcountrybhumanitarianorganization, townc))
+
+  =>
+
+% deduced_201, axiom.
+(accept_leader(muslimcountrybhumanitarianorganization, countryahumanitarianorganization))
+
+  =>
+
+% deduced_202, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, other, n1))
+
+  =>
+
+% deduced_203, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, native, n0))
+
+  =>
+
+% deduced_204, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, muslim, n1))
+
+  =>
+
+% deduced_205, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, christian, n20))
+
+  =>
+
+% deduced_206, axiom.
+(accept_population(muslimcountrybhumanitarianorganization, atheist, n78))
+
+  =>
+
+% deduced_207, axiom.
+(accept_leader(muslimcountrybhumanitarianorganization, countrybhumanitarianorganization))
+
+  =>
+
+% deduced_208, axiom.
+(accept_city(muslimcountrybhumanitarianorganization, cityb))
+
+  =>
+
+% deduced_209, axiom.
+(accept_leader(countryamedicalorganization, countryacivilorganization))
+
+  =>
+
+% deduced_210, axiom.
+(accept_population(countryamedicalorganization, other, n1))
+
+  =>
+
+% deduced_211, axiom.
+(accept_population(countryamedicalorganization, christian, n20))
+
+  =>
+
+% deduced_212, axiom.
+(accept_population(countryamedicalorganization, atheist, n78))
+
+  =>
+
+% deduced_213, axiom.
+(accept_city(countryamedicalorganization, cityb))
+
+  =>
+
+% deduced_214, axiom.
+(accept_leader(countryamedicalorganization, countrybhumanitarianorganization))
+
+  =>
+
+% deduced_215, axiom.
+(accept_number(countryamedicalorganization, n5))
+
+  =>
+
+% deduced_216, axiom.
+(accept_number(countryamedicalorganization, n4))
+
+  =>
+
+% deduced_217, axiom.
+(accept_number(countryamedicalorganization, n3))
+
+  =>
+
+% deduced_218, axiom.
+(accept_number(countryamedicalorganization, n2))
+
+  =>
+
+% deduced_219, axiom.
+(accept_number(countryamedicalorganization, n1))
+
+  =>
+
+% deduced_220, axiom.
+(accept_population(countryamedicalorganization, other, n0))
+
+  =>
+
+% deduced_221, axiom.
+(accept_population(countryamedicalorganization, native, n0))
+
+  =>
+
+% deduced_222, axiom.
+(accept_population(countryamedicalorganization, muslim, n1))
+
+  =>
+
+% deduced_223, axiom.
+(accept_population(countryamedicalorganization, christian, n24))
+
+  =>
+
+% deduced_224, axiom.
+(accept_population(countryamedicalorganization, atheist, n75))
+
+  =>
+
+% deduced_225, axiom.
+(accept_number(countryamedicalorganization, n6))
+
+  =>
+
+% deduced_226, axiom.
+(accept_leader(countryamedicalorganization, sufferterragovernment))
+
+  =>
+
+% deduced_227, axiom.
+(accept_city(countryamedicalorganization, towna))
+
+  =>
+
+% deduced_228, axiom.
+(accept_population(countryacivilorganization, other, n1))
+
+  =>
+
+% deduced_229, axiom.
+(accept_population(countryacivilorganization, christian, n20))
+
+  =>
+
+% deduced_230, axiom.
+(accept_population(countryacivilorganization, atheist, n78))
+
+  =>
+
+% deduced_231, axiom.
+(accept_city(countryacivilorganization, cityb))
+
+  =>
+
+% deduced_232, axiom.
+(accept_leader(countryacivilorganization, countrybhumanitarianorganization))
+
+  =>
+
+% deduced_233, axiom.
+(accept_leader(countryahumanitarianorganization, countryacivilorganization))
+
+  =>
+
+% deduced_234, axiom.
+(accept_population(countryahumanitarianorganization, other, n1))
+
+  =>
+
+% deduced_235, axiom.
+(accept_population(countryahumanitarianorganization, christian, n20))
+
+  =>
+
+% deduced_236, axiom.
+(accept_population(countryahumanitarianorganization, atheist, n78))
+
+  =>
+
+% deduced_237, axiom.
+(accept_city(countryahumanitarianorganization, cityb))
+
+  =>
+
+% deduced_238, axiom.
+(accept_leader(countryahumanitarianorganization, countrybhumanitarianorganization))
+
+  =>
+
+% deduced_239, axiom.
+(accept_number(countryahumanitarianorganization, n5))
+
+  =>
+
+% deduced_240, axiom.
+(accept_number(countryahumanitarianorganization, n4))
+
+  =>
+
+% deduced_241, axiom.
+(accept_number(countryahumanitarianorganization, n3))
+
+  =>
+
+% deduced_242, axiom.
+(accept_number(countryahumanitarianorganization, n2))
+
+  =>
+
+% deduced_243, axiom.
+(accept_number(countryahumanitarianorganization, n1))
+
+  =>
+
+% deduced_244, axiom.
+(accept_population(countryahumanitarianorganization, other, n0))
+
+  =>
+
+% deduced_245, axiom.
+(accept_population(countryahumanitarianorganization, native, n0))
+
+  =>
+
+% deduced_246, axiom.
+(accept_population(countryahumanitarianorganization, muslim, n1))
+
+  =>
+
+% deduced_247, axiom.
+(accept_population(countryahumanitarianorganization, christian, n24))
+
+  =>
+
+% deduced_248, axiom.
+(accept_population(countryahumanitarianorganization, atheist, n75))
+
+  =>
+
+% deduced_249, axiom.
+(accept_number(countryahumanitarianorganization, n6))
+
+  =>
+
+% deduced_250, axiom.
+(accept_leader(countryahumanitarianorganization, sufferterragovernment))
+
+  =>
+
+% deduced_251, axiom.
+(accept_city(countryahumanitarianorganization, towna))
+
+  =>
+
+% deduced_252, axiom.
+(accept_leader(sufferterragovernment, countryacivilorganization))
+
+  =>
+
+% deduced_253, axiom.
+(accept_population(sufferterragovernment, other, n1))
+
+  =>
+
+% deduced_254, axiom.
+(accept_population(sufferterragovernment, native, n0))
+
+  =>
+
+% deduced_255, axiom.
+(accept_population(sufferterragovernment, muslim, n1))
+
+  =>
+
+% deduced_256, axiom.
+(accept_population(sufferterragovernment, christian, n20))
+
+  =>
+
+% deduced_257, axiom.
+(accept_population(sufferterragovernment, atheist, n78))
+
+  =>
+
+% deduced_258, axiom.
+(accept_city(sufferterragovernment, cityb))
+
+  =>
+
+% deduced_259, axiom.
+(accept_leader(sufferterragovernment, countrybhumanitarianorganization))
+
+  =>
+
+% deduced_260, axiom.
+(accept_population(countryccivilorganization, other, n0))
+
+  =>
+
+% deduced_261, axiom.
+(accept_population(countryccivilorganization, native, n0))
+
+  =>
+
+% deduced_262, axiom.
+(accept_population(countryccivilorganization, muslim, n1))
+
+  =>
+
+% deduced_263, axiom.
+(accept_population(countryccivilorganization, christian, n24))
+
+  =>
+
+% deduced_264, axiom.
+(accept_population(countryccivilorganization, atheist, n75))
+
+  =>
+
+% deduced_265, axiom.
+(accept_city(countryccivilorganization, towna))
+
+  =>
+
+% deduced_266, axiom.
+(accept_leader(countryccivilorganization, sufferterragovernment))
+
+  =>
+
+% deduced_267, axiom.
+(accept_number(countryafirstaidorganization, n5))
+
+  =>
+
+% deduced_268, axiom.
+(accept_number(countryafirstaidorganization, n4))
+
+  =>
+
+% deduced_269, axiom.
+(accept_number(countryafirstaidorganization, n3))
+
+  =>
+
+% deduced_270, axiom.
+(accept_number(countryafirstaidorganization, n2))
+
+  =>
+
+% deduced_271, axiom.
+(accept_number(countryafirstaidorganization, n1))
+
+  =>
+
+% deduced_272, axiom.
+(accept_population(countryafirstaidorganization, other, n0))
+
+  =>
+
+% deduced_273, axiom.
+(accept_population(countryafirstaidorganization, native, n0))
+
+  =>
+
+% deduced_274, axiom.
+(accept_population(countryafirstaidorganization, muslim, n1))
+
+  =>
+
+% deduced_275, axiom.
+(accept_population(countryafirstaidorganization, christian, n24))
+
+  =>
+
+% deduced_276, axiom.
+(accept_population(countryafirstaidorganization, atheist, n75))
+
+  =>
+
+% deduced_277, axiom.
+(accept_number(countryafirstaidorganization, n6))
+
+  =>
+
+% deduced_278, axiom.
+(accept_leader(countryafirstaidorganization, sufferterragovernment))
+
+  =>
+
+% deduced_279, axiom.
+(accept_city(countryafirstaidorganization, towna))
+
+  =>
+
+% deduced_280, axiom.
+(accept_leader(countrycmedicalorganization, countryccivilorganization))
+
+  =>
+
+% deduced_281, axiom.
+(accept_leader(countrycmedicalorganization, countrybcivilorganization))
+
+  =>
+
+% deduced_282, axiom.
+(accept_leader(countrycmedicalorganization, countrybhumanitarianorganization))
+
+  =>
+
+% deduced_283, axiom.
+(accept_leader(countrycmedicalorganization, christiancountrychumanitarianorganization))
+
+  =>
+
+% deduced_284, axiom.
+(accept_population(countrycmedicalorganization, other, n0))
+
+  =>
+
+% deduced_285, axiom.
+(accept_population(countrycmedicalorganization, native, n0))
+
+  =>
+
+% deduced_286, axiom.
+(accept_population(countrycmedicalorganization, muslim, n1))
+
+  =>
+
+% deduced_287, axiom.
+(accept_population(countrycmedicalorganization, christian, n24))
+
+  =>
+
+% deduced_288, axiom.
+(accept_population(countrycmedicalorganization, atheist, n75))
+
+  =>
+
+% deduced_289, axiom.
+(accept_city(countrycmedicalorganization, towna))
+
+  =>
+
+% deduced_290, axiom.
+(accept_leader(countrycmedicalorganization, sufferterragovernment))
+
+  =>
+
+% deduced_291, axiom.
+(accept_leader(countrybcivilorganization, countryccivilorganization))
+
+  =>
+
+% deduced_292, axiom.
+(accept_leader(countrybcivilorganization, countrybhumanitarianorganization))
+
+  =>
+
+% deduced_293, axiom.
+(accept_leader(countrybcivilorganization, christiancountrychumanitarianorganization))
+
+  =>
+
+% deduced_294, axiom.
+(accept_leader(countrybcivilorganization, countrycmedicalorganization))
+
+  =>
+
+% deduced_295, axiom.
+(accept_population(countrybcivilorganization, other, n0))
+
+  =>
+
+% deduced_296, axiom.
+(accept_population(countrybcivilorganization, native, n0))
+
+  =>
+
+% deduced_297, axiom.
+(accept_population(countrybcivilorganization, muslim, n1))
+
+  =>
+
+% deduced_298, axiom.
+(accept_population(countrybcivilorganization, christian, n24))
+
+  =>
+
+% deduced_299, axiom.
+(accept_population(countrybcivilorganization, atheist, n75))
+
+  =>
+
+% deduced_300, axiom.
+(accept_city(countrybcivilorganization, towna))
+
+  =>
+
+% deduced_301, axiom.
+(accept_leader(countrybcivilorganization, sufferterragovernment))
+
+  =>
+
+% deduced_302, axiom.
+(accept_number(sufferterragovernment, n5))
+
+  =>
+
+% deduced_303, axiom.
+(accept_number(sufferterragovernment, n4))
+
+  =>
+
+% deduced_304, axiom.
+(accept_number(sufferterragovernment, n3))
+
+  =>
+
+% deduced_305, axiom.
+(accept_number(sufferterragovernment, n2))
+
+  =>
+
+% deduced_306, axiom.
+(accept_number(sufferterragovernment, n1))
+
+  =>
+
+% deduced_307, axiom.
+(accept_number(sufferterragovernment, n6))
+
+  =>
+
+% deduced_308, axiom.
+(accept_number(countryacivilorganization, n5))
+
+  =>
+
+% deduced_309, axiom.
+(accept_number(countryacivilorganization, n4))
+
+  =>
+
+% deduced_310, axiom.
+(accept_number(countryacivilorganization, n3))
+
+  =>
+
+% deduced_311, axiom.
+(accept_number(countryacivilorganization, n2))
+
+  =>
+
+% deduced_312, axiom.
+(accept_number(countryacivilorganization, n1))
+
+  =>
+
+% deduced_313, axiom.
+(accept_population(countryacivilorganization, other, n0))
+
+  =>
+
+% deduced_314, axiom.
+(accept_population(countryacivilorganization, native, n0))
+
+  =>
+
+% deduced_315, axiom.
+(accept_population(countryacivilorganization, muslim, n1))
+
+  =>
+
+% deduced_316, axiom.
+(accept_population(countryacivilorganization, christian, n24))
+
+  =>
+
+% deduced_317, axiom.
+(accept_population(countryacivilorganization, atheist, n75))
+
+  =>
+
+% deduced_318, axiom.
+(accept_number(countryacivilorganization, n6))
+
+  =>
+
+% deduced_319, axiom.
+(accept_leader(countryacivilorganization, sufferterragovernment))
+
+  =>
+
+% deduced_320, axiom.
+(accept_city(countryacivilorganization, towna))
+
+  =>
+
+% deduced_321, axiom.
+(accept_number(countryccivilorganization, n3))
+
+  =>
+
+% deduced_322, axiom.
+(accept_number(countryccivilorganization, n2))
+
+  =>
+
+% deduced_323, axiom.
+(accept_number(countryccivilorganization, n1))
+
+  =>
+
+% deduced_324, axiom.
+(accept_number(countryccivilorganization, n4))
+
+  =>
+
+% deduced_325, axiom.
+(accept_leader(christiancountrychumanitarianorganization, countryccivilorganization))
+
+  =>
+
+% deduced_326, axiom.
+(accept_number(countrybcivilorganization, n5))
+
+  =>
+
+% deduced_327, axiom.
+(accept_number(countrybcivilorganization, n4))
+
+  =>
+
+% deduced_328, axiom.
+(accept_number(countrybcivilorganization, n3))
+
+  =>
+
+% deduced_329, axiom.
+(accept_number(countrybcivilorganization, n2))
+
+  =>
+
+% deduced_330, axiom.
+(accept_number(countrybcivilorganization, n1))
+
+  =>
+
+% deduced_331, axiom.
+(accept_number(countrybcivilorganization, n6))
+
+  =>
+
+% deduced_332, axiom.
+(accept_leader(christiancountrychumanitarianorganization, countrybcivilorganization))
+
+  =>
+
+% deduced_333, axiom.
+(accept_number(countrybhumanitarianorganization, n5))
+
+  =>
+
+% deduced_334, axiom.
+(accept_number(countrybhumanitarianorganization, n4))
+
+  =>
+
+% deduced_335, axiom.
+(accept_number(countrybhumanitarianorganization, n3))
+
+  =>
+
+% deduced_336, axiom.
+(accept_number(countrybhumanitarianorganization, n2))
+
+  =>
+
+% deduced_337, axiom.
+(accept_number(countrybhumanitarianorganization, n1))
+
+  =>
+
+% deduced_338, axiom.
+(accept_number(countrybhumanitarianorganization, n6))
+
+  =>
+
+% deduced_339, axiom.
+(accept_leader(christiancountrychumanitarianorganization, countrybhumanitarianorganization))
+
+  =>
+
+% deduced_340, axiom.
+(accept_leader(christiancountrychumanitarianorganization, countrycmedicalorganization))
+
+  =>
+
+% deduced_341, axiom.
+(accept_number(christiancountrychumanitarianorganization, n5))
+
+  =>
+
+% deduced_342, axiom.
+(accept_number(christiancountrychumanitarianorganization, n4))
+
+  =>
+
+% deduced_343, axiom.
+(accept_number(christiancountrychumanitarianorganization, n3))
+
+  =>
+
+% deduced_344, axiom.
+(accept_number(christiancountrychumanitarianorganization, n2))
+
+  =>
+
+% deduced_345, axiom.
+(accept_number(christiancountrychumanitarianorganization, n1))
+
+  =>
+
+% deduced_346, axiom.
+(accept_number(christiancountrychumanitarianorganization, n6))
+
+  =>
+
+% deduced_347, axiom.
+(accept_population(christiancountrychumanitarianorganization, other, n0))
+
+  =>
+
+% deduced_348, axiom.
+(accept_population(christiancountrychumanitarianorganization, native, n0))
+
+  =>
+
+% deduced_349, axiom.
+(accept_population(christiancountrychumanitarianorganization, muslim, n1))
+
+  =>
+
+% deduced_350, axiom.
+(accept_population(christiancountrychumanitarianorganization, christian, n24))
+
+  =>
+
+% deduced_351, axiom.
+(accept_population(christiancountrychumanitarianorganization, atheist, n75))
+
+  =>
+
+% deduced_352, axiom.
+(accept_city(christiancountrychumanitarianorganization, towna))
+
+  =>
+
+% deduced_353, axiom.
+(accept_leader(christiancountrychumanitarianorganization, sufferterragovernment))
+
+  =>
+
+% deduced_354, axiom.
+(accept_number(countrycmedicalorganization, n5))
+
+  =>
+
+% deduced_355, axiom.
+(accept_number(countrycmedicalorganization, n4))
+
+  =>
+
+% deduced_356, axiom.
+(accept_number(countrycmedicalorganization, n3))
+
+  =>
+
+% deduced_357, axiom.
+(accept_number(countrycmedicalorganization, n2))
+
+  =>
+
+% deduced_358, axiom.
+(accept_number(countrycmedicalorganization, n1))
+
+  =>
+
+% deduced_359, axiom.
+(accept_number(countrycmedicalorganization, n6))
+
+  =>
+
+% deduced_360, axiom.
+(accept_number(muslimcountrybhumanitarianorganization, n5))
+
+  =>
+
+% deduced_361, axiom.
+(accept_number(muslimcountrybhumanitarianorganization, n4))
+
+  =>
+
+% deduced_362, axiom.
+(accept_number(muslimcountrybhumanitarianorganization, n3))
+
+  =>
+
+% deduced_363, axiom.
+(accept_number(muslimcountrybhumanitarianorganization, n2))
+
+  =>
+
+% deduced_364, axiom.
+(accept_number(muslimcountrybhumanitarianorganization, n1))
+
+  =>
+
+% deduced_365, axiom.
+(accept_number(muslimcountrybhumanitarianorganization, n6))
+
+  =>
+
+% deduced_366, axiom.
+(( ~ accept_city(muslimcountrybhumanitarianorganization, towna) ))
+
+  =>
+
+% deduced_367, axiom.
+(accept_leader(muslimcountrybhumanitarianorganization, sufferterragovernment))
+
+  =>
+
+% rdn0, axiom.
+(rdn_translate(n0, rdn_pos(rdnn(n0))))
+
+  =>
+
+% rdn1, axiom.
+(rdn_translate(n1, rdn_pos(rdnn(n1))))
+
+  =>
+
+% rdn2, axiom.
+(rdn_translate(n2, rdn_pos(rdnn(n2))))
+
+  =>
+
+% rdn3, axiom.
+(rdn_translate(n3, rdn_pos(rdnn(n3))))
+
+  =>
+
+% rdn4, axiom.
+(rdn_translate(n4, rdn_pos(rdnn(n4))))
+
+  =>
+
+% rdn5, axiom.
+(rdn_translate(n5, rdn_pos(rdnn(n5))))
+
+  =>
+
+% rdn6, axiom.
+(rdn_translate(n6, rdn_pos(rdnn(n6))))
+
+  =>
+
+% rdn7, axiom.
+(rdn_translate(n7, rdn_pos(rdnn(n7))))
+
+  =>
+
+% rdn8, axiom.
+(rdn_translate(n8, rdn_pos(rdnn(n8))))
+
+  =>
+
+% rdn9, axiom.
+(rdn_translate(n9, rdn_pos(rdnn(n9))))
+
+  =>
+
+% rdn10, axiom.
+(rdn_translate(n10, rdn_pos(rdn(rdnn(n0), rdnn(n1)))))
+
+  =>
+
+% rdn11, axiom.
+(rdn_translate(n11, rdn_pos(rdn(rdnn(n1), rdnn(n1)))))
+
+  =>
+
+% rdn12, axiom.
+(rdn_translate(n12, rdn_pos(rdn(rdnn(n2), rdnn(n1)))))
+
+  =>
+
+% rdn13, axiom.
+(rdn_translate(n13, rdn_pos(rdn(rdnn(n3), rdnn(n1)))))
+
+  =>
+
+% rdn14, axiom.
+(rdn_translate(n14, rdn_pos(rdn(rdnn(n4), rdnn(n1)))))
+
+  =>
+
+% rdn15, axiom.
+(rdn_translate(n15, rdn_pos(rdn(rdnn(n5), rdnn(n1)))))
+
+  =>
+
+% rdn16, axiom.
+(rdn_translate(n16, rdn_pos(rdn(rdnn(n6), rdnn(n1)))))
+
+  =>
+
+% rdn17, axiom.
+(rdn_translate(n17, rdn_pos(rdn(rdnn(n7), rdnn(n1)))))
+
+  =>
+
+% rdn18, axiom.
+(rdn_translate(n18, rdn_pos(rdn(rdnn(n8), rdnn(n1)))))
+
+  =>
+
+% rdn19, axiom.
+(rdn_translate(n19, rdn_pos(rdn(rdnn(n9), rdnn(n1)))))
+
+  =>
+
+% rdn20, axiom.
+(rdn_translate(n20, rdn_pos(rdn(rdnn(n0), rdnn(n2)))))
+
+  =>
+
+% rdn21, axiom.
+(rdn_translate(n21, rdn_pos(rdn(rdnn(n1), rdnn(n2)))))
+
+  =>
+
+% rdn22, axiom.
+(rdn_translate(n22, rdn_pos(rdn(rdnn(n2), rdnn(n2)))))
+
+  =>
+
+% rdn23, axiom.
+(rdn_translate(n23, rdn_pos(rdn(rdnn(n3), rdnn(n2)))))
+
+  =>
+
+% rdn24, axiom.
+(rdn_translate(n24, rdn_pos(rdn(rdnn(n4), rdnn(n2)))))
+
+  =>
+
+% rdn25, axiom.
+(rdn_translate(n25, rdn_pos(rdn(rdnn(n5), rdnn(n2)))))
+
+  =>
+
+% rdn26, axiom.
+(rdn_translate(n26, rdn_pos(rdn(rdnn(n6), rdnn(n2)))))
+
+  =>
+
+% rdn27, axiom.
+(rdn_translate(n27, rdn_pos(rdn(rdnn(n7), rdnn(n2)))))
+
+  =>
+
+% rdn28, axiom.
+(rdn_translate(n28, rdn_pos(rdn(rdnn(n8), rdnn(n2)))))
+
+  =>
+
+% rdn29, axiom.
+(rdn_translate(n29, rdn_pos(rdn(rdnn(n9), rdnn(n2)))))
+
+  =>
+
+% rdn30, axiom.
+(rdn_translate(n30, rdn_pos(rdn(rdnn(n0), rdnn(n3)))))
+
+  =>
+
+% rdn31, axiom.
+(rdn_translate(n31, rdn_pos(rdn(rdnn(n1), rdnn(n3)))))
+
+  =>
+
+% rdn32, axiom.
+(rdn_translate(n32, rdn_pos(rdn(rdnn(n2), rdnn(n3)))))
+
+  =>
+
+% rdn33, axiom.
+(rdn_translate(n33, rdn_pos(rdn(rdnn(n3), rdnn(n3)))))
+
+  =>
+
+% rdn34, axiom.
+(rdn_translate(n34, rdn_pos(rdn(rdnn(n4), rdnn(n3)))))
+
+  =>
+
+% rdn35, axiom.
+(rdn_translate(n35, rdn_pos(rdn(rdnn(n5), rdnn(n3)))))
+
+  =>
+
+% rdn36, axiom.
+(rdn_translate(n36, rdn_pos(rdn(rdnn(n6), rdnn(n3)))))
+
+  =>
+
+% rdn37, axiom.
+(rdn_translate(n37, rdn_pos(rdn(rdnn(n7), rdnn(n3)))))
+
+  =>
+
+% rdn38, axiom.
+(rdn_translate(n38, rdn_pos(rdn(rdnn(n8), rdnn(n3)))))
+
+  =>
+
+% rdn39, axiom.
+(rdn_translate(n39, rdn_pos(rdn(rdnn(n9), rdnn(n3)))))
+
+  =>
+
+% rdn40, axiom.
+(rdn_translate(n40, rdn_pos(rdn(rdnn(n0), rdnn(n4)))))
+
+  =>
+
+% rdn41, axiom.
+(rdn_translate(n41, rdn_pos(rdn(rdnn(n1), rdnn(n4)))))
+
+  =>
+
+% rdn42, axiom.
+(rdn_translate(n42, rdn_pos(rdn(rdnn(n2), rdnn(n4)))))
+
+  =>
+
+% rdn43, axiom.
+(rdn_translate(n43, rdn_pos(rdn(rdnn(n3), rdnn(n4)))))
+
+  =>
+
+% rdn44, axiom.
+(rdn_translate(n44, rdn_pos(rdn(rdnn(n4), rdnn(n4)))))
+
+  =>
+
+% rdn45, axiom.
+(rdn_translate(n45, rdn_pos(rdn(rdnn(n5), rdnn(n4)))))
+
+  =>
+
+% rdn46, axiom.
+(rdn_translate(n46, rdn_pos(rdn(rdnn(n6), rdnn(n4)))))
+
+  =>
+
+% rdn47, axiom.
+(rdn_translate(n47, rdn_pos(rdn(rdnn(n7), rdnn(n4)))))
+
+  =>
+
+% rdn48, axiom.
+(rdn_translate(n48, rdn_pos(rdn(rdnn(n8), rdnn(n4)))))
+
+  =>
+
+% rdn49, axiom.
+(rdn_translate(n49, rdn_pos(rdn(rdnn(n9), rdnn(n4)))))
+
+  =>
+
+% rdn50, axiom.
+(rdn_translate(n50, rdn_pos(rdn(rdnn(n0), rdnn(n5)))))
+
+  =>
+
+% rdn51, axiom.
+(rdn_translate(n51, rdn_pos(rdn(rdnn(n1), rdnn(n5)))))
+
+  =>
+
+% rdn52, axiom.
+(rdn_translate(n52, rdn_pos(rdn(rdnn(n2), rdnn(n5)))))
+
+  =>
+
+% rdn53, axiom.
+(rdn_translate(n53, rdn_pos(rdn(rdnn(n3), rdnn(n5)))))
+
+  =>
+
+% rdn54, axiom.
+(rdn_translate(n54, rdn_pos(rdn(rdnn(n4), rdnn(n5)))))
+
+  =>
+
+% rdn55, axiom.
+(rdn_translate(n55, rdn_pos(rdn(rdnn(n5), rdnn(n5)))))
+
+  =>
+
+% rdn56, axiom.
+(rdn_translate(n56, rdn_pos(rdn(rdnn(n6), rdnn(n5)))))
+
+  =>
+
+% rdn57, axiom.
+(rdn_translate(n57, rdn_pos(rdn(rdnn(n7), rdnn(n5)))))
+
+  =>
+
+% rdn58, axiom.
+(rdn_translate(n58, rdn_pos(rdn(rdnn(n8), rdnn(n5)))))
+
+  =>
+
+% rdn59, axiom.
+(rdn_translate(n59, rdn_pos(rdn(rdnn(n9), rdnn(n5)))))
+
+  =>
+
+% rdn60, axiom.
+(rdn_translate(n60, rdn_pos(rdn(rdnn(n0), rdnn(n6)))))
+
+  =>
+
+% rdn61, axiom.
+(rdn_translate(n61, rdn_pos(rdn(rdnn(n1), rdnn(n6)))))
+
+  =>
+
+% rdn62, axiom.
+(rdn_translate(n62, rdn_pos(rdn(rdnn(n2), rdnn(n6)))))
+
+  =>
+
+% rdn63, axiom.
+(rdn_translate(n63, rdn_pos(rdn(rdnn(n3), rdnn(n6)))))
+
+  =>
+
+% rdn64, axiom.
+(rdn_translate(n64, rdn_pos(rdn(rdnn(n4), rdnn(n6)))))
+
+  =>
+
+% rdn65, axiom.
+(rdn_translate(n65, rdn_pos(rdn(rdnn(n5), rdnn(n6)))))
+
+  =>
+
+% rdn66, axiom.
+(rdn_translate(n66, rdn_pos(rdn(rdnn(n6), rdnn(n6)))))
+
+  =>
+
+% rdn67, axiom.
+(rdn_translate(n67, rdn_pos(rdn(rdnn(n7), rdnn(n6)))))
+
+  =>
+
+% rdn68, axiom.
+(rdn_translate(n68, rdn_pos(rdn(rdnn(n8), rdnn(n6)))))
+
+  =>
+
+% rdn69, axiom.
+(rdn_translate(n69, rdn_pos(rdn(rdnn(n9), rdnn(n6)))))
+
+  =>
+
+% rdn70, axiom.
+(rdn_translate(n70, rdn_pos(rdn(rdnn(n0), rdnn(n7)))))
+
+  =>
+
+% rdn71, axiom.
+(rdn_translate(n71, rdn_pos(rdn(rdnn(n1), rdnn(n7)))))
+
+  =>
+
+% rdn72, axiom.
+(rdn_translate(n72, rdn_pos(rdn(rdnn(n2), rdnn(n7)))))
+
+  =>
+
+% rdn73, axiom.
+(rdn_translate(n73, rdn_pos(rdn(rdnn(n3), rdnn(n7)))))
+
+  =>
+
+% rdn74, axiom.
+(rdn_translate(n74, rdn_pos(rdn(rdnn(n4), rdnn(n7)))))
+
+  =>
+
+% rdn75, axiom.
+(rdn_translate(n75, rdn_pos(rdn(rdnn(n5), rdnn(n7)))))
+
+  =>
+
+% rdn76, axiom.
+(rdn_translate(n76, rdn_pos(rdn(rdnn(n6), rdnn(n7)))))
+
+  =>
+
+% rdn77, axiom.
+(rdn_translate(n77, rdn_pos(rdn(rdnn(n7), rdnn(n7)))))
+
+  =>
+
+% rdn78, axiom.
+(rdn_translate(n78, rdn_pos(rdn(rdnn(n8), rdnn(n7)))))
+
+  =>
+
+% rdn79, axiom.
+(rdn_translate(n79, rdn_pos(rdn(rdnn(n9), rdnn(n7)))))
+
+  =>
+
+% rdn80, axiom.
+(rdn_translate(n80, rdn_pos(rdn(rdnn(n0), rdnn(n8)))))
+
+  =>
+
+% rdn81, axiom.
+(rdn_translate(n81, rdn_pos(rdn(rdnn(n1), rdnn(n8)))))
+
+  =>
+
+% rdn82, axiom.
+(rdn_translate(n82, rdn_pos(rdn(rdnn(n2), rdnn(n8)))))
+
+  =>
+
+% rdn83, axiom.
+(rdn_translate(n83, rdn_pos(rdn(rdnn(n3), rdnn(n8)))))
+
+  =>
+
+% rdn84, axiom.
+(rdn_translate(n84, rdn_pos(rdn(rdnn(n4), rdnn(n8)))))
+
+  =>
+
+% rdn85, axiom.
+(rdn_translate(n85, rdn_pos(rdn(rdnn(n5), rdnn(n8)))))
+
+  =>
+
+% rdn86, axiom.
+(rdn_translate(n86, rdn_pos(rdn(rdnn(n6), rdnn(n8)))))
+
+  =>
+
+% rdn87, axiom.
+(rdn_translate(n87, rdn_pos(rdn(rdnn(n7), rdnn(n8)))))
+
+  =>
+
+% rdn88, axiom.
+(rdn_translate(n88, rdn_pos(rdn(rdnn(n8), rdnn(n8)))))
+
+  =>
+
+% rdn89, axiom.
+(rdn_translate(n89, rdn_pos(rdn(rdnn(n9), rdnn(n8)))))
+
+  =>
+
+% rdn90, axiom.
+(rdn_translate(n90, rdn_pos(rdn(rdnn(n0), rdnn(n9)))))
+
+  =>
+
+% rdn91, axiom.
+(rdn_translate(n91, rdn_pos(rdn(rdnn(n1), rdnn(n9)))))
+
+  =>
+
+% rdn92, axiom.
+(rdn_translate(n92, rdn_pos(rdn(rdnn(n2), rdnn(n9)))))
+
+  =>
+
+% rdn93, axiom.
+(rdn_translate(n93, rdn_pos(rdn(rdnn(n3), rdnn(n9)))))
+
+  =>
+
+% rdn94, axiom.
+(rdn_translate(n94, rdn_pos(rdn(rdnn(n4), rdnn(n9)))))
+
+  =>
+
+% rdn95, axiom.
+(rdn_translate(n95, rdn_pos(rdn(rdnn(n5), rdnn(n9)))))
+
+  =>
+
+% rdn96, axiom.
+(rdn_translate(n96, rdn_pos(rdn(rdnn(n6), rdnn(n9)))))
+
+  =>
+
+% rdn97, axiom.
+(rdn_translate(n97, rdn_pos(rdn(rdnn(n7), rdnn(n9)))))
+
+  =>
+
+% rdn98, axiom.
+(rdn_translate(n98, rdn_pos(rdn(rdnn(n8), rdnn(n9)))))
+
+  =>
+
+% rdn99, axiom.
+(rdn_translate(n99, rdn_pos(rdn(rdnn(n9), rdnn(n9)))))
+
+  =>
+
+% rdn100, axiom.
+(rdn_translate(n100, rdn_pos(rdn(rdnn(n0), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn101, axiom.
+(rdn_translate(n101, rdn_pos(rdn(rdnn(n1), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn102, axiom.
+(rdn_translate(n102, rdn_pos(rdn(rdnn(n2), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn103, axiom.
+(rdn_translate(n103, rdn_pos(rdn(rdnn(n3), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn104, axiom.
+(rdn_translate(n104, rdn_pos(rdn(rdnn(n4), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn105, axiom.
+(rdn_translate(n105, rdn_pos(rdn(rdnn(n5), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn106, axiom.
+(rdn_translate(n106, rdn_pos(rdn(rdnn(n6), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn107, axiom.
+(rdn_translate(n107, rdn_pos(rdn(rdnn(n7), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn108, axiom.
+(rdn_translate(n108, rdn_pos(rdn(rdnn(n8), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn109, axiom.
+(rdn_translate(n109, rdn_pos(rdn(rdnn(n9), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdn110, axiom.
+(rdn_translate(n110, rdn_pos(rdn(rdnn(n0), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn111, axiom.
+(rdn_translate(n111, rdn_pos(rdn(rdnn(n1), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn112, axiom.
+(rdn_translate(n112, rdn_pos(rdn(rdnn(n2), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn113, axiom.
+(rdn_translate(n113, rdn_pos(rdn(rdnn(n3), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn114, axiom.
+(rdn_translate(n114, rdn_pos(rdn(rdnn(n4), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn115, axiom.
+(rdn_translate(n115, rdn_pos(rdn(rdnn(n5), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn116, axiom.
+(rdn_translate(n116, rdn_pos(rdn(rdnn(n6), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn117, axiom.
+(rdn_translate(n117, rdn_pos(rdn(rdnn(n7), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn118, axiom.
+(rdn_translate(n118, rdn_pos(rdn(rdnn(n8), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn119, axiom.
+(rdn_translate(n119, rdn_pos(rdn(rdnn(n9), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdn120, axiom.
+(rdn_translate(n120, rdn_pos(rdn(rdnn(n0), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn121, axiom.
+(rdn_translate(n121, rdn_pos(rdn(rdnn(n1), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn122, axiom.
+(rdn_translate(n122, rdn_pos(rdn(rdnn(n2), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn123, axiom.
+(rdn_translate(n123, rdn_pos(rdn(rdnn(n3), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn124, axiom.
+(rdn_translate(n124, rdn_pos(rdn(rdnn(n4), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn125, axiom.
+(rdn_translate(n125, rdn_pos(rdn(rdnn(n5), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn126, axiom.
+(rdn_translate(n126, rdn_pos(rdn(rdnn(n6), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn127, axiom.
+(rdn_translate(n127, rdn_pos(rdn(rdnn(n7), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn1, axiom.
+(rdn_translate(nn1, rdn_neg(rdnn(n1))))
+
+  =>
+
+% rdnn2, axiom.
+(rdn_translate(nn2, rdn_neg(rdnn(n2))))
+
+  =>
+
+% rdnn3, axiom.
+(rdn_translate(nn3, rdn_neg(rdnn(n3))))
+
+  =>
+
+% rdnn4, axiom.
+(rdn_translate(nn4, rdn_neg(rdnn(n4))))
+
+  =>
+
+% rdnn5, axiom.
+(rdn_translate(nn5, rdn_neg(rdnn(n5))))
+
+  =>
+
+% rdnn6, axiom.
+(rdn_translate(nn6, rdn_neg(rdnn(n6))))
+
+  =>
+
+% rdnn7, axiom.
+(rdn_translate(nn7, rdn_neg(rdnn(n7))))
+
+  =>
+
+% rdnn8, axiom.
+(rdn_translate(nn8, rdn_neg(rdnn(n8))))
+
+  =>
+
+% rdnn9, axiom.
+(rdn_translate(nn9, rdn_neg(rdnn(n9))))
+
+  =>
+
+% rdnn10, axiom.
+(rdn_translate(nn10, rdn_neg(rdn(rdnn(n0), rdnn(n1)))))
+
+  =>
+
+% rdnn11, axiom.
+(rdn_translate(nn11, rdn_neg(rdn(rdnn(n1), rdnn(n1)))))
+
+  =>
+
+% rdnn12, axiom.
+(rdn_translate(nn12, rdn_neg(rdn(rdnn(n2), rdnn(n1)))))
+
+  =>
+
+% rdnn13, axiom.
+(rdn_translate(nn13, rdn_neg(rdn(rdnn(n3), rdnn(n1)))))
+
+  =>
+
+% rdnn14, axiom.
+(rdn_translate(nn14, rdn_neg(rdn(rdnn(n4), rdnn(n1)))))
+
+  =>
+
+% rdnn15, axiom.
+(rdn_translate(nn15, rdn_neg(rdn(rdnn(n5), rdnn(n1)))))
+
+  =>
+
+% rdnn16, axiom.
+(rdn_translate(nn16, rdn_neg(rdn(rdnn(n6), rdnn(n1)))))
+
+  =>
+
+% rdnn17, axiom.
+(rdn_translate(nn17, rdn_neg(rdn(rdnn(n7), rdnn(n1)))))
+
+  =>
+
+% rdnn18, axiom.
+(rdn_translate(nn18, rdn_neg(rdn(rdnn(n8), rdnn(n1)))))
+
+  =>
+
+% rdnn19, axiom.
+(rdn_translate(nn19, rdn_neg(rdn(rdnn(n9), rdnn(n1)))))
+
+  =>
+
+% rdnn20, axiom.
+(rdn_translate(nn20, rdn_neg(rdn(rdnn(n0), rdnn(n2)))))
+
+  =>
+
+% rdnn21, axiom.
+(rdn_translate(nn21, rdn_neg(rdn(rdnn(n1), rdnn(n2)))))
+
+  =>
+
+% rdnn22, axiom.
+(rdn_translate(nn22, rdn_neg(rdn(rdnn(n2), rdnn(n2)))))
+
+  =>
+
+% rdnn23, axiom.
+(rdn_translate(nn23, rdn_neg(rdn(rdnn(n3), rdnn(n2)))))
+
+  =>
+
+% rdnn24, axiom.
+(rdn_translate(nn24, rdn_neg(rdn(rdnn(n4), rdnn(n2)))))
+
+  =>
+
+% rdnn25, axiom.
+(rdn_translate(nn25, rdn_neg(rdn(rdnn(n5), rdnn(n2)))))
+
+  =>
+
+% rdnn26, axiom.
+(rdn_translate(nn26, rdn_neg(rdn(rdnn(n6), rdnn(n2)))))
+
+  =>
+
+% rdnn27, axiom.
+(rdn_translate(nn27, rdn_neg(rdn(rdnn(n7), rdnn(n2)))))
+
+  =>
+
+% rdnn28, axiom.
+(rdn_translate(nn28, rdn_neg(rdn(rdnn(n8), rdnn(n2)))))
+
+  =>
+
+% rdnn29, axiom.
+(rdn_translate(nn29, rdn_neg(rdn(rdnn(n9), rdnn(n2)))))
+
+  =>
+
+% rdnn30, axiom.
+(rdn_translate(nn30, rdn_neg(rdn(rdnn(n0), rdnn(n3)))))
+
+  =>
+
+% rdnn31, axiom.
+(rdn_translate(nn31, rdn_neg(rdn(rdnn(n1), rdnn(n3)))))
+
+  =>
+
+% rdnn32, axiom.
+(rdn_translate(nn32, rdn_neg(rdn(rdnn(n2), rdnn(n3)))))
+
+  =>
+
+% rdnn33, axiom.
+(rdn_translate(nn33, rdn_neg(rdn(rdnn(n3), rdnn(n3)))))
+
+  =>
+
+% rdnn34, axiom.
+(rdn_translate(nn34, rdn_neg(rdn(rdnn(n4), rdnn(n3)))))
+
+  =>
+
+% rdnn35, axiom.
+(rdn_translate(nn35, rdn_neg(rdn(rdnn(n5), rdnn(n3)))))
+
+  =>
+
+% rdnn36, axiom.
+(rdn_translate(nn36, rdn_neg(rdn(rdnn(n6), rdnn(n3)))))
+
+  =>
+
+% rdnn37, axiom.
+(rdn_translate(nn37, rdn_neg(rdn(rdnn(n7), rdnn(n3)))))
+
+  =>
+
+% rdnn38, axiom.
+(rdn_translate(nn38, rdn_neg(rdn(rdnn(n8), rdnn(n3)))))
+
+  =>
+
+% rdnn39, axiom.
+(rdn_translate(nn39, rdn_neg(rdn(rdnn(n9), rdnn(n3)))))
+
+  =>
+
+% rdnn40, axiom.
+(rdn_translate(nn40, rdn_neg(rdn(rdnn(n0), rdnn(n4)))))
+
+  =>
+
+% rdnn41, axiom.
+(rdn_translate(nn41, rdn_neg(rdn(rdnn(n1), rdnn(n4)))))
+
+  =>
+
+% rdnn42, axiom.
+(rdn_translate(nn42, rdn_neg(rdn(rdnn(n2), rdnn(n4)))))
+
+  =>
+
+% rdnn43, axiom.
+(rdn_translate(nn43, rdn_neg(rdn(rdnn(n3), rdnn(n4)))))
+
+  =>
+
+% rdnn44, axiom.
+(rdn_translate(nn44, rdn_neg(rdn(rdnn(n4), rdnn(n4)))))
+
+  =>
+
+% rdnn45, axiom.
+(rdn_translate(nn45, rdn_neg(rdn(rdnn(n5), rdnn(n4)))))
+
+  =>
+
+% rdnn46, axiom.
+(rdn_translate(nn46, rdn_neg(rdn(rdnn(n6), rdnn(n4)))))
+
+  =>
+
+% rdnn47, axiom.
+(rdn_translate(nn47, rdn_neg(rdn(rdnn(n7), rdnn(n4)))))
+
+  =>
+
+% rdnn48, axiom.
+(rdn_translate(nn48, rdn_neg(rdn(rdnn(n8), rdnn(n4)))))
+
+  =>
+
+% rdnn49, axiom.
+(rdn_translate(nn49, rdn_neg(rdn(rdnn(n9), rdnn(n4)))))
+
+  =>
+
+% rdnn50, axiom.
+(rdn_translate(nn50, rdn_neg(rdn(rdnn(n0), rdnn(n5)))))
+
+  =>
+
+% rdnn51, axiom.
+(rdn_translate(nn51, rdn_neg(rdn(rdnn(n1), rdnn(n5)))))
+
+  =>
+
+% rdnn52, axiom.
+(rdn_translate(nn52, rdn_neg(rdn(rdnn(n2), rdnn(n5)))))
+
+  =>
+
+% rdnn53, axiom.
+(rdn_translate(nn53, rdn_neg(rdn(rdnn(n3), rdnn(n5)))))
+
+  =>
+
+% rdnn54, axiom.
+(rdn_translate(nn54, rdn_neg(rdn(rdnn(n4), rdnn(n5)))))
+
+  =>
+
+% rdnn55, axiom.
+(rdn_translate(nn55, rdn_neg(rdn(rdnn(n5), rdnn(n5)))))
+
+  =>
+
+% rdnn56, axiom.
+(rdn_translate(nn56, rdn_neg(rdn(rdnn(n6), rdnn(n5)))))
+
+  =>
+
+% rdnn57, axiom.
+(rdn_translate(nn57, rdn_neg(rdn(rdnn(n7), rdnn(n5)))))
+
+  =>
+
+% rdnn58, axiom.
+(rdn_translate(nn58, rdn_neg(rdn(rdnn(n8), rdnn(n5)))))
+
+  =>
+
+% rdnn59, axiom.
+(rdn_translate(nn59, rdn_neg(rdn(rdnn(n9), rdnn(n5)))))
+
+  =>
+
+% rdnn60, axiom.
+(rdn_translate(nn60, rdn_neg(rdn(rdnn(n0), rdnn(n6)))))
+
+  =>
+
+% rdnn61, axiom.
+(rdn_translate(nn61, rdn_neg(rdn(rdnn(n1), rdnn(n6)))))
+
+  =>
+
+% rdnn62, axiom.
+(rdn_translate(nn62, rdn_neg(rdn(rdnn(n2), rdnn(n6)))))
+
+  =>
+
+% rdnn63, axiom.
+(rdn_translate(nn63, rdn_neg(rdn(rdnn(n3), rdnn(n6)))))
+
+  =>
+
+% rdnn64, axiom.
+(rdn_translate(nn64, rdn_neg(rdn(rdnn(n4), rdnn(n6)))))
+
+  =>
+
+% rdnn65, axiom.
+(rdn_translate(nn65, rdn_neg(rdn(rdnn(n5), rdnn(n6)))))
+
+  =>
+
+% rdnn66, axiom.
+(rdn_translate(nn66, rdn_neg(rdn(rdnn(n6), rdnn(n6)))))
+
+  =>
+
+% rdnn67, axiom.
+(rdn_translate(nn67, rdn_neg(rdn(rdnn(n7), rdnn(n6)))))
+
+  =>
+
+% rdnn68, axiom.
+(rdn_translate(nn68, rdn_neg(rdn(rdnn(n8), rdnn(n6)))))
+
+  =>
+
+% rdnn69, axiom.
+(rdn_translate(nn69, rdn_neg(rdn(rdnn(n9), rdnn(n6)))))
+
+  =>
+
+% rdnn70, axiom.
+(rdn_translate(nn70, rdn_neg(rdn(rdnn(n0), rdnn(n7)))))
+
+  =>
+
+% rdnn71, axiom.
+(rdn_translate(nn71, rdn_neg(rdn(rdnn(n1), rdnn(n7)))))
+
+  =>
+
+% rdnn72, axiom.
+(rdn_translate(nn72, rdn_neg(rdn(rdnn(n2), rdnn(n7)))))
+
+  =>
+
+% rdnn73, axiom.
+(rdn_translate(nn73, rdn_neg(rdn(rdnn(n3), rdnn(n7)))))
+
+  =>
+
+% rdnn74, axiom.
+(rdn_translate(nn74, rdn_neg(rdn(rdnn(n4), rdnn(n7)))))
+
+  =>
+
+% rdnn75, axiom.
+(rdn_translate(nn75, rdn_neg(rdn(rdnn(n5), rdnn(n7)))))
+
+  =>
+
+% rdnn76, axiom.
+(rdn_translate(nn76, rdn_neg(rdn(rdnn(n6), rdnn(n7)))))
+
+  =>
+
+% rdnn77, axiom.
+(rdn_translate(nn77, rdn_neg(rdn(rdnn(n7), rdnn(n7)))))
+
+  =>
+
+% rdnn78, axiom.
+(rdn_translate(nn78, rdn_neg(rdn(rdnn(n8), rdnn(n7)))))
+
+  =>
+
+% rdnn79, axiom.
+(rdn_translate(nn79, rdn_neg(rdn(rdnn(n9), rdnn(n7)))))
+
+  =>
+
+% rdnn80, axiom.
+(rdn_translate(nn80, rdn_neg(rdn(rdnn(n0), rdnn(n8)))))
+
+  =>
+
+% rdnn81, axiom.
+(rdn_translate(nn81, rdn_neg(rdn(rdnn(n1), rdnn(n8)))))
+
+  =>
+
+% rdnn82, axiom.
+(rdn_translate(nn82, rdn_neg(rdn(rdnn(n2), rdnn(n8)))))
+
+  =>
+
+% rdnn83, axiom.
+(rdn_translate(nn83, rdn_neg(rdn(rdnn(n3), rdnn(n8)))))
+
+  =>
+
+% rdnn84, axiom.
+(rdn_translate(nn84, rdn_neg(rdn(rdnn(n4), rdnn(n8)))))
+
+  =>
+
+% rdnn85, axiom.
+(rdn_translate(nn85, rdn_neg(rdn(rdnn(n5), rdnn(n8)))))
+
+  =>
+
+% rdnn86, axiom.
+(rdn_translate(nn86, rdn_neg(rdn(rdnn(n6), rdnn(n8)))))
+
+  =>
+
+% rdnn87, axiom.
+(rdn_translate(nn87, rdn_neg(rdn(rdnn(n7), rdnn(n8)))))
+
+  =>
+
+% rdnn88, axiom.
+(rdn_translate(nn88, rdn_neg(rdn(rdnn(n8), rdnn(n8)))))
+
+  =>
+
+% rdnn89, axiom.
+(rdn_translate(nn89, rdn_neg(rdn(rdnn(n9), rdnn(n8)))))
+
+  =>
+
+% rdnn90, axiom.
+(rdn_translate(nn90, rdn_neg(rdn(rdnn(n0), rdnn(n9)))))
+
+  =>
+
+% rdnn91, axiom.
+(rdn_translate(nn91, rdn_neg(rdn(rdnn(n1), rdnn(n9)))))
+
+  =>
+
+% rdnn92, axiom.
+(rdn_translate(nn92, rdn_neg(rdn(rdnn(n2), rdnn(n9)))))
+
+  =>
+
+% rdnn93, axiom.
+(rdn_translate(nn93, rdn_neg(rdn(rdnn(n3), rdnn(n9)))))
+
+  =>
+
+% rdnn94, axiom.
+(rdn_translate(nn94, rdn_neg(rdn(rdnn(n4), rdnn(n9)))))
+
+  =>
+
+% rdnn95, axiom.
+(rdn_translate(nn95, rdn_neg(rdn(rdnn(n5), rdnn(n9)))))
+
+  =>
+
+% rdnn96, axiom.
+(rdn_translate(nn96, rdn_neg(rdn(rdnn(n6), rdnn(n9)))))
+
+  =>
+
+% rdnn97, axiom.
+(rdn_translate(nn97, rdn_neg(rdn(rdnn(n7), rdnn(n9)))))
+
+  =>
+
+% rdnn98, axiom.
+(rdn_translate(nn98, rdn_neg(rdn(rdnn(n8), rdnn(n9)))))
+
+  =>
+
+% rdnn99, axiom.
+(rdn_translate(nn99, rdn_neg(rdn(rdnn(n9), rdnn(n9)))))
+
+  =>
+
+% rdnn100, axiom.
+(rdn_translate(nn100, rdn_neg(rdn(rdnn(n0), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn101, axiom.
+(rdn_translate(nn101, rdn_neg(rdn(rdnn(n1), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn102, axiom.
+(rdn_translate(nn102, rdn_neg(rdn(rdnn(n2), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn103, axiom.
+(rdn_translate(nn103, rdn_neg(rdn(rdnn(n3), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn104, axiom.
+(rdn_translate(nn104, rdn_neg(rdn(rdnn(n4), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn105, axiom.
+(rdn_translate(nn105, rdn_neg(rdn(rdnn(n5), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn106, axiom.
+(rdn_translate(nn106, rdn_neg(rdn(rdnn(n6), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn107, axiom.
+(rdn_translate(nn107, rdn_neg(rdn(rdnn(n7), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn108, axiom.
+(rdn_translate(nn108, rdn_neg(rdn(rdnn(n8), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn109, axiom.
+(rdn_translate(nn109, rdn_neg(rdn(rdnn(n9), rdn(rdnn(n0), rdnn(n1))))))
+
+  =>
+
+% rdnn110, axiom.
+(rdn_translate(nn110, rdn_neg(rdn(rdnn(n0), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn111, axiom.
+(rdn_translate(nn111, rdn_neg(rdn(rdnn(n1), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn112, axiom.
+(rdn_translate(nn112, rdn_neg(rdn(rdnn(n2), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn113, axiom.
+(rdn_translate(nn113, rdn_neg(rdn(rdnn(n3), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn114, axiom.
+(rdn_translate(nn114, rdn_neg(rdn(rdnn(n4), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn115, axiom.
+(rdn_translate(nn115, rdn_neg(rdn(rdnn(n5), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn116, axiom.
+(rdn_translate(nn116, rdn_neg(rdn(rdnn(n6), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn117, axiom.
+(rdn_translate(nn117, rdn_neg(rdn(rdnn(n7), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn118, axiom.
+(rdn_translate(nn118, rdn_neg(rdn(rdnn(n8), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn119, axiom.
+(rdn_translate(nn119, rdn_neg(rdn(rdnn(n9), rdn(rdnn(n1), rdnn(n1))))))
+
+  =>
+
+% rdnn120, axiom.
+(rdn_translate(nn120, rdn_neg(rdn(rdnn(n0), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn121, axiom.
+(rdn_translate(nn121, rdn_neg(rdn(rdnn(n1), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn122, axiom.
+(rdn_translate(nn122, rdn_neg(rdn(rdnn(n2), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn123, axiom.
+(rdn_translate(nn123, rdn_neg(rdn(rdnn(n3), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn124, axiom.
+(rdn_translate(nn124, rdn_neg(rdn(rdnn(n4), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn125, axiom.
+(rdn_translate(nn125, rdn_neg(rdn(rdnn(n5), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn126, axiom.
+(rdn_translate(nn126, rdn_neg(rdn(rdnn(n6), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn127, axiom.
+(rdn_translate(nn127, rdn_neg(rdn(rdnn(n7), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdnn128, axiom.
+(rdn_translate(nn128, rdn_neg(rdn(rdnn(n8), rdn(rdnn(n2), rdnn(n1))))))
+
+  =>
+
+% rdn_digit1, axiom.
+(rdn_non_zero_digit(rdnn(n1)))
+
+  =>
+
+% rdn_digit2, axiom.
+(rdn_non_zero_digit(rdnn(n2)))
+
+  =>
+
+% rdn_digit3, axiom.
+(rdn_non_zero_digit(rdnn(n3)))
+
+  =>
+
+% rdn_digit4, axiom.
+(rdn_non_zero_digit(rdnn(n4)))
+
+  =>
+
+% rdn_digit5, axiom.
+(rdn_non_zero_digit(rdnn(n5)))
+
+  =>
+
+% rdn_digit6, axiom.
+(rdn_non_zero_digit(rdnn(n6)))
+
+  =>
+
+% rdn_digit7, axiom.
+(rdn_non_zero_digit(rdnn(n7)))
+
+  =>
+
+% rdn_digit8, axiom.
+(rdn_non_zero_digit(rdnn(n8)))
+
+  =>
+
+% rdn_digit9, axiom.
+(rdn_non_zero_digit(rdnn(n9)))
+
+  =>
+
+% rdn_positive_less01, axiom.
+(rdn_positive_less(rdnn(n0), rdnn(n1)))
+
+  =>
+
+% rdn_positive_less12, axiom.
+(rdn_positive_less(rdnn(n1), rdnn(n2)))
+
+  =>
+
+% rdn_positive_less23, axiom.
+(rdn_positive_less(rdnn(n2), rdnn(n3)))
+
+  =>
+
+% rdn_positive_less34, axiom.
+(rdn_positive_less(rdnn(n3), rdnn(n4)))
+
+  =>
+
+% rdn_positive_less45, axiom.
+(rdn_positive_less(rdnn(n4), rdnn(n5)))
+
+  =>
+
+% rdn_positive_less56, axiom.
+(rdn_positive_less(rdnn(n5), rdnn(n6)))
+
+  =>
+
+% rdn_positive_less67, axiom.
+(rdn_positive_less(rdnn(n6), rdnn(n7)))
+
+  =>
+
+% rdn_positive_less78, axiom.
+(rdn_positive_less(rdnn(n7), rdnn(n8)))
+
+  =>
+
+% rdn_positive_less89, axiom.
+(rdn_positive_less(rdnn(n8), rdnn(n9)))
+
+  =>
+
+% rdn_positive_less_transitivity, axiom.
+(( forall X Y Z. ( ( rdn_positive_less(rdnn(X), rdnn(Y)) & rdn_positive_less(rdnn(Y), rdnn(Z)) ) => rdn_positive_less(rdnn(X), rdnn(Z)) ) ))
+
+  =>
+
+% rdn_positive_less_multi_digit_high, axiom.
+(( forall Ds Os Db Ob. ( rdn_positive_less(Os, Ob) => rdn_positive_less(rdn(rdnn(Ds), Os), rdn(rdnn(Db), Ob)) ) ))
+
+  =>
+
+% rdn_positive_less_multi_digit_low, axiom.
+(( forall Ds O Db. ( ( rdn_positive_less(rdnn(Ds), rdnn(Db)) & rdn_non_zero(O) ) => rdn_positive_less(rdn(rdnn(Ds), O), rdn(rdnn(Db), O)) ) ))
+
+  =>
+
+% rdn_extra_digits_positive_less, axiom.
+(( forall D Db Ob. ( rdn_non_zero(Ob) => rdn_positive_less(rdnn(D), rdn(rdnn(Db), Ob)) ) ))
+
+  =>
+
+% rdn_non_zero_by_digit, axiom.
+(( forall X. ( rdn_non_zero_digit(rdnn(X)) => rdn_non_zero(rdnn(X)) ) ))
+
+  =>
+
+% rdn_non_zero_by_structure, axiom.
+(( forall D O. ( rdn_non_zero(O) => rdn_non_zero(rdn(rdnn(D), O)) ) ))
+
+  =>
+
+% less_entry_point_pos_pos, axiom.
+(( forall X Y RDN_X RDN_Y. ( ( rdn_translate(X, rdn_pos(RDN_X)) & ( rdn_translate(Y, rdn_pos(RDN_Y)) & rdn_positive_less(RDN_X, RDN_Y) ) ) => less(X, Y) ) ))
+
+  =>
+
+% less_entry_point_neg_pos, axiom.
+(( forall X Y RDN_X RDN_Y. ( ( rdn_translate(X, rdn_neg(RDN_X)) & rdn_translate(Y, rdn_pos(RDN_Y)) ) => less(X, Y) ) ))
+
+  =>
+
+% less_entry_point_neg_neg, axiom.
+(( forall X Y RDN_X RDN_Y. ( ( rdn_translate(X, rdn_neg(RDN_X)) & ( rdn_translate(Y, rdn_neg(RDN_Y)) & rdn_positive_less(RDN_Y, RDN_X) ) ) => less(X, Y) ) ))
+
+  =>
+
+% less_property, axiom.
+(( forall X Y. ( less(X, Y) <=> ( ( ~ less(Y, X) ) & ( ~ ( Y = X ) ) ) ) ))
+
+  =>
+
+% less_or_equal, axiom.
+(( forall X Y. ( less_or_equal(X, Y) <=> ( less(X, Y) | ( X = Y ) ) ) ))
+
+  =>
+
+% less_successor, axiom.
+(( forall X Y Z. ( ( sum(X, n1, Y) & less(Z, Y) ) => less_or_equal(Z, X) ) ))
+
+  =>
+
+% query_1, conjecture.
+(accept_team(countryamedicalorganization, countryacivilorganization, towna, n6))
+
+ 
+
+%------------------------------------------------------------------------------

@@ -1,0 +1,35 @@
+% File     : SYN729+1 : ILTP v1.1.2
+% Domain   : Syntactic
+% Problem  : Peter Andrews Problem THM72
+% Version  : Especial.
+% English  : 
+% Refs     : [And97] Andrews (1994), Email to G. Sutcliffe
+% Source   : [And97]
+% Names    : THM72 [And97]
+% Status   : Theorem
+% Rating   : 0.00 v2.5.0
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.50 v1.0.0
+%
+% Syntax   : Number of formulae    :    1 (   0 unit)
+%            Number of atoms       :    9 (   0 equality)
+%            Maximal formula depth :    7 (   7 average)
+%            Number of connectives :    8 (   0 ~  ;   0  |;   4  &)
+%                                         (   0 <=>;   4 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    2 (   0 propositional; 1-2 arity)
+%            Number of functors    :    2 (   0 constant; 1-1 arity)
+%            Number of variables   :    5 (   0 singleton;   3 !;   2 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% thm72, conjecture.
+(( ( ( forall X. ( exists Y. ( p(X) => ( l(X, g(h(Y))) & p(Y) ) ) ) ) & ( forall W. ( p(W) => ( p(g(W)) & p(h(W)) ) ) ) ) => ( forall X. ( p(X) => ( exists Y. ( l(X, Y) & p(Y) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

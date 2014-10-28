@@ -1,0 +1,465 @@
+% File     : KRS040+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : Example of use
+% Version  : Especial.
+% English  : 
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : consistent_description-logic-Manifest501 [Bec03]
+% Status   : Satisfiable
+% Rating   : 0.67 v3.1.0
+%
+% Status (intuit.) : Unsolved (Problem negated)
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   83 (  21 unit)
+%            Number of atoms       :  205 ( 161 equality)
+%            Maximal formula depth :    5 (   3 average)
+%            Number of connectives :  125 (   3 ~  ; 100  |;   6  &)
+%                                         (  11 <=>;   5 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    6 (   0 propositional; 1-2 arity)
+%            Number of functors    :   20 (  20 constant; 0-0 arity)
+%            Number of variables   :   22 (   0 singleton;  22 !;   0 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+¬ (
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% cTorF_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cTorF(A) ) => cTorF(B) ) ))
+
+  =>
+
+% cowlNothing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlNothing(A) ) => cowlNothing(B) ) ))
+
+  =>
+
+% cowlThing_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & cowlThing(A) ) => cowlThing(B) ) ))
+
+  =>
+
+% xsd_integer_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_integer(A) ) => xsd_integer(B) ) ))
+
+  =>
+
+% xsd_string_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & xsd_string(A) ) => xsd_string(B) ) ))
+
+  =>
+
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(( forall X. ( cTorF(X) <=> ( ( X = iminus3 ) | ( X = iplus3 ) ) ) ))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X. ( cTorF(X) <=> ( ( X = iminus1 ) | ( X = iplus1 ) ) ) ))
+
+  =>
+
+% axiom_4, axiom.
+(( forall X. ( cTorF(X) <=> ( ( X = iplus4 ) | ( X = iminus4 ) ) ) ))
+
+  =>
+
+% axiom_5, axiom.
+(( forall X. ( cTorF(X) <=> ( ( X = iplus7 ) | ( X = iminus7 ) ) ) ))
+
+  =>
+
+% axiom_6, axiom.
+(( forall X. ( cTorF(X) <=> ( ( X = iplus6 ) | ( X = iminus6 ) ) ) ))
+
+  =>
+
+% axiom_7, axiom.
+(( forall X. ( cTorF(X) <=> ( ( X = iminus5 ) | ( X = iplus5 ) ) ) ))
+
+  =>
+
+% axiom_8, axiom.
+(( forall X. ( cTorF(X) <=> ( ( X = iplus2 ) | ( X = iminus2 ) ) ) ))
+
+  =>
+
+% axiom_9, axiom.
+(( forall X. ( cTorF(X) <=> ( ( X = iplus8 ) | ( X = iminus8 ) ) ) ))
+
+  =>
+
+% axiom_10, axiom.
+(( forall X. ( cTorF(X) <=> ( ( X = iplus9 ) | ( X = iminus9 ) ) ) ))
+
+  =>
+
+% axiom_11, axiom.
+(( forall X. ( cTorF(X) <=> ( ( X = iF ) | ( X = iT ) ) ) ))
+
+  =>
+
+% axiom_12, axiom.
+(cowlThing(iF))
+
+  =>
+
+% axiom_13, axiom.
+(( ( iT = iplus8 ) | ( ( iT = iplus4 ) | ( iT = iplus5 ) ) ))
+
+  =>
+
+% axiom_14, axiom.
+(( ( iT = iplus2 ) | ( ( iT = iminus3 ) | ( iT = iplus7 ) ) ))
+
+  =>
+
+% axiom_15, axiom.
+(( ( iT = iplus6 ) | ( ( iT = iplus5 ) | ( iT = iminus7 ) ) ))
+
+  =>
+
+% axiom_16, axiom.
+(( ( iT = iminus2 ) | ( ( iT = iminus9 ) | ( iT = iplus1 ) ) ))
+
+  =>
+
+% axiom_17, axiom.
+(( ( iT = iplus6 ) | ( ( iT = iplus7 ) | ( iT = iplus3 ) ) ))
+
+  =>
+
+% axiom_18, axiom.
+(( ( iT = iplus6 ) | ( ( iT = iminus1 ) | ( iT = iplus7 ) ) ))
+
+  =>
+
+% axiom_19, axiom.
+(( ( iT = iminus6 ) | ( ( iT = iminus5 ) | ( iT = iminus8 ) ) ))
+
+  =>
+
+% axiom_20, axiom.
+(( ( iT = iplus6 ) | ( ( iT = iplus2 ) | ( iT = iplus3 ) ) ))
+
+  =>
+
+% axiom_21, axiom.
+(( ( iT = iplus2 ) | ( ( iT = iplus5 ) | ( iT = iminus7 ) ) ))
+
+  =>
+
+% axiom_22, axiom.
+(( ( iT = iminus9 ) | ( ( iT = iminus1 ) | ( iT = iplus7 ) ) ))
+
+  =>
+
+% axiom_23, axiom.
+(( ( iT = iplus8 ) | ( ( iT = iplus4 ) | ( iT = iminus7 ) ) ))
+
+  =>
+
+% axiom_24, axiom.
+(( ( iT = iminus8 ) | ( ( iT = iminus9 ) | ( iT = iplus7 ) ) ))
+
+  =>
+
+% axiom_25, axiom.
+(( ( iT = iminus2 ) | ( ( iT = iplus9 ) | ( iT = iminus1 ) ) ))
+
+  =>
+
+% axiom_26, axiom.
+(( ( iT = iminus2 ) | ( ( iT = iminus3 ) | ( iT = iminus7 ) ) ))
+
+  =>
+
+% axiom_27, axiom.
+(( ( iT = iminus6 ) | ( ( iT = iplus7 ) | ( iT = iplus1 ) ) ))
+
+  =>
+
+% axiom_28, axiom.
+(( ( iT = iminus9 ) | ( ( iT = iplus5 ) | ( iT = iminus7 ) ) ))
+
+  =>
+
+% axiom_29, axiom.
+(( ( iT = iminus6 ) | ( ( iT = iminus8 ) | ( iT = iminus3 ) ) ))
+
+  =>
+
+% axiom_30, axiom.
+(( ( iT = iplus6 ) | ( ( iT = iminus2 ) | ( iT = iplus5 ) ) ))
+
+  =>
+
+% axiom_31, axiom.
+(( ( iT = iminus8 ) | ( ( iT = iminus3 ) | ( iT = iplus7 ) ) ))
+
+  =>
+
+% axiom_32, axiom.
+(( ( iT = iminus5 ) | ( ( iT = iplus1 ) | ( iT = iminus7 ) ) ))
+
+  =>
+
+% axiom_33, axiom.
+(( ( iT = iminus8 ) | ( ( iT = iplus9 ) | ( iT = iminus1 ) ) ))
+
+  =>
+
+% axiom_34, axiom.
+(( ( iT = iminus2 ) | ( ( iT = iminus4 ) | ( iT = iminus9 ) ) ))
+
+  =>
+
+% axiom_35, axiom.
+(( ( iT = iminus2 ) | ( ( iT = iplus7 ) | ( iT = iplus3 ) ) ))
+
+  =>
+
+% axiom_36, axiom.
+(( ( iT = iplus6 ) | ( ( iT = iminus9 ) | ( iT = iplus3 ) ) ))
+
+  =>
+
+% axiom_37, axiom.
+(( ( iT = iplus6 ) | ( ( iT = iplus4 ) | ( iT = iplus1 ) ) ))
+
+  =>
+
+% axiom_38, axiom.
+(( ( iT = iminus5 ) | ( ( iT = iplus4 ) | ( iT = iminus3 ) ) ))
+
+  =>
+
+% axiom_39, axiom.
+(( ( iT = iplus8 ) | ( ( iT = iminus1 ) | ( iT = iplus5 ) ) ))
+
+  =>
+
+% axiom_40, axiom.
+(( ( iT = iplus8 ) | ( ( iT = iplus6 ) | ( iT = iminus3 ) ) ))
+
+  =>
+
+% axiom_41, axiom.
+(( ( iT = iplus8 ) | ( ( iT = iminus6 ) | ( iT = iplus3 ) ) ))
+
+  =>
+
+% axiom_42, axiom.
+(cowlThing(iT))
+
+  =>
+
+% axiom_43, axiom.
+(( ( iT = iplus2 ) | ( ( iT = iminus8 ) | ( iT = iplus1 ) ) ))
+
+  =>
+
+% axiom_44, axiom.
+(( ( iT = iplus9 ) | ( ( iT = iminus3 ) | ( iT = iplus1 ) ) ))
+
+  =>
+
+% axiom_45, axiom.
+(( ( iT = iplus8 ) | ( ( iT = iminus6 ) | ( iT = iminus4 ) ) ))
+
+  =>
+
+% axiom_46, axiom.
+(( ( iT = iminus5 ) | ( ( iT = iplus4 ) | ( iT = iplus7 ) ) ))
+
+  =>
+
+% axiom_47, axiom.
+(( ( iT = iplus8 ) | ( ( iT = iminus5 ) | ( iT = iplus3 ) ) ))
+
+  =>
+
+% axiom_48, axiom.
+(( ( iT = iplus2 ) | ( ( iT = iminus6 ) | ( iT = iminus3 ) ) ))
+
+  =>
+
+% axiom_49, axiom.
+(( ( iT = iplus2 ) | ( ( iT = iminus8 ) | ( iT = iminus9 ) ) ))
+
+  =>
+
+% axiom_50, axiom.
+(( ( iT = iminus8 ) | ( ( iT = iminus2 ) | ( iT = iminus9 ) ) ))
+
+  =>
+
+% axiom_51, axiom.
+(( ( iT = iminus5 ) | ( ( iT = iminus2 ) | ( iT = iplus3 ) ) ))
+
+  =>
+
+% axiom_52, axiom.
+(( ( iT = iminus9 ) | ( ( iT = iplus3 ) | ( iT = iminus7 ) ) ))
+
+  =>
+
+% axiom_53, axiom.
+(( ( iT = iplus2 ) | ( ( iT = iminus1 ) | ( iT = iplus3 ) ) ))
+
+  =>
+
+% axiom_54, axiom.
+(( ( iT = iminus8 ) | ( ( iT = iplus4 ) | ( iT = iplus7 ) ) ))
+
+  =>
+
+% axiom_55, axiom.
+(( ( iT = iminus2 ) | ( ( iT = iminus1 ) | ( iT = iplus3 ) ) ))
+
+  =>
+
+% axiom_56, axiom.
+(( ( iT = iplus8 ) | ( ( iT = iplus2 ) | ( iT = iplus5 ) ) ))
+
+  =>
+
+% axiom_57, axiom.
+(( ( iT = iminus4 ) | ( ( iT = iminus1 ) | ( iT = iplus7 ) ) ))
+
+  =>
+
+% axiom_58, axiom.
+(( ( iT = iplus8 ) | ( ( iT = iplus3 ) | ( iT = iminus7 ) ) ))
+
+  =>
+
+% axiom_59, axiom.
+(cowlThing(iminus1))
+
+  =>
+
+% axiom_60, axiom.
+(cowlThing(iminus2))
+
+  =>
+
+% axiom_61, axiom.
+(cowlThing(iminus3))
+
+  =>
+
+% axiom_62, axiom.
+(cowlThing(iminus4))
+
+  =>
+
+% axiom_63, axiom.
+(cowlThing(iminus5))
+
+  =>
+
+% axiom_64, axiom.
+(cowlThing(iminus6))
+
+  =>
+
+% axiom_65, axiom.
+(cowlThing(iminus7))
+
+  =>
+
+% axiom_66, axiom.
+(cowlThing(iminus8))
+
+  =>
+
+% axiom_67, axiom.
+(cowlThing(iminus9))
+
+  =>
+
+% axiom_68, axiom.
+(cowlThing(iplus1))
+
+  =>
+
+% axiom_69, axiom.
+(cowlThing(iplus2))
+
+  =>
+
+% axiom_70, axiom.
+(cowlThing(iplus3))
+
+  =>
+
+% axiom_71, axiom.
+(cowlThing(iplus4))
+
+  =>
+
+% axiom_72, axiom.
+(cowlThing(iplus5))
+
+  =>
+
+% axiom_73, axiom.
+(cowlThing(iplus6))
+
+  =>
+
+% axiom_74, axiom.
+(cowlThing(iplus7))
+
+  =>
+
+% axiom_75, axiom.
+(cowlThing(iplus8))
+
+  =>
+
+% axiom_76, axiom.
+(cowlThing(iplus9))
+
+  =>
+
+% axiom_77, axiom.
+(( ~ ( iF = iT ) ))
+
+)
+ 
+
+%------------------------------------------------------------------------------

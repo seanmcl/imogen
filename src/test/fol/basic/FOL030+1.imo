@@ -1,0 +1,6 @@
+
+% Problem : FOL030+1
+% Status  : Theorem
+% Rating  : 0.0
+
+q(a1, a1) => exists X1 Y1. q(X1, Y1) & ( P(X1) -> P(Y1) )

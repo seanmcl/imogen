@@ -1,0 +1,6 @@
+% Problem : INT021+1
+% Status  : Theorem
+% Rating  : 0.00
+
+
+p & q => r <=> p => q => r

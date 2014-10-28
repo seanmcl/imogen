@@ -1,0 +1,32 @@
+
+Library
+   structure Cmd
+
+   (* Debug *)
+   structure Test
+   structure UnitTest
+   structure Subst
+   structure Var
+   structure Param
+   structure Term
+is
+  ../std/sources.cm
+  ../parse/sources.cm
+  ../shared/sources.cm
+  ../prop/sources.cm
+  ../fol/sources.cm
+  ../constr/sources.cm
+  ../modal/sources.cm
+  ../linear/sources.cm
+  ../ordered/sources.cm
+
+  cmd-prop.sml
+  cmd-fol.sml
+  cmd-modal.sml
+  cmd-linear.sml
+  cmd-ordered.sml
+  test.sml
+  cmd.sml
+
+
+

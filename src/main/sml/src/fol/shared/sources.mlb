@@ -1,0 +1,44 @@
+ann
+   "forceUsed"
+in
+   local
+      ../../std/sources.mlb
+      ../../parse/sources.mlb
+      ../../shared/sources.mlb
+
+      seq.sig
+      seq.sml
+
+      term-index.sig
+
+      list-index.sml
+
+      path.sig
+      path.fun
+      path-index.sml
+
+      index.sig
+      index.fun
+      index.sml
+
+      unif-test.fun
+      term-index-test.fun
+      index-test.fun
+
+      frontend.sml
+
+      test.sml
+   in
+      structure Seq
+
+      signature TermIndex
+      structure TermIndex
+      structure RuleTermIndex
+
+      structure Index
+      structure RuleIndex
+      structure Frontend
+
+      structure SharedTest
+   end
+end

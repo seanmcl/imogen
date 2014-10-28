@@ -1,0 +1,6 @@
+
+restrict substitutions in rules to the vars of the rest of the rule.
+prolog syntax
+merge common code of index and rindex
+exact matches
+make ND numbers smaller

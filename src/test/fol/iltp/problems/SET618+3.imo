@@ -1,0 +1,162 @@
+% File     : SET618+3 : ILTP v1.1.2
+% Domain   : Set Theory (Boolean properties)
+% Problem  : The symmetric difference of X and X is the empty set
+% Version  : [Try89] axioms : Reduced > Incomplete.
+% English  : 
+% Refs     : [ILF] The ILF Group (1998), The ILF System: A Tool for the Int
+%          : [Try89] Trybulec (1989), Tarski Grothendieck Set Theory
+%          : [TS89]  Trybulec & Swieczkowska (1989), Boolean Properties of
+% Source   : [ILF]
+% Names    : BOOLE (93) [TS89] 
+% Status   : Theorem
+% Rating   : 0.18 v3.1.0, 0.11 v2.7.0, 0.00 v2.5.0, 0.12 v2.4.0, 0.25 v2.3.0, 0.33 v2.2.1
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.75 v1.1.0, 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :   12 (   8 unit)
+%            Number of atoms       :   19 (   8 equality)
+%            Maximal formula depth :    6 (   4 average)
+%            Number of connectives :    9 (   2 ~  ;   0  |;   1  &)
+%                                         (   5 <=>;   1 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    4 (   0 propositional; 1-2 arity)
+%            Number of functors    :    4 (   1 constant; 0-2 arity)
+%            Number of variables   :   21 (   0 singleton;  21 !;   0 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% difference_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(A, C) = difference(B, C) ) ) ))
+
+  =>
+
+% difference_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(C, A) = difference(C, B) ) ) ))
+
+  =>
+
+% symmetric_difference_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( symmetric_difference(A, C) = symmetric_difference(B, C) ) ) ))
+
+  =>
+
+% symmetric_difference_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( symmetric_difference(C, A) = symmetric_difference(C, B) ) ) ))
+
+  =>
+
+% union_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( union(A, C) = union(B, C) ) ) ))
+
+  =>
+
+% union_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( union(C, A) = union(C, B) ) ) ))
+
+  =>
+
+% empty_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & empty(A) ) => empty(B) ) ))
+
+  =>
+
+% member_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & member(A, C) ) => member(B, C) ) ))
+
+  =>
+
+% member_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & member(C, A) ) => member(C, B) ) ))
+
+  =>
+
+% subset_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(A, C) ) => subset(B, C) ) ))
+
+  =>
+
+% subset_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(C, A) ) => subset(C, B) ) ))
+
+  =>
+
+% symmetric_difference_defn, axiom.
+(( forall B C. ( symmetric_difference(B, C) = union(difference(B, C), difference(C, B)) ) ))
+
+  =>
+
+% idempotency_of_union, axiom.
+(( forall B. ( union(B, B) = B ) ))
+
+  =>
+
+% self_difference_is_empty_set, axiom.
+(( forall B. ( difference(B, B) = empty_set ) ))
+
+  =>
+
+% empty_set_defn, axiom.
+(( forall B. ( ~ member(B, empty_set) ) ))
+
+  =>
+
+% equal_defn, axiom.
+(( forall B C. ( ( B = C ) <=> ( subset(B, C) & subset(C, B) ) ) ))
+
+  =>
+
+% commutativity_of_union, axiom.
+(( forall B C. ( union(B, C) = union(C, B) ) ))
+
+  =>
+
+% commutativity_of_symmetric_difference, axiom.
+(( forall B C. ( symmetric_difference(B, C) = symmetric_difference(C, B) ) ))
+
+  =>
+
+% equal_member_defn, axiom.
+(( forall B C. ( ( B = C ) <=> ( forall D. ( member(D, B) <=> member(D, C) ) ) ) ))
+
+  =>
+
+% subset_defn, axiom.
+(( forall B C. ( subset(B, C) <=> ( forall D. ( member(D, B) => member(D, C) ) ) ) ))
+
+  =>
+
+% reflexivity_of_subset, axiom.
+(( forall B. subset(B, B) ))
+
+  =>
+
+% empty_defn, axiom.
+(( forall B. ( empty(B) <=> ( forall C. ( ~ member(C, B) ) ) ) ))
+
+  =>
+
+% prove_th93, conjecture.
+(( forall B. ( symmetric_difference(B, B) = empty_set ) ))
+
+ 
+
+%------------------------------------------------------------------------------

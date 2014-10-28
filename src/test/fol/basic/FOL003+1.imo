@@ -1,0 +1,6 @@
+
+% Problem : FOL003
+% Status  : Theorem
+% Rating  : 0.00
+
+exists X. p(X) => p(X)

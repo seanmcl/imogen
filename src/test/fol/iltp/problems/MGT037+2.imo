@@ -1,0 +1,248 @@
+% File     : MGT037+2 : ILTP v1.1.2
+% Domain   : Management (Organisation Theory)
+% Problem  : Once appeared, efficient producers do not disappear
+% Version  : [PM93] axioms.
+% English  : 
+% Refs     : [PM93]  Peli & Masuch (1993), The Logic of Propogation Strateg
+%          : [PM94]  Peli & Masuch (1994), The Logic of Propogation Strateg
+%          : [PB+94] Peli et al. (1994), A Logical Approach to Formalizing
+% Source   : [PM93]
+% Names    : THEOREM 6 [PM93]
+%          : T6 [PB+94]
+% Status   : CounterSatisfiable
+%
+% Status (intuit.) : Unsolved
+% Rating (intuit.) : 1.00 v1.1.0
+% Rating (intuit.) : 1.00 v1.1
+%
+% Syntax   : Number of formulae    :   16 (   1 unit)
+%            Number of atoms       :   70 (   8 equality)
+%            Maximal formula depth :   10 (   6 average)
+%            Number of connectives :   63 (   9 ~  ;   3  |;  32  &)
+%                                         (   0 <=>;  19 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    8 (   0 propositional; 1-3 arity)
+%            Number of functors    :   11 (   4 constant; 0-2 arity)
+%            Number of variables   :   35 (   0 singleton;  33 !;   2 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% appear_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( appear(A, C) = appear(B, C) ) ) ))
+
+  =>
+
+% appear_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( appear(C, A) = appear(C, B) ) ) ))
+
+  =>
+
+% cardinality_at_time_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( cardinality_at_time(A, C) = cardinality_at_time(B, C) ) ) ))
+
+  =>
+
+% cardinality_at_time_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( cardinality_at_time(C, A) = cardinality_at_time(C, B) ) ) ))
+
+  =>
+
+% equilibrium_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( equilibrium(A) = equilibrium(B) ) ) ))
+
+  =>
+
+% growth_rate_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( growth_rate(A, C) = growth_rate(B, C) ) ) ))
+
+  =>
+
+% growth_rate_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( growth_rate(C, A) = growth_rate(C, B) ) ) ))
+
+  =>
+
+% number_of_organizations_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_organizations(A, C) = number_of_organizations(B, C) ) ) ))
+
+  =>
+
+% number_of_organizations_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( number_of_organizations(C, A) = number_of_organizations(C, B) ) ) ))
+
+  =>
+
+% resilience_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( resilience(A) = resilience(B) ) ) ))
+
+  =>
+
+% resources_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( resources(A, C) = resources(B, C) ) ) ))
+
+  =>
+
+% resources_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( resources(C, A) = resources(C, B) ) ) ))
+
+  =>
+
+% constant_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & constant(A) ) => constant(B) ) ))
+
+  =>
+
+% decreases_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & decreases(A) ) => decreases(B) ) ))
+
+  =>
+
+% environment_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & environment(A) ) => environment(B) ) ))
+
+  =>
+
+% greater_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(A, C) ) => greater(B, C) ) ))
+
+  =>
+
+% greater_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater(C, A) ) => greater(C, B) ) ))
+
+  =>
+
+% greater_or_equal_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(A, C) ) => greater_or_equal(B, C) ) ))
+
+  =>
+
+% greater_or_equal_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & greater_or_equal(C, A) ) => greater_or_equal(C, B) ) ))
+
+  =>
+
+% in_environment_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(A, C) ) => in_environment(B, C) ) ))
+
+  =>
+
+% in_environment_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & in_environment(C, A) ) => in_environment(C, B) ) ))
+
+  =>
+
+% subpopulation_substitution_1, axiom.
+(( forall A B C D. ( ( ( A = B ) & subpopulation(A, C, D) ) => subpopulation(B, C, D) ) ))
+
+  =>
+
+% subpopulation_substitution_2, axiom.
+(( forall A B C D. ( ( ( A = B ) & subpopulation(C, A, D) ) => subpopulation(C, B, D) ) ))
+
+  =>
+
+% subpopulation_substitution_3, axiom.
+(( forall A B C D. ( ( ( A = B ) & subpopulation(C, D, A) ) => subpopulation(C, D, B) ) ))
+
+  =>
+
+% mp_previous_negative_growth, axiom.
+(( forall E T. ( ( environment(E) & ( greater_or_equal(T, appear(efficient_producers, E)) & ( cardinality_at_time(efficient_producers, T) = zero ) ) ) => ( exists To. ( greater(To, appear(efficient_producers, E)) & ( in_environment(E, To) & ( greater(T, To) & greater(zero, growth_rate(efficient_producers, To)) ) ) ) ) ) ))
+
+  =>
+
+% mp_start_of_organizations, axiom.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & greater(appear(an_organisation, E), T) ) ) => ( number_of_organizations(E, T) = zero ) ) ))
+
+  =>
+
+% mp_non_decreasing, axiom.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & ( ~ decreases(number_of_organizations(E, T)) ) ) ) => ( exists X. ( subpopulation(X, E, T) & ( greater(cardinality_at_time(X, T), zero) & ( ~ greater(zero, growth_rate(X, T)) ) ) ) ) ) ))
+
+  =>
+
+% mp_no_members, axiom.
+(( forall E T X. ( ( environment(E) & ( in_environment(E, T) & ( ( number_of_organizations(E, T) = zero ) & subpopulation(X, E, T) ) ) ) => ( cardinality_at_time(X, T) = zero ) ) ))
+
+  =>
+
+% mp_subpopulations, axiom.
+(( forall E T. ( ( environment(E) & in_environment(E, T) ) => ( subpopulation(first_movers, E, T) & subpopulation(efficient_producers, E, T) ) ) ))
+
+  =>
+
+% mp_empty_not_decreasing, axiom.
+(( forall S T. ( ( cardinality_at_time(S, T) = zero ) => ( ~ greater(zero, growth_rate(S, T)) ) ) ))
+
+  =>
+
+% mp_efficient_producers_exist, axiom.
+(( forall E T. ( ( environment(E) & in_environment(E, T) ) => ( ( cardinality_at_time(efficient_producers, T) = zero ) | greater(cardinality_at_time(efficient_producers, T), zero) ) ) ))
+
+  =>
+
+% mp_constant_not_decrease, axiom.
+(( forall X. ( constant(X) => ( ~ decreases(X) ) ) ))
+
+  =>
+
+% mp_environment_inequality, axiom.
+(( forall E T. ( ( environment(E) & in_environment(E, T) ) => ( ( ~ greater_or_equal(T, appear(an_organisation, E)) ) | greater(appear(an_organisation, E), T) ) ) ))
+
+  =>
+
+% a1, hypothesis.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & greater_or_equal(T, appear(an_organisation, E)) ) ) => greater(number_of_organizations(E, T), zero) ) ))
+
+  =>
+
+% a2, hypothesis.
+(greater(resilience(efficient_producers), resilience(first_movers)))
+
+  =>
+
+% a4, hypothesis.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & greater(number_of_organizations(E, T), zero) ) ) => ( ( greater(equilibrium(E), T) => decreases(resources(E, T)) ) & ( ( ~ greater(equilibrium(E), T) ) => constant(resources(E, T)) ) ) ) ))
+
+  =>
+
+% a7, hypothesis.
+(( forall E T. ( ( environment(E) & in_environment(E, T) ) => ( ( decreases(resources(E, T)) => ( ~ decreases(number_of_organizations(E, T)) ) ) & ( constant(resources(E, T)) => constant(number_of_organizations(E, T)) ) ) ) ))
+
+  =>
+
+% a11, hypothesis.
+(( forall E X T. ( ( environment(E) & ( subpopulation(X, E, T) & greater(cardinality_at_time(X, T), zero) ) ) => ( ( X = efficient_producers ) | ( X = first_movers ) ) ) ))
+
+  =>
+
+% a13, hypothesis.
+(( forall E S1 S2 T. ( ( environment(E) & ( in_environment(E, T) & ( ( ~ greater(zero, growth_rate(S1, T)) ) & greater(resilience(S2), resilience(S1)) ) ) ) => ( ~ greater(zero, growth_rate(S2, T)) ) ) ))
+
+  =>
+
+% prove_t6, conjecture.
+(( forall E T. ( ( environment(E) & ( in_environment(E, T) & greater_or_equal(T, appear(efficient_producers, E)) ) ) => greater(cardinality_at_time(efficient_producers, T), zero) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

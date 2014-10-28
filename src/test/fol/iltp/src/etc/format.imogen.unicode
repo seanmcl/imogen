@@ -1,0 +1,173 @@
+% -*- Mode: Prolog -*-
+%========================================================================
+%----This outputs TPTP Problem Set clauses and formulae in a format
+%----acceptable to Imogen.
+%----
+%----Written by Sean McLaughlin, February 2010
+%========================================================================
+
+:-set_flag(print_depth,100).
+
+%----------------------------------------------------------------------
+%----Print out a literal with - for negative, nothing for positive.
+%----Use positive representation
+
+output_imogen_signed_literal(--('$tptp_equal'(X,Y))) :-
+    !, write('(', write(X), write(' = '), write(Y), write(')').
+
+output_imogen_signed_literal(--('$tptp_not_equal'(X,Y))) :-
+    !, write('¬ ('), write(X), write(' = '), write(Y), write(')').
+
+output_imogen_signed_literal(++('$tptp_equal'(X,Y))) :-
+    !, write('(', write(X), write(' = '), write(Y), write(')').
+
+output_imogen_signed_literal(++('$tptp_not_equal'(X,Y))) :-
+    !, write('¬ ('), write(X), write(' = '), write(Y), write(')').
+
+output_imogen_signed_literal(--Atom):- write(Atom).
+output_imogen_signed_literal(++Atom):- write(Atom).
+
+%----------------------------------------------------------------------
+%----Print out the literals of a clause in imogen format.
+%----Special case of an empty clause
+output_imogen_literals([]):-
+    write('[]').
+
+output_imogen_literals([OneLiteral]):-
+    !, output_imogen_signed_literal(OneLiteral).
+
+output_imogen_literals([FirstLiteral|RestOfLiterals]):-
+    output_imogen_signed_literal(FirstLiteral),
+    write('  ,'), nl, write(' '),
+    output_imogen_literals(RestOfLiterals).
+%----------------------------------------------------------------------
+%----Print out the clauses in imogen format.
+output_imogen_clauses([]).
+
+output_imogen_clauses([input_clause(Name,Status,Literals)|
+RestOfClauses]):-
+    write('% '), write(Name), write(', '),
+    write(Status), write('.'), nl,
+    write('['),
+    output_imogen_literals(Literals),
+    write(']'),
+    (RestOfClauses\==[]  ->
+        (nl, nl, write('  ,'), nl, nl);
+         true),
+    output_imogen_clauses(RestOfClauses).
+%----------------------------------------------------------------------
+%----Print out the list of input clauses as a formula in imogen format.
+output_imogen_formula([]):-
+    !.
+
+output_imogen_formula(Clauses):-
+    nl,
+    write('f(['), nl, nl,
+    output_imogen_clauses(Clauses), nl, nl,
+    write(']).'), nl, nl.
+%----------------------------------------------------------------------
+
+%----------------------------------------------------------------------
+%----Print out the connectives, quantifiers, and literals of a formula
+%----in imogen format.
+output_imogen_fof(~ A):-
+    !, write('( ¬ '), output_imogen_fof(A), write(' )').
+%% output_imogen_fof(A ~| B):-
+%%     !, write('( ¬ ('), output_imogen_fof(A), write(') ∨ (', output_imogen_fof(B), write('))')).
+%% output_imogen_fof(A ~& B):-
+%%     !, write('( ¬ ('), output_imogen_fof(A), write(') ∧ (', output_imogen_fof(B), write('))')).
+output_imogen_fof('|'(A,B) ):-
+    !, write('( '), output_imogen_fof(A), write(' ∨ '),
+    output_imogen_fof(B), write(' )').
+output_imogen_fof((A ; B)):-
+    !, write('( '), output_imogen_fof(A), write(' ∨ '),
+    output_imogen_fof(B), write(' )').
+output_imogen_fof(A & B):-
+    !, write('( '), output_imogen_fof(A), write(' ∧ '),
+    output_imogen_fof(B), write(' )').
+output_imogen_fof(A => B):-
+    !, write('( '), output_imogen_fof(A), write(' ⊃ '),
+    output_imogen_fof(B), write(' )').
+output_imogen_fof(A <=> B):-
+    !, write('( '), output_imogen_fof(A), write(' ⇔ '),
+    output_imogen_fof(B), write(' )').
+output_imogen_fof(! [X|Xs] : A):-
+    !, write('( ∀ '), output_imogen_vars(X, Xs), write('. '), output_imogen_fof(A), write(' )').
+output_imogen_fof(? [X|Xs] : A):-
+    !, write('( ∃ '), output_imogen_vars(X, Xs), write('. '), output_imogen_fof(A), write(' )').
+output_imogen_fof('$true') :- !, write('⊤').
+output_imogen_fof($true) :- !, write('⊤').
+output_imogen_fof('$false') :- !, write('⊥').
+output_imogen_fof($false) :- !, write('⊥').
+output_imogen_fof('$tptp_equal'( A, B )) :-
+   !, write( '( ' ), write( A ), write( ' = ' ), write( B ), write( ' )' ).
+
+output_imogen_fof(Atom) :-
+    print(Atom).
+
+output_imogen_vars([]) :- !.
+output_imogen_vars([X|Xs]) :- write(' '), print(X), output_imogen_vars(Xs).
+output_imogen_vars(X, Xs) :- print(X), output_imogen_vars(Xs).
+
+%----------------------------------------------------------------------
+%----Print out the formulae in imogen format.
+output_imogen_fo_formulae([]).
+
+% for TPTP-v3.1.0 or later
+output_imogen_fo_formulae([fof(Name,Status,Formula)|RestOfFormulae]) :-
+    ((Status==conjecture, RestOfFormulae \= []) ->
+      (append(RestOfFormulae,[fof(Name,Status,Formula)],Formulae),
+       output_imogen_fo_formulae(Formulae))) ;
+      (write('% '), write(Name), write(', '), write(Status), write('.'), nl,
+       write('('), output_imogen_fof(Formula), write(')'),
+       (RestOfFormulae == [] -> true;
+        (((RestOfFormulae=[fof(_,conjecture,_)]  ->
+           (nl, nl, write('  ⊃'), nl, nl));
+           (nl, nl, write('  ⊃'), nl, nl)),
+          output_imogen_fo_formulae(RestOfFormulae)))).
+
+% for TPTP-v2.7.0 or earlier
+output_imogen_fo_formulae([input_formula(Name,Status,Formula)|
+RestOfFormulae]):-
+    output_imogen_fo_formulae([fof(Name,Status,Formula)|RestOfFormulae]).
+
+%----------------------------------------------------------------------
+%----Print out the list of input formulae as a first-order formula in
+%----imogen format.
+output_imogen_fo_formula([]):-
+    !.
+
+output_imogen_fo_formula(Formulae):-
+    nl,
+    write(' '), nl, nl,
+    % negate problems without conjecture
+    (\+ (member(fof(_,conjecture,_),Formulae);
+         member(input_formula(_,conjecture,_),Formulae)) ->
+                                             (write('¬ ('), nl) ; true),
+    output_imogen_fo_formulae(Formulae), nl, nl,
+    (\+ (member(fof(_,conjecture,_),Formulae);
+         member(input_formula(_,conjecture,_),Formulae)) ->
+                                             (write(')'), nl); true),
+    write(' '), nl, nl.
+
+%----------------------------------------------------------------------
+
+%----------------------------------------------------------------------
+%----Print out all the clauses in imogen format.
+imogen(imogen,Clauses,Header):-
+    %write(Header),
+    tptp_clauses(Clauses),
+    output_imogen_formula(Clauses).
+
+%----Print out first-order formula in imogen format.
+imogen(imogen,Formulae,Header):-
+    %write(Header),
+    tptp_formulae(Formulae),
+    output_imogen_fo_formula(Formulae).
+%----------------------------------------------------------------------
+%----Provide information about the imogen format.
+imogen_format_information('%','.imo').
+%----------------------------------------------------------------------
+%----Provide information about the TPTP file.
+imogen_file_information(format,imogen).
+%----------------------------------------------------------------------

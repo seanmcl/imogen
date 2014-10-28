@@ -1,0 +1,2356 @@
+% File     : ALG051+1 : ILTP v1.1.2
+% Domain   : General Algebra
+% Problem  : Loops 5: CPROPS-ISO-COMPLETE-PROBLEM-4
+% Version  : Especial.
+% English  : 
+% Refs     : [Mei03] Meier (2003), Email to G.Sutcliffe
+%          : [CM+04] Colton et al. (2004), Automatic Generation of Classifi
+% Source   : [Mei03]
+% Names    : 
+% Status   : Theorem
+% Rating   : 0.89 v3.1.0, 0.75 v2.7.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :   21 (   0 unit)
+%            Number of atoms       : 2058 (2058 equality)
+%            Maximal formula depth :  101 (  28 average)
+%            Number of connectives : 2782 ( 745 ~  ; 970  |;1067  &)
+%                                         (   0 <=>;   0 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    1 (   0 propositional; 2-2 arity)
+%            Number of functors    :   19 (  12 constant; 0-2 arity)
+%            Number of variables   :    0 (   0 singleton;   0 !;   0 ?)
+%            Maximal term depth    :    4 (   2 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% h1_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( h1(A) = h1(B) ) ) ))
+
+  =>
+
+% h2_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( h2(A) = h2(B) ) ) ))
+
+  =>
+
+% h3_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( h3(A) = h3(B) ) ) ))
+
+  =>
+
+% h4_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( h4(A) = h4(B) ) ) ))
+
+  =>
+
+% h5_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( h5(A) = h5(B) ) ) ))
+
+  =>
+
+% op1_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( op1(A, C) = op1(B, C) ) ) ))
+
+  =>
+
+% op1_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( op1(C, A) = op1(C, B) ) ) ))
+
+  =>
+
+% op2_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( op2(A, C) = op2(B, C) ) ) ))
+
+  =>
+
+% op2_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( op2(C, A) = op2(C, B) ) ) ))
+
+  =>
+
+% ax1_AndLHS, axiom.
+(( ( op1(e10, e10) = e10 ) | ( ( op1(e10, e10) = e11 ) | ( ( op1(e10, e10) = e12 ) | ( ( op1(e10, e10) = e13 ) | ( op1(e10, e10) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e11) = e10 ) | ( ( op1(e10, e11) = e11 ) | ( ( op1(e10, e11) = e12 ) | ( ( op1(e10, e11) = e13 ) | ( op1(e10, e11) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e12) = e10 ) | ( ( op1(e10, e12) = e11 ) | ( ( op1(e10, e12) = e12 ) | ( ( op1(e10, e12) = e13 ) | ( op1(e10, e12) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e13) = e10 ) | ( ( op1(e10, e13) = e11 ) | ( ( op1(e10, e13) = e12 ) | ( ( op1(e10, e13) = e13 ) | ( op1(e10, e13) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e14) = e10 ) | ( ( op1(e10, e14) = e11 ) | ( ( op1(e10, e14) = e12 ) | ( ( op1(e10, e14) = e13 ) | ( op1(e10, e14) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e11, e10) = e10 ) | ( ( op1(e11, e10) = e11 ) | ( ( op1(e11, e10) = e12 ) | ( ( op1(e11, e10) = e13 ) | ( op1(e11, e10) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e11, e11) = e10 ) | ( ( op1(e11, e11) = e11 ) | ( ( op1(e11, e11) = e12 ) | ( ( op1(e11, e11) = e13 ) | ( op1(e11, e11) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e11, e12) = e10 ) | ( ( op1(e11, e12) = e11 ) | ( ( op1(e11, e12) = e12 ) | ( ( op1(e11, e12) = e13 ) | ( op1(e11, e12) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e11, e13) = e10 ) | ( ( op1(e11, e13) = e11 ) | ( ( op1(e11, e13) = e12 ) | ( ( op1(e11, e13) = e13 ) | ( op1(e11, e13) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e11, e14) = e10 ) | ( ( op1(e11, e14) = e11 ) | ( ( op1(e11, e14) = e12 ) | ( ( op1(e11, e14) = e13 ) | ( op1(e11, e14) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e12, e10) = e10 ) | ( ( op1(e12, e10) = e11 ) | ( ( op1(e12, e10) = e12 ) | ( ( op1(e12, e10) = e13 ) | ( op1(e12, e10) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e12, e11) = e10 ) | ( ( op1(e12, e11) = e11 ) | ( ( op1(e12, e11) = e12 ) | ( ( op1(e12, e11) = e13 ) | ( op1(e12, e11) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e12, e12) = e10 ) | ( ( op1(e12, e12) = e11 ) | ( ( op1(e12, e12) = e12 ) | ( ( op1(e12, e12) = e13 ) | ( op1(e12, e12) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e12, e13) = e10 ) | ( ( op1(e12, e13) = e11 ) | ( ( op1(e12, e13) = e12 ) | ( ( op1(e12, e13) = e13 ) | ( op1(e12, e13) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e12, e14) = e10 ) | ( ( op1(e12, e14) = e11 ) | ( ( op1(e12, e14) = e12 ) | ( ( op1(e12, e14) = e13 ) | ( op1(e12, e14) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e13, e10) = e10 ) | ( ( op1(e13, e10) = e11 ) | ( ( op1(e13, e10) = e12 ) | ( ( op1(e13, e10) = e13 ) | ( op1(e13, e10) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e13, e11) = e10 ) | ( ( op1(e13, e11) = e11 ) | ( ( op1(e13, e11) = e12 ) | ( ( op1(e13, e11) = e13 ) | ( op1(e13, e11) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e13, e12) = e10 ) | ( ( op1(e13, e12) = e11 ) | ( ( op1(e13, e12) = e12 ) | ( ( op1(e13, e12) = e13 ) | ( op1(e13, e12) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e13, e13) = e10 ) | ( ( op1(e13, e13) = e11 ) | ( ( op1(e13, e13) = e12 ) | ( ( op1(e13, e13) = e13 ) | ( op1(e13, e13) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e13, e14) = e10 ) | ( ( op1(e13, e14) = e11 ) | ( ( op1(e13, e14) = e12 ) | ( ( op1(e13, e14) = e13 ) | ( op1(e13, e14) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e14, e10) = e10 ) | ( ( op1(e14, e10) = e11 ) | ( ( op1(e14, e10) = e12 ) | ( ( op1(e14, e10) = e13 ) | ( op1(e14, e10) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e14, e11) = e10 ) | ( ( op1(e14, e11) = e11 ) | ( ( op1(e14, e11) = e12 ) | ( ( op1(e14, e11) = e13 ) | ( op1(e14, e11) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e14, e12) = e10 ) | ( ( op1(e14, e12) = e11 ) | ( ( op1(e14, e12) = e12 ) | ( ( op1(e14, e12) = e13 ) | ( op1(e14, e12) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e14, e13) = e10 ) | ( ( op1(e14, e13) = e11 ) | ( ( op1(e14, e13) = e12 ) | ( ( op1(e14, e13) = e13 ) | ( op1(e14, e13) = e14 ) ) ) ) ))
+
+  =>
+
+% ax1_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( ( op1(e14, e14) = e10 ) | ( ( op1(e14, e14) = e11 ) | ( ( op1(e14, e14) = e12 ) | ( ( op1(e14, e14) = e13 ) | ( op1(e14, e14) = e14 ) ) ) ) ))
+
+  =>
+
+% ax2_AndLHS, axiom.
+(( op1(unit1, e10) = e10 ))
+
+  =>
+
+% ax2_AndRHS_AndLHS, axiom.
+(( op1(e10, unit1) = e10 ))
+
+  =>
+
+% ax2_AndRHS_AndRHS_AndLHS, axiom.
+(( op1(unit1, e11) = e11 ))
+
+  =>
+
+% ax2_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op1(e11, unit1) = e11 ))
+
+  =>
+
+% ax2_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op1(unit1, e12) = e12 ))
+
+  =>
+
+% ax2_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op1(e12, unit1) = e12 ))
+
+  =>
+
+% ax2_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op1(unit1, e13) = e13 ))
+
+  =>
+
+% ax2_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op1(e13, unit1) = e13 ))
+
+  =>
+
+% ax2_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op1(unit1, e14) = e14 ))
+
+  =>
+
+% ax2_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op1(e14, unit1) = e14 ))
+
+  =>
+
+% ax2_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( ( unit1 = e10 ) | ( ( unit1 = e11 ) | ( ( unit1 = e12 ) | ( ( unit1 = e13 ) | ( unit1 = e14 ) ) ) ) ))
+
+  =>
+
+% ax3_AndLHS, axiom.
+(( ( op1(e10, e10) = e10 ) | ( ( op1(e10, e11) = e10 ) | ( ( op1(e10, e12) = e10 ) | ( ( op1(e10, e13) = e10 ) | ( op1(e10, e14) = e10 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e10) = e10 ) | ( ( op1(e11, e10) = e10 ) | ( ( op1(e12, e10) = e10 ) | ( ( op1(e13, e10) = e10 ) | ( op1(e14, e10) = e10 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e10) = e11 ) | ( ( op1(e10, e11) = e11 ) | ( ( op1(e10, e12) = e11 ) | ( ( op1(e10, e13) = e11 ) | ( op1(e10, e14) = e11 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e10) = e11 ) | ( ( op1(e11, e10) = e11 ) | ( ( op1(e12, e10) = e11 ) | ( ( op1(e13, e10) = e11 ) | ( op1(e14, e10) = e11 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e10) = e12 ) | ( ( op1(e10, e11) = e12 ) | ( ( op1(e10, e12) = e12 ) | ( ( op1(e10, e13) = e12 ) | ( op1(e10, e14) = e12 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e10) = e12 ) | ( ( op1(e11, e10) = e12 ) | ( ( op1(e12, e10) = e12 ) | ( ( op1(e13, e10) = e12 ) | ( op1(e14, e10) = e12 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e10) = e13 ) | ( ( op1(e10, e11) = e13 ) | ( ( op1(e10, e12) = e13 ) | ( ( op1(e10, e13) = e13 ) | ( op1(e10, e14) = e13 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e10) = e13 ) | ( ( op1(e11, e10) = e13 ) | ( ( op1(e12, e10) = e13 ) | ( ( op1(e13, e10) = e13 ) | ( op1(e14, e10) = e13 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e10) = e14 ) | ( ( op1(e10, e11) = e14 ) | ( ( op1(e10, e12) = e14 ) | ( ( op1(e10, e13) = e14 ) | ( op1(e10, e14) = e14 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e10) = e14 ) | ( ( op1(e11, e10) = e14 ) | ( ( op1(e12, e10) = e14 ) | ( ( op1(e13, e10) = e14 ) | ( op1(e14, e10) = e14 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e11, e10) = e10 ) | ( ( op1(e11, e11) = e10 ) | ( ( op1(e11, e12) = e10 ) | ( ( op1(e11, e13) = e10 ) | ( op1(e11, e14) = e10 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e11) = e10 ) | ( ( op1(e11, e11) = e10 ) | ( ( op1(e12, e11) = e10 ) | ( ( op1(e13, e11) = e10 ) | ( op1(e14, e11) = e10 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e11, e10) = e11 ) | ( ( op1(e11, e11) = e11 ) | ( ( op1(e11, e12) = e11 ) | ( ( op1(e11, e13) = e11 ) | ( op1(e11, e14) = e11 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e11) = e11 ) | ( ( op1(e11, e11) = e11 ) | ( ( op1(e12, e11) = e11 ) | ( ( op1(e13, e11) = e11 ) | ( op1(e14, e11) = e11 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e11, e10) = e12 ) | ( ( op1(e11, e11) = e12 ) | ( ( op1(e11, e12) = e12 ) | ( ( op1(e11, e13) = e12 ) | ( op1(e11, e14) = e12 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e11) = e12 ) | ( ( op1(e11, e11) = e12 ) | ( ( op1(e12, e11) = e12 ) | ( ( op1(e13, e11) = e12 ) | ( op1(e14, e11) = e12 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e11, e10) = e13 ) | ( ( op1(e11, e11) = e13 ) | ( ( op1(e11, e12) = e13 ) | ( ( op1(e11, e13) = e13 ) | ( op1(e11, e14) = e13 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e11) = e13 ) | ( ( op1(e11, e11) = e13 ) | ( ( op1(e12, e11) = e13 ) | ( ( op1(e13, e11) = e13 ) | ( op1(e14, e11) = e13 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e11, e10) = e14 ) | ( ( op1(e11, e11) = e14 ) | ( ( op1(e11, e12) = e14 ) | ( ( op1(e11, e13) = e14 ) | ( op1(e11, e14) = e14 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e11) = e14 ) | ( ( op1(e11, e11) = e14 ) | ( ( op1(e12, e11) = e14 ) | ( ( op1(e13, e11) = e14 ) | ( op1(e14, e11) = e14 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e12, e10) = e10 ) | ( ( op1(e12, e11) = e10 ) | ( ( op1(e12, e12) = e10 ) | ( ( op1(e12, e13) = e10 ) | ( op1(e12, e14) = e10 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e12) = e10 ) | ( ( op1(e11, e12) = e10 ) | ( ( op1(e12, e12) = e10 ) | ( ( op1(e13, e12) = e10 ) | ( op1(e14, e12) = e10 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e12, e10) = e11 ) | ( ( op1(e12, e11) = e11 ) | ( ( op1(e12, e12) = e11 ) | ( ( op1(e12, e13) = e11 ) | ( op1(e12, e14) = e11 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e12) = e11 ) | ( ( op1(e11, e12) = e11 ) | ( ( op1(e12, e12) = e11 ) | ( ( op1(e13, e12) = e11 ) | ( op1(e14, e12) = e11 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e12, e10) = e12 ) | ( ( op1(e12, e11) = e12 ) | ( ( op1(e12, e12) = e12 ) | ( ( op1(e12, e13) = e12 ) | ( op1(e12, e14) = e12 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e12) = e12 ) | ( ( op1(e11, e12) = e12 ) | ( ( op1(e12, e12) = e12 ) | ( ( op1(e13, e12) = e12 ) | ( op1(e14, e12) = e12 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e12, e10) = e13 ) | ( ( op1(e12, e11) = e13 ) | ( ( op1(e12, e12) = e13 ) | ( ( op1(e12, e13) = e13 ) | ( op1(e12, e14) = e13 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e12) = e13 ) | ( ( op1(e11, e12) = e13 ) | ( ( op1(e12, e12) = e13 ) | ( ( op1(e13, e12) = e13 ) | ( op1(e14, e12) = e13 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e12, e10) = e14 ) | ( ( op1(e12, e11) = e14 ) | ( ( op1(e12, e12) = e14 ) | ( ( op1(e12, e13) = e14 ) | ( op1(e12, e14) = e14 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e12) = e14 ) | ( ( op1(e11, e12) = e14 ) | ( ( op1(e12, e12) = e14 ) | ( ( op1(e13, e12) = e14 ) | ( op1(e14, e12) = e14 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e13, e10) = e10 ) | ( ( op1(e13, e11) = e10 ) | ( ( op1(e13, e12) = e10 ) | ( ( op1(e13, e13) = e10 ) | ( op1(e13, e14) = e10 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e13) = e10 ) | ( ( op1(e11, e13) = e10 ) | ( ( op1(e12, e13) = e10 ) | ( ( op1(e13, e13) = e10 ) | ( op1(e14, e13) = e10 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e13, e10) = e11 ) | ( ( op1(e13, e11) = e11 ) | ( ( op1(e13, e12) = e11 ) | ( ( op1(e13, e13) = e11 ) | ( op1(e13, e14) = e11 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e13) = e11 ) | ( ( op1(e11, e13) = e11 ) | ( ( op1(e12, e13) = e11 ) | ( ( op1(e13, e13) = e11 ) | ( op1(e14, e13) = e11 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e13, e10) = e12 ) | ( ( op1(e13, e11) = e12 ) | ( ( op1(e13, e12) = e12 ) | ( ( op1(e13, e13) = e12 ) | ( op1(e13, e14) = e12 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e13) = e12 ) | ( ( op1(e11, e13) = e12 ) | ( ( op1(e12, e13) = e12 ) | ( ( op1(e13, e13) = e12 ) | ( op1(e14, e13) = e12 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e13, e10) = e13 ) | ( ( op1(e13, e11) = e13 ) | ( ( op1(e13, e12) = e13 ) | ( ( op1(e13, e13) = e13 ) | ( op1(e13, e14) = e13 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e13) = e13 ) | ( ( op1(e11, e13) = e13 ) | ( ( op1(e12, e13) = e13 ) | ( ( op1(e13, e13) = e13 ) | ( op1(e14, e13) = e13 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e13, e10) = e14 ) | ( ( op1(e13, e11) = e14 ) | ( ( op1(e13, e12) = e14 ) | ( ( op1(e13, e13) = e14 ) | ( op1(e13, e14) = e14 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e13) = e14 ) | ( ( op1(e11, e13) = e14 ) | ( ( op1(e12, e13) = e14 ) | ( ( op1(e13, e13) = e14 ) | ( op1(e14, e13) = e14 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e14, e10) = e10 ) | ( ( op1(e14, e11) = e10 ) | ( ( op1(e14, e12) = e10 ) | ( ( op1(e14, e13) = e10 ) | ( op1(e14, e14) = e10 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e14) = e10 ) | ( ( op1(e11, e14) = e10 ) | ( ( op1(e12, e14) = e10 ) | ( ( op1(e13, e14) = e10 ) | ( op1(e14, e14) = e10 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e14, e10) = e11 ) | ( ( op1(e14, e11) = e11 ) | ( ( op1(e14, e12) = e11 ) | ( ( op1(e14, e13) = e11 ) | ( op1(e14, e14) = e11 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e14) = e11 ) | ( ( op1(e11, e14) = e11 ) | ( ( op1(e12, e14) = e11 ) | ( ( op1(e13, e14) = e11 ) | ( op1(e14, e14) = e11 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e14, e10) = e12 ) | ( ( op1(e14, e11) = e12 ) | ( ( op1(e14, e12) = e12 ) | ( ( op1(e14, e13) = e12 ) | ( op1(e14, e14) = e12 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e14) = e12 ) | ( ( op1(e11, e14) = e12 ) | ( ( op1(e12, e14) = e12 ) | ( ( op1(e13, e14) = e12 ) | ( op1(e14, e14) = e12 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e14, e10) = e13 ) | ( ( op1(e14, e11) = e13 ) | ( ( op1(e14, e12) = e13 ) | ( ( op1(e14, e13) = e13 ) | ( op1(e14, e14) = e13 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e10, e14) = e13 ) | ( ( op1(e11, e14) = e13 ) | ( ( op1(e12, e14) = e13 ) | ( ( op1(e13, e14) = e13 ) | ( op1(e14, e14) = e13 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op1(e14, e10) = e14 ) | ( ( op1(e14, e11) = e14 ) | ( ( op1(e14, e12) = e14 ) | ( ( op1(e14, e13) = e14 ) | ( op1(e14, e14) = e14 ) ) ) ) ))
+
+  =>
+
+% ax3_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( ( op1(e10, e14) = e14 ) | ( ( op1(e11, e14) = e14 ) | ( ( op1(e12, e14) = e14 ) | ( ( op1(e13, e14) = e14 ) | ( op1(e14, e14) = e14 ) ) ) ) ))
+
+  =>
+
+% ax4_AndLHS, axiom.
+(( ( op2(e20, e20) = e20 ) | ( ( op2(e20, e20) = e21 ) | ( ( op2(e20, e20) = e22 ) | ( ( op2(e20, e20) = e23 ) | ( op2(e20, e20) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e21) = e20 ) | ( ( op2(e20, e21) = e21 ) | ( ( op2(e20, e21) = e22 ) | ( ( op2(e20, e21) = e23 ) | ( op2(e20, e21) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e22) = e20 ) | ( ( op2(e20, e22) = e21 ) | ( ( op2(e20, e22) = e22 ) | ( ( op2(e20, e22) = e23 ) | ( op2(e20, e22) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e23) = e20 ) | ( ( op2(e20, e23) = e21 ) | ( ( op2(e20, e23) = e22 ) | ( ( op2(e20, e23) = e23 ) | ( op2(e20, e23) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e24) = e20 ) | ( ( op2(e20, e24) = e21 ) | ( ( op2(e20, e24) = e22 ) | ( ( op2(e20, e24) = e23 ) | ( op2(e20, e24) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e21, e20) = e20 ) | ( ( op2(e21, e20) = e21 ) | ( ( op2(e21, e20) = e22 ) | ( ( op2(e21, e20) = e23 ) | ( op2(e21, e20) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e21, e21) = e20 ) | ( ( op2(e21, e21) = e21 ) | ( ( op2(e21, e21) = e22 ) | ( ( op2(e21, e21) = e23 ) | ( op2(e21, e21) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e21, e22) = e20 ) | ( ( op2(e21, e22) = e21 ) | ( ( op2(e21, e22) = e22 ) | ( ( op2(e21, e22) = e23 ) | ( op2(e21, e22) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e21, e23) = e20 ) | ( ( op2(e21, e23) = e21 ) | ( ( op2(e21, e23) = e22 ) | ( ( op2(e21, e23) = e23 ) | ( op2(e21, e23) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e21, e24) = e20 ) | ( ( op2(e21, e24) = e21 ) | ( ( op2(e21, e24) = e22 ) | ( ( op2(e21, e24) = e23 ) | ( op2(e21, e24) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e22, e20) = e20 ) | ( ( op2(e22, e20) = e21 ) | ( ( op2(e22, e20) = e22 ) | ( ( op2(e22, e20) = e23 ) | ( op2(e22, e20) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e22, e21) = e20 ) | ( ( op2(e22, e21) = e21 ) | ( ( op2(e22, e21) = e22 ) | ( ( op2(e22, e21) = e23 ) | ( op2(e22, e21) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e22, e22) = e20 ) | ( ( op2(e22, e22) = e21 ) | ( ( op2(e22, e22) = e22 ) | ( ( op2(e22, e22) = e23 ) | ( op2(e22, e22) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e22, e23) = e20 ) | ( ( op2(e22, e23) = e21 ) | ( ( op2(e22, e23) = e22 ) | ( ( op2(e22, e23) = e23 ) | ( op2(e22, e23) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e22, e24) = e20 ) | ( ( op2(e22, e24) = e21 ) | ( ( op2(e22, e24) = e22 ) | ( ( op2(e22, e24) = e23 ) | ( op2(e22, e24) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e23, e20) = e20 ) | ( ( op2(e23, e20) = e21 ) | ( ( op2(e23, e20) = e22 ) | ( ( op2(e23, e20) = e23 ) | ( op2(e23, e20) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e23, e21) = e20 ) | ( ( op2(e23, e21) = e21 ) | ( ( op2(e23, e21) = e22 ) | ( ( op2(e23, e21) = e23 ) | ( op2(e23, e21) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e23, e22) = e20 ) | ( ( op2(e23, e22) = e21 ) | ( ( op2(e23, e22) = e22 ) | ( ( op2(e23, e22) = e23 ) | ( op2(e23, e22) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e23, e23) = e20 ) | ( ( op2(e23, e23) = e21 ) | ( ( op2(e23, e23) = e22 ) | ( ( op2(e23, e23) = e23 ) | ( op2(e23, e23) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e23, e24) = e20 ) | ( ( op2(e23, e24) = e21 ) | ( ( op2(e23, e24) = e22 ) | ( ( op2(e23, e24) = e23 ) | ( op2(e23, e24) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e24, e20) = e20 ) | ( ( op2(e24, e20) = e21 ) | ( ( op2(e24, e20) = e22 ) | ( ( op2(e24, e20) = e23 ) | ( op2(e24, e20) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e24, e21) = e20 ) | ( ( op2(e24, e21) = e21 ) | ( ( op2(e24, e21) = e22 ) | ( ( op2(e24, e21) = e23 ) | ( op2(e24, e21) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e24, e22) = e20 ) | ( ( op2(e24, e22) = e21 ) | ( ( op2(e24, e22) = e22 ) | ( ( op2(e24, e22) = e23 ) | ( op2(e24, e22) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e24, e23) = e20 ) | ( ( op2(e24, e23) = e21 ) | ( ( op2(e24, e23) = e22 ) | ( ( op2(e24, e23) = e23 ) | ( op2(e24, e23) = e24 ) ) ) ) ))
+
+  =>
+
+% ax4_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( ( op2(e24, e24) = e20 ) | ( ( op2(e24, e24) = e21 ) | ( ( op2(e24, e24) = e22 ) | ( ( op2(e24, e24) = e23 ) | ( op2(e24, e24) = e24 ) ) ) ) ))
+
+  =>
+
+% ax5_AndLHS, axiom.
+(( op2(unit2, e20) = e20 ))
+
+  =>
+
+% ax5_AndRHS_AndLHS, axiom.
+(( op2(e20, unit2) = e20 ))
+
+  =>
+
+% ax5_AndRHS_AndRHS_AndLHS, axiom.
+(( op2(unit2, e21) = e21 ))
+
+  =>
+
+% ax5_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op2(e21, unit2) = e21 ))
+
+  =>
+
+% ax5_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op2(unit2, e22) = e22 ))
+
+  =>
+
+% ax5_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op2(e22, unit2) = e22 ))
+
+  =>
+
+% ax5_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op2(unit2, e23) = e23 ))
+
+  =>
+
+% ax5_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op2(e23, unit2) = e23 ))
+
+  =>
+
+% ax5_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op2(unit2, e24) = e24 ))
+
+  =>
+
+% ax5_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( op2(e24, unit2) = e24 ))
+
+  =>
+
+% ax5_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( ( unit2 = e20 ) | ( ( unit2 = e21 ) | ( ( unit2 = e22 ) | ( ( unit2 = e23 ) | ( unit2 = e24 ) ) ) ) ))
+
+  =>
+
+% ax6_AndLHS, axiom.
+(( ( op2(e20, e20) = e20 ) | ( ( op2(e20, e21) = e20 ) | ( ( op2(e20, e22) = e20 ) | ( ( op2(e20, e23) = e20 ) | ( op2(e20, e24) = e20 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e20) = e20 ) | ( ( op2(e21, e20) = e20 ) | ( ( op2(e22, e20) = e20 ) | ( ( op2(e23, e20) = e20 ) | ( op2(e24, e20) = e20 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e20) = e21 ) | ( ( op2(e20, e21) = e21 ) | ( ( op2(e20, e22) = e21 ) | ( ( op2(e20, e23) = e21 ) | ( op2(e20, e24) = e21 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e20) = e21 ) | ( ( op2(e21, e20) = e21 ) | ( ( op2(e22, e20) = e21 ) | ( ( op2(e23, e20) = e21 ) | ( op2(e24, e20) = e21 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e20) = e22 ) | ( ( op2(e20, e21) = e22 ) | ( ( op2(e20, e22) = e22 ) | ( ( op2(e20, e23) = e22 ) | ( op2(e20, e24) = e22 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e20) = e22 ) | ( ( op2(e21, e20) = e22 ) | ( ( op2(e22, e20) = e22 ) | ( ( op2(e23, e20) = e22 ) | ( op2(e24, e20) = e22 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e20) = e23 ) | ( ( op2(e20, e21) = e23 ) | ( ( op2(e20, e22) = e23 ) | ( ( op2(e20, e23) = e23 ) | ( op2(e20, e24) = e23 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e20) = e23 ) | ( ( op2(e21, e20) = e23 ) | ( ( op2(e22, e20) = e23 ) | ( ( op2(e23, e20) = e23 ) | ( op2(e24, e20) = e23 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e20) = e24 ) | ( ( op2(e20, e21) = e24 ) | ( ( op2(e20, e22) = e24 ) | ( ( op2(e20, e23) = e24 ) | ( op2(e20, e24) = e24 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e20) = e24 ) | ( ( op2(e21, e20) = e24 ) | ( ( op2(e22, e20) = e24 ) | ( ( op2(e23, e20) = e24 ) | ( op2(e24, e20) = e24 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e21, e20) = e20 ) | ( ( op2(e21, e21) = e20 ) | ( ( op2(e21, e22) = e20 ) | ( ( op2(e21, e23) = e20 ) | ( op2(e21, e24) = e20 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e21) = e20 ) | ( ( op2(e21, e21) = e20 ) | ( ( op2(e22, e21) = e20 ) | ( ( op2(e23, e21) = e20 ) | ( op2(e24, e21) = e20 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e21, e20) = e21 ) | ( ( op2(e21, e21) = e21 ) | ( ( op2(e21, e22) = e21 ) | ( ( op2(e21, e23) = e21 ) | ( op2(e21, e24) = e21 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e21) = e21 ) | ( ( op2(e21, e21) = e21 ) | ( ( op2(e22, e21) = e21 ) | ( ( op2(e23, e21) = e21 ) | ( op2(e24, e21) = e21 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e21, e20) = e22 ) | ( ( op2(e21, e21) = e22 ) | ( ( op2(e21, e22) = e22 ) | ( ( op2(e21, e23) = e22 ) | ( op2(e21, e24) = e22 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e21) = e22 ) | ( ( op2(e21, e21) = e22 ) | ( ( op2(e22, e21) = e22 ) | ( ( op2(e23, e21) = e22 ) | ( op2(e24, e21) = e22 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e21, e20) = e23 ) | ( ( op2(e21, e21) = e23 ) | ( ( op2(e21, e22) = e23 ) | ( ( op2(e21, e23) = e23 ) | ( op2(e21, e24) = e23 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e21) = e23 ) | ( ( op2(e21, e21) = e23 ) | ( ( op2(e22, e21) = e23 ) | ( ( op2(e23, e21) = e23 ) | ( op2(e24, e21) = e23 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e21, e20) = e24 ) | ( ( op2(e21, e21) = e24 ) | ( ( op2(e21, e22) = e24 ) | ( ( op2(e21, e23) = e24 ) | ( op2(e21, e24) = e24 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e21) = e24 ) | ( ( op2(e21, e21) = e24 ) | ( ( op2(e22, e21) = e24 ) | ( ( op2(e23, e21) = e24 ) | ( op2(e24, e21) = e24 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e22, e20) = e20 ) | ( ( op2(e22, e21) = e20 ) | ( ( op2(e22, e22) = e20 ) | ( ( op2(e22, e23) = e20 ) | ( op2(e22, e24) = e20 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e22) = e20 ) | ( ( op2(e21, e22) = e20 ) | ( ( op2(e22, e22) = e20 ) | ( ( op2(e23, e22) = e20 ) | ( op2(e24, e22) = e20 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e22, e20) = e21 ) | ( ( op2(e22, e21) = e21 ) | ( ( op2(e22, e22) = e21 ) | ( ( op2(e22, e23) = e21 ) | ( op2(e22, e24) = e21 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e22) = e21 ) | ( ( op2(e21, e22) = e21 ) | ( ( op2(e22, e22) = e21 ) | ( ( op2(e23, e22) = e21 ) | ( op2(e24, e22) = e21 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e22, e20) = e22 ) | ( ( op2(e22, e21) = e22 ) | ( ( op2(e22, e22) = e22 ) | ( ( op2(e22, e23) = e22 ) | ( op2(e22, e24) = e22 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e22) = e22 ) | ( ( op2(e21, e22) = e22 ) | ( ( op2(e22, e22) = e22 ) | ( ( op2(e23, e22) = e22 ) | ( op2(e24, e22) = e22 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e22, e20) = e23 ) | ( ( op2(e22, e21) = e23 ) | ( ( op2(e22, e22) = e23 ) | ( ( op2(e22, e23) = e23 ) | ( op2(e22, e24) = e23 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e22) = e23 ) | ( ( op2(e21, e22) = e23 ) | ( ( op2(e22, e22) = e23 ) | ( ( op2(e23, e22) = e23 ) | ( op2(e24, e22) = e23 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e22, e20) = e24 ) | ( ( op2(e22, e21) = e24 ) | ( ( op2(e22, e22) = e24 ) | ( ( op2(e22, e23) = e24 ) | ( op2(e22, e24) = e24 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e22) = e24 ) | ( ( op2(e21, e22) = e24 ) | ( ( op2(e22, e22) = e24 ) | ( ( op2(e23, e22) = e24 ) | ( op2(e24, e22) = e24 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e23, e20) = e20 ) | ( ( op2(e23, e21) = e20 ) | ( ( op2(e23, e22) = e20 ) | ( ( op2(e23, e23) = e20 ) | ( op2(e23, e24) = e20 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e23) = e20 ) | ( ( op2(e21, e23) = e20 ) | ( ( op2(e22, e23) = e20 ) | ( ( op2(e23, e23) = e20 ) | ( op2(e24, e23) = e20 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e23, e20) = e21 ) | ( ( op2(e23, e21) = e21 ) | ( ( op2(e23, e22) = e21 ) | ( ( op2(e23, e23) = e21 ) | ( op2(e23, e24) = e21 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e23) = e21 ) | ( ( op2(e21, e23) = e21 ) | ( ( op2(e22, e23) = e21 ) | ( ( op2(e23, e23) = e21 ) | ( op2(e24, e23) = e21 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e23, e20) = e22 ) | ( ( op2(e23, e21) = e22 ) | ( ( op2(e23, e22) = e22 ) | ( ( op2(e23, e23) = e22 ) | ( op2(e23, e24) = e22 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e23) = e22 ) | ( ( op2(e21, e23) = e22 ) | ( ( op2(e22, e23) = e22 ) | ( ( op2(e23, e23) = e22 ) | ( op2(e24, e23) = e22 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e23, e20) = e23 ) | ( ( op2(e23, e21) = e23 ) | ( ( op2(e23, e22) = e23 ) | ( ( op2(e23, e23) = e23 ) | ( op2(e23, e24) = e23 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e23) = e23 ) | ( ( op2(e21, e23) = e23 ) | ( ( op2(e22, e23) = e23 ) | ( ( op2(e23, e23) = e23 ) | ( op2(e24, e23) = e23 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e23, e20) = e24 ) | ( ( op2(e23, e21) = e24 ) | ( ( op2(e23, e22) = e24 ) | ( ( op2(e23, e23) = e24 ) | ( op2(e23, e24) = e24 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e23) = e24 ) | ( ( op2(e21, e23) = e24 ) | ( ( op2(e22, e23) = e24 ) | ( ( op2(e23, e23) = e24 ) | ( op2(e24, e23) = e24 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e24, e20) = e20 ) | ( ( op2(e24, e21) = e20 ) | ( ( op2(e24, e22) = e20 ) | ( ( op2(e24, e23) = e20 ) | ( op2(e24, e24) = e20 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e24) = e20 ) | ( ( op2(e21, e24) = e20 ) | ( ( op2(e22, e24) = e20 ) | ( ( op2(e23, e24) = e20 ) | ( op2(e24, e24) = e20 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e24, e20) = e21 ) | ( ( op2(e24, e21) = e21 ) | ( ( op2(e24, e22) = e21 ) | ( ( op2(e24, e23) = e21 ) | ( op2(e24, e24) = e21 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e24) = e21 ) | ( ( op2(e21, e24) = e21 ) | ( ( op2(e22, e24) = e21 ) | ( ( op2(e23, e24) = e21 ) | ( op2(e24, e24) = e21 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e24, e20) = e22 ) | ( ( op2(e24, e21) = e22 ) | ( ( op2(e24, e22) = e22 ) | ( ( op2(e24, e23) = e22 ) | ( op2(e24, e24) = e22 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e24) = e22 ) | ( ( op2(e21, e24) = e22 ) | ( ( op2(e22, e24) = e22 ) | ( ( op2(e23, e24) = e22 ) | ( op2(e24, e24) = e22 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e24, e20) = e23 ) | ( ( op2(e24, e21) = e23 ) | ( ( op2(e24, e22) = e23 ) | ( ( op2(e24, e23) = e23 ) | ( op2(e24, e24) = e23 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e20, e24) = e23 ) | ( ( op2(e21, e24) = e23 ) | ( ( op2(e22, e24) = e23 ) | ( ( op2(e23, e24) = e23 ) | ( op2(e24, e24) = e23 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ( op2(e24, e20) = e24 ) | ( ( op2(e24, e21) = e24 ) | ( ( op2(e24, e22) = e24 ) | ( ( op2(e24, e23) = e24 ) | ( op2(e24, e24) = e24 ) ) ) ) ))
+
+  =>
+
+% ax6_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( ( op2(e20, e24) = e24 ) | ( ( op2(e21, e24) = e24 ) | ( ( op2(e22, e24) = e24 ) | ( ( op2(e23, e24) = e24 ) | ( op2(e24, e24) = e24 ) ) ) ) ))
+
+  =>
+
+% ax7_AndLHS, axiom.
+(( ~ ( op1(e10, e10) = op1(e11, e10) ) ))
+
+  =>
+
+% ax7_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e10) = op1(e12, e10) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e10) = op1(e13, e10) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e10) = op1(e14, e10) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e10) = op1(e12, e10) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e10) = op1(e13, e10) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e10) = op1(e14, e10) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e10) = op1(e13, e10) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e10) = op1(e14, e10) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e10) = op1(e14, e10) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e11) = op1(e11, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e11) = op1(e12, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e11) = op1(e13, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e11) = op1(e14, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e11) = op1(e12, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e11) = op1(e13, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e11) = op1(e14, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e11) = op1(e13, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e11) = op1(e14, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e11) = op1(e14, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e12) = op1(e11, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e12) = op1(e12, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e12) = op1(e13, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e12) = op1(e14, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e12) = op1(e12, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e12) = op1(e13, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e12) = op1(e14, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e12) = op1(e13, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e12) = op1(e14, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e12) = op1(e14, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e13) = op1(e11, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e13) = op1(e12, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e13) = op1(e13, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e13) = op1(e14, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e13) = op1(e12, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e13) = op1(e13, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e13) = op1(e14, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e13) = op1(e13, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e13) = op1(e14, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e13) = op1(e14, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e14) = op1(e11, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e14) = op1(e12, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e14) = op1(e13, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e14) = op1(e14, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e14) = op1(e12, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e14) = op1(e13, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e14) = op1(e14, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e14) = op1(e13, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e14) = op1(e14, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e14) = op1(e14, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e10) = op1(e10, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e10) = op1(e10, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e10) = op1(e10, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e10) = op1(e10, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e11) = op1(e10, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e11) = op1(e10, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e11) = op1(e10, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e12) = op1(e10, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e12) = op1(e10, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e10, e13) = op1(e10, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e10) = op1(e11, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e10) = op1(e11, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e10) = op1(e11, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e10) = op1(e11, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e11) = op1(e11, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e11) = op1(e11, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e11) = op1(e11, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e12) = op1(e11, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e12) = op1(e11, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e11, e13) = op1(e11, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e10) = op1(e12, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e10) = op1(e12, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e10) = op1(e12, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e10) = op1(e12, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e11) = op1(e12, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e11) = op1(e12, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e11) = op1(e12, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e12) = op1(e12, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e12) = op1(e12, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e12, e13) = op1(e12, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e10) = op1(e13, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e10) = op1(e13, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e10) = op1(e13, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e10) = op1(e13, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e11) = op1(e13, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e11) = op1(e13, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e11) = op1(e13, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e12) = op1(e13, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e12) = op1(e13, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e13, e13) = op1(e13, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e14, e10) = op1(e14, e11) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e14, e10) = op1(e14, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e14, e10) = op1(e14, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e14, e10) = op1(e14, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e14, e11) = op1(e14, e12) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e14, e11) = op1(e14, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e14, e11) = op1(e14, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e14, e12) = op1(e14, e13) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op1(e14, e12) = op1(e14, e14) ) ))
+
+  =>
+
+% ax7_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( ~ ( op1(e14, e13) = op1(e14, e14) ) ))
+
+  =>
+
+% ax8_AndLHS, axiom.
+(( ~ ( op2(e20, e20) = op2(e21, e20) ) ))
+
+  =>
+
+% ax8_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e20) = op2(e22, e20) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e20) = op2(e23, e20) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e20) = op2(e24, e20) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e20) = op2(e22, e20) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e20) = op2(e23, e20) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e20) = op2(e24, e20) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e20) = op2(e23, e20) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e20) = op2(e24, e20) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e20) = op2(e24, e20) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e21) = op2(e21, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e21) = op2(e22, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e21) = op2(e23, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e21) = op2(e24, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e21) = op2(e22, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e21) = op2(e23, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e21) = op2(e24, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e21) = op2(e23, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e21) = op2(e24, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e21) = op2(e24, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e22) = op2(e21, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e22) = op2(e22, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e22) = op2(e23, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e22) = op2(e24, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e22) = op2(e22, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e22) = op2(e23, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e22) = op2(e24, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e22) = op2(e23, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e22) = op2(e24, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e22) = op2(e24, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e23) = op2(e21, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e23) = op2(e22, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e23) = op2(e23, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e23) = op2(e24, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e23) = op2(e22, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e23) = op2(e23, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e23) = op2(e24, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e23) = op2(e23, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e23) = op2(e24, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e23) = op2(e24, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e24) = op2(e21, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e24) = op2(e22, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e24) = op2(e23, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e24) = op2(e24, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e24) = op2(e22, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e24) = op2(e23, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e24) = op2(e24, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e24) = op2(e23, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e24) = op2(e24, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e24) = op2(e24, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e20) = op2(e20, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e20) = op2(e20, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e20) = op2(e20, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e20) = op2(e20, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e21) = op2(e20, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e21) = op2(e20, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e21) = op2(e20, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e22) = op2(e20, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e22) = op2(e20, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e20, e23) = op2(e20, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e20) = op2(e21, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e20) = op2(e21, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e20) = op2(e21, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e20) = op2(e21, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e21) = op2(e21, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e21) = op2(e21, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e21) = op2(e21, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e22) = op2(e21, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e22) = op2(e21, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e21, e23) = op2(e21, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e20) = op2(e22, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e20) = op2(e22, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e20) = op2(e22, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e20) = op2(e22, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e21) = op2(e22, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e21) = op2(e22, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e21) = op2(e22, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e22) = op2(e22, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e22) = op2(e22, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e22, e23) = op2(e22, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e20) = op2(e23, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e20) = op2(e23, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e20) = op2(e23, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e20) = op2(e23, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e21) = op2(e23, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e21) = op2(e23, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e21) = op2(e23, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e22) = op2(e23, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e22) = op2(e23, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e23, e23) = op2(e23, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e24, e20) = op2(e24, e21) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e24, e20) = op2(e24, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e24, e20) = op2(e24, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e24, e20) = op2(e24, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e24, e21) = op2(e24, e22) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e24, e21) = op2(e24, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e24, e21) = op2(e24, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e24, e22) = op2(e24, e23) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( op2(e24, e22) = op2(e24, e24) ) ))
+
+  =>
+
+% ax8_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( ~ ( op2(e24, e23) = op2(e24, e24) ) ))
+
+  =>
+
+% ax9_AndLHS, axiom.
+(( ~ ( e10 = e11 ) ))
+
+  =>
+
+% ax9_AndRHS_AndLHS, axiom.
+(( ~ ( e10 = e12 ) ))
+
+  =>
+
+% ax9_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e10 = e13 ) ))
+
+  =>
+
+% ax9_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e10 = e14 ) ))
+
+  =>
+
+% ax9_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e11 = e12 ) ))
+
+  =>
+
+% ax9_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e11 = e13 ) ))
+
+  =>
+
+% ax9_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e11 = e14 ) ))
+
+  =>
+
+% ax9_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e12 = e13 ) ))
+
+  =>
+
+% ax9_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e12 = e14 ) ))
+
+  =>
+
+% ax9_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( ~ ( e13 = e14 ) ))
+
+  =>
+
+% ax10_AndLHS, axiom.
+(( ~ ( e20 = e21 ) ))
+
+  =>
+
+% ax10_AndRHS_AndLHS, axiom.
+(( ~ ( e20 = e22 ) ))
+
+  =>
+
+% ax10_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e20 = e23 ) ))
+
+  =>
+
+% ax10_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e20 = e24 ) ))
+
+  =>
+
+% ax10_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e21 = e22 ) ))
+
+  =>
+
+% ax10_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e21 = e23 ) ))
+
+  =>
+
+% ax10_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e21 = e24 ) ))
+
+  =>
+
+% ax10_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e22 = e23 ) ))
+
+  =>
+
+% ax10_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e22 = e24 ) ))
+
+  =>
+
+% ax10_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( ~ ( e23 = e24 ) ))
+
+  =>
+
+% ax11_AndLHS, axiom.
+(( ~ ( e10 = e20 ) ))
+
+  =>
+
+% ax11_AndRHS_AndLHS, axiom.
+(( ~ ( e10 = e21 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e10 = e22 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e10 = e23 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e10 = e24 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e11 = e20 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e11 = e21 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e11 = e22 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e11 = e23 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e11 = e24 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e12 = e20 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e12 = e21 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e12 = e22 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e12 = e23 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e12 = e24 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e13 = e20 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e13 = e21 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e13 = e22 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e13 = e23 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e13 = e24 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e14 = e20 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e14 = e21 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e14 = e22 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( ~ ( e14 = e23 ) ))
+
+  =>
+
+% ax11_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( ~ ( e14 = e24 ) ))
+
+  =>
+
+% ax12, axiom.
+(( ( ( ( ~ ( op1(e10, e10) = e10 ) ) | ( ( op1(e10, e10) = e10 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e11) = e10 ) ) | ( ( op1(e10, e10) = e11 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e12) = e10 ) ) | ( ( op1(e10, e10) = e12 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e13) = e10 ) ) | ( ( op1(e10, e10) = e13 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e14) = e10 ) ) | ( ( op1(e10, e10) = e14 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e10) = e10 ) ) | ( ( op1(e11, e10) = e10 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e11) = e10 ) ) | ( ( op1(e11, e10) = e11 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e12) = e10 ) ) | ( ( op1(e11, e10) = e12 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e13) = e10 ) ) | ( ( op1(e11, e10) = e13 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e14) = e10 ) ) | ( ( op1(e11, e10) = e14 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e10) = e10 ) ) | ( ( op1(e12, e10) = e10 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e11) = e10 ) ) | ( ( op1(e12, e10) = e11 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e12) = e10 ) ) | ( ( op1(e12, e10) = e12 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e13) = e10 ) ) | ( ( op1(e12, e10) = e13 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e14) = e10 ) ) | ( ( op1(e12, e10) = e14 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e10) = e10 ) ) | ( ( op1(e13, e10) = e10 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e11) = e10 ) ) | ( ( op1(e13, e10) = e11 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e12) = e10 ) ) | ( ( op1(e13, e10) = e12 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e13) = e10 ) ) | ( ( op1(e13, e10) = e13 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e14) = e10 ) ) | ( ( op1(e13, e10) = e14 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e10) = e10 ) ) | ( ( op1(e14, e10) = e10 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e11) = e10 ) ) | ( ( op1(e14, e10) = e11 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e12) = e10 ) ) | ( ( op1(e14, e10) = e12 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e13) = e10 ) ) | ( ( op1(e14, e10) = e13 ) & ( ~ ( e10 = unit1 ) ) ) ) & ( ( ~ ( op1(e14, e14) = e10 ) ) | ( ( op1(e14, e10) = e14 ) & ( ~ ( e10 = unit1 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( ( ( ~ ( op1(e10, e10) = e11 ) ) | ( ( op1(e10, e11) = e10 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e11) = e11 ) ) | ( ( op1(e10, e11) = e11 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e12) = e11 ) ) | ( ( op1(e10, e11) = e12 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e13) = e11 ) ) | ( ( op1(e10, e11) = e13 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e14) = e11 ) ) | ( ( op1(e10, e11) = e14 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e10) = e11 ) ) | ( ( op1(e11, e11) = e10 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e11) = e11 ) ) | ( ( op1(e11, e11) = e11 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e12) = e11 ) ) | ( ( op1(e11, e11) = e12 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e13) = e11 ) ) | ( ( op1(e11, e11) = e13 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e14) = e11 ) ) | ( ( op1(e11, e11) = e14 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e10) = e11 ) ) | ( ( op1(e12, e11) = e10 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e11) = e11 ) ) | ( ( op1(e12, e11) = e11 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e12) = e11 ) ) | ( ( op1(e12, e11) = e12 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e13) = e11 ) ) | ( ( op1(e12, e11) = e13 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e14) = e11 ) ) | ( ( op1(e12, e11) = e14 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e10) = e11 ) ) | ( ( op1(e13, e11) = e10 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e11) = e11 ) ) | ( ( op1(e13, e11) = e11 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e12) = e11 ) ) | ( ( op1(e13, e11) = e12 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e13) = e11 ) ) | ( ( op1(e13, e11) = e13 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e14) = e11 ) ) | ( ( op1(e13, e11) = e14 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e10) = e11 ) ) | ( ( op1(e14, e11) = e10 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e11) = e11 ) ) | ( ( op1(e14, e11) = e11 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e12) = e11 ) ) | ( ( op1(e14, e11) = e12 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e13) = e11 ) ) | ( ( op1(e14, e11) = e13 ) & ( ~ ( e11 = unit1 ) ) ) ) & ( ( ~ ( op1(e14, e14) = e11 ) ) | ( ( op1(e14, e11) = e14 ) & ( ~ ( e11 = unit1 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( ( ( ~ ( op1(e10, e10) = e12 ) ) | ( ( op1(e10, e12) = e10 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e11) = e12 ) ) | ( ( op1(e10, e12) = e11 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e12) = e12 ) ) | ( ( op1(e10, e12) = e12 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e13) = e12 ) ) | ( ( op1(e10, e12) = e13 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e14) = e12 ) ) | ( ( op1(e10, e12) = e14 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e10) = e12 ) ) | ( ( op1(e11, e12) = e10 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e11) = e12 ) ) | ( ( op1(e11, e12) = e11 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e12) = e12 ) ) | ( ( op1(e11, e12) = e12 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e13) = e12 ) ) | ( ( op1(e11, e12) = e13 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e14) = e12 ) ) | ( ( op1(e11, e12) = e14 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e10) = e12 ) ) | ( ( op1(e12, e12) = e10 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e11) = e12 ) ) | ( ( op1(e12, e12) = e11 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e12) = e12 ) ) | ( ( op1(e12, e12) = e12 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e13) = e12 ) ) | ( ( op1(e12, e12) = e13 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e14) = e12 ) ) | ( ( op1(e12, e12) = e14 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e10) = e12 ) ) | ( ( op1(e13, e12) = e10 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e11) = e12 ) ) | ( ( op1(e13, e12) = e11 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e12) = e12 ) ) | ( ( op1(e13, e12) = e12 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e13) = e12 ) ) | ( ( op1(e13, e12) = e13 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e14) = e12 ) ) | ( ( op1(e13, e12) = e14 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e10) = e12 ) ) | ( ( op1(e14, e12) = e10 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e11) = e12 ) ) | ( ( op1(e14, e12) = e11 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e12) = e12 ) ) | ( ( op1(e14, e12) = e12 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e13) = e12 ) ) | ( ( op1(e14, e12) = e13 ) & ( ~ ( e12 = unit1 ) ) ) ) & ( ( ~ ( op1(e14, e14) = e12 ) ) | ( ( op1(e14, e12) = e14 ) & ( ~ ( e12 = unit1 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( ( ( ~ ( op1(e10, e10) = e13 ) ) | ( ( op1(e10, e13) = e10 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e11) = e13 ) ) | ( ( op1(e10, e13) = e11 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e12) = e13 ) ) | ( ( op1(e10, e13) = e12 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e13) = e13 ) ) | ( ( op1(e10, e13) = e13 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e14) = e13 ) ) | ( ( op1(e10, e13) = e14 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e10) = e13 ) ) | ( ( op1(e11, e13) = e10 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e11) = e13 ) ) | ( ( op1(e11, e13) = e11 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e12) = e13 ) ) | ( ( op1(e11, e13) = e12 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e13) = e13 ) ) | ( ( op1(e11, e13) = e13 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e14) = e13 ) ) | ( ( op1(e11, e13) = e14 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e10) = e13 ) ) | ( ( op1(e12, e13) = e10 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e11) = e13 ) ) | ( ( op1(e12, e13) = e11 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e12) = e13 ) ) | ( ( op1(e12, e13) = e12 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e13) = e13 ) ) | ( ( op1(e12, e13) = e13 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e14) = e13 ) ) | ( ( op1(e12, e13) = e14 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e10) = e13 ) ) | ( ( op1(e13, e13) = e10 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e11) = e13 ) ) | ( ( op1(e13, e13) = e11 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e12) = e13 ) ) | ( ( op1(e13, e13) = e12 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e13) = e13 ) ) | ( ( op1(e13, e13) = e13 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e14) = e13 ) ) | ( ( op1(e13, e13) = e14 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e10) = e13 ) ) | ( ( op1(e14, e13) = e10 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e11) = e13 ) ) | ( ( op1(e14, e13) = e11 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e12) = e13 ) ) | ( ( op1(e14, e13) = e12 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e13) = e13 ) ) | ( ( op1(e14, e13) = e13 ) & ( ~ ( e13 = unit1 ) ) ) ) & ( ( ~ ( op1(e14, e14) = e13 ) ) | ( ( op1(e14, e13) = e14 ) & ( ~ ( e13 = unit1 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( ( ~ ( op1(e10, e10) = e14 ) ) | ( ( op1(e10, e14) = e10 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e11) = e14 ) ) | ( ( op1(e10, e14) = e11 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e12) = e14 ) ) | ( ( op1(e10, e14) = e12 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e13) = e14 ) ) | ( ( op1(e10, e14) = e13 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e10, e14) = e14 ) ) | ( ( op1(e10, e14) = e14 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e10) = e14 ) ) | ( ( op1(e11, e14) = e10 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e11) = e14 ) ) | ( ( op1(e11, e14) = e11 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e12) = e14 ) ) | ( ( op1(e11, e14) = e12 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e13) = e14 ) ) | ( ( op1(e11, e14) = e13 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e11, e14) = e14 ) ) | ( ( op1(e11, e14) = e14 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e10) = e14 ) ) | ( ( op1(e12, e14) = e10 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e11) = e14 ) ) | ( ( op1(e12, e14) = e11 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e12) = e14 ) ) | ( ( op1(e12, e14) = e12 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e13) = e14 ) ) | ( ( op1(e12, e14) = e13 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e12, e14) = e14 ) ) | ( ( op1(e12, e14) = e14 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e10) = e14 ) ) | ( ( op1(e13, e14) = e10 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e11) = e14 ) ) | ( ( op1(e13, e14) = e11 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e12) = e14 ) ) | ( ( op1(e13, e14) = e12 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e13) = e14 ) ) | ( ( op1(e13, e14) = e13 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e13, e14) = e14 ) ) | ( ( op1(e13, e14) = e14 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e10) = e14 ) ) | ( ( op1(e14, e14) = e10 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e11) = e14 ) ) | ( ( op1(e14, e14) = e11 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e12) = e14 ) ) | ( ( op1(e14, e14) = e12 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ( ~ ( op1(e14, e13) = e14 ) ) | ( ( op1(e14, e14) = e13 ) & ( ~ ( e14 = unit1 ) ) ) ) & ( ( ~ ( op1(e14, e14) = e14 ) ) | ( ( op1(e14, e14) = e14 ) & ( ~ ( e14 = unit1 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax13, axiom.
+(( ( ( ( ~ ( op2(e20, e20) = e20 ) ) | ( ( op2(e20, e20) = e20 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e21) = e20 ) ) | ( ( op2(e20, e20) = e21 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e22) = e20 ) ) | ( ( op2(e20, e20) = e22 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e23) = e20 ) ) | ( ( op2(e20, e20) = e23 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e24) = e20 ) ) | ( ( op2(e20, e20) = e24 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e20) = e20 ) ) | ( ( op2(e21, e20) = e20 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e21) = e20 ) ) | ( ( op2(e21, e20) = e21 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e22) = e20 ) ) | ( ( op2(e21, e20) = e22 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e23) = e20 ) ) | ( ( op2(e21, e20) = e23 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e24) = e20 ) ) | ( ( op2(e21, e20) = e24 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e20) = e20 ) ) | ( ( op2(e22, e20) = e20 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e21) = e20 ) ) | ( ( op2(e22, e20) = e21 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e22) = e20 ) ) | ( ( op2(e22, e20) = e22 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e23) = e20 ) ) | ( ( op2(e22, e20) = e23 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e24) = e20 ) ) | ( ( op2(e22, e20) = e24 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e20) = e20 ) ) | ( ( op2(e23, e20) = e20 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e21) = e20 ) ) | ( ( op2(e23, e20) = e21 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e22) = e20 ) ) | ( ( op2(e23, e20) = e22 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e23) = e20 ) ) | ( ( op2(e23, e20) = e23 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e24) = e20 ) ) | ( ( op2(e23, e20) = e24 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e20) = e20 ) ) | ( ( op2(e24, e20) = e20 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e21) = e20 ) ) | ( ( op2(e24, e20) = e21 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e22) = e20 ) ) | ( ( op2(e24, e20) = e22 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e23) = e20 ) ) | ( ( op2(e24, e20) = e23 ) & ( ~ ( e20 = unit2 ) ) ) ) & ( ( ~ ( op2(e24, e24) = e20 ) ) | ( ( op2(e24, e20) = e24 ) & ( ~ ( e20 = unit2 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( ( ( ~ ( op2(e20, e20) = e21 ) ) | ( ( op2(e20, e21) = e20 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e21) = e21 ) ) | ( ( op2(e20, e21) = e21 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e22) = e21 ) ) | ( ( op2(e20, e21) = e22 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e23) = e21 ) ) | ( ( op2(e20, e21) = e23 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e24) = e21 ) ) | ( ( op2(e20, e21) = e24 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e20) = e21 ) ) | ( ( op2(e21, e21) = e20 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e21) = e21 ) ) | ( ( op2(e21, e21) = e21 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e22) = e21 ) ) | ( ( op2(e21, e21) = e22 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e23) = e21 ) ) | ( ( op2(e21, e21) = e23 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e24) = e21 ) ) | ( ( op2(e21, e21) = e24 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e20) = e21 ) ) | ( ( op2(e22, e21) = e20 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e21) = e21 ) ) | ( ( op2(e22, e21) = e21 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e22) = e21 ) ) | ( ( op2(e22, e21) = e22 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e23) = e21 ) ) | ( ( op2(e22, e21) = e23 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e24) = e21 ) ) | ( ( op2(e22, e21) = e24 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e20) = e21 ) ) | ( ( op2(e23, e21) = e20 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e21) = e21 ) ) | ( ( op2(e23, e21) = e21 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e22) = e21 ) ) | ( ( op2(e23, e21) = e22 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e23) = e21 ) ) | ( ( op2(e23, e21) = e23 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e24) = e21 ) ) | ( ( op2(e23, e21) = e24 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e20) = e21 ) ) | ( ( op2(e24, e21) = e20 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e21) = e21 ) ) | ( ( op2(e24, e21) = e21 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e22) = e21 ) ) | ( ( op2(e24, e21) = e22 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e23) = e21 ) ) | ( ( op2(e24, e21) = e23 ) & ( ~ ( e21 = unit2 ) ) ) ) & ( ( ~ ( op2(e24, e24) = e21 ) ) | ( ( op2(e24, e21) = e24 ) & ( ~ ( e21 = unit2 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( ( ( ~ ( op2(e20, e20) = e22 ) ) | ( ( op2(e20, e22) = e20 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e21) = e22 ) ) | ( ( op2(e20, e22) = e21 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e22) = e22 ) ) | ( ( op2(e20, e22) = e22 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e23) = e22 ) ) | ( ( op2(e20, e22) = e23 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e24) = e22 ) ) | ( ( op2(e20, e22) = e24 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e20) = e22 ) ) | ( ( op2(e21, e22) = e20 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e21) = e22 ) ) | ( ( op2(e21, e22) = e21 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e22) = e22 ) ) | ( ( op2(e21, e22) = e22 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e23) = e22 ) ) | ( ( op2(e21, e22) = e23 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e24) = e22 ) ) | ( ( op2(e21, e22) = e24 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e20) = e22 ) ) | ( ( op2(e22, e22) = e20 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e21) = e22 ) ) | ( ( op2(e22, e22) = e21 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e22) = e22 ) ) | ( ( op2(e22, e22) = e22 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e23) = e22 ) ) | ( ( op2(e22, e22) = e23 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e24) = e22 ) ) | ( ( op2(e22, e22) = e24 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e20) = e22 ) ) | ( ( op2(e23, e22) = e20 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e21) = e22 ) ) | ( ( op2(e23, e22) = e21 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e22) = e22 ) ) | ( ( op2(e23, e22) = e22 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e23) = e22 ) ) | ( ( op2(e23, e22) = e23 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e24) = e22 ) ) | ( ( op2(e23, e22) = e24 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e20) = e22 ) ) | ( ( op2(e24, e22) = e20 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e21) = e22 ) ) | ( ( op2(e24, e22) = e21 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e22) = e22 ) ) | ( ( op2(e24, e22) = e22 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e23) = e22 ) ) | ( ( op2(e24, e22) = e23 ) & ( ~ ( e22 = unit2 ) ) ) ) & ( ( ~ ( op2(e24, e24) = e22 ) ) | ( ( op2(e24, e22) = e24 ) & ( ~ ( e22 = unit2 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( ( ( ~ ( op2(e20, e20) = e23 ) ) | ( ( op2(e20, e23) = e20 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e21) = e23 ) ) | ( ( op2(e20, e23) = e21 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e22) = e23 ) ) | ( ( op2(e20, e23) = e22 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e23) = e23 ) ) | ( ( op2(e20, e23) = e23 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e24) = e23 ) ) | ( ( op2(e20, e23) = e24 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e20) = e23 ) ) | ( ( op2(e21, e23) = e20 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e21) = e23 ) ) | ( ( op2(e21, e23) = e21 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e22) = e23 ) ) | ( ( op2(e21, e23) = e22 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e23) = e23 ) ) | ( ( op2(e21, e23) = e23 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e24) = e23 ) ) | ( ( op2(e21, e23) = e24 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e20) = e23 ) ) | ( ( op2(e22, e23) = e20 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e21) = e23 ) ) | ( ( op2(e22, e23) = e21 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e22) = e23 ) ) | ( ( op2(e22, e23) = e22 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e23) = e23 ) ) | ( ( op2(e22, e23) = e23 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e24) = e23 ) ) | ( ( op2(e22, e23) = e24 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e20) = e23 ) ) | ( ( op2(e23, e23) = e20 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e21) = e23 ) ) | ( ( op2(e23, e23) = e21 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e22) = e23 ) ) | ( ( op2(e23, e23) = e22 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e23) = e23 ) ) | ( ( op2(e23, e23) = e23 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e24) = e23 ) ) | ( ( op2(e23, e23) = e24 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e20) = e23 ) ) | ( ( op2(e24, e23) = e20 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e21) = e23 ) ) | ( ( op2(e24, e23) = e21 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e22) = e23 ) ) | ( ( op2(e24, e23) = e22 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e23) = e23 ) ) | ( ( op2(e24, e23) = e23 ) & ( ~ ( e23 = unit2 ) ) ) ) & ( ( ~ ( op2(e24, e24) = e23 ) ) | ( ( op2(e24, e23) = e24 ) & ( ~ ( e23 = unit2 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( ( ~ ( op2(e20, e20) = e24 ) ) | ( ( op2(e20, e24) = e20 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e21) = e24 ) ) | ( ( op2(e20, e24) = e21 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e22) = e24 ) ) | ( ( op2(e20, e24) = e22 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e23) = e24 ) ) | ( ( op2(e20, e24) = e23 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e20, e24) = e24 ) ) | ( ( op2(e20, e24) = e24 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e20) = e24 ) ) | ( ( op2(e21, e24) = e20 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e21) = e24 ) ) | ( ( op2(e21, e24) = e21 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e22) = e24 ) ) | ( ( op2(e21, e24) = e22 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e23) = e24 ) ) | ( ( op2(e21, e24) = e23 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e21, e24) = e24 ) ) | ( ( op2(e21, e24) = e24 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e20) = e24 ) ) | ( ( op2(e22, e24) = e20 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e21) = e24 ) ) | ( ( op2(e22, e24) = e21 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e22) = e24 ) ) | ( ( op2(e22, e24) = e22 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e23) = e24 ) ) | ( ( op2(e22, e24) = e23 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e22, e24) = e24 ) ) | ( ( op2(e22, e24) = e24 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e20) = e24 ) ) | ( ( op2(e23, e24) = e20 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e21) = e24 ) ) | ( ( op2(e23, e24) = e21 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e22) = e24 ) ) | ( ( op2(e23, e24) = e22 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e23) = e24 ) ) | ( ( op2(e23, e24) = e23 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e23, e24) = e24 ) ) | ( ( op2(e23, e24) = e24 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e20) = e24 ) ) | ( ( op2(e24, e24) = e20 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e21) = e24 ) ) | ( ( op2(e24, e24) = e21 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e22) = e24 ) ) | ( ( op2(e24, e24) = e22 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ( ~ ( op2(e24, e23) = e24 ) ) | ( ( op2(e24, e24) = e23 ) & ( ~ ( e24 = unit2 ) ) ) ) & ( ( ~ ( op2(e24, e24) = e24 ) ) | ( ( op2(e24, e24) = e24 ) & ( ~ ( e24 = unit2 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% ax14_AndLHS, axiom.
+(( e10 = op1(op1(op1(e12, e12), e12), op1(op1(e12, e12), e12)) ))
+
+  =>
+
+% ax14_AndRHS_AndLHS, axiom.
+(( e11 = op1(op1(e12, e12), e12) ))
+
+  =>
+
+% ax14_AndRHS_AndRHS_AndLHS, axiom.
+(( e13 = op1(e12, e12) ))
+
+  =>
+
+% ax14_AndRHS_AndRHS_AndRHS, axiom.
+(( e14 = op1(op1(e12, e12), op1(e12, e12)) ))
+
+  =>
+
+% ax15_AndLHS, axiom.
+(( e20 = op2(op2(op2(e22, e22), e22), op2(op2(e22, e22), e22)) ))
+
+  =>
+
+% ax15_AndRHS_AndLHS, axiom.
+(( e21 = op2(op2(e22, e22), e22) ))
+
+  =>
+
+% ax15_AndRHS_AndRHS_AndLHS, axiom.
+(( e23 = op2(e22, e22) ))
+
+  =>
+
+% ax15_AndRHS_AndRHS_AndRHS, axiom.
+(( e24 = op2(op2(e22, e22), op2(e22, e22)) ))
+
+  =>
+
+% ax16_AndLHS, axiom.
+(( h1(e12) = e20 ))
+
+  =>
+
+% ax16_AndRHS_AndLHS, axiom.
+(( h1(e10) = op2(op2(op2(e20, e20), e20), op2(op2(e20, e20), e20)) ))
+
+  =>
+
+% ax16_AndRHS_AndRHS_AndLHS, axiom.
+(( h1(e11) = op2(op2(e20, e20), e20) ))
+
+  =>
+
+% ax16_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( h1(e13) = op2(e20, e20) ))
+
+  =>
+
+% ax16_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( h1(e14) = op2(op2(e20, e20), op2(e20, e20)) ))
+
+  =>
+
+% ax17_AndLHS, axiom.
+(( h2(e12) = e21 ))
+
+  =>
+
+% ax17_AndRHS_AndLHS, axiom.
+(( h2(e10) = op2(op2(op2(e21, e21), e21), op2(op2(e21, e21), e21)) ))
+
+  =>
+
+% ax17_AndRHS_AndRHS_AndLHS, axiom.
+(( h2(e11) = op2(op2(e21, e21), e21) ))
+
+  =>
+
+% ax17_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( h2(e13) = op2(e21, e21) ))
+
+  =>
+
+% ax17_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( h2(e14) = op2(op2(e21, e21), op2(e21, e21)) ))
+
+  =>
+
+% ax18_AndLHS, axiom.
+(( h3(e12) = e22 ))
+
+  =>
+
+% ax18_AndRHS_AndLHS, axiom.
+(( h3(e10) = op2(op2(op2(e22, e22), e22), op2(op2(e22, e22), e22)) ))
+
+  =>
+
+% ax18_AndRHS_AndRHS_AndLHS, axiom.
+(( h3(e11) = op2(op2(e22, e22), e22) ))
+
+  =>
+
+% ax18_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( h3(e13) = op2(e22, e22) ))
+
+  =>
+
+% ax18_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( h3(e14) = op2(op2(e22, e22), op2(e22, e22)) ))
+
+  =>
+
+% ax19_AndLHS, axiom.
+(( h4(e12) = e23 ))
+
+  =>
+
+% ax19_AndRHS_AndLHS, axiom.
+(( h4(e10) = op2(op2(op2(e23, e23), e23), op2(op2(e23, e23), e23)) ))
+
+  =>
+
+% ax19_AndRHS_AndRHS_AndLHS, axiom.
+(( h4(e11) = op2(op2(e23, e23), e23) ))
+
+  =>
+
+% ax19_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( h4(e13) = op2(e23, e23) ))
+
+  =>
+
+% ax19_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( h4(e14) = op2(op2(e23, e23), op2(e23, e23)) ))
+
+  =>
+
+% ax20_AndLHS, axiom.
+(( h5(e12) = e24 ))
+
+  =>
+
+% ax20_AndRHS_AndLHS, axiom.
+(( h5(e10) = op2(op2(op2(e24, e24), e24), op2(op2(e24, e24), e24)) ))
+
+  =>
+
+% ax20_AndRHS_AndRHS_AndLHS, axiom.
+(( h5(e11) = op2(op2(e24, e24), e24) ))
+
+  =>
+
+% ax20_AndRHS_AndRHS_AndRHS_AndLHS, axiom.
+(( h5(e13) = op2(e24, e24) ))
+
+  =>
+
+% ax20_AndRHS_AndRHS_AndRHS_AndRHS, axiom.
+(( h5(e14) = op2(op2(e24, e24), op2(e24, e24)) ))
+
+  =>
+
+% co1, conjecture.
+(( ( ( h1(op1(e10, e10)) = op2(h1(e10), h1(e10)) ) & ( ( h1(op1(e10, e11)) = op2(h1(e10), h1(e11)) ) & ( ( h1(op1(e10, e12)) = op2(h1(e10), h1(e12)) ) & ( ( h1(op1(e10, e13)) = op2(h1(e10), h1(e13)) ) & ( ( h1(op1(e10, e14)) = op2(h1(e10), h1(e14)) ) & ( ( h1(op1(e11, e10)) = op2(h1(e11), h1(e10)) ) & ( ( h1(op1(e11, e11)) = op2(h1(e11), h1(e11)) ) & ( ( h1(op1(e11, e12)) = op2(h1(e11), h1(e12)) ) & ( ( h1(op1(e11, e13)) = op2(h1(e11), h1(e13)) ) & ( ( h1(op1(e11, e14)) = op2(h1(e11), h1(e14)) ) & ( ( h1(op1(e12, e10)) = op2(h1(e12), h1(e10)) ) & ( ( h1(op1(e12, e11)) = op2(h1(e12), h1(e11)) ) & ( ( h1(op1(e12, e12)) = op2(h1(e12), h1(e12)) ) & ( ( h1(op1(e12, e13)) = op2(h1(e12), h1(e13)) ) & ( ( h1(op1(e12, e14)) = op2(h1(e12), h1(e14)) ) & ( ( h1(op1(e13, e10)) = op2(h1(e13), h1(e10)) ) & ( ( h1(op1(e13, e11)) = op2(h1(e13), h1(e11)) ) & ( ( h1(op1(e13, e12)) = op2(h1(e13), h1(e12)) ) & ( ( h1(op1(e13, e13)) = op2(h1(e13), h1(e13)) ) & ( ( h1(op1(e13, e14)) = op2(h1(e13), h1(e14)) ) & ( ( h1(op1(e14, e10)) = op2(h1(e14), h1(e10)) ) & ( ( h1(op1(e14, e11)) = op2(h1(e14), h1(e11)) ) & ( ( h1(op1(e14, e12)) = op2(h1(e14), h1(e12)) ) & ( ( h1(op1(e14, e13)) = op2(h1(e14), h1(e13)) ) & ( ( h1(op1(e14, e14)) = op2(h1(e14), h1(e14)) ) & ( ( ( h1(e10) = e20 ) | ( ( h1(e11) = e20 ) | ( ( h1(e12) = e20 ) | ( ( h1(e13) = e20 ) | ( h1(e14) = e20 ) ) ) ) ) & ( ( ( h1(e10) = e21 ) | ( ( h1(e11) = e21 ) | ( ( h1(e12) = e21 ) | ( ( h1(e13) = e21 ) | ( h1(e14) = e21 ) ) ) ) ) & ( ( ( h1(e10) = e22 ) | ( ( h1(e11) = e22 ) | ( ( h1(e12) = e22 ) | ( ( h1(e13) = e22 ) | ( h1(e14) = e22 ) ) ) ) ) & ( ( ( h1(e10) = e23 ) | ( ( h1(e11) = e23 ) | ( ( h1(e12) = e23 ) | ( ( h1(e13) = e23 ) | ( h1(e14) = e23 ) ) ) ) ) & ( ( h1(e10) = e24 ) | ( ( h1(e11) = e24 ) | ( ( h1(e12) = e24 ) | ( ( h1(e13) = e24 ) | ( h1(e14) = e24 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( ( h2(op1(e10, e10)) = op2(h2(e10), h2(e10)) ) & ( ( h2(op1(e10, e11)) = op2(h2(e10), h2(e11)) ) & ( ( h2(op1(e10, e12)) = op2(h2(e10), h2(e12)) ) & ( ( h2(op1(e10, e13)) = op2(h2(e10), h2(e13)) ) & ( ( h2(op1(e10, e14)) = op2(h2(e10), h2(e14)) ) & ( ( h2(op1(e11, e10)) = op2(h2(e11), h2(e10)) ) & ( ( h2(op1(e11, e11)) = op2(h2(e11), h2(e11)) ) & ( ( h2(op1(e11, e12)) = op2(h2(e11), h2(e12)) ) & ( ( h2(op1(e11, e13)) = op2(h2(e11), h2(e13)) ) & ( ( h2(op1(e11, e14)) = op2(h2(e11), h2(e14)) ) & ( ( h2(op1(e12, e10)) = op2(h2(e12), h2(e10)) ) & ( ( h2(op1(e12, e11)) = op2(h2(e12), h2(e11)) ) & ( ( h2(op1(e12, e12)) = op2(h2(e12), h2(e12)) ) & ( ( h2(op1(e12, e13)) = op2(h2(e12), h2(e13)) ) & ( ( h2(op1(e12, e14)) = op2(h2(e12), h2(e14)) ) & ( ( h2(op1(e13, e10)) = op2(h2(e13), h2(e10)) ) & ( ( h2(op1(e13, e11)) = op2(h2(e13), h2(e11)) ) & ( ( h2(op1(e13, e12)) = op2(h2(e13), h2(e12)) ) & ( ( h2(op1(e13, e13)) = op2(h2(e13), h2(e13)) ) & ( ( h2(op1(e13, e14)) = op2(h2(e13), h2(e14)) ) & ( ( h2(op1(e14, e10)) = op2(h2(e14), h2(e10)) ) & ( ( h2(op1(e14, e11)) = op2(h2(e14), h2(e11)) ) & ( ( h2(op1(e14, e12)) = op2(h2(e14), h2(e12)) ) & ( ( h2(op1(e14, e13)) = op2(h2(e14), h2(e13)) ) & ( ( h2(op1(e14, e14)) = op2(h2(e14), h2(e14)) ) & ( ( ( h2(e10) = e20 ) | ( ( h2(e11) = e20 ) | ( ( h2(e12) = e20 ) | ( ( h2(e13) = e20 ) | ( h2(e14) = e20 ) ) ) ) ) & ( ( ( h2(e10) = e21 ) | ( ( h2(e11) = e21 ) | ( ( h2(e12) = e21 ) | ( ( h2(e13) = e21 ) | ( h2(e14) = e21 ) ) ) ) ) & ( ( ( h2(e10) = e22 ) | ( ( h2(e11) = e22 ) | ( ( h2(e12) = e22 ) | ( ( h2(e13) = e22 ) | ( h2(e14) = e22 ) ) ) ) ) & ( ( ( h2(e10) = e23 ) | ( ( h2(e11) = e23 ) | ( ( h2(e12) = e23 ) | ( ( h2(e13) = e23 ) | ( h2(e14) = e23 ) ) ) ) ) & ( ( h2(e10) = e24 ) | ( ( h2(e11) = e24 ) | ( ( h2(e12) = e24 ) | ( ( h2(e13) = e24 ) | ( h2(e14) = e24 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( ( h3(op1(e10, e10)) = op2(h3(e10), h3(e10)) ) & ( ( h3(op1(e10, e11)) = op2(h3(e10), h3(e11)) ) & ( ( h3(op1(e10, e12)) = op2(h3(e10), h3(e12)) ) & ( ( h3(op1(e10, e13)) = op2(h3(e10), h3(e13)) ) & ( ( h3(op1(e10, e14)) = op2(h3(e10), h3(e14)) ) & ( ( h3(op1(e11, e10)) = op2(h3(e11), h3(e10)) ) & ( ( h3(op1(e11, e11)) = op2(h3(e11), h3(e11)) ) & ( ( h3(op1(e11, e12)) = op2(h3(e11), h3(e12)) ) & ( ( h3(op1(e11, e13)) = op2(h3(e11), h3(e13)) ) & ( ( h3(op1(e11, e14)) = op2(h3(e11), h3(e14)) ) & ( ( h3(op1(e12, e10)) = op2(h3(e12), h3(e10)) ) & ( ( h3(op1(e12, e11)) = op2(h3(e12), h3(e11)) ) & ( ( h3(op1(e12, e12)) = op2(h3(e12), h3(e12)) ) & ( ( h3(op1(e12, e13)) = op2(h3(e12), h3(e13)) ) & ( ( h3(op1(e12, e14)) = op2(h3(e12), h3(e14)) ) & ( ( h3(op1(e13, e10)) = op2(h3(e13), h3(e10)) ) & ( ( h3(op1(e13, e11)) = op2(h3(e13), h3(e11)) ) & ( ( h3(op1(e13, e12)) = op2(h3(e13), h3(e12)) ) & ( ( h3(op1(e13, e13)) = op2(h3(e13), h3(e13)) ) & ( ( h3(op1(e13, e14)) = op2(h3(e13), h3(e14)) ) & ( ( h3(op1(e14, e10)) = op2(h3(e14), h3(e10)) ) & ( ( h3(op1(e14, e11)) = op2(h3(e14), h3(e11)) ) & ( ( h3(op1(e14, e12)) = op2(h3(e14), h3(e12)) ) & ( ( h3(op1(e14, e13)) = op2(h3(e14), h3(e13)) ) & ( ( h3(op1(e14, e14)) = op2(h3(e14), h3(e14)) ) & ( ( ( h3(e10) = e20 ) | ( ( h3(e11) = e20 ) | ( ( h3(e12) = e20 ) | ( ( h3(e13) = e20 ) | ( h3(e14) = e20 ) ) ) ) ) & ( ( ( h3(e10) = e21 ) | ( ( h3(e11) = e21 ) | ( ( h3(e12) = e21 ) | ( ( h3(e13) = e21 ) | ( h3(e14) = e21 ) ) ) ) ) & ( ( ( h3(e10) = e22 ) | ( ( h3(e11) = e22 ) | ( ( h3(e12) = e22 ) | ( ( h3(e13) = e22 ) | ( h3(e14) = e22 ) ) ) ) ) & ( ( ( h3(e10) = e23 ) | ( ( h3(e11) = e23 ) | ( ( h3(e12) = e23 ) | ( ( h3(e13) = e23 ) | ( h3(e14) = e23 ) ) ) ) ) & ( ( h3(e10) = e24 ) | ( ( h3(e11) = e24 ) | ( ( h3(e12) = e24 ) | ( ( h3(e13) = e24 ) | ( h3(e14) = e24 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( ( h4(op1(e10, e10)) = op2(h4(e10), h4(e10)) ) & ( ( h4(op1(e10, e11)) = op2(h4(e10), h4(e11)) ) & ( ( h4(op1(e10, e12)) = op2(h4(e10), h4(e12)) ) & ( ( h4(op1(e10, e13)) = op2(h4(e10), h4(e13)) ) & ( ( h4(op1(e10, e14)) = op2(h4(e10), h4(e14)) ) & ( ( h4(op1(e11, e10)) = op2(h4(e11), h4(e10)) ) & ( ( h4(op1(e11, e11)) = op2(h4(e11), h4(e11)) ) & ( ( h4(op1(e11, e12)) = op2(h4(e11), h4(e12)) ) & ( ( h4(op1(e11, e13)) = op2(h4(e11), h4(e13)) ) & ( ( h4(op1(e11, e14)) = op2(h4(e11), h4(e14)) ) & ( ( h4(op1(e12, e10)) = op2(h4(e12), h4(e10)) ) & ( ( h4(op1(e12, e11)) = op2(h4(e12), h4(e11)) ) & ( ( h4(op1(e12, e12)) = op2(h4(e12), h4(e12)) ) & ( ( h4(op1(e12, e13)) = op2(h4(e12), h4(e13)) ) & ( ( h4(op1(e12, e14)) = op2(h4(e12), h4(e14)) ) & ( ( h4(op1(e13, e10)) = op2(h4(e13), h4(e10)) ) & ( ( h4(op1(e13, e11)) = op2(h4(e13), h4(e11)) ) & ( ( h4(op1(e13, e12)) = op2(h4(e13), h4(e12)) ) & ( ( h4(op1(e13, e13)) = op2(h4(e13), h4(e13)) ) & ( ( h4(op1(e13, e14)) = op2(h4(e13), h4(e14)) ) & ( ( h4(op1(e14, e10)) = op2(h4(e14), h4(e10)) ) & ( ( h4(op1(e14, e11)) = op2(h4(e14), h4(e11)) ) & ( ( h4(op1(e14, e12)) = op2(h4(e14), h4(e12)) ) & ( ( h4(op1(e14, e13)) = op2(h4(e14), h4(e13)) ) & ( ( h4(op1(e14, e14)) = op2(h4(e14), h4(e14)) ) & ( ( ( h4(e10) = e20 ) | ( ( h4(e11) = e20 ) | ( ( h4(e12) = e20 ) | ( ( h4(e13) = e20 ) | ( h4(e14) = e20 ) ) ) ) ) & ( ( ( h4(e10) = e21 ) | ( ( h4(e11) = e21 ) | ( ( h4(e12) = e21 ) | ( ( h4(e13) = e21 ) | ( h4(e14) = e21 ) ) ) ) ) & ( ( ( h4(e10) = e22 ) | ( ( h4(e11) = e22 ) | ( ( h4(e12) = e22 ) | ( ( h4(e13) = e22 ) | ( h4(e14) = e22 ) ) ) ) ) & ( ( ( h4(e10) = e23 ) | ( ( h4(e11) = e23 ) | ( ( h4(e12) = e23 ) | ( ( h4(e13) = e23 ) | ( h4(e14) = e23 ) ) ) ) ) & ( ( h4(e10) = e24 ) | ( ( h4(e11) = e24 ) | ( ( h4(e12) = e24 ) | ( ( h4(e13) = e24 ) | ( h4(e14) = e24 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) | ( ( h5(op1(e10, e10)) = op2(h5(e10), h5(e10)) ) & ( ( h5(op1(e10, e11)) = op2(h5(e10), h5(e11)) ) & ( ( h5(op1(e10, e12)) = op2(h5(e10), h5(e12)) ) & ( ( h5(op1(e10, e13)) = op2(h5(e10), h5(e13)) ) & ( ( h5(op1(e10, e14)) = op2(h5(e10), h5(e14)) ) & ( ( h5(op1(e11, e10)) = op2(h5(e11), h5(e10)) ) & ( ( h5(op1(e11, e11)) = op2(h5(e11), h5(e11)) ) & ( ( h5(op1(e11, e12)) = op2(h5(e11), h5(e12)) ) & ( ( h5(op1(e11, e13)) = op2(h5(e11), h5(e13)) ) & ( ( h5(op1(e11, e14)) = op2(h5(e11), h5(e14)) ) & ( ( h5(op1(e12, e10)) = op2(h5(e12), h5(e10)) ) & ( ( h5(op1(e12, e11)) = op2(h5(e12), h5(e11)) ) & ( ( h5(op1(e12, e12)) = op2(h5(e12), h5(e12)) ) & ( ( h5(op1(e12, e13)) = op2(h5(e12), h5(e13)) ) & ( ( h5(op1(e12, e14)) = op2(h5(e12), h5(e14)) ) & ( ( h5(op1(e13, e10)) = op2(h5(e13), h5(e10)) ) & ( ( h5(op1(e13, e11)) = op2(h5(e13), h5(e11)) ) & ( ( h5(op1(e13, e12)) = op2(h5(e13), h5(e12)) ) & ( ( h5(op1(e13, e13)) = op2(h5(e13), h5(e13)) ) & ( ( h5(op1(e13, e14)) = op2(h5(e13), h5(e14)) ) & ( ( h5(op1(e14, e10)) = op2(h5(e14), h5(e10)) ) & ( ( h5(op1(e14, e11)) = op2(h5(e14), h5(e11)) ) & ( ( h5(op1(e14, e12)) = op2(h5(e14), h5(e12)) ) & ( ( h5(op1(e14, e13)) = op2(h5(e14), h5(e13)) ) & ( ( h5(op1(e14, e14)) = op2(h5(e14), h5(e14)) ) & ( ( ( h5(e10) = e20 ) | ( ( h5(e11) = e20 ) | ( ( h5(e12) = e20 ) | ( ( h5(e13) = e20 ) | ( h5(e14) = e20 ) ) ) ) ) & ( ( ( h5(e10) = e21 ) | ( ( h5(e11) = e21 ) | ( ( h5(e12) = e21 ) | ( ( h5(e13) = e21 ) | ( h5(e14) = e21 ) ) ) ) ) & ( ( ( h5(e10) = e22 ) | ( ( h5(e11) = e22 ) | ( ( h5(e12) = e22 ) | ( ( h5(e13) = e22 ) | ( h5(e14) = e22 ) ) ) ) ) & ( ( ( h5(e10) = e23 ) | ( ( h5(e11) = e23 ) | ( ( h5(e12) = e23 ) | ( ( h5(e13) = e23 ) | ( h5(e14) = e23 ) ) ) ) ) & ( ( h5(e10) = e24 ) | ( ( h5(e11) = e24 ) | ( ( h5(e12) = e24 ) | ( ( h5(e13) = e24 ) | ( h5(e14) = e24 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

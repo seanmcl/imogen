@@ -1,0 +1,22 @@
+
+local
+   ../std/sources.mlb
+   ../shared/sources.mlb
+   ../parse/sources.mlb
+
+   world.sig
+   world.sml
+
+   frame.sig
+   frame.sml
+
+   formula.sig
+   formula.sml
+
+   entails.sig
+   entails.sml
+
+   export.sml
+in
+   structure Linear
+end

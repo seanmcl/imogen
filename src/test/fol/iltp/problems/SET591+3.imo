@@ -1,0 +1,118 @@
+% File     : SET591+3 : ILTP v1.1.2
+% Domain   : Set Theory (Boolean properties)
+% Problem  : If X (= Y \ X, then X = the empty set
+% Version  : [Try89] axioms : Reduced > Incomplete.
+% English  : If X is a subset of the difference of Y and X, then X is the 
+%            empty set.
+% Refs     : [ILF] The ILF Group (1998), The ILF System: A Tool for the Int
+%          : [Try89] Trybulec (1989), Tarski Grothendieck Set Theory
+%          : [TS89]  Trybulec & Swieczkowska (1989), Boolean Properties of
+% Source   : [ILF]
+% Names    : BOOLE (50) [TS89] 
+% Status   : Theorem
+% Rating   : 0.09 v3.1.0, 0.00 v2.5.0, 0.12 v2.4.0, 0.25 v2.3.0, 0.33 v2.2.1
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.75 v1.1.0, 0.50 v1.0.0
+%
+% Syntax   : Number of formulae    :    7 (   2 unit)
+%            Number of atoms       :   15 (   2 equality)
+%            Maximal formula depth :    7 (   5 average)
+%            Number of connectives :   11 (   3 ~  ;   0  |;   2  &)
+%                                         (   4 <=>;   2 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    4 (   0 propositional; 1-2 arity)
+%            Number of functors    :    2 (   1 constant; 0-2 arity)
+%            Number of variables   :   14 (   0 singleton;  14 !;   0 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% difference_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(A, C) = difference(B, C) ) ) ))
+
+  =>
+
+% difference_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( difference(C, A) = difference(C, B) ) ) ))
+
+  =>
+
+% empty_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & empty(A) ) => empty(B) ) ))
+
+  =>
+
+% member_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & member(A, C) ) => member(B, C) ) ))
+
+  =>
+
+% member_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & member(C, A) ) => member(C, B) ) ))
+
+  =>
+
+% subset_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(A, C) ) => subset(B, C) ) ))
+
+  =>
+
+% subset_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(C, A) ) => subset(C, B) ) ))
+
+  =>
+
+% subset_defn, axiom.
+(( forall B C. ( subset(B, C) <=> ( forall D. ( member(D, B) => member(D, C) ) ) ) ))
+
+  =>
+
+% difference_defn, axiom.
+(( forall B C D. ( member(D, difference(B, C)) <=> ( member(D, B) & ( ~ member(D, C) ) ) ) ))
+
+  =>
+
+% empty_set_defn, axiom.
+(( forall B. ( ~ member(B, empty_set) ) ))
+
+  =>
+
+% equal_defn, axiom.
+(( forall B C. ( ( B = C ) <=> ( subset(B, C) & subset(C, B) ) ) ))
+
+  =>
+
+% reflexivity_of_subset, axiom.
+(( forall B. subset(B, B) ))
+
+  =>
+
+% empty_defn, axiom.
+(( forall B. ( empty(B) <=> ( forall C. ( ~ member(C, B) ) ) ) ))
+
+  =>
+
+% prove_th50, conjecture.
+(( forall B C. ( subset(B, difference(C, B)) => ( B = empty_set ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

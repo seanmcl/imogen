@@ -1,0 +1,6 @@
+
+% Problem : FOL019+1
+% Status  : NonTheorem
+% Rating  : 0.0
+
+( (p(c) ) <=> ( forall Y. p(Y) ) ) => ( forall Y. ( p(c) <=> p(Y) ) )

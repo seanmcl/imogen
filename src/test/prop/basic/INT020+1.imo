@@ -1,0 +1,6 @@
+% Problem : INT020+1
+% Status  : Theorem
+% Rating  : 0.00
+
+
+s => ( ~(( t => r) ) => p) => ( ~(( ( p => q)  & ( t => r)  )) => ( ~(~(p)) & ( s & s ) ))

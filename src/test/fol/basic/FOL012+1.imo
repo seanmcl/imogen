@@ -1,0 +1,6 @@
+
+% Problem : FOL012+1
+% Status  : NonTheorem
+% Rating  : 0.0
+
+(forall X. exists Y. p(X, Y)) => (exists Y. forall X. p(X, Y))

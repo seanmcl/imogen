@@ -1,0 +1,17 @@
+
+% Problem : FOL022+1
+% Status  : Theorem
+% Rating  : 0.0
+
+( ( exists X.
+            forall Y.
+              big_p(X)
+             <=> big_p(Y) )
+        <=> ( (exists U. big_q(U))
+          <=> (forall W. big_q(W) ) ))
+      <=> ( ( exists X1.
+            forall Y1.
+              big_q(X1)
+            <=> big_q(Y1) )
+        <=> (( exists U1. big_p(U1))
+          <=> (forall W1. big_p(W1) )) )

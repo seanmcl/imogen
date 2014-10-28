@@ -1,0 +1,738 @@
+% File     : SWV048+1 : ILTP v1.1.2
+% Domain   : Software Verification
+% Problem  : Unsimplified proof obligation cl5_nebula_norm_0016
+% Version  : [DFS04] axioms : Especial.
+% English  : Proof obligation emerging from the norm-safety verification for
+%            the cl5_nebula program. norm-safety ensures that the contents of
+%            certain one-dimensional arrays add up to one.
+% Refs     : [Fis04] Fischer (2004), Email to G. Sutcliffe
+%          : [DFS04] Denney et al. (2004), Using Automated Theorem Provers
+% Source   : [Fis04]
+% Names    : cl5_nebula_norm_0016 [Fis04]
+% Status   : Theorem
+% Rating   : 0.27 v3.1.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   90 (  55 unit)
+%            Number of atoms       :  217 (  82 equality)
+%            Maximal formula depth :   24 (   4 average)
+%            Number of connectives :  133 (   6 ~  ;  17  |;  72  &)
+%                                         (   5 <=>;  33 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    6 (   1 propositional; 0-2 arity)
+%            Number of functors    :   35 (  16 constant; 0-4 arity)
+%            Number of variables   :  141 (   0 singleton; 141 !;   0 ?)
+%            Maximal term depth    :    9 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% a_select2_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( a_select2(A, C) = a_select2(B, C) ) ) ))
+
+  =>
+
+% a_select2_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( a_select2(C, A) = a_select2(C, B) ) ) ))
+
+  =>
+
+% a_select3_substitution_1, axiom.
+(( forall A B C D. ( ( A = B ) => ( a_select3(A, C, D) = a_select3(B, C, D) ) ) ))
+
+  =>
+
+% a_select3_substitution_2, axiom.
+(( forall A B C D. ( ( A = B ) => ( a_select3(C, A, D) = a_select3(C, B, D) ) ) ))
+
+  =>
+
+% a_select3_substitution_3, axiom.
+(( forall A B C D. ( ( A = B ) => ( a_select3(C, D, A) = a_select3(C, D, B) ) ) ))
+
+  =>
+
+% dim_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( dim(A, C) = dim(B, C) ) ) ))
+
+  =>
+
+% dim_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( dim(C, A) = dim(C, B) ) ) ))
+
+  =>
+
+% inv_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( inv(A) = inv(B) ) ) ))
+
+  =>
+
+% minus_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( minus(A, C) = minus(B, C) ) ) ))
+
+  =>
+
+% minus_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( minus(C, A) = minus(C, B) ) ) ))
+
+  =>
+
+% plus_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( plus(A, C) = plus(B, C) ) ) ))
+
+  =>
+
+% plus_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( plus(C, A) = plus(C, B) ) ) ))
+
+  =>
+
+% pred_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( pred(A) = pred(B) ) ) ))
+
+  =>
+
+% succ_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( succ(A) = succ(B) ) ) ))
+
+  =>
+
+% sum_substitution_1, axiom.
+(( forall A B C D. ( ( A = B ) => ( sum(A, C, D) = sum(B, C, D) ) ) ))
+
+  =>
+
+% sum_substitution_2, axiom.
+(( forall A B C D. ( ( A = B ) => ( sum(C, A, D) = sum(C, B, D) ) ) ))
+
+  =>
+
+% sum_substitution_3, axiom.
+(( forall A B C D. ( ( A = B ) => ( sum(C, D, A) = sum(C, D, B) ) ) ))
+
+  =>
+
+% times_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( times(A, C) = times(B, C) ) ) ))
+
+  =>
+
+% times_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( times(C, A) = times(C, B) ) ) ))
+
+  =>
+
+% tptp_const_array1_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( tptp_const_array1(A, C) = tptp_const_array1(B, C) ) ) ))
+
+  =>
+
+% tptp_const_array1_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( tptp_const_array1(C, A) = tptp_const_array1(C, B) ) ) ))
+
+  =>
+
+% tptp_const_array2_substitution_1, axiom.
+(( forall A B C D. ( ( A = B ) => ( tptp_const_array2(A, C, D) = tptp_const_array2(B, C, D) ) ) ))
+
+  =>
+
+% tptp_const_array2_substitution_2, axiom.
+(( forall A B C D. ( ( A = B ) => ( tptp_const_array2(C, A, D) = tptp_const_array2(C, B, D) ) ) ))
+
+  =>
+
+% tptp_const_array2_substitution_3, axiom.
+(( forall A B C D. ( ( A = B ) => ( tptp_const_array2(C, D, A) = tptp_const_array2(C, D, B) ) ) ))
+
+  =>
+
+% tptp_madd_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( tptp_madd(A, C) = tptp_madd(B, C) ) ) ))
+
+  =>
+
+% tptp_madd_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( tptp_madd(C, A) = tptp_madd(C, B) ) ) ))
+
+  =>
+
+% tptp_mmul_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( tptp_mmul(A, C) = tptp_mmul(B, C) ) ) ))
+
+  =>
+
+% tptp_mmul_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( tptp_mmul(C, A) = tptp_mmul(C, B) ) ) ))
+
+  =>
+
+% tptp_msub_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( tptp_msub(A, C) = tptp_msub(B, C) ) ) ))
+
+  =>
+
+% tptp_msub_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( tptp_msub(C, A) = tptp_msub(C, B) ) ) ))
+
+  =>
+
+% tptp_update2_substitution_1, axiom.
+(( forall A B C D. ( ( A = B ) => ( tptp_update2(A, C, D) = tptp_update2(B, C, D) ) ) ))
+
+  =>
+
+% tptp_update2_substitution_2, axiom.
+(( forall A B C D. ( ( A = B ) => ( tptp_update2(C, A, D) = tptp_update2(C, B, D) ) ) ))
+
+  =>
+
+% tptp_update2_substitution_3, axiom.
+(( forall A B C D. ( ( A = B ) => ( tptp_update2(C, D, A) = tptp_update2(C, D, B) ) ) ))
+
+  =>
+
+% tptp_update3_substitution_1, axiom.
+(( forall A B C D E. ( ( A = B ) => ( tptp_update3(A, C, D, E) = tptp_update3(B, C, D, E) ) ) ))
+
+  =>
+
+% tptp_update3_substitution_2, axiom.
+(( forall A B C D E. ( ( A = B ) => ( tptp_update3(C, A, D, E) = tptp_update3(C, B, D, E) ) ) ))
+
+  =>
+
+% tptp_update3_substitution_3, axiom.
+(( forall A B C D E. ( ( A = B ) => ( tptp_update3(C, D, A, E) = tptp_update3(C, D, B, E) ) ) ))
+
+  =>
+
+% tptp_update3_substitution_4, axiom.
+(( forall A B C D E. ( ( A = B ) => ( tptp_update3(C, D, E, A) = tptp_update3(C, D, E, B) ) ) ))
+
+  =>
+
+% trans_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( trans(A) = trans(B) ) ) ))
+
+  =>
+
+% uniform_int_rnd_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( uniform_int_rnd(A, C) = uniform_int_rnd(B, C) ) ) ))
+
+  =>
+
+% uniform_int_rnd_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( uniform_int_rnd(C, A) = uniform_int_rnd(C, B) ) ) ))
+
+  =>
+
+% geq_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & geq(A, C) ) => geq(B, C) ) ))
+
+  =>
+
+% geq_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & geq(C, A) ) => geq(C, B) ) ))
+
+  =>
+
+% gt_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & gt(A, C) ) => gt(B, C) ) ))
+
+  =>
+
+% gt_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & gt(C, A) ) => gt(C, B) ) ))
+
+  =>
+
+% leq_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & leq(A, C) ) => leq(B, C) ) ))
+
+  =>
+
+% leq_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & leq(C, A) ) => leq(C, B) ) ))
+
+  =>
+
+% lt_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & lt(A, C) ) => lt(B, C) ) ))
+
+  =>
+
+% lt_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & lt(C, A) ) => lt(C, B) ) ))
+
+  =>
+
+% totality, axiom.
+(( forall X Y. ( gt(X, Y) | ( gt(Y, X) | ( X = Y ) ) ) ))
+
+  =>
+
+% transitivity_gt, axiom.
+(( forall X Y Z. ( ( gt(X, Y) & gt(Y, Z) ) => gt(X, Z) ) ))
+
+  =>
+
+% irreflexivity_gt, axiom.
+(( forall X. ( ~ gt(X, X) ) ))
+
+  =>
+
+% reflexivity_leq, axiom.
+(( forall X. leq(X, X) ))
+
+  =>
+
+% transitivity_leq, axiom.
+(( forall X Y Z. ( ( leq(X, Y) & leq(Y, Z) ) => leq(X, Z) ) ))
+
+  =>
+
+% lt_gt, axiom.
+(( forall X Y. ( lt(X, Y) <=> gt(Y, X) ) ))
+
+  =>
+
+% leq_geq, axiom.
+(( forall X Y. ( geq(X, Y) <=> leq(Y, X) ) ))
+
+  =>
+
+% leq_gt1, axiom.
+(( forall X Y. ( gt(Y, X) => leq(X, Y) ) ))
+
+  =>
+
+% leq_gt2, axiom.
+(( forall X Y. ( ( leq(X, Y) & ( ~ ( X = Y ) ) ) => gt(Y, X) ) ))
+
+  =>
+
+% leq_gt_pred, axiom.
+(( forall X Y. ( leq(X, pred(Y)) <=> gt(Y, X) ) ))
+
+  =>
+
+% gt_succ, axiom.
+(( forall X. gt(succ(X), X) ))
+
+  =>
+
+% leq_succ, axiom.
+(( forall X Y. ( leq(X, Y) => leq(X, succ(Y)) ) ))
+
+  =>
+
+% leq_succ_gt_equiv, axiom.
+(( forall X Y. ( leq(X, Y) <=> gt(succ(Y), X) ) ))
+
+  =>
+
+% uniform_int_rand_ranges_hi, axiom.
+(( forall X C. ( leq(n0, X) => leq(uniform_int_rnd(C, X), X) ) ))
+
+  =>
+
+% uniform_int_rand_ranges_lo, axiom.
+(( forall X C. ( leq(n0, X) => leq(n0, uniform_int_rnd(C, X)) ) ))
+
+  =>
+
+% const_array1_select, axiom.
+(( forall I L U Val. ( ( leq(L, I) & leq(I, U) ) => ( a_select2(tptp_const_array1(dim(L, U), Val), I) = Val ) ) ))
+
+  =>
+
+% const_array2_select, axiom.
+(( forall I L1 U1 J L2 U2 Val. ( ( leq(L1, I) & ( leq(I, U1) & ( leq(L2, J) & leq(J, U2) ) ) ) => ( a_select3(tptp_const_array2(dim(L1, U1), dim(L2, U2), Val), I, J) = Val ) ) ))
+
+  =>
+
+% matrix_symm_aba1, axiom.
+(( forall I0 J0 A B N. ( ( leq(n0, I0) & ( leq(I0, N) & ( leq(n0, J0) & ( leq(J0, N) & ( a_select3(B, I0, J0) = a_select3(B, J0, I0) ) ) ) ) ) => ( a_select3(tptp_mmul(A, tptp_mmul(B, trans(A))), I0, J0) = a_select3(tptp_mmul(A, tptp_mmul(B, trans(A))), J0, I0) ) ) ))
+
+  =>
+
+% matrix_symm_aba2, axiom.
+(( forall I0 J0 I J A B N M. ( ( leq(n0, I0) & ( leq(I0, N) & ( leq(n0, J0) & ( leq(J0, N) & ( leq(n0, I) & ( leq(I, M) & ( leq(n0, J) & ( leq(J, M) & ( a_select3(B, I, J) = a_select3(B, J, I) ) ) ) ) ) ) ) ) ) => ( a_select3(tptp_mmul(A, tptp_mmul(B, trans(A))), I0, J0) = a_select3(tptp_mmul(A, tptp_mmul(B, trans(A))), J0, I0) ) ) ))
+
+  =>
+
+% matrix_symm_add, axiom.
+(( forall I J A B N. ( ( leq(n0, I) & ( leq(I, N) & ( leq(n0, J) & ( leq(J, N) & ( ( a_select3(A, I, J) = a_select3(A, J, I) ) & ( a_select3(B, I, J) = a_select3(B, J, I) ) ) ) ) ) ) => ( a_select3(tptp_madd(A, B), I, J) = a_select3(tptp_madd(A, B), J, I) ) ) ))
+
+  =>
+
+% matrix_symm_sub, axiom.
+(( forall I J A B N. ( ( leq(n0, I) & ( leq(I, N) & ( leq(n0, J) & ( leq(J, N) & ( ( a_select3(A, I, J) = a_select3(A, J, I) ) & ( a_select3(B, I, J) = a_select3(B, J, I) ) ) ) ) ) ) => ( a_select3(tptp_msub(A, B), I, J) = a_select3(tptp_msub(A, B), J, I) ) ) ))
+
+  =>
+
+% matrix_symm_trans, axiom.
+(( forall I J A N. ( ( leq(n0, I) & ( leq(I, N) & ( leq(n0, J) & ( leq(J, N) & ( a_select3(A, I, J) = a_select3(A, J, I) ) ) ) ) ) => ( a_select3(trans(A), I, J) = a_select3(trans(A), J, I) ) ) ))
+
+  =>
+
+% matrix_symm_inv, axiom.
+(( forall I J A N. ( ( leq(n0, I) & ( leq(I, N) & ( leq(n0, J) & ( leq(J, N) & ( a_select3(A, I, J) = a_select3(A, J, I) ) ) ) ) ) => ( a_select3(inv(A), I, J) = a_select3(inv(A), J, I) ) ) ))
+
+  =>
+
+% matrix_symm_joseph_update, axiom.
+(( forall I0 J0 I J A B C D E F N M. ( ( leq(n0, I0) & ( leq(I0, N) & ( leq(n0, J0) & ( leq(J0, N) & ( leq(n0, I) & ( leq(I, M) & ( leq(n0, J) & ( leq(J, M) & ( ( a_select3(D, I, J) = a_select3(D, J, I) ) & ( ( a_select3(A, I0, J0) = a_select3(A, J0, I0) ) & ( a_select3(F, I0, J0) = a_select3(F, J0, I0) ) ) ) ) ) ) ) ) ) ) ) => ( a_select3(tptp_madd(A, tptp_mmul(B, tptp_mmul(tptp_madd(tptp_mmul(C, tptp_mmul(D, trans(C))), tptp_mmul(E, tptp_mmul(F, trans(E)))), trans(B)))), I0, J0) = a_select3(tptp_madd(A, tptp_mmul(B, tptp_mmul(tptp_madd(tptp_mmul(C, tptp_mmul(D, trans(C))), tptp_mmul(E, tptp_mmul(F, trans(E)))), trans(B)))), J0, I0) ) ) ))
+
+  =>
+
+% sum_plus_base, axiom.
+(( forall Body. ( sum(n0, tptp_minus_1, Body) = n0 ) ))
+
+  =>
+
+% succ_tptp_minus_1, axiom.
+(( succ(tptp_minus_1) = n0 ))
+
+  =>
+
+% succ_plus_1_r, axiom.
+(( forall X. ( plus(X, n1) = succ(X) ) ))
+
+  =>
+
+% succ_plus_1_l, axiom.
+(( forall X. ( plus(n1, X) = succ(X) ) ))
+
+  =>
+
+% succ_plus_2_r, axiom.
+(( forall X. ( plus(X, n2) = succ(succ(X)) ) ))
+
+  =>
+
+% succ_plus_2_l, axiom.
+(( forall X. ( plus(n2, X) = succ(succ(X)) ) ))
+
+  =>
+
+% succ_plus_3_r, axiom.
+(( forall X. ( plus(X, n3) = succ(succ(succ(X))) ) ))
+
+  =>
+
+% succ_plus_3_l, axiom.
+(( forall X. ( plus(n3, X) = succ(succ(succ(X))) ) ))
+
+  =>
+
+% succ_plus_4_r, axiom.
+(( forall X. ( plus(X, n4) = succ(succ(succ(succ(X)))) ) ))
+
+  =>
+
+% succ_plus_4_l, axiom.
+(( forall X. ( plus(n4, X) = succ(succ(succ(succ(X)))) ) ))
+
+  =>
+
+% succ_plus_5_r, axiom.
+(( forall X. ( plus(X, n5) = succ(succ(succ(succ(succ(X))))) ) ))
+
+  =>
+
+% succ_plus_5_l, axiom.
+(( forall X. ( plus(n5, X) = succ(succ(succ(succ(succ(X))))) ) ))
+
+  =>
+
+% pred_minus_1, axiom.
+(( forall X. ( minus(X, n1) = pred(X) ) ))
+
+  =>
+
+% pred_succ, axiom.
+(( forall X. ( pred(succ(X)) = X ) ))
+
+  =>
+
+% succ_pred, axiom.
+(( forall X. ( succ(pred(X)) = X ) ))
+
+  =>
+
+% leq_succ_succ, axiom.
+(( forall X Y. ( leq(succ(X), succ(Y)) <=> leq(X, Y) ) ))
+
+  =>
+
+% leq_succ_gt, axiom.
+(( forall X Y. ( leq(succ(X), Y) => gt(Y, X) ) ))
+
+  =>
+
+% leq_minus, axiom.
+(( forall X Y. ( leq(minus(X, Y), X) => leq(n0, Y) ) ))
+
+  =>
+
+% sel3_update_1, axiom.
+(( forall X U V VAL. ( a_select3(tptp_update3(X, U, V, VAL), U, V) = VAL ) ))
+
+  =>
+
+% sel3_update_2, axiom.
+(( forall I J U V X VAL VAL2. ( ( ( ~ ( I = U ) ) & ( ( J = V ) & ( a_select3(X, U, V) = VAL ) ) ) => ( a_select3(tptp_update3(X, I, J, VAL2), U, V) = VAL ) ) ))
+
+  =>
+
+% sel3_update_3, axiom.
+(( forall I J U V X VAL. ( ( ( forall I0 J0. ( ( leq(n0, I0) & ( leq(n0, J0) & ( leq(I0, U) & leq(J0, V) ) ) ) => ( a_select3(X, I0, J0) = VAL ) ) ) & ( leq(n0, I) & ( leq(I, U) & ( leq(n0, J) & leq(J, V) ) ) ) ) => ( a_select3(tptp_update3(X, U, V, VAL), I, J) = VAL ) ) ))
+
+  =>
+
+% sel2_update_1, axiom.
+(( forall X U VAL. ( a_select2(tptp_update2(X, U, VAL), U) = VAL ) ))
+
+  =>
+
+% sel2_update_2, axiom.
+(( forall I U X VAL VAL2. ( ( ( ~ ( I = U ) ) & ( a_select2(X, U) = VAL ) ) => ( a_select2(tptp_update2(X, I, VAL2), U) = VAL ) ) ))
+
+  =>
+
+% sel2_update_3, axiom.
+(( forall I U X VAL. ( ( ( forall I0. ( ( leq(n0, I0) & leq(I0, U) ) => ( a_select2(X, I0) = VAL ) ) ) & ( leq(n0, I) & leq(I, U) ) ) => ( a_select2(tptp_update2(X, U, VAL), I) = VAL ) ) ))
+
+  =>
+
+% ttrue, axiom.
+(true)
+
+  =>
+
+% defuse, axiom.
+(( ~ ( def = use ) ))
+
+  =>
+
+% gt_5_4, axiom.
+(gt(n5, n4))
+
+  =>
+
+% gt_135300_4, axiom.
+(gt(n135300, n4))
+
+  =>
+
+% gt_135300_5, axiom.
+(gt(n135300, n5))
+
+  =>
+
+% gt_4_tptp_minus_1, axiom.
+(gt(n4, tptp_minus_1))
+
+  =>
+
+% gt_5_tptp_minus_1, axiom.
+(gt(n5, tptp_minus_1))
+
+  =>
+
+% gt_135300_tptp_minus_1, axiom.
+(gt(n135300, tptp_minus_1))
+
+  =>
+
+% gt_0_tptp_minus_1, axiom.
+(gt(n0, tptp_minus_1))
+
+  =>
+
+% gt_1_tptp_minus_1, axiom.
+(gt(n1, tptp_minus_1))
+
+  =>
+
+% gt_2_tptp_minus_1, axiom.
+(gt(n2, tptp_minus_1))
+
+  =>
+
+% gt_3_tptp_minus_1, axiom.
+(gt(n3, tptp_minus_1))
+
+  =>
+
+% gt_4_0, axiom.
+(gt(n4, n0))
+
+  =>
+
+% gt_5_0, axiom.
+(gt(n5, n0))
+
+  =>
+
+% gt_135300_0, axiom.
+(gt(n135300, n0))
+
+  =>
+
+% gt_1_0, axiom.
+(gt(n1, n0))
+
+  =>
+
+% gt_2_0, axiom.
+(gt(n2, n0))
+
+  =>
+
+% gt_3_0, axiom.
+(gt(n3, n0))
+
+  =>
+
+% gt_4_1, axiom.
+(gt(n4, n1))
+
+  =>
+
+% gt_5_1, axiom.
+(gt(n5, n1))
+
+  =>
+
+% gt_135300_1, axiom.
+(gt(n135300, n1))
+
+  =>
+
+% gt_2_1, axiom.
+(gt(n2, n1))
+
+  =>
+
+% gt_3_1, axiom.
+(gt(n3, n1))
+
+  =>
+
+% gt_4_2, axiom.
+(gt(n4, n2))
+
+  =>
+
+% gt_5_2, axiom.
+(gt(n5, n2))
+
+  =>
+
+% gt_135300_2, axiom.
+(gt(n135300, n2))
+
+  =>
+
+% gt_3_2, axiom.
+(gt(n3, n2))
+
+  =>
+
+% gt_4_3, axiom.
+(gt(n4, n3))
+
+  =>
+
+% gt_5_3, axiom.
+(gt(n5, n3))
+
+  =>
+
+% gt_135300_3, axiom.
+(gt(n135300, n3))
+
+  =>
+
+% finite_domain_4, axiom.
+(( forall X. ( ( leq(n0, X) & leq(X, n4) ) => ( ( X = n0 ) | ( ( X = n1 ) | ( ( X = n2 ) | ( ( X = n3 ) | ( X = n4 ) ) ) ) ) ) ))
+
+  =>
+
+% finite_domain_5, axiom.
+(( forall X. ( ( leq(n0, X) & leq(X, n5) ) => ( ( X = n0 ) | ( ( X = n1 ) | ( ( X = n2 ) | ( ( X = n3 ) | ( ( X = n4 ) | ( X = n5 ) ) ) ) ) ) ) ))
+
+  =>
+
+% finite_domain_0, axiom.
+(( forall X. ( ( leq(n0, X) & leq(X, n0) ) => ( X = n0 ) ) ))
+
+  =>
+
+% finite_domain_1, axiom.
+(( forall X. ( ( leq(n0, X) & leq(X, n1) ) => ( ( X = n0 ) | ( X = n1 ) ) ) ))
+
+  =>
+
+% finite_domain_2, axiom.
+(( forall X. ( ( leq(n0, X) & leq(X, n2) ) => ( ( X = n0 ) | ( ( X = n1 ) | ( X = n2 ) ) ) ) ))
+
+  =>
+
+% finite_domain_3, axiom.
+(( forall X. ( ( leq(n0, X) & leq(X, n3) ) => ( ( X = n0 ) | ( ( X = n1 ) | ( ( X = n2 ) | ( X = n3 ) ) ) ) ) ))
+
+  =>
+
+% successor_4, axiom.
+(( succ(succ(succ(succ(n0)))) = n4 ))
+
+  =>
+
+% successor_5, axiom.
+(( succ(succ(succ(succ(succ(n0))))) = n5 ))
+
+  =>
+
+% successor_1, axiom.
+(( succ(n0) = n1 ))
+
+  =>
+
+% successor_2, axiom.
+(( succ(succ(n0)) = n2 ))
+
+  =>
+
+% successor_3, axiom.
+(( succ(succ(succ(n0))) = n3 ))
+
+  =>
+
+% cl5_nebula_norm_0016, conjecture.
+(( ( ( pv78 = sum(n0, minus(n135300, n1), a_select3(q, pv79, pv35)) ) & ( leq(n0, pv35) & leq(pv35, minus(n5, n1)) ) ) => ( ( ( ~ ( n0 = pv78 ) ) => ( ( n0 = sum(n0, minus(n0, n1), times(a_select3(q, pv81, pv35), a_select2(x, pv81))) ) & ( ( pv78 = sum(n0, minus(n135300, n1), a_select3(q, pv79, pv35)) ) & ( leq(n0, pv35) & leq(pv35, minus(n5, n1)) ) ) ) ) & ( ( n0 = pv78 ) => true ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

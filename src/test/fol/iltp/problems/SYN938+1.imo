@@ -1,0 +1,35 @@
+% File     : SYN938+1 : ILTP v1.1.2
+% Domain   : Syntactic
+% Problem  : Combined syntactic from Shults
+% Version  : Especial.
+% English  : 
+% Refs     : [Shu04] Shults (2004), Email to G. Sutcliffe
+% Source   : [Shu04]
+% Names    :
+% Status   : Theorem
+% Rating   : 0.33 v3.1.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :    1 (   0 unit)
+%            Number of atoms       :  203 (   0 equality)
+%            Maximal formula depth :   55 (  55 average)
+%            Number of connectives :  206 (   4 ~  ;  11  |;  97  &)
+%                                         (   7 <=>;  87 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   21 (   5 propositional; 0-2 arity)
+%            Number of functors    :    2 (   1 constant; 0-1 arity)
+%            Number of variables   :  141 (   0 singleton;  78 !;  63 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% prove_this, conjecture.
+(( ( forall C B. ( ( forall Z. q1(f(Z)) ) => ( exists X Y. ( ( p1(f(Y)) => p1(X) ) & ( ( r1(Y) => ( r1(B) & r1(C) ) ) & q1(X) ) ) ) ) ) & ( ( forall B C. ( ( forall Z. q1(f(Z)) ) => ( exists X Y. ( ( p1(f(Y)) => ( p1(X) & ( r1(Y) => ( r1(B) & r1(C) ) ) ) ) & q1(X) ) ) ) ) & ( ( forall B C. ( q1(f(B)) => ( exists X Y. ( ( p1(f(Y)) => ( p1(X) & ( r1(Y) => ( r1(B) & r1(C) ) ) ) ) & q1(X) ) ) ) ) & ( ( ( ( forall X. ( a1(X) => ( b(X) | c(X) ) ) ) & ( ~ ( forall X. ( a1(X) => b(X) ) ) ) ) => ( exists X. ( a1(X) & c(X) ) ) ) & ( ( forall A. ( exists X X2 X3 X4 Y. ( ( p1(A) & ( e(A) & ( ( e(X) => ( g(X) | s(X, f(X)) ) ) & ( ( e(X2) => ( g(X2) | c(f(X2)) ) ) & ( s(A, Y) => p1(Y) ) ) ) ) ) => ( ( p1(X3) & g(X3) ) | ( p1(X4) & c(X4) ) ) ) ) ) & ( ( forall A B C. ( ( s1(A) & ( s1(B) & ( r(B, C) & ( ( forall X. ( s1(X) => p1(X) ) ) & ( forall X Y. ( r(X, Y) => q(X, Y) ) ) ) ) ) ) => ( exists X Y. ( p1(X) & q(X, Y) ) ) ) ) & ( ( ( forall X. p1(X) ) => ( forall A B. ( p1(A) & p1(B) ) ) ) & ( ( ( ( forall X. p1(X) ) & ( exists Y. q1(Y) ) ) => ( exists Z. ( forall Y. ( p1(Y) | r1(Z) ) ) ) ) & ( ( ( forall X. ( exists Y. ( p1(X) & q1(Y) ) ) ) => ( exists Z. ( forall Y. ( p1(Y) | r1(Z) ) ) ) ) & ( ( ( forall X. ( exists Y. ( a(X, Y) & a(Y, Y) ) ) ) => ( exists Z. a(Z, Z) ) ) & ( ( forall A B C. ( ( s1(A) & ( s1(B) & ( r(B, C) & ( ( forall X. ( s1(X) => p1(X) ) ) & ( forall X Y. ( r(X, Y) => q(X, Y) ) ) ) ) ) ) => ( exists X Y. ( p1(X) & q(X, Y) ) ) ) ) & ( ( forall A B. ( ( forall Y. ( q1(Y) => p1(Y) ) ) => ( exists X. ( ( p1(X) => p1(A) ) & ( q1(X) => p1(B) ) ) ) ) ) & ( ( ( exists X. p1(X) ) => ( ( exists X. p1(X) ) & ( a0 => ( ( b0 | ( ~ b0 ) ) & ( q0 => q0 ) ) ) ) ) & ( ( ( forall X. p1(X) ) => ( exists Y. p1(Y) ) ) & ( ( ( forall X. ( p1(X) => q1(X) ) ) => ( ( forall X. p1(X) ) => ( forall X. q1(X) ) ) ) & ( ( forall A B. ( ( forall Z. ( q1(Z) => p1(Z) ) ) => ( exists X. ( ( p1(X) => p1(A) ) & ( q1(X) => p1(B) ) ) ) ) ) & ( ( ( forall X. ( a1(X) => b(X) ) ) => ( ( exists X. a1(X) ) => ( exists X. b(X) ) ) ) & ( ( ( exists X. ( a1(X) => b(X) ) ) => ( ( forall X. a1(X) ) => ( exists X. b(X) ) ) ) & ( ( ~ ( exists Y. ( forall X. ( a(X, Y) <=> ( ~ a(X, X) ) ) ) ) ) & ( ( ( ( exists X. a1(X) ) & ( forall X. b(X) ) ) => ( exists X. ( a1(X) & b(X) ) ) ) & ( ( ( exists X. b(X) ) => ( exists X. ( a1(X) | b(X) ) ) ) & ( ( ( exists X Y. a(X, Y) ) <=> ( exists Y X. a(X, Y) ) ) & ( ( forall A B. ( ( forall X. p1(X) ) => ( p1(A) & p1(B) ) ) ) & ( ( ( forall X. p1(X) ) => ( ( forall X. p1(X) ) & ( forall Y. p1(Y) ) ) ) & ( ( ( exists X. p1(X) ) <=> ( exists Y. p1(Y) ) ) & ( ( ( exists X. p1(X) ) => ( exists Z. p1(Z) ) ) & ( ( exists Z. ( forall X. ( exists Y. ( ( p(Y, X) => ( exists W. p(W, Y) ) ) & ( ( p(Z, Y) & p(Y, Z) ) => p(Y, X) ) ) ) ) ) & ( ( ( forall X Y. ( eq(X, Y) <=> ( forall Z. ( a_member_of(Z, X) <=> a_member_of(Z, Y) ) ) ) ) => ( forall A B. ( eq(A, B) => eq(B, A) ) ) ) & ( ( forall A B. ( ( forall Y. ( q1(Y) => p1(Y) ) ) => ( exists X. ( ( p1(X) => p1(A) ) & ( q1(X) => p1(B) ) ) ) ) ) & ( ( exists X. ( forall Y. ( p1(X) => p1(Y) ) ) ) & ( ( forall B. ( ( ( forall X. ( p1(X) => q1(X) ) ) & r1(B) ) => ( ( forall Y. ( r1(Y) => p1(Y) ) ) => q1(B) ) ) ) & ( ( forall A B. ( exists X Y. ( ( p1(X) => r1(Y) ) => ( p1(A) => r1(B) ) ) ) ) & ( ( exists Y. ( ( exists X. p1(X) ) => p1(Y) ) ) & ( ( ( exists X. ( forall Y. p(X, Y) ) ) => ( forall Y. ( exists X. p(X, Y) ) ) ) & ( ( p1(z) => p1(z) ) & ( ( ( exists X. p1(X) ) => ( exists Y. p1(Y) ) ) & ( ( ( forall X Y. p(X, Y) ) => ( forall X. p(X, X) ) ) & ( ( forall A. ( ( ( f0 | g0 ) & ( forall X. ( p1(X) & q1(X) ) ) ) => q1(A) ) ) & ( ( ( a0 <=> b0 ) | ( a0 | b0 ) ) & ( ( ( a0 & b0 ) => ( a0 <=> b0 ) ) & ( ( forall A B. ( exists X Y. ( ( ( q1(X) => p(X, A) ) & ( q1(A) & ( q1(B) & ( ( r1(Y) => p(B, Y) ) & ( r1(A) & ( r1(B) & ( ( s1(A) => p(X, Y) ) & s1(A) ) ) ) ) ) ) ) => p(A, B) ) ) ) & ( ( forall B. ( ( forall Y. ( ( r1(B) => r1(Y) ) => p(f(Y), Y) ) ) => ( exists X Y. ( p(X, Y) & ( q(f(B), B) => q(X, Y) ) ) ) ) ) & ( ( ( forall X. ( p1(X) => q1(X) ) ) & ( exists Y. ( q1(Y) => r1(Y) ) ) ) => ( exists Z. ( p1(Z) => r1(Z) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

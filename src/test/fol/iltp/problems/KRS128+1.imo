@@ -1,0 +1,97 @@
+% File     : KRS128+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : DL Test: heinsohn4.1
+% Version  : Especial.
+% English  : Tbox tests from [HK+94]
+% Refs     : [HK+94] Heinsohn et al. (1994), An Empirical Analysis of Termi
+%          : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : inconsistent_description-logic-Manifest650 [Bec03]
+% Status   : Unsatisfiable
+% Rating   : 0.00 v3.1.0
+%
+% Status (intuit.) : Theorem (Problem negated)
+% Rating (intuit.) : 0.50 v1.1.0
+%
+% Syntax   : Number of formulae    :   12 (   1 unit)
+%            Number of atoms       :   29 (   0 equality)
+%            Maximal formula depth :    7 (   4 average)
+%            Number of connectives :   22 (   5 ~  ;   0  |;   5  &)
+%                                         (   9 <=>;   3 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   16 (   0 propositional; 1-2 arity)
+%            Number of functors    :    1 (   1 constant; 0-0 arity)
+%            Number of variables   :   20 (   0 singleton;  13 !;   7 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%          : Tests role restrictions
+%------------------------------------------------------------------------------
+
+ 
+
+¬ (
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(( forall X. ( cUnsatisfiable(X) <=> ( ( exists Y. ( rr(X, Y) & cexcomp(Y) ) ) & ( ( forall Y. ( rr(X, Y) => cd(Y) ) ) & ( forall Y. ( rr(X, Y) => ca_Cx4(Y) ) ) ) ) ) ))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X. ( cc(X) => cdxcomp(X) ) ))
+
+  =>
+
+% axiom_4, axiom.
+(( forall X. ( cd(X) <=> ( exists Y0. ra_Px2(X, Y0) ) ) ))
+
+  =>
+
+% axiom_5, axiom.
+(( forall X. ( cdxcomp(X) <=> ( ~ ( exists Y. ra_Px2(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_6, axiom.
+(( forall X. ( ce(X) <=> ( ~ ( exists Y. ra_Px1(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_7, axiom.
+(( forall X. ( cexcomp(X) <=> ( exists Y0. ra_Px1(X, Y0) ) ) ))
+
+  =>
+
+% axiom_8, axiom.
+(( forall X. ( ca_Cx4(X) <=> ( exists Y0. ra_Px4(X, Y0) ) ) ))
+
+  =>
+
+% axiom_9, axiom.
+(( forall X. ( ca_Cx4xcomp(X) <=> ( ~ ( exists Y. ra_Px4(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_10, axiom.
+(( forall X. ( ca_Cx4xcomp(X) <=> ( cd(X) & cexcomp(X) ) ) ))
+
+  =>
+
+% axiom_11, axiom.
+(cUnsatisfiable(i2003_11_14_17_22_31584))
+
+)
+ 
+
+%------------------------------------------------------------------------------

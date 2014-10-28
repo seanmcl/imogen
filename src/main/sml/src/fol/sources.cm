@@ -1,0 +1,14 @@
+
+Library
+  structure Fol
+is
+
+../std/sources.cm
+../parse/sources.cm
+../shared/sources.cm
+shared/sources.cm
+cascade/sources.cm
+partial/sources.cm
+
+test.sml
+export.sml

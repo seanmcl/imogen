@@ -1,0 +1,6 @@
+% Problem : INT034+1
+% Status  : Theorem
+% Rating  : 0.00
+
+
+(a => a => b) => (a => b)

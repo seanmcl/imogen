@@ -1,0 +1,62 @@
+% File     : SYN078+1 : ILTP v1.1.2
+% Domain   : Syntactic
+% Problem  : Pelletier Problem 56
+% Version  : Especial.
+% English  : 
+% Refs     : [Pel86] Pelletier (1986), Seventy-five Problems for Testing Au
+%          : [Pel88] Pelletier (1988), Errata
+%          : [Hah94] Haehnle (1994), Email to G. Sutcliffe
+% Source   : [Hah94]
+% Names    : Pelletier 56 [Pel86]
+% Status   : Theorem
+% Rating   : 0.09 v3.1.0, 0.00 v2.1.0
+%
+% Status (intuit.) : Theorem
+% Rating (intuit.) : 0.75 v1.1.0, 0.50 v1.0.0
+%
+% Syntax   : Number of formulae    :    1 (   0 unit)
+%            Number of atoms       :    5 (   1 equality)
+%            Maximal formula depth :    6 (   6 average)
+%            Number of connectives :    4 (   0 ~  ;   0  |;   1  &)
+%                                         (   1 <=>;   2 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    2 (   0 propositional; 1-2 arity)
+%            Number of functors    :    1 (   0 constant; 1-1 arity)
+%            Number of variables   :    3 (   0 singleton;   2 !;   1 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : This problem is incorrect in [Pel86] and is corrected in [Pel88].
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% f_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( f(A) = f(B) ) ) ))
+
+  =>
+
+% big_p_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & big_p(A) ) => big_p(B) ) ))
+
+  =>
+
+% pel56, conjecture.
+(( ( forall X. ( ( exists Y. ( big_p(Y) & ( X = f(Y) ) ) ) => big_p(X) ) ) <=> ( forall U. ( big_p(U) => big_p(f(U)) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

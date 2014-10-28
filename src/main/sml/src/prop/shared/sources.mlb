@@ -1,0 +1,18 @@
+
+local
+   ../../std/sources.mlb
+   ../../shared/sources.mlb
+
+   seq.sig
+   seq.sml
+
+   index.sig
+   index.sml
+
+   frontend.sml
+in
+  structure Seq
+  structure Index
+  structure RuleIndex
+  structure Frontend
+end

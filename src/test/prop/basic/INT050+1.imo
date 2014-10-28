@@ -1,0 +1,6 @@
+% Problem : INT050+1
+% Status  : Theorem
+% Rating  : 0.00
+
+
+a | b <=> b | a

@@ -1,0 +1,5 @@
+% Problem : INT090+1
+% Status  : Theorem
+% Rating  : 0.00
+
+(A => A => B) => (A => B)

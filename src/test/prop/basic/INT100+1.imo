@@ -1,0 +1,6 @@
+% Problem : INT100+1
+% Status  : Theorem
+% Rating  : 0.00
+
+
+('b => 'c) => ('a & 'b => 'c)

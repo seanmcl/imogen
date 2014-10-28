@@ -1,0 +1,18 @@
+
+Library
+  structure Seq
+  structure Index
+  structure RuleIndex
+  structure Frontend
+is
+
+../../std/sources.cm
+../../shared/sources.cm
+
+seq.sig
+seq.sml
+
+index.sig
+index.sml
+
+frontend.sml

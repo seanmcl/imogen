@@ -24,6 +24,7 @@ tmp.txt
 *\.\#*
 *.sbt
 project
+.idea
 
 bin/imogen
 bin/imogen2

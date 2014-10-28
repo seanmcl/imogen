@@ -1,0 +1,188 @@
+% File     : KRS158+1 : ILTP v1.1.2
+% Domain   : Knowledge Representation (Semantic Web)
+% Problem  : DL Test: k_lin ABox test from DL98 systems comparison
+% Version  : Especial.
+% English  : 
+% Refs     : [Bec03] Bechhofer (2003), Email to G. Sutcliffe
+%          : [TR+04] Tsarkov et al. (2004), Using Vampire to Reason with OW
+% Source   : [Bec03]
+% Names    : positive_description-logic-Manifest665 [Bec03]
+% Status   : Theorem
+% Rating   : 0.11 v3.1.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :   31 (  11 unit)
+%            Number of atoms       :   71 (   0 equality)
+%            Maximal formula depth :   11 (   3 average)
+%            Number of connectives :   47 (   7 ~  ;   0  |;  21  &)
+%                                         (  17 <=>;   2 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   22 (   0 propositional; 1-2 arity)
+%            Number of functors    :    3 (   3 constant; 0-0 arity)
+%            Number of variables   :   31 (   0 singleton;  21 !;  10 ?)
+%            Maximal term depth    :    1 (   1 average)
+% Comments : Sean Bechhofer says there are some errors in the encoding of
+%            datatypes, so this problem may not be perfect. At least it's
+%            still representative of the type of reasoning required for OWL.
+%------------------------------------------------------------------------------
+
+ 
+
+% axiom_0, axiom.
+(( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ))
+
+  =>
+
+% axiom_1, axiom.
+(( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ))
+
+  =>
+
+% axiom_2, axiom.
+(( forall X. ( cC10(X) <=> ( exists Y0. ra_Px3(X, Y0) ) ) ))
+
+  =>
+
+% axiom_3, axiom.
+(( forall X. ( cC10(X) <=> ( exists Y. ( rR1(X, Y) & cC2xcomp(Y) ) ) ) ))
+
+  =>
+
+% axiom_4, axiom.
+(( forall X. ( cC10xcomp(X) <=> ( ~ ( exists Y. ra_Px3(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_5, axiom.
+(( forall X. ( cC12(X) <=> ( cC10xcomp(X) & cC2xcomp(X) ) ) ))
+
+  =>
+
+% axiom_6, axiom.
+(( forall X. ( cC14(X) <=> ( exists Y. ( rR1(X, Y) & cC12(Y) ) ) ) ))
+
+  =>
+
+% axiom_7, axiom.
+(( forall X. ( cC16(X) <=> ( cC14(X) & cC8(X) ) ) ))
+
+  =>
+
+% axiom_8, axiom.
+(( forall X. ( cC18(X) <=> ( cTOP(X) & cC16(X) ) ) ))
+
+  =>
+
+% axiom_9, axiom.
+(( forall X. ( cC2(X) <=> ( ~ ( exists Y. ra_Px1(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_10, axiom.
+(( forall X. ( cC2xcomp(X) <=> ( exists Y0. ra_Px1(X, Y0) ) ) ))
+
+  =>
+
+% axiom_11, axiom.
+(( forall X. ( cC4(X) <=> ( exists Y0. ra_Px6(X, Y0) ) ) ))
+
+  =>
+
+% axiom_12, axiom.
+(( forall X. ( cC4(X) <=> ( exists Y. ( rR1(X, Y) & cC2xcomp(Y) ) ) ) ))
+
+  =>
+
+% axiom_13, axiom.
+(( forall X. ( cC4xcomp(X) <=> ( ~ ( exists Y. ra_Px6(X, Y) ) ) ) ))
+
+  =>
+
+% axiom_14, axiom.
+(( forall X. ( cC6(X) <=> ( cC4xcomp(X) & cC2xcomp(X) ) ) ))
+
+  =>
+
+% axiom_15, axiom.
+(( forall X. ( cC8(X) <=> ( exists Y. ( rR1(X, Y) & cC6(Y) ) ) ) ))
+
+  =>
+
+% axiom_16, axiom.
+(( forall X. ( cTEST(X) <=> ( cTOP(X) & cC18(X) ) ) ))
+
+  =>
+
+% axiom_17, axiom.
+(cowlThing(iV16560))
+
+  =>
+
+% axiom_18, axiom.
+(cTEST(iV16560))
+
+  =>
+
+% axiom_19, axiom.
+(cTOP(iV16560))
+
+  =>
+
+% axiom_20, axiom.
+(rR1(iV16560, iV16562))
+
+  =>
+
+% axiom_21, axiom.
+(rR1(iV16560, iV16561))
+
+  =>
+
+% axiom_22, axiom.
+(cowlThing(iV16561))
+
+  =>
+
+% axiom_23, axiom.
+(( forall X. ( rR1(iV16561, X) => cC2(X) ) ))
+
+  =>
+
+% axiom_24, axiom.
+(cC4xcomp(iV16561))
+
+  =>
+
+% axiom_25, axiom.
+(cC2xcomp(iV16561))
+
+  =>
+
+% axiom_26, axiom.
+(cowlThing(iV16562))
+
+  =>
+
+% axiom_27, axiom.
+(( forall X. ( rR1(iV16562, X) => cC2(X) ) ))
+
+  =>
+
+% axiom_28, axiom.
+(cC10xcomp(iV16562))
+
+  =>
+
+% axiom_29, axiom.
+(cC2xcomp(iV16562))
+
+  =>
+
+% the_axiom, conjecture.
+(( ( forall X. ( cowlThing(X) & ( ~ cowlNothing(X) ) ) ) & ( ( forall X. ( xsd_string(X) <=> ( ~ xsd_integer(X) ) ) ) & ( cC18(iV16560) & ( cC14(iV16560) & ( cC8(iV16560) & ( cC16(iV16560) & ( cowlThing(iV16560) & ( cC6(iV16561) & ( cowlThing(iV16561) & ( cC12(iV16562) & cowlThing(iV16562) ) ) ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

@@ -1,0 +1,6 @@
+% Problem : INT141+1
+% Status  : NonTheorem
+% Rating  : 0.00
+
+
+'a | ('a => 'b)

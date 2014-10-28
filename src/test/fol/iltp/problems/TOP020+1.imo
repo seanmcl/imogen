@@ -1,0 +1,177 @@
+% File     : TOP020+1 : ILTP v1.1.2
+% Domain   : Topology
+% Problem  : Property of a Hausdorff topological space
+% Version  : [AMR93] axioms : Especial.
+% English  : In a Hausdorff topological space, the diagonal of the space 
+%            is closed in the product of the space with itself.
+% Refs     : [AMR93] Abraham et al. (1993), Manifolds, Tensor Analysis, and
+%            [Shu04] Shults (2004), Email to G. Sutcliffe
+% Source   : [Shu04]
+% Names    : 
+% Status   : Unsatisfiable
+% Rating   : 1.00 v3.1.0
+%
+% Status (intuit.) : Unsolved
+% Rating (intuit.) : 1.00 v1.1.0
+%
+% Syntax   : Number of formulae    :    9 (   0 unit)
+%            Number of atoms       :   37 (   7 equality)
+%            Maximal formula depth :   12 (   8 average)
+%            Number of connectives :   31 (   3 ~  ;   0  |;  17  &)
+%                                         (   3 <=>;   8 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    6 (   0 propositional; 1-2 arity)
+%            Number of functors    :    5 (   0 constant; 1-2 arity)
+%            Number of variables   :   34 (   0 singleton;  25 !;   9 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% coerce_to_class_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( coerce_to_class(A) = coerce_to_class(B) ) ) ))
+
+  =>
+
+% the_diagonal_top_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( the_diagonal_top(A) = the_diagonal_top(B) ) ) ))
+
+  =>
+
+% the_ordered_pair_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( the_ordered_pair(A, C) = the_ordered_pair(B, C) ) ) ))
+
+  =>
+
+% the_ordered_pair_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( the_ordered_pair(C, A) = the_ordered_pair(C, B) ) ) ))
+
+  =>
+
+% the_product_of_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( the_product_of(A, C) = the_product_of(B, C) ) ) ))
+
+  =>
+
+% the_product_of_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( the_product_of(C, A) = the_product_of(C, B) ) ) ))
+
+  =>
+
+% the_product_top_space_of_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( the_product_top_space_of(A, C) = the_product_top_space_of(B, C) ) ) ))
+
+  =>
+
+% the_product_top_space_of_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( the_product_top_space_of(C, A) = the_product_top_space_of(C, B) ) ) ))
+
+  =>
+
+% a_hausdorff_top_space_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & a_hausdorff_top_space(A) ) => a_hausdorff_top_space(B) ) ))
+
+  =>
+
+% a_member_of_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & a_member_of(A, C) ) => a_member_of(B, C) ) ))
+
+  =>
+
+% a_member_of_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & a_member_of(C, A) ) => a_member_of(C, B) ) ))
+
+  =>
+
+% closed_in_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & closed_in(A, C) ) => closed_in(B, C) ) ))
+
+  =>
+
+% closed_in_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & closed_in(C, A) ) => closed_in(C, B) ) ))
+
+  =>
+
+% disjoint_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & disjoint(A, C) ) => disjoint(B, C) ) ))
+
+  =>
+
+% disjoint_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & disjoint(C, A) ) => disjoint(C, B) ) ))
+
+  =>
+
+% open_in_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & open_in(A, C) ) => open_in(B, C) ) ))
+
+  =>
+
+% open_in_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & open_in(C, A) ) => open_in(C, B) ) ))
+
+  =>
+
+% closed_subset_thm, axiom.
+(( forall X A. ( ( forall Y. ( ( a_member_of(Y, coerce_to_class(X)) & ( ~ a_member_of(Y, A) ) ) => ( exists G. ( a_member_of(Y, G) & ( open_in(G, X) & disjoint(G, A) ) ) ) ) ) => closed_in(A, X) ) ))
+
+  =>
+
+% hausdorff, axiom.
+(( forall X. ( a_hausdorff_top_space(X) => ( forall A B. ( ( a_member_of(A, coerce_to_class(X)) & ( a_member_of(B, coerce_to_class(X)) & ( ~ ( A = B ) ) ) ) => ( exists G1 G2. ( open_in(G1, X) & ( open_in(G2, X) & ( a_member_of(A, G1) & ( a_member_of(B, G2) & disjoint(G1, G2) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% product_of_open_sets, axiom.
+(( forall A X B Y. ( ( open_in(A, X) & open_in(B, Y) ) => open_in(the_product_of(A, B), the_product_top_space_of(X, Y)) ) ))
+
+  =>
+
+% product_top, axiom.
+(( forall S T X. ( a_member_of(X, coerce_to_class(the_product_top_space_of(S, T))) => ( exists A B. ( a_member_of(A, coerce_to_class(S)) & ( a_member_of(B, coerce_to_class(T)) & ( X = the_ordered_pair(A, B) ) ) ) ) ) ))
+
+  =>
+
+% product, axiom.
+(( forall X S T. ( a_member_of(X, the_product_of(S, T)) <=> ( exists A B. ( a_member_of(A, S) & ( a_member_of(B, T) & ( X = the_ordered_pair(A, B) ) ) ) ) ) ))
+
+  =>
+
+% disjoint_defn, axiom.
+(( forall A B. ( disjoint(A, B) <=> ( ~ ( exists Y. ( a_member_of(Y, A) & a_member_of(Y, B) ) ) ) ) ))
+
+  =>
+
+% ordered_pair, axiom.
+(( forall A B C D. ( ( the_ordered_pair(A, B) = the_ordered_pair(C, D) ) => ( ( A = C ) & ( B = D ) ) ) ))
+
+  =>
+
+% diagonal_top, axiom.
+(( forall X S. ( a_member_of(X, coerce_to_class(the_diagonal_top(S))) <=> ( exists A. ( a_member_of(A, coerce_to_class(S)) & ( X = the_ordered_pair(A, A) ) ) ) ) ))
+
+  =>
+
+% challenge_AMR_1_4_4, conjecture.
+(( forall S. ( a_hausdorff_top_space(S) => closed_in(coerce_to_class(the_diagonal_top(S)), the_product_top_space_of(S, S)) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

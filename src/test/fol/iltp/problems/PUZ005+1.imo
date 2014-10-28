@@ -1,0 +1,269 @@
+% File     : PUZ005+1 : ILTP v1.1.2
+% Domain   : Puzzles
+% Problem  : The Lion and the Unicorn
+% Version  : [OS95] axioms.
+% English  : 
+% Refs     : [Wei94] Weidenbach (1994), Email to G. Sutcliffe
+%          : [Wei93] Weidenbach (1993), Extending the Resolution Method wit
+%          : [Smu78] Smullyan (1978), What is the Name of This Book? The Ri
+%          : [OS85]  Ohlbach & Schmidt-Schauss M. (1985), The Lion and the
+% Source   : [Wei94]
+% Names    : 
+% Status   : Theorem
+% Rating   : 0.00 v2.2.1
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :   46 (   7 unit)
+%            Number of atoms       :  110 (   0 equality)
+%            Maximal formula depth :    8 (   4 average)
+%            Number of connectives :   84 (  20 ~  ;   0  |;  10  &)
+%                                         (   0 <=>;  54 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   11 (   0 propositional; 1-3 arity)
+%            Number of functors    :   10 (   9 constant; 0-1 arity)
+%            Number of variables   :   47 (   0 singleton;  46 !;   1 ?)
+%            Maximal term depth    :    2 (   1 average)
+% Comments : This problem can be easily solved by sorted theorem provers which
+%            are able to represent the one place predicates as sorts, but is 
+%            very hard for standard first-order provers. It can be further 
+%            complicated by iterating the 'yesterday' nesting in the theorem, 
+%            e.g.  the next iteration would be: -(exists x (day(x) & 
+%            lies(a_lion,x,yesterday(yesterday(x))) & lies(a_unicorn,x,
+%            yesterday(yesterday(x))))).
+%------------------------------------------------------------------------------
+
+ 
+
+% monday, axiom.
+(monday(a_monday))
+
+  =>
+
+% tuesday, axiom.
+(tuesday(a_tuesday))
+
+  =>
+
+% wednesday, axiom.
+(wednesday(a_wednesday))
+
+  =>
+
+% thursday, axiom.
+(thursday(a_thursday))
+
+  =>
+
+% friday, axiom.
+(friday(a_friday))
+
+  =>
+
+% saturday, axiom.
+(saturday(a_saturday))
+
+  =>
+
+% sunday, axiom.
+(sunday(a_sunday))
+
+  =>
+
+% monday_is_a_day, axiom.
+(( forall X. ( monday(X) => day(X) ) ))
+
+  =>
+
+% tuesday_is_a_day, axiom.
+(( forall X. ( tuesday(X) => day(X) ) ))
+
+  =>
+
+% wednesday_is_a_day, axiom.
+(( forall X. ( wednesday(X) => day(X) ) ))
+
+  =>
+
+% thursday_is_a_day, axiom.
+(( forall X. ( thursday(X) => day(X) ) ))
+
+  =>
+
+% friday_is_a_day, axiom.
+(( forall X. ( friday(X) => day(X) ) ))
+
+  =>
+
+% saturday_is_a_day, axiom.
+(( forall X. ( saturday(X) => day(X) ) ))
+
+  =>
+
+% sunday_is_a_day, axiom.
+(( forall X. ( sunday(X) => day(X) ) ))
+
+  =>
+
+% monday_follows_sunday, axiom.
+(( forall X. ( monday(X) => sunday(yesterday(X)) ) ))
+
+  =>
+
+% tuesday_follows_monday, axiom.
+(( forall X. ( tuesday(X) => monday(yesterday(X)) ) ))
+
+  =>
+
+% wednesday_follows_tuesday, axiom.
+(( forall X. ( wednesday(X) => tuesday(yesterday(X)) ) ))
+
+  =>
+
+% thursday_follows_wednesday, axiom.
+(( forall X. ( thursday(X) => wednesday(yesterday(X)) ) ))
+
+  =>
+
+% friday_follows_thursday, axiom.
+(( forall X. ( friday(X) => thursday(yesterday(X)) ) ))
+
+  =>
+
+% saturday_follows_friday, axiom.
+(( forall X. ( saturday(X) => friday(yesterday(X)) ) ))
+
+  =>
+
+% sunday_follows_saturday, axiom.
+(( forall X. ( sunday(X) => saturday(yesterday(X)) ) ))
+
+  =>
+
+% lion_lies_monday, axiom.
+(( forall X. ( monday(X) => lion_lies(X) ) ))
+
+  =>
+
+% lion_lies_tuesday, axiom.
+(( forall X. ( tuesday(X) => lion_lies(X) ) ))
+
+  =>
+
+% lion_lies_wednesday, axiom.
+(( forall X. ( wednesday(X) => lion_lies(X) ) ))
+
+  =>
+
+% lion_does_not_lie_thursday, axiom.
+(( forall X. ( thursday(X) => ( ~ lion_lies(X) ) ) ))
+
+  =>
+
+% lion_does_not_lie_friday, axiom.
+(( forall X. ( friday(X) => ( ~ lion_lies(X) ) ) ))
+
+  =>
+
+% lion_does_not_lie_saturday, axiom.
+(( forall X. ( saturday(X) => ( ~ lion_lies(X) ) ) ))
+
+  =>
+
+% lion_does_not_lie_sunday, axiom.
+(( forall X. ( sunday(X) => ( ~ lion_lies(X) ) ) ))
+
+  =>
+
+% unicorn_does_not_lie_monday, axiom.
+(( forall X. ( monday(X) => ( ~ unicorn_lies(X) ) ) ))
+
+  =>
+
+% unicorn_does_not_lie_tuesday, axiom.
+(( forall X. ( tuesday(X) => ( ~ unicorn_lies(X) ) ) ))
+
+  =>
+
+% unicorn_does_not_lie_wednesday, axiom.
+(( forall X. ( wednesday(X) => ( ~ unicorn_lies(X) ) ) ))
+
+  =>
+
+% unicorn_lies_thursday, axiom.
+(( forall X. ( thursday(X) => unicorn_lies(X) ) ))
+
+  =>
+
+% unicorn_lies_friday, axiom.
+(( forall X. ( friday(X) => unicorn_lies(X) ) ))
+
+  =>
+
+% unicorn_lies_saturday, axiom.
+(( forall X. ( saturday(X) => unicorn_lies(X) ) ))
+
+  =>
+
+% unicorn_does_not_lie_sunday, axiom.
+(( forall X. ( sunday(X) => ( ~ unicorn_lies(X) ) ) ))
+
+  =>
+
+% lion_lies_on_a_day, axiom.
+(( forall X. ( lion_lies(X) => day(X) ) ))
+
+  =>
+
+% unicorn_lies_on_a_day, axiom.
+(( forall X. ( unicorn_lies(X) => day(X) ) ))
+
+  =>
+
+% lion_lies_on_this_day, axiom.
+(( forall X. ( day(X) => ( forall Y. ( day(Y) => ( ( lion_lies(X) & lies_on_one_of(a_lion, X, Y) ) => ( ~ lion_lies(Y) ) ) ) ) ) ))
+
+  =>
+
+% lion_lies_on_other_day, axiom.
+(( forall X. ( day(X) => ( forall Y. ( day(Y) => ( ( ( ~ lion_lies(X) ) & lies_on_one_of(a_lion, X, Y) ) => lion_lies(Y) ) ) ) ) ))
+
+  =>
+
+% lion_lies_on_neither, axiom.
+(( forall X. ( day(X) => ( forall Y. ( day(Y) => ( ( ( ~ lion_lies(X) ) & ( ~ lies_on_one_of(a_lion, X, Y) ) ) => ( ~ lion_lies(Y) ) ) ) ) ) ))
+
+  =>
+
+% lion_lies_on_both, axiom.
+(( forall X. ( day(X) => ( forall Y. ( day(Y) => ( ( lion_lies(X) & ( ~ lies_on_one_of(a_lion, X, Y) ) ) => lion_lies(Y) ) ) ) ) ))
+
+  =>
+
+% unicorn_lies_on_this_day, axiom.
+(( forall X. ( day(X) => ( forall Y. ( day(Y) => ( ( unicorn_lies(X) & lies_on_one_of(a_unicorn, X, Y) ) => ( ~ unicorn_lies(Y) ) ) ) ) ) ))
+
+  =>
+
+% unicorn_lies_on_other_day, axiom.
+(( forall X. ( day(X) => ( forall Y. ( day(Y) => ( ( ( ~ unicorn_lies(X) ) & lies_on_one_of(a_unicorn, X, Y) ) => unicorn_lies(Y) ) ) ) ) ))
+
+  =>
+
+% unicorn_lies_on_neither, axiom.
+(( forall X. ( day(X) => ( forall Y. ( day(Y) => ( ( ( ~ unicorn_lies(X) ) & ( ~ lies_on_one_of(a_unicorn, X, Y) ) ) => ( ~ unicorn_lies(Y) ) ) ) ) ) ))
+
+  =>
+
+% unicorn_lies_on_both, axiom.
+(( forall X. ( day(X) => ( forall Y. ( day(Y) => ( ( unicorn_lies(X) & ( ~ lies_on_one_of(a_unicorn, X, Y) ) ) => unicorn_lies(Y) ) ) ) ) ))
+
+  =>
+
+% prove_there_are_close_lying_days, conjecture.
+(( exists X. ( day(X) & ( lies_on_one_of(a_lion, X, yesterday(X)) & lies_on_one_of(a_unicorn, X, yesterday(X)) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

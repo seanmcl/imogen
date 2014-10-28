@@ -1,0 +1,127 @@
+% File     : GRP194+1 : ILTP v1.1.2
+% Domain   : Group Theory (Semigroups)
+% Problem  : In semigroups, a surjective homomorphism maps the zero
+% Version  : [Gol93] axioms.
+% English  : If (F,*) and (H,+) are two semigroups, phi is a surjective 
+%            homomorphism from F to H, and id is a left zero for F, 
+%            then phi(id) is a left zero for H.
+% Refs     : [Gol93] Goller (1993), Anwendung des Theorembeweisers SETHEO a
+% Source   : [Gol93]
+% Names    : 
+% Status   : Theorem
+% Rating   : 0.18 v3.1.0, 0.11 v2.7.0, 0.17 v2.6.0, 0.14 v2.5.0, 0.12 v2.4.0, 0.25 v2.3.0, 0.33 v2.2.1, 0.00 v2.1.0
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :    8 (   2 unit)
+%            Number of atoms       :   21 (   4 equality)
+%            Maximal formula depth :    8 (   4 average)
+%            Number of connectives :   13 (   0 ~  ;   0  |;   6  &)
+%                                         (   1 <=>;   6 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    3 (   0 propositional; 2-2 arity)
+%            Number of functors    :    5 (   3 constant; 0-3 arity)
+%            Number of variables   :   15 (   0 singleton;  14 !;   1 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments : 
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% multiply_substitution_1, axiom.
+(( forall A B C D. ( ( A = B ) => ( multiply(A, C, D) = multiply(B, C, D) ) ) ))
+
+  =>
+
+% multiply_substitution_2, axiom.
+(( forall A B C D. ( ( A = B ) => ( multiply(C, A, D) = multiply(C, B, D) ) ) ))
+
+  =>
+
+% multiply_substitution_3, axiom.
+(( forall A B C D. ( ( A = B ) => ( multiply(C, D, A) = multiply(C, D, B) ) ) ))
+
+  =>
+
+% phi_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( phi(A) = phi(B) ) ) ))
+
+  =>
+
+% group_member_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & group_member(A, C) ) => group_member(B, C) ) ))
+
+  =>
+
+% group_member_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & group_member(C, A) ) => group_member(C, B) ) ))
+
+  =>
+
+% left_zero_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & left_zero(A, C) ) => left_zero(B, C) ) ))
+
+  =>
+
+% left_zero_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & left_zero(C, A) ) => left_zero(C, B) ) ))
+
+  =>
+
+% total_function, axiom.
+(( forall G X Y. ( ( group_member(X, G) & group_member(Y, G) ) => group_member(multiply(G, X, Y), G) ) ))
+
+  =>
+
+% associativity, axiom.
+(( forall G X Y Z. ( ( group_member(X, G) & ( group_member(Y, G) & group_member(Z, G) ) ) => ( multiply(G, multiply(G, X, Y), Z) = multiply(G, X, multiply(G, Y, Z)) ) ) ))
+
+  =>
+
+% homomorphism1, axiom.
+(( forall X. ( group_member(X, f) => group_member(phi(X), h) ) ))
+
+  =>
+
+% homomorphism2, axiom.
+(( forall X Y. ( ( group_member(X, f) & group_member(Y, f) ) => ( multiply(h, phi(X), phi(Y)) = phi(multiply(f, X, Y)) ) ) ))
+
+  =>
+
+% surjective, axiom.
+(( forall X. ( group_member(X, h) => ( exists Y. ( group_member(Y, f) & ( phi(Y) = X ) ) ) ) ))
+
+  =>
+
+% left_zero, axiom.
+(( forall G X. ( left_zero(G, X) <=> ( group_member(X, G) & ( forall Y. ( group_member(Y, G) => ( multiply(G, X, Y) = X ) ) ) ) ) ))
+
+  =>
+
+% left_zero_for_f, hypothesis.
+(left_zero(f, f_left_zero))
+
+  =>
+
+% prove_left_zero_h, conjecture.
+(left_zero(h, phi(f_left_zero)))
+
+ 
+
+%------------------------------------------------------------------------------

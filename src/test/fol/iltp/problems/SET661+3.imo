@@ -1,0 +1,382 @@
+% File     : SET661+3 : ILTP v1.1.2
+% Domain   : Set Theory (Relations)
+% Problem  : Domain of R^-1 is range of R, & range of R^-1 is domain of R
+% Version  : [Wor89] axioms : Reduced > Incomplete.
+% English  : The domain of the inverse of a relation R from X to Y is the 
+%            range of R, and the range of the inverse of R is the domain of R.
+% Refs     : [ILF] The ILF Group (1998), The ILF System: A Tool for the Int
+%          : [Wor89] Woronowicz (1989), Relations Defined on Sets
+% Source   : [ILF]
+% Names    : RELSET_1 (24) [Wor89]
+% Status   : Theorem
+% Rating   : 1.00 v3.1.0, 0.78 v2.7.0, 1.00 v2.5.0, 0.88 v2.4.0, 1.00 v2.2.1
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :   38 (   2 unit)
+%            Number of atoms       :  149 (  12 equality)
+%            Maximal formula depth :   11 (   6 average)
+%            Number of connectives :  115 (   4 ~  ;   0  |;  13  &)
+%                                         (  14 <=>;  84 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    6 (   0 propositional; 1-2 arity)
+%            Number of functors    :   14 (   2 constant; 0-3 arity)
+%            Number of variables   :   87 (   0 singleton;  79 !;   8 ?)
+%            Maximal term depth    :    3 (   1 average)
+% Comments :
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% cross_product_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( cross_product(A, C) = cross_product(B, C) ) ) ))
+
+  =>
+
+% cross_product_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( cross_product(C, A) = cross_product(C, B) ) ) ))
+
+  =>
+
+% domain_substitution_1, axiom.
+(( forall A B C D. ( ( A = B ) => ( domain(A, C, D) = domain(B, C, D) ) ) ))
+
+  =>
+
+% domain_substitution_2, axiom.
+(( forall A B C D. ( ( A = B ) => ( domain(C, A, D) = domain(C, B, D) ) ) ))
+
+  =>
+
+% domain_substitution_3, axiom.
+(( forall A B C D. ( ( A = B ) => ( domain(C, D, A) = domain(C, D, B) ) ) ))
+
+  =>
+
+% domain_of_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( domain_of(A) = domain_of(B) ) ) ))
+
+  =>
+
+% inverse_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( inverse(A) = inverse(B) ) ) ))
+
+  =>
+
+% inverse3_substitution_1, axiom.
+(( forall A B C D. ( ( A = B ) => ( inverse3(A, C, D) = inverse3(B, C, D) ) ) ))
+
+  =>
+
+% inverse3_substitution_2, axiom.
+(( forall A B C D. ( ( A = B ) => ( inverse3(C, A, D) = inverse3(C, B, D) ) ) ))
+
+  =>
+
+% inverse3_substitution_3, axiom.
+(( forall A B C D. ( ( A = B ) => ( inverse3(C, D, A) = inverse3(C, D, B) ) ) ))
+
+  =>
+
+% member_type_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( member_type(A) = member_type(B) ) ) ))
+
+  =>
+
+% ordered_pair_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( ordered_pair(A, C) = ordered_pair(B, C) ) ) ))
+
+  =>
+
+% ordered_pair_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( ordered_pair(C, A) = ordered_pair(C, B) ) ) ))
+
+  =>
+
+% power_set_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( power_set(A) = power_set(B) ) ) ))
+
+  =>
+
+% range_substitution_1, axiom.
+(( forall A B C D. ( ( A = B ) => ( range(A, C, D) = range(B, C, D) ) ) ))
+
+  =>
+
+% range_substitution_2, axiom.
+(( forall A B C D. ( ( A = B ) => ( range(C, A, D) = range(C, B, D) ) ) ))
+
+  =>
+
+% range_substitution_3, axiom.
+(( forall A B C D. ( ( A = B ) => ( range(C, D, A) = range(C, D, B) ) ) ))
+
+  =>
+
+% range_of_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( range_of(A) = range_of(B) ) ) ))
+
+  =>
+
+% relation_type_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( relation_type(A, C) = relation_type(B, C) ) ) ))
+
+  =>
+
+% relation_type_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( relation_type(C, A) = relation_type(C, B) ) ) ))
+
+  =>
+
+% subset_type_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( subset_type(A) = subset_type(B) ) ) ))
+
+  =>
+
+% empty_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & empty(A) ) => empty(B) ) ))
+
+  =>
+
+% ilf_type_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & ilf_type(A, C) ) => ilf_type(B, C) ) ))
+
+  =>
+
+% ilf_type_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & ilf_type(C, A) ) => ilf_type(C, B) ) ))
+
+  =>
+
+% member_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & member(A, C) ) => member(B, C) ) ))
+
+  =>
+
+% member_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & member(C, A) ) => member(C, B) ) ))
+
+  =>
+
+% relation_like_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & relation_like(A) ) => relation_like(B) ) ))
+
+  =>
+
+% subset_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(A, C) ) => subset(B, C) ) ))
+
+  =>
+
+% subset_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & subset(C, A) ) => subset(C, B) ) ))
+
+  =>
+
+% p1, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, binary_relation_type) => ( member(B, domain_of(C)) <=> ( exists D. ( ilf_type(D, set_type) & member(ordered_pair(B, D), C) ) ) ) ) ) ) ))
+
+  =>
+
+% p2, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, binary_relation_type) => ( member(B, range_of(C)) <=> ( exists D. ( ilf_type(D, set_type) & member(ordered_pair(D, B), C) ) ) ) ) ) ) ))
+
+  =>
+
+% p3, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( forall D. ( ilf_type(D, binary_relation_type) => ( member(ordered_pair(B, C), D) => ( member(B, domain_of(D)) & member(C, range_of(D)) ) ) ) ) ) ) ) ))
+
+  =>
+
+% p4, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( forall D. ( ilf_type(D, binary_relation_type) => ( member(ordered_pair(B, C), inverse(D)) <=> member(ordered_pair(C, B), D) ) ) ) ) ) ) ))
+
+  =>
+
+% p5, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( ( forall D. ( ilf_type(D, set_type) => ( member(D, B) <=> member(D, C) ) ) ) => ( B = C ) ) ) ) ) ))
+
+  =>
+
+% p6, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( ( forall D. ( ilf_type(D, subset_type(cross_product(B, C))) => ilf_type(D, relation_type(B, C)) ) ) & ( forall E. ( ilf_type(E, relation_type(B, C)) => ilf_type(E, subset_type(cross_product(B, C))) ) ) ) ) ) ) ))
+
+  =>
+
+% p7, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( exists D. ilf_type(D, relation_type(C, B)) ) ) ) ) ))
+
+  =>
+
+% p8, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( ( B = C ) <=> ( subset(B, C) & subset(C, B) ) ) ) ) ) ))
+
+  =>
+
+% p9, axiom.
+(( forall B. ( ilf_type(B, binary_relation_type) => ilf_type(domain_of(B), set_type) ) ))
+
+  =>
+
+% p10, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ilf_type(cross_product(B, C), set_type) ) ) ) ))
+
+  =>
+
+% p11, axiom.
+(( forall B. ( ilf_type(B, binary_relation_type) => ilf_type(range_of(B), set_type) ) ))
+
+  =>
+
+% p12, axiom.
+(( forall B. ( ilf_type(B, binary_relation_type) => ilf_type(inverse(B), binary_relation_type) ) ))
+
+  =>
+
+% p13, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ilf_type(ordered_pair(B, C), set_type) ) ) ) ))
+
+  =>
+
+% p14, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( ilf_type(B, binary_relation_type) <=> ( relation_like(B) & ilf_type(B, set_type) ) ) ) ))
+
+  =>
+
+% p15, axiom.
+(( exists B. ilf_type(B, binary_relation_type) ))
+
+  =>
+
+% p16, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( ilf_type(C, subset_type(B)) <=> ilf_type(C, member_type(power_set(B))) ) ) ) ) ))
+
+  =>
+
+% p17, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( exists C. ilf_type(C, subset_type(B)) ) ) ))
+
+  =>
+
+% p18, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( ( B = C ) <=> ( forall D. ( ilf_type(D, set_type) => ( member(D, B) <=> member(D, C) ) ) ) ) ) ) ) ))
+
+  =>
+
+% p19, axiom.
+(( forall B. ( ilf_type(B, binary_relation_type) => ( forall C. ( ilf_type(C, binary_relation_type) => ( ( B = C ) => ( C = B ) ) ) ) ) ))
+
+  =>
+
+% p20, axiom.
+(( forall B. ( ilf_type(B, binary_relation_type) => ( B = B ) ) ))
+
+  =>
+
+% p21, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( subset(B, C) <=> ( forall D. ( ilf_type(D, set_type) => ( member(D, B) => member(D, C) ) ) ) ) ) ) ) ))
+
+  =>
+
+% p22, axiom.
+(( forall B. ( ilf_type(B, set_type) => subset(B, B) ) ))
+
+  =>
+
+% p23, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( member(B, power_set(C)) <=> ( forall D. ( ilf_type(D, set_type) => ( member(D, B) => member(D, C) ) ) ) ) ) ) ) ))
+
+  =>
+
+% p24, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( ( ~ empty(power_set(B)) ) & ilf_type(power_set(B), set_type) ) ) ))
+
+  =>
+
+% p25, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ( ( ~ empty(C) ) & ilf_type(C, set_type) ) => ( ilf_type(B, member_type(C)) <=> member(B, C) ) ) ) ) ))
+
+  =>
+
+% p26, axiom.
+(( forall B. ( ( ( ~ empty(B) ) & ilf_type(B, set_type) ) => ( exists C. ilf_type(C, member_type(B)) ) ) ))
+
+  =>
+
+% p27, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( relation_like(B) <=> ( forall C. ( ilf_type(C, set_type) => ( member(C, B) => ( exists D. ( ilf_type(D, set_type) & ( exists E. ( ilf_type(E, set_type) & ( C = ordered_pair(D, E) ) ) ) ) ) ) ) ) ) ) ))
+
+  =>
+
+% p28, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( forall D. ( ilf_type(D, subset_type(cross_product(B, C))) => relation_like(D) ) ) ) ) ) ))
+
+  =>
+
+% p29, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( empty(B) <=> ( forall C. ( ilf_type(C, set_type) => ( ~ member(C, B) ) ) ) ) ) ))
+
+  =>
+
+% p30, axiom.
+(( forall B. ( ( empty(B) & ilf_type(B, set_type) ) => relation_like(B) ) ))
+
+  =>
+
+% p31, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( forall D. ( ilf_type(D, relation_type(B, C)) => ( domain(B, C, D) = domain_of(D) ) ) ) ) ) ) ))
+
+  =>
+
+% p32, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( forall D. ( ilf_type(D, relation_type(B, C)) => ilf_type(domain(B, C, D), subset_type(B)) ) ) ) ) ) ))
+
+  =>
+
+% p33, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( forall D. ( ilf_type(D, relation_type(B, C)) => ( range(B, C, D) = range_of(D) ) ) ) ) ) ) ))
+
+  =>
+
+% p34, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( forall D. ( ilf_type(D, relation_type(B, C)) => ilf_type(range(B, C, D), subset_type(C)) ) ) ) ) ) ))
+
+  =>
+
+% p35, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( forall D. ( ilf_type(D, relation_type(B, C)) => ( inverse3(B, C, D) = inverse(D) ) ) ) ) ) ) ))
+
+  =>
+
+% p36, axiom.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( forall D. ( ilf_type(D, relation_type(B, C)) => ilf_type(inverse3(B, C, D), relation_type(C, B)) ) ) ) ) ) ))
+
+  =>
+
+% p37, axiom.
+(( forall B. ilf_type(B, set_type) ))
+
+  =>
+
+% prove_relset_1_24, conjecture.
+(( forall B. ( ilf_type(B, set_type) => ( forall C. ( ilf_type(C, set_type) => ( forall D. ( ilf_type(D, relation_type(B, C)) => ( ( domain(C, B, inverse3(B, C, D)) = range(B, C, D) ) & ( range(C, B, inverse3(B, C, D)) = domain(B, C, D) ) ) ) ) ) ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------

@@ -1,0 +1,451 @@
+% File     : SET072+1 : ILTP v1.1.2
+% Domain   : Set Theory
+% Problem  : Right cancellation for unordered pairs
+% Version  : [Qua92] axioms : Reduced & Augmented > Complete.
+% English  :
+% Refs     : [Qua92] Quaife (1992), Automated Deduction in von Neumann-Bern
+%          : [BL+86] Boyer et al. (1986), Set Theory in First-Order Logic:
+% Source   : [Qua92]
+% Names    :
+% Status   : Theorem
+% Rating   : 0.27 v3.1.0, 0.44 v2.7.0, 0.33 v2.6.0, 0.29 v2.5.0, 0.12 v2.4.0, 0.00 v2.2.1
+%
+% Status (intuit.) : Open
+% Rating (intuit.) : 1.00 v1.0.0
+%
+% Syntax   : Number of formulae    :   42 (  16 unit)
+%            Number of atoms       :   97 (  18 equality)
+%            Maximal formula depth :    7 (   4 average)
+%            Number of connectives :   60 (   5 ~  ;   3  |;  25  &)
+%                                         (  18 <=>;   9 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    6 (   0 propositional; 1-2 arity)
+%            Number of functors    :   26 (   5 constant; 0-3 arity)
+%            Number of variables   :   85 (   0 singleton;  81 !;   4 ?)
+%            Maximal term depth    :    4 (   1 average)
+% Comments :
+%------------------------------------------------------------------------------
+
+ 
+
+% reflexivity, axiom.
+(( forall X. ( X = X ) ))
+
+  =>
+
+% symmetry, axiom.
+(( forall X Y. ( ( X = Y ) => ( Y = X ) ) ))
+
+  =>
+
+% transitivity, axiom.
+(( forall X Y Z. ( ( ( X = Y ) & ( Y = Z ) ) => ( X = Z ) ) ))
+
+  =>
+
+% apply_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( apply(A, C) = apply(B, C) ) ) ))
+
+  =>
+
+% apply_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( apply(C, A) = apply(C, B) ) ) ))
+
+  =>
+
+% complement_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( complement(A) = complement(B) ) ) ))
+
+  =>
+
+% compose_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( compose(A, C) = compose(B, C) ) ) ))
+
+  =>
+
+% compose_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( compose(C, A) = compose(C, B) ) ) ))
+
+  =>
+
+% cross_product_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( cross_product(A, C) = cross_product(B, C) ) ) ))
+
+  =>
+
+% cross_product_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( cross_product(C, A) = cross_product(C, B) ) ) ))
+
+  =>
+
+% domain_of_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( domain_of(A) = domain_of(B) ) ) ))
+
+  =>
+
+% first_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( first(A) = first(B) ) ) ))
+
+  =>
+
+% flip_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( flip(A) = flip(B) ) ) ))
+
+  =>
+
+% image_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( image(A, C) = image(B, C) ) ) ))
+
+  =>
+
+% image_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( image(C, A) = image(C, B) ) ) ))
+
+  =>
+
+% intersection_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( intersection(A, C) = intersection(B, C) ) ) ))
+
+  =>
+
+% intersection_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( intersection(C, A) = intersection(C, B) ) ) ))
+
+  =>
+
+% inverse_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( inverse(A) = inverse(B) ) ) ))
+
+  =>
+
+% ordered_pair_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( ordered_pair(A, C) = ordered_pair(B, C) ) ) ))
+
+  =>
+
+% ordered_pair_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( ordered_pair(C, A) = ordered_pair(C, B) ) ) ))
+
+  =>
+
+% power_class_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( power_class(A) = power_class(B) ) ) ))
+
+  =>
+
+% range_of_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( range_of(A) = range_of(B) ) ) ))
+
+  =>
+
+% restrict_substitution_1, axiom.
+(( forall A B C D. ( ( A = B ) => ( restrict(A, C, D) = restrict(B, C, D) ) ) ))
+
+  =>
+
+% restrict_substitution_2, axiom.
+(( forall A B C D. ( ( A = B ) => ( restrict(C, A, D) = restrict(C, B, D) ) ) ))
+
+  =>
+
+% restrict_substitution_3, axiom.
+(( forall A B C D. ( ( A = B ) => ( restrict(C, D, A) = restrict(C, D, B) ) ) ))
+
+  =>
+
+% rotate_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( rotate(A) = rotate(B) ) ) ))
+
+  =>
+
+% second_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( second(A) = second(B) ) ) ))
+
+  =>
+
+% singleton_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( singleton(A) = singleton(B) ) ) ))
+
+  =>
+
+% successor_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( successor(A) = successor(B) ) ) ))
+
+  =>
+
+% sum_class_substitution_1, axiom.
+(( forall A B. ( ( A = B ) => ( sum_class(A) = sum_class(B) ) ) ))
+
+  =>
+
+% union_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( union(A, C) = union(B, C) ) ) ))
+
+  =>
+
+% union_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( union(C, A) = union(C, B) ) ) ))
+
+  =>
+
+% unordered_pair_substitution_1, axiom.
+(( forall A B C. ( ( A = B ) => ( unordered_pair(A, C) = unordered_pair(B, C) ) ) ))
+
+  =>
+
+% unordered_pair_substitution_2, axiom.
+(( forall A B C. ( ( A = B ) => ( unordered_pair(C, A) = unordered_pair(C, B) ) ) ))
+
+  =>
+
+% disjoint_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & disjoint(A, C) ) => disjoint(B, C) ) ))
+
+  =>
+
+% disjoint_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & disjoint(C, A) ) => disjoint(C, B) ) ))
+
+  =>
+
+% function_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & function(A) ) => function(B) ) ))
+
+  =>
+
+% inductive_substitution_1, axiom.
+(( forall A B. ( ( ( A = B ) & inductive(A) ) => inductive(B) ) ))
+
+  =>
+
+% member_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & member(A, C) ) => member(B, C) ) ))
+
+  =>
+
+% member_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & member(C, A) ) => member(C, B) ) ))
+
+  =>
+
+% subclass_substitution_1, axiom.
+(( forall A B C. ( ( ( A = B ) & subclass(A, C) ) => subclass(B, C) ) ))
+
+  =>
+
+% subclass_substitution_2, axiom.
+(( forall A B C. ( ( ( A = B ) & subclass(C, A) ) => subclass(C, B) ) ))
+
+  =>
+
+% subclass_defn, axiom.
+(( forall X Y. ( subclass(X, Y) <=> ( forall U. ( member(U, X) => member(U, Y) ) ) ) ))
+
+  =>
+
+% class_elements_are_sets, axiom.
+(( forall X. subclass(X, universal_class) ))
+
+  =>
+
+% extensionality, axiom.
+(( forall X Y. ( ( X = Y ) <=> ( subclass(X, Y) & subclass(Y, X) ) ) ))
+
+  =>
+
+% unordered_pair_defn, axiom.
+(( forall U X Y. ( member(U, unordered_pair(X, Y)) <=> ( member(U, universal_class) & ( ( U = X ) | ( U = Y ) ) ) ) ))
+
+  =>
+
+% unordered_pair, axiom.
+(( forall X Y. member(unordered_pair(X, Y), universal_class) ))
+
+  =>
+
+% singleton_set_defn, axiom.
+(( forall X. ( singleton(X) = unordered_pair(X, X) ) ))
+
+  =>
+
+% ordered_pair_defn, axiom.
+(( forall X Y. ( ordered_pair(X, Y) = unordered_pair(singleton(X), unordered_pair(X, singleton(Y))) ) ))
+
+  =>
+
+% cross_product_defn, axiom.
+(( forall U V X Y. ( member(ordered_pair(U, V), cross_product(X, Y)) <=> ( member(U, X) & member(V, Y) ) ) ))
+
+  =>
+
+% cross_product, axiom.
+(( forall X Y Z. ( member(Z, cross_product(X, Y)) => ( Z = ordered_pair(first(Z), second(Z)) ) ) ))
+
+  =>
+
+% element_relation_defn, axiom.
+(( forall X Y. ( member(ordered_pair(X, Y), element_relation) <=> ( member(Y, universal_class) & member(X, Y) ) ) ))
+
+  =>
+
+% element_relation, axiom.
+(subclass(element_relation, cross_product(universal_class, universal_class)))
+
+  =>
+
+% intersection, axiom.
+(( forall X Y Z. ( member(Z, intersection(X, Y)) <=> ( member(Z, X) & member(Z, Y) ) ) ))
+
+  =>
+
+% complement, axiom.
+(( forall X Z. ( member(Z, complement(X)) <=> ( member(Z, universal_class) & ( ~ member(Z, X) ) ) ) ))
+
+  =>
+
+% restrict_defn, axiom.
+(( forall X XR Y. ( restrict(XR, X, Y) = intersection(XR, cross_product(X, Y)) ) ))
+
+  =>
+
+% null_class_defn, axiom.
+(( forall X. ( ~ member(X, null_class) ) ))
+
+  =>
+
+% domain_of, axiom.
+(( forall X Z. ( member(Z, domain_of(X)) <=> ( member(Z, universal_class) & ( ~ ( restrict(X, singleton(Z), universal_class) = null_class ) ) ) ) ))
+
+  =>
+
+% rotate_defn, axiom.
+(( forall X U V W. ( member(ordered_pair(ordered_pair(U, V), W), rotate(X)) <=> ( member(ordered_pair(ordered_pair(U, V), W), cross_product(cross_product(universal_class, universal_class), universal_class)) & member(ordered_pair(ordered_pair(V, W), U), X) ) ) ))
+
+  =>
+
+% rotate, axiom.
+(( forall X. subclass(rotate(X), cross_product(cross_product(universal_class, universal_class), universal_class)) ))
+
+  =>
+
+% flip_defn, axiom.
+(( forall U V W X. ( member(ordered_pair(ordered_pair(U, V), W), flip(X)) <=> ( member(ordered_pair(ordered_pair(U, V), W), cross_product(cross_product(universal_class, universal_class), universal_class)) & member(ordered_pair(ordered_pair(V, U), W), X) ) ) ))
+
+  =>
+
+% flip, axiom.
+(( forall X. subclass(flip(X), cross_product(cross_product(universal_class, universal_class), universal_class)) ))
+
+  =>
+
+% union_defn, axiom.
+(( forall X Y Z. ( member(Z, union(X, Y)) <=> ( member(Z, X) | member(Z, Y) ) ) ))
+
+  =>
+
+% successor_defn, axiom.
+(( forall X. ( successor(X) = union(X, singleton(X)) ) ))
+
+  =>
+
+% successor_relation_defn1, axiom.
+(subclass(successor_relation, cross_product(universal_class, universal_class)))
+
+  =>
+
+% successor_relation_defn2, axiom.
+(( forall X Y. ( member(ordered_pair(X, Y), successor_relation) <=> ( member(X, universal_class) & ( member(Y, universal_class) & ( successor(X) = Y ) ) ) ) ))
+
+  =>
+
+% inverse_defn, axiom.
+(( forall Y. ( inverse(Y) = domain_of(flip(cross_product(Y, universal_class))) ) ))
+
+  =>
+
+% range_of_defn, axiom.
+(( forall Z. ( range_of(Z) = domain_of(inverse(Z)) ) ))
+
+  =>
+
+% image_defn, axiom.
+(( forall X XR. ( image(XR, X) = range_of(restrict(XR, X, universal_class)) ) ))
+
+  =>
+
+% inductive_defn, axiom.
+(( forall X. ( inductive(X) <=> ( member(null_class, X) & subclass(image(successor_relation, X), X) ) ) ))
+
+  =>
+
+% infinity, axiom.
+(( exists X. ( member(X, universal_class) & ( inductive(X) & ( forall Y. ( inductive(Y) => subclass(X, Y) ) ) ) ) ))
+
+  =>
+
+% sum_class_defn, axiom.
+(( forall U X. ( member(U, sum_class(X)) <=> ( exists Y. ( member(U, Y) & member(Y, X) ) ) ) ))
+
+  =>
+
+% sum_class, axiom.
+(( forall X. ( member(X, universal_class) => member(sum_class(X), universal_class) ) ))
+
+  =>
+
+% power_class_defn, axiom.
+(( forall U X. ( member(U, power_class(X)) <=> ( member(U, universal_class) & subclass(U, X) ) ) ))
+
+  =>
+
+% power_class, axiom.
+(( forall U. ( member(U, universal_class) => member(power_class(U), universal_class) ) ))
+
+  =>
+
+% compose_defn1, axiom.
+(( forall XR YR. subclass(compose(YR, XR), cross_product(universal_class, universal_class)) ))
+
+  =>
+
+% compose_defn2, axiom.
+(( forall XR YR U V. ( member(ordered_pair(U, V), compose(YR, XR)) <=> ( member(U, universal_class) & member(V, image(YR, image(YR, singleton(U)))) ) ) ))
+
+  =>
+
+% function_defn, axiom.
+(( forall XF. ( function(XF) <=> ( subclass(XF, cross_product(universal_class, universal_class)) & subclass(compose(XF, inverse(XF)), identity_relation) ) ) ))
+
+  =>
+
+% replacement, axiom.
+(( forall X XF. ( ( member(X, universal_class) & function(XF) ) => member(image(XF, X), universal_class) ) ))
+
+  =>
+
+% disjoint_defn, axiom.
+(( forall X Y. ( disjoint(X, Y) <=> ( forall U. ( ~ ( member(U, X) & member(U, Y) ) ) ) ) ))
+
+  =>
+
+% regularity, axiom.
+(( forall X. ( ( ~ ( X = null_class ) ) => ( exists U. ( member(U, universal_class) & ( member(U, X) & disjoint(U, X) ) ) ) ) ))
+
+  =>
+
+% apply_defn, axiom.
+(( forall XF Y. ( apply(XF, Y) = sum_class(image(XF, singleton(Y))) ) ))
+
+  =>
+
+% choice, axiom.
+(( exists XF. ( function(XF) & ( forall Y. ( member(Y, universal_class) => ( ( Y = null_class ) | member(apply(XF, Y), Y) ) ) ) ) ))
+
+  =>
+
+% right_cancellation, conjecture.
+(( forall X Y Z. ( ( member(X, universal_class) & ( member(Y, universal_class) & ( unordered_pair(X, Z) = unordered_pair(Y, Z) ) ) ) => ( X = Y ) ) ))
+
+ 
+
+%------------------------------------------------------------------------------
