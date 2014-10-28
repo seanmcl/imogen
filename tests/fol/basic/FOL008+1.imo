@@ -1,6 +1,0 @@
-
-% Problem : FOL008+1
-% Status  : Theorem
-% Rating  : 0.0
-
-(exists Y. forall X. p(X, Y)) => (forall X. exists Y. p(X, Y))

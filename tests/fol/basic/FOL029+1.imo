@@ -1,9 +1,0 @@
-
-% Problem : FOL029+1
-% Status  : Theorem
-% Rating  : 0.0
-
-q(a1, a2, a1, a2) =>
-  exists X1 X2 Y1 Y2.
-   ( q(X1, X2, Y1, Y2) & ( ( P(X1) & P(X2) ) =>
-      ( P(Y1) & P(Y2) ) )   )

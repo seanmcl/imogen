@@ -1,7 +1,0 @@
-
-% Problem : FOL028+1
-% Status  : Theorem
-% Rating  : 0.0
-% Notes   : kalish317
-
-( forall X Y. ( X = Y => Y = X ) | true )

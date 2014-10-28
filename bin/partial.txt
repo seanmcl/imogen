@@ -1,1 +1,0 @@
-partial prove -f FileName iltp/GEJ001+1.imo -h NegativeAtoms

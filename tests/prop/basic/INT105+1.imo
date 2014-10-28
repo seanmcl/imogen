@@ -1,6 +1,0 @@
-% Problem : INT105+1
-% Status  : Theorem
-% Rating  : 0.00
-
-
-'a => 'b & 'c <=> ('a => 'b) & ('a => 'c)

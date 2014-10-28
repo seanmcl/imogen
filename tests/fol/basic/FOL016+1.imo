@@ -1,9 +1,0 @@
-
-% Problem : FOL016+1
-% Status  : Theorem
-% Rating  : 0.0
-
-( forall X. ( a(X) | b(X) )) =>
-( exists Y. a(Y) => exists Z. ~ a(Z) ) =>
-( forall X. ~ b(X) ) =>
-dummy

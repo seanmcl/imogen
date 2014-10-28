@@ -1,6 +1,0 @@
-% Problem : INT022+1
-% Status  : Theorem
-% Rating  : 0.00
-
-
-(~ ~ (p | ~p) => p | ~p) => (p | ~p)

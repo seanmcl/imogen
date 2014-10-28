@@ -1,6 +1,0 @@
-
-% Problem : FOL007+1
-% Status  : Theorem
-% Rating  : 0.0
-
-(forall X. p(X)) => (forall X. p(X))

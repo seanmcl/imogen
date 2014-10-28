@@ -1,6 +1,0 @@
-% Problem : INT006+1
-% Status  : Theorem
-% Rating  : 0.0
-
-p => q => p
-

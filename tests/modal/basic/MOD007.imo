@@ -1,6 +1,0 @@
-% Status [K] : Theorem
-% Rating  : 0.00
-
-% Distinguishes Pfenning-Davies from Simpson
-
-(dia p => false) => (box (p => false))

@@ -1,5 +1,0 @@
-% Problem : INT146+1
-% Status  : Theorem
-% Rating  : 0.0
-
- ~ ~ (a | ((~a) | (~a)))

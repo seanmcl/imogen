@@ -1,5 +1,0 @@
-% Problem : INT145+1
-% Status  : Theorem
-% Rating  : 0.0
-
-( (Q <=> Q) => false ) => false

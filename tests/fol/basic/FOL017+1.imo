@@ -1,7 +1,0 @@
-
-% Problem : FOL017+1
-% Status  : Theorem
-% Rating  : 0.0
-
-( exists X1. forall X2. exists X3. forall X4. p1(X1,X2) & p2(X3,X4) ) =>
-( forall X4. exists X3. forall X2. exists X1. p1(X1,X2) & p2(X3,X4) )

@@ -1,6 +1,0 @@
-% Problem : INT113+1
-% Status  : Theorem
-% Rating  : 0.00
-
-
-('d => 'b) => ('d => 'a | 'b)

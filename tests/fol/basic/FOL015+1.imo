@@ -1,6 +1,0 @@
-
-% Problem : FOL015+1
-% Status  : NonTheorem
-% Rating  : 0.0
-
-(forall X Y. ( p(X) => p(Y) )) | false

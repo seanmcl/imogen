@@ -1,6 +1,0 @@
-% Problem : INT042+1
-% Status  : Theorem
-% Rating  : 0.00
-
-
-(d => a) => (d => b) => (d => a & b)

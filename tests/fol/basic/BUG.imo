@@ -1,6 +1,0 @@
-
-% Problem : FOL022+1
-% Status  : Theorem
-% Rating  : 0.0
-
-(forall Y. p(f3) <=> p(Y)) => p(f2) => p(f1)
