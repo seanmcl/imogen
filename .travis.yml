@@ -10,4 +10,4 @@ notifications:
   email:
     recipients:
       - seanmcl@gmail.com
-  # irc: "chat.freenode.net#imogen"
+  irc: "chat.freenode.net#imogen"
