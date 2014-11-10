@@ -4,4 +4,8 @@
 /project/project/
 /project/target/
 /target/
-.idea
+/.idea/*
+/.idea_modules/*
+/project/*
+activator
+activator-launch-1.2.10.jar
