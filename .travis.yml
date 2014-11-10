@@ -1,0 +1,13 @@
+language: scala
+scala:
+  - 2.11.1
+jdk:
+  - openjdk7
+branches:
+  only:
+    - master
+notifications:
+  email:
+    recipients:
+      - seanmcl@gmail.com
+  # irc: "chat.freenode.net#imogen"
