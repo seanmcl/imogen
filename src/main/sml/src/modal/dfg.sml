@@ -3,14 +3,14 @@ val dfg : neg * {prob_name:string} -> unit
 fun dfg (t, {prob_name}) =
    let
       val rec dfg: t -> PP.t = fn
-         Atom p => P.Rel.pp p
+         imogen.Atom p => P.Rel.pp p
        | Top => $"true"
        | Bot => $"false"
        | Not p => %[$"not", PP.paren (dfg p)]
-       | And(p, q) => %[$"and", PP.paren (%[dfg p, $", ", dfg q])]
+       | imogen.And(p, q) => %[$"and", PP.paren (%[dfg p, $", ", dfg q])]
        | Or(p, q) => %[$"or", PP.paren (%[dfg p, $", ", dfg q])]
-       | Imp(p, q) => dfg (Or(Not p, q))
-       | Iff(p, q) => dfg (And(Imp(p, q), Imp(q, p)))
+       | imogen.Imp(p, q) => dfg (Or(Not p, q))
+       | Iff(p, q) => dfg (imogen.And(imogen.Imp(p, q), imogen.Imp(q, p)))
        | Box p => %[$"box(r1,", dfg p, $")"]
        | Dia p => %[$"dia(r1,", dfg p, $")"]
        | All _ => raise Unimplemented

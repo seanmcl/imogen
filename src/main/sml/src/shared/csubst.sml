@@ -51,7 +51,7 @@ structure CSubst :> CSubst = struct
       in
          List.foldr
             (fn ((x, y), t) =>
-                C.And (C.Atom (Rel.make (Pred.ueq, [x,y])), t))
+                C.imogen.And (C.imogen.Atom (Rel.make (Pred.ueq, [x,y])), t))
             t ts
       end
 

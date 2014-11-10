@@ -1,15 +1,15 @@
 (* Unpolarized formulas.  *)
 
-signature Formula = sig
+signature imogen.Formula = sig
    structure Export : sig
       datatype t =
-         Atom of Rel.t
+         imogen.Atom of Rel.t
        | Top
        | Bot
        | Not of t
-       | And of t * t
+       | imogen.And of t * t
        | Or of t * t
-       | Imp of t * t
+       | imogen.Imp of t * t
        | Iff of t * t
        | All of (Var.t * Sort.t) * t
        | Ex of (Var.t * Sort.t) * t

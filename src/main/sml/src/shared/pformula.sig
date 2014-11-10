@@ -37,8 +37,8 @@ signature PFormula = sig
    val destLolli: neg -> pos list * neg
 
    (* val closed: neg -> bool *)
-   val formulate: Formula.t -> neg
-   val parse: Parse.Formula.t -> neg
+   val formulate: imogen.Formula.t -> neg
+   val parse: Parse.imogen.Formula.t -> neg
 
    val ofString: string -> neg
 
@@ -68,7 +68,7 @@ signature PFormula = sig
 
    val preds: {pos:Pred.set, neg:Pred.set} func
 
-   val erase: Formula.t func
+   val erase: imogen.Formula.t func
 
    val apply: Subst.t -> transform
    val apply1: Var.t * Term.t -> transform

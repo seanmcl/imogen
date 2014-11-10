@@ -37,12 +37,12 @@ functor CmdShowFn (val summary : string
       let
          val (meta, f) = case (anons, !Args.inline) of
             ([], _) =>
-            (* (Meta.ofStdin (), Parse.Formula.ofStdin ()) *)
-            ([], Parse.Formula.ofStdin ())
+            (* (Meta.ofStdin (), Parse.imogen.Formula.ofStdin ()) *)
+            ([], Parse.imogen.Formula.ofStdin ())
           | ([file], false) =>
-            (Meta.ofFile file, Parse.Formula.ofFile file)
+            (Meta.ofFile file, Parse.imogen.Formula.ofFile file)
           | ([form], true) =>
-            (Meta.ofString form, Parse.Formula.ofString form)
+            (Meta.ofString form, Parse.imogen.Formula.ofString form)
           | _ => failwith "Too many args"
          val f1 = Frontend.parse f
          val f = Frontend.pformula f1

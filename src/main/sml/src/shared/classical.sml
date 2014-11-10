@@ -2,28 +2,28 @@
 (*** Classical logic ***)
 
 structure Classical :> Classical = struct
-   structure F = Formula
+   structure F = imogen.Formula
 
    open General
-   open Formula.Export
+   open imogen.Formula.Export
 
    val simplify =
       let
          fun simp1 fm = case fm of
             Not Bot => Top
           | Not Top => Bot
-          | And (Bot, _) => Bot
-          | And (_, Bot) => Bot
-          | And (Top, q) => q
-          | And (p, Top) => p
+          | imogen.And (Bot, _) => Bot
+          | imogen.And (_, Bot) => Bot
+          | imogen.And (Top, q) => q
+          | imogen.And (p, Top) => p
           | Or (Bot, q) => q
           | Or (p, Bot) => p
           | Or (Top, _) => Top
           | Or (_, Top) => Top
-          | Imp (Bot, _) => Top
-          | Imp (Top, q) => q
-          | Imp (_, Top) => Top
-          | Imp (p, Bot) => Not p
+          | imogen.Imp (Bot, _) => Top
+          | imogen.Imp (Top, q) => q
+          | imogen.Imp (_, Top) => Top
+          | imogen.Imp (p, Bot) => Not p
           | Iff (Top, q) => q
           | Iff (p, Top) => p
           | Iff (Bot, Bot) => Top
@@ -34,9 +34,9 @@ structure Classical :> Classical = struct
           | fm => fm
          val rec simp = fn
             Not p => simp1 (Not (simp p))
-          | And (p, q) => simp1 (And (simp p, simp q))
+          | imogen.And (p, q) => simp1 (imogen.And (simp p, simp q))
           | Or (p, q) => simp1 (Or (simp p, simp q))
-          | Imp (p, q) => simp1 (Imp (simp p, simp q))
+          | imogen.Imp (p, q) => simp1 (imogen.Imp (simp p, simp q))
           | Iff (p, q) => simp1 (Iff (simp p, simp q))
           | All (x, p) => simp1 (All (x, simp p))
           | Ex (x, p) => simp1 (Ex (x, simp p))
@@ -47,15 +47,15 @@ structure Classical :> Classical = struct
    val () = noWarnUnused (simplify)
 
    val rec nnf = fn
-      And (p, q) => And (nnf p, nnf q)
+      imogen.And (p, q) => imogen.And (nnf p, nnf q)
     | Or (p, q) => Or (nnf p, nnf q)
-    | Imp (p, q) => Or (nnf (Not p), nnf q)
-    | Iff (p, q) => Or (And (nnf p, nnf q), And (nnf (Not p), nnf (Not q)))
+    | imogen.Imp (p, q) => Or (nnf (Not p), nnf q)
+    | Iff (p, q) => Or (imogen.And (nnf p, nnf q), imogen.And (nnf (Not p), nnf (Not q)))
     | Not (Not p) => nnf p
-    | Not (And (p, q)) => Or (nnf (Not p), nnf (Not q))
-    | Not (Or (p, q)) => And (nnf (Not p), nnf (Not q))
-    | Not (Imp (p, q)) => And (nnf p, nnf (Not q))
-    | Not (Iff (p, q)) => Or (And (nnf p, nnf (Not q)), And (nnf (Not p), nnf q))
+    | Not (imogen.And (p, q)) => Or (nnf (Not p), nnf (Not q))
+    | Not (Or (p, q)) => imogen.And (nnf (Not p), nnf (Not q))
+    | Not (imogen.Imp (p, q)) => imogen.And (nnf p, nnf (Not q))
+    | Not (Iff (p, q)) => Or (imogen.And (nnf p, nnf (Not q)), imogen.And (nnf (Not p), nnf q))
     | All (x, p) => All (x, nnf p)
     | Ex (x, p) => Ex (x, nnf p)
     | Not (All (x, p)) => Ex (x, nnf (Not p))

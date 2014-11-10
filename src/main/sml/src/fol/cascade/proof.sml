@@ -141,9 +141,9 @@ structure Proof :> Proof = struct
                SOME (l, erase (unlabel r))
             else
                NONE) ctx
-         (* fun ppCtx2 ctx = &(map (fn (l, r) => %[ Label.pp l, $" : ", Formula.pp r]) ctx) *)
+         (* fun ppCtx2 ctx = &(map (fn (l, r) => %[ Label.pp l, $" : ", imogen.Formula.pp r]) ctx) *)
          val f = case cons of
-            Cons.Xi => Formula.Bot
+            Cons.Xi => imogen.Formula.Bot
           | Cons.P r => erase (unlabel r)
       in
          (* Log.trace (fn () => *)
@@ -152,7 +152,7 @@ structure Proof :> Proof = struct
          (*              , %[$"node: ", Node.pp node] *)
          (*              , %[$"sc  : ", SC.pp sc] *)
          (*              , %[$"nd  : ", ND.pp nd] *)
-         (*              , %[$"gl  : ", Formula.pp f] *)
+         (*              , %[$"gl  : ", imogen.Formula.pp f] *)
          (*              (\* , %[$"ctx1: ", ppCtx1 ctx] *\) *)
          (*              , %[$"ctx2: ", ppCtx2 ctx']]]]); *)
          ND.check {eq = Term.eq, ctx = ctx', term = nd, form = f}

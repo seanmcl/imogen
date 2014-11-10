@@ -1,5 +1,5 @@
 
-signature Parser = sig
+signature imogen.Parser = sig
    structure Var : sig
       val ofString : string -> Types.Var.t
    end
@@ -24,10 +24,10 @@ signature Parser = sig
       val ofString : string -> Types.Rel.t
    end
 
-   structure Formula : sig
-      val ofString : string -> Types.Formula.t
-      val ofFile : string -> Types.Formula.t
-      val ofStdin : unit -> Types.Formula.t
+   structure imogen.Formula : sig
+      val ofString : string -> Types.imogen.Formula.t
+      val ofFile : string -> Types.imogen.Formula.t
+      val ofStdin : unit -> Types.imogen.Formula.t
    end
 
    structure Subst : sig

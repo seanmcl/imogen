@@ -70,7 +70,7 @@ signature Param = sig
    val num : t -> int
 end
 
-signature Atom = sig
+signature imogen.Atom = sig
    structure Var : Var
    structure Param : Param
    type t = (Var.t, Param.t) Either.t

@@ -101,7 +101,7 @@ end = struct
            fun cformula c =
               let
                  fun ffn (f, g) = case f of
-                    C.Atom r =>
+                    C.imogen.Atom r =>
                     let in
                        case Rel.dest r of
                           (p, [l, r]) =>
@@ -139,13 +139,13 @@ end = struct
               fun v g = fn
                  Top => true
                | Bot => false
-               | And (t1, t2) => v g t1 andalso v g t2
+               | imogen.And (t1, t2) => v g t1 andalso v g t2
                | Ex ((x, _), t) =>
                  List.exists (fn w => v g (C.apply1 (t, (x, w)))) (G.worlds g)
                | Hole => failwith "Valid: constraint has a hole."
-               | Atom r => G.hasEdge g (destAtm r)
+               | imogen.Atom r => G.hasEdge g (destAtm r)
                | All ((w, _), t) => v (G.add (g, Term.Var w)) t
-               | Imp (r, t) =>
+               | imogen.Imp (r, t) =>
                  let
                     val (w1, w2) = destAtm r
                  in
@@ -168,17 +168,17 @@ end = struct
               fun e (f1, g) f2 =
                  case f1 of
                     Top => valid g f2
-                  | Atom r => valid (G.extend g (destAtm r)) f2
+                  | imogen.Atom r => valid (G.extend g (destAtm r)) f2
                   | _ =>
                     case f2 of
                        Top => true
                      | Bot => inconsistent f1
-                     | And (t1, t2) => e (f1, g) t1 andalso e (f1, g) t2
+                     | imogen.And (t1, t2) => e (f1, g) t1 andalso e (f1, g) t2
                      | Ex ((x, _), t) =>
                        List.exists (fn w => e (f1, g) (C.apply1 (t, (x, w)))) (G.worlds g)
                      | Hole => failwith "Entails: constraint has a hole."
-                     | Atom r => G.hasEdge g (destAtm r)
-                     | Imp (r, t) => e (f1, G.extend g (destAtm r)) t
+                     | imogen.Atom r => G.hasEdge g (destAtm r)
+                     | imogen.Imp (r, t) => e (f1, G.extend g (destAtm r)) t
                      | All ((x, _), t) => e (f1, G.add (g, Term.Var x)) t
            in
               fn {entailer, entailed, global} =>

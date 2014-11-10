@@ -224,7 +224,7 @@ structure Focus :> Focus = struct
                let
                   val (seqs, fresh, psi, recon) =
                      stabilizeL (gamma, delta, r)
-                  val psi = C.Imp (rel, psi)
+                  val psi = C.imogen.Imp (rel, psi)
                in
                   (seqs, fresh, psi, recon)
                end
@@ -252,7 +252,7 @@ structure Focus :> Focus = struct
                val (seqs1, fresh1, psi1, recon1) = stabilizeL (gamma, a :: delta, r)
                val (seqs2, fresh2, psi2, recon2) = stabilizeL (gamma, b :: delta, r)
                val fresh = PSet.union(fresh1, fresh2)
-               val psi = C.And (psi1, psi2)
+               val psi = C.imogen.And (psi1, psi2)
             in
                ( seqs1 @ seqs2, fresh, psi
                , P.mapr2 (fn (d,d') => SC.PlusL (lf, (la,d), (lb,d')))
@@ -295,7 +295,7 @@ structure Focus :> Focus = struct
             val (hyps1, fresh1, psi1, recon1) = stabilizeR (gamma, delta, a)
             val (hyps2, fresh2, psi2, recon2) = stabilizeR (gamma, delta, b)
             val fresh = PSet.union(fresh1, fresh2)
-            val psi = C.And (psi1, psi2)
+            val psi = C.imogen.And (psi1, psi2)
          in
             (hyps1 @ hyps2, fresh, psi, P.mapr2 SC.WithR (recon1, recon2))
          end
@@ -335,7 +335,7 @@ structure Focus :> Focus = struct
                 | _ => (Neg b' :: gamma, delta)
                val (hyps2, fresh2, psi2, recon2) = stabilizeR (gamma2, delta2, a')
                val fresh = PSet.union(fresh1, fresh2)
-               val psi = C.And (psi1, psi2)
+               val psi = C.imogen.And (psi1, psi2)
                fun rleft r = case F.neg F.expose a of
                   F.Up _ => SC.UpR r
                 | _ => r
@@ -356,7 +356,7 @@ structure Focus :> Focus = struct
                val (hyps2, fresh2, psi2, recon2) =
                   stabilizeR (Neg b :: gamma, delta, a)
                val fresh = PSet.union(fresh1, fresh2)
-               val psi = C.And (psi1, psi2)
+               val psi = C.imogen.And (psi1, psi2)
                fun rfun (d1, d2) = SC.BiLolliR ((la, d1), (lb, d2))
             in
                (hyps1 @ hyps2, fresh, psi, P.mapr2 rfun (recon1, recon2))
@@ -385,7 +385,7 @@ structure Focus :> Focus = struct
          case F.pos F.expose f' of
             F.PAtom rel =>
             if Rel.isConstr rel then
-               [ ([], ([], f), PSet.empty, C.Atom rel, P.Leaf (SC.Init rel)) ]
+               [ ([], ([], f), PSet.empty, C.imogen.Atom rel, P.Leaf (SC.Init rel)) ]
             else if Pred.Set.mem (atoms, Rel.pred rel)
             then [([], ([PosAtom f'], f), PSet.empty, C.Top, P.Leaf (SC.Init rel))]
             else []
@@ -398,7 +398,7 @@ structure Focus :> Focus = struct
                   ( hyps1 @ hyps2
                   , (ants1 @ ants2, f)
                   , PSet.union (fresh1, fresh2)
-                  , C.And (psi1, psi2)
+                  , C.imogen.And (psi1, psi2)
                   , P.mapr2 SC.TensorR (recon1,recon2))
             in
                map merge (List.allPairs Fun.id (rs1, rs2))
@@ -484,7 +484,7 @@ structure Focus :> Focus = struct
                              (hyps2, (ants2, _), fresh2, psi2, recon2)) =
                      let
                         val fresh = PSet.union (fresh1, fresh2)
-                        val psi = C.And (psi1, psi2)
+                        val psi = C.imogen.And (psi1, psi2)
                         val hyps = hyps1 @ hyps2
                         val ants = f :: filterAnts (lb, ants1 @ ants2)
                         val recon =
@@ -510,7 +510,7 @@ structure Focus :> Focus = struct
                         val hyps' = hyps @ a_hyps
                         val ants' = f :: filterAnts (lab b, ants)
                         val fresh' = Param.Set.union (fresh, a_fresh)
-                        val psi' = C.And (psi, a_psi)
+                        val psi' = C.imogen.And (psi, a_psi)
                         val recon' = P.mapr2 (fn (d, d') => SC.BiLolliL1 ((lab b, d), d', lf))
                                         (recon, a_recon)
                      in
@@ -521,7 +521,7 @@ structure Focus :> Focus = struct
                         val hyps' = hyps @ b_hyps
                         val ants' = f :: filterAnts (lab a', ants)
                         val fresh' = Param.Set.union (fresh, b_fresh)
-                        val psi' = C.And (psi, b_psi)
+                        val psi' = C.imogen.And (psi, b_psi)
                         val recon' = P.mapr2 (fn (d, d') => SC.BiLolliL2 ((lab a', d), d', lf))
                                         (recon, b_recon)
                      in
@@ -573,7 +573,7 @@ structure Focus :> Focus = struct
          case F.pos F.expose f of
             F.PAtom rel =>
             if Rel.isConstr rel then
-               stabL (C.And (C.Atom rel, psi), fresh, PosAtom f :: gamma, delta, r)
+               stabL (C.imogen.And (C.imogen.Atom rel, psi), fresh, PosAtom f :: gamma, delta, r)
             else
                stabL (psi, fresh, PosAtom f :: gamma, delta, r)
           | F.Tensor (a,b) =>

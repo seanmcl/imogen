@@ -1,6 +1,6 @@
 
 structure Linear = struct
-   structure Frontend = Formula
+   structure Frontend = imogen.Formula
    structure World = World
    val entails = Entails.f
    val simp = Entails.simp

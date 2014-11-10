@@ -12,7 +12,7 @@ val unicode_le = "\226\137\164" (* ≤ : u2264 *)
 
 %term
 
-(* Parser utils *)
+(* imogen.Parser utils *)
 
   PARSE_VAR
 | PARSE_PARAM
@@ -88,7 +88,7 @@ val unicode_le = "\226\137\164" (* ≤ : u2264 *)
 | bindlist of T.Subst.one list
 | cons of T.Rel.t option
 | const of T.Const.t
-| form of T.Formula.t
+| form of T.imogen.Formula.t
 | func of T.Func.t
 | id of string * { lower : bool }
 | param of T.Param.t
@@ -174,23 +174,23 @@ bindlist
   | bind COMMA bindlist              ( bind :: bindlist )
 
 form
-  : const                            ( T.Formula.Const const )
-  | FUNC_POS_PRED_ID COLONCOLON form ( T.Formula.Label (FUNC_POS_PRED_ID, form))
-  | form AND form                    ( T.Formula.Binop (T.Binop.And, form1, form2) )
-  | form AMP form                    ( T.Formula.Binop (T.Binop.With, form1, form2) )
-  | form OTIMES form                 ( T.Formula.Binop (T.Binop.Tensor, form1, form2) )
-  | form OR form                     ( T.Formula.Binop (T.Binop.Or, form1, form2) )
-  | form IMP form                    ( T.Formula.Binop (T.Binop.Imp, form1, form2) )
-  | form LOLLI form                  ( T.Formula.Binop (T.Binop.Lolli, form1, form2) )
-  | form ORD_IMP1 form               ( T.Formula.Binop (T.Binop.OrdImp1, form1, form2) )
-  | form ORD_IMP2 form               ( T.Formula.Binop (T.Binop.OrdImp2, form1, form2) )
-  | form LEFT_IMP form               ( T.Formula.Binop (T.Binop.Imp, form2, form1) )
-  | form LEFT_LOLLI form             ( T.Formula.Binop (T.Binop.Lolli, form2, form1) )
-  | form IFF form                    ( T.Formula.Binop (T.Binop.Iff, form1, form2) )
-  | form BI_LOLLI form               ( T.Formula.Binop (T.Binop.BiLolli, form1, form2) )
-  | quant varbd_list DOT form        ( foldr (fn (bnd, f) => T.Formula.Quant (quant, bnd, f)) form varbd_list )
-  | unop form %prec UNOP_PREC        ( T.Formula.Unop (unop, form) )
-  | rel                              ( T.Formula.Rel rel )
+  : const                            ( T.imogen.Formula.Const const )
+  | FUNC_POS_PRED_ID COLONCOLON form ( T.imogen.Formula.Label (FUNC_POS_PRED_ID, form))
+  | form AND form                    ( T.imogen.Formula.Binop (T.Binop.imogen.And, form1, form2) )
+  | form AMP form                    ( T.imogen.Formula.Binop (T.Binop.With, form1, form2) )
+  | form OTIMES form                 ( T.imogen.Formula.Binop (T.Binop.Tensor, form1, form2) )
+  | form OR form                     ( T.imogen.Formula.Binop (T.Binop.Or, form1, form2) )
+  | form IMP form                    ( T.imogen.Formula.Binop (T.Binop.imogen.Imp, form1, form2) )
+  | form LOLLI form                  ( T.imogen.Formula.Binop (T.Binop.Lolli, form1, form2) )
+  | form ORD_IMP1 form               ( T.imogen.Formula.Binop (T.Binop.OrdImp1, form1, form2) )
+  | form ORD_IMP2 form               ( T.imogen.Formula.Binop (T.Binop.OrdImp2, form1, form2) )
+  | form LEFT_IMP form               ( T.imogen.Formula.Binop (T.Binop.imogen.Imp, form2, form1) )
+  | form LEFT_LOLLI form             ( T.imogen.Formula.Binop (T.Binop.Lolli, form2, form1) )
+  | form IFF form                    ( T.imogen.Formula.Binop (T.Binop.Iff, form1, form2) )
+  | form BI_LOLLI form               ( T.imogen.Formula.Binop (T.Binop.BiLolli, form1, form2) )
+  | quant varbd_list DOT form        ( foldr (fn (bnd, f) => T.imogen.Formula.Quant (quant, bnd, f)) form varbd_list )
+  | unop form %prec UNOP_PREC        ( T.imogen.Formula.Unop (unop, form) )
+  | rel                              ( T.imogen.Formula.Rel rel )
   | LPAREN form RPAREN               ( form )
 
 const

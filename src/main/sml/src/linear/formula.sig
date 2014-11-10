@@ -1,5 +1,5 @@
 
-signature Formula = sig
+signature imogen.Formula = sig
    datatype pos =
       PAtom of Term.t
     | Tensor of pos * pos

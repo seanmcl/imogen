@@ -2,16 +2,16 @@
 structure AtomSplaySet =
    OrdSetFn
       (struct
-         type t = Atom.atom
-         val compare = Atom.compare
-         val pp = PP.string o Atom.toString
+         type t = imogen.Atom.atom
+         val compare = imogen.Atom.compare
+         val pp = PP.string o imogen.Atom.toString
       end)
 
 structure AtomSplayMap =
    OrdMapFn
       (struct
-         type t = Atom.atom
-         val compare = Atom.compare
-         val pp = PP.string o Atom.toString
+         type t = imogen.Atom.atom
+         val compare = imogen.Atom.compare
+         val pp = PP.string o imogen.Atom.toString
          val () = ignore (pp) (* MLton warning *)
       end)

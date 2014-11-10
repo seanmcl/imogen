@@ -16,7 +16,7 @@
 
 signature Parsing = sig
 
-   (* Parser with token type 't, result type 'a *)
+   (* imogen.Parser with token type 't, result type 'a *)
    type ('a,'t) t
 
    (* succeed with given value *)

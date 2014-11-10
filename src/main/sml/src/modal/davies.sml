@@ -5,7 +5,7 @@ structure Davies :> Davies = struct
    structure S = Sort
    structure F = PFormula
    structure P = Parse
-   structure PF = Parse.Formula
+   structure PF = Parse.imogen.Formula
    structure T = Term
 
    open General
@@ -15,7 +15,7 @@ structure Davies :> Davies = struct
       PAtom of Term.t
     | One
     | Zero
-    | And of pos * pos
+    | imogen.And of pos * pos
     | Or of pos * pos
     | Box of neg
     | Ex of Var.t * pos
@@ -24,7 +24,7 @@ structure Davies :> Davies = struct
       NAtom of Term.t
     | Top
     | With of neg * neg
-    | Imp of pos * neg
+    | imogen.Imp of pos * neg
     | Not of pos
     | Iff of neg * neg
     | Dia of pos
@@ -64,9 +64,9 @@ structure Davies :> Davies = struct
             end
           | With (a, b) => F.With (neg w a, neg w b)
           | Top => F.Top
-          | Imp (a, b) => F.Lolli (pos w a, neg w b)
-          | Not a => neg w (Imp (a, Up Zero))
-          | Iff (a, b) => neg w (With (Imp (Down a, b), Imp (Down b, a)))
+          | imogen.Imp (a, b) => F.Lolli (pos w a, neg w b)
+          | Not a => neg w (imogen.Imp (a, Up Zero))
+          | Iff (a, b) => neg w (With (imogen.Imp (Down a, b), imogen.Imp (Down b, a)))
           | Dia a =>
             let
                val f = Var.next ()
@@ -110,7 +110,7 @@ structure Davies :> Davies = struct
             PAtom t => F.PAtom (Rel.make (Pred.Modal.patom, [t, w]))
           | One => F.One
           | Zero => F.Zero
-          | And (p, q) => F.Tensor (pos w p, pos w q)
+          | imogen.And (p, q) => F.Tensor (pos w p, pos w q)
           | Or (p, q) => F.Sum (pos w p, pos w q)
           | Box p =>
             let
@@ -134,19 +134,19 @@ structure Davies :> Davies = struct
    val pp =
       let
          val precP = fn
-            And _ => Prec.And
+            imogen.And _ => Prec.imogen.And
           | Or _ => Prec.Or
           | Down _ => Prec.Not
           | Box _ => Prec.Not
           | Ex _ => Prec.Quant
-          | _ => Prec.Atom
+          | _ => Prec.imogen.Atom
          val precN = fn
-            With _ => Prec.And
-          | Imp _ => Prec.Imp
+            With _ => Prec.imogen.And
+          | imogen.Imp _ => Prec.imogen.Imp
           | Up _ => Prec.Not
           | Dia _ => Prec.Not
           | All _ => Prec.Quant
-          | _ => Prec.Atom
+          | _ => Prec.imogen.Atom
          val rec destAll = fn
             All (x, b) =>
             let
@@ -167,12 +167,12 @@ structure Davies :> Davies = struct
             PAtom r => Term.pp r
           | One => $U.top
           | Zero => $U.bot
-          | And (p, q) =>
+          | imogen.And (p, q) =>
             let
                val p' = pos p
-               val p' = if precP p <= Prec.And then PP.paren p' else p'
+               val p' = if precP p <= Prec.imogen.And then PP.paren p' else p'
                val q' = pos q
-               val q' = if precP q < Prec.And then PP.paren q' else q'
+               val q' = if precP q < Prec.imogen.And then PP.paren q' else q'
             in
                PP.hang (%[p', \, $U.wedge]) 0 q'
             end
@@ -213,19 +213,19 @@ structure Davies :> Davies = struct
           | With (n, m) =>
             let
                val n' = neg n
-               val n' = if precN n <= Prec.And then PP.paren n' else n'
+               val n' = if precN n <= Prec.imogen.And then PP.paren n' else n'
                val m' = neg m
-               val m' = if precN m < Prec.And then PP.paren m' else m'
+               val m' = if precN m < Prec.imogen.And then PP.paren m' else m'
             in
                PP.hang (%[n', \, $"&"]) 0 m'
             end
           | Top => $U.top
-          | Imp (p, n) =>
+          | imogen.Imp (p, n) =>
             let
                val p' = pos p
-               val p' = if precP p <= Prec.Imp then PP.paren p' else p'
+               val p' = if precP p <= Prec.imogen.Imp then PP.paren p' else p'
                val n' = neg n
-               val n' = if precN n < Prec.Imp then PP.paren n' else n'
+               val n' = if precN n < Prec.imogen.Imp then PP.paren n' else n'
             in
                PP.hang (%[ p', \, $U.sup]) 0 n'
             end
@@ -239,9 +239,9 @@ structure Davies :> Davies = struct
           | Iff (a, b) =>
             let
                val a' = neg a
-               val a' = if precN a <= Prec.Imp then PP.paren a' else a'
+               val a' = if precN a <= Prec.imogen.Imp then PP.paren a' else a'
                val b' = neg b
-               val b' = if precN b < Prec.Imp then PP.paren b' else b'
+               val b' = if precN b < Prec.imogen.Imp then PP.paren b' else b'
             in
                PP.hang (%[ a', \, $U.sup]) 0 b'
             end
@@ -298,8 +298,8 @@ structure Davies :> Davies = struct
           | PF.Const P.Const.Zero => Zero
           | PF.Unop (P.Unop.Down, n) => Down (neg n)
           | PF.Unop (P.Unop.Box, n) => Box (neg n)
-          | PF.Binop (P.Binop.And, p, q) => And (pos p, pos q)
-          | PF.Binop (P.Binop.Tensor, p, q) => And (pos p, pos q)
+          | PF.Binop (P.Binop.imogen.And, p, q) => imogen.And (pos p, pos q)
+          | PF.Binop (P.Binop.Tensor, p, q) => imogen.And (pos p, pos q)
           | PF.Binop (P.Binop.Or, p, q) => Or (pos p, pos q)
           | PF.Quant (P.Quant.Ex, (x, _), p) =>
             Ex (Var.ofString x, pos p)
@@ -318,14 +318,14 @@ structure Davies :> Davies = struct
           | PF.Unop (P.Unop.Not, n) => Not (pos n)
           | PF.Unop (P.Unop.Dia, p) => Dia (pos p)
           | PF.Binop (P.Binop.With, p, q) => With (neg p, neg q)
-          | PF.Binop (P.Binop.Imp, p, q) => Imp (pos p, neg q)
-          | PF.Binop (P.Binop.Imp', p, q) => Imp (pos q, neg p)
+          | PF.Binop (P.Binop.imogen.Imp, p, q) => imogen.Imp (pos p, neg q)
+          | PF.Binop (P.Binop.imogen.Imp', p, q) => imogen.Imp (pos q, neg p)
           | PF.Binop (P.Binop.Iff, p, q) =>
             let
                val p = neg p
                val q = neg q
             in
-               With (Imp (Down p, q), Imp (Down q, p))
+               With (imogen.Imp (Down p, q), imogen.Imp (Down q, p))
             end
           | PF.Quant (P.Quant.All, (x, _), p) =>
             All (Var.ofString x, neg p)

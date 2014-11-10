@@ -24,8 +24,8 @@ output_imogen_signed_literal(++('$tptp_equal'(X,Y))) :-
 output_imogen_signed_literal(++('$tptp_not_equal'(X,Y))) :-
     !, write('¬ ('), write(X), write(' = '), write(Y), write(')').
 
-output_imogen_signed_literal(--Atom):- write(Atom).
-output_imogen_signed_literal(++Atom):- write(Atom).
+output_imogen_signed_literal(--imogen.Atom):- write(imogen.Atom).
+output_imogen_signed_literal(++imogen.Atom):- write(imogen.Atom).
 
 %----------------------------------------------------------------------
 %----Print out the literals of a clause in imogen format.
@@ -102,8 +102,8 @@ output_imogen_fof($false) :- !, write('⊥').
 output_imogen_fof('$tptp_equal'( A, B )) :-
    !, write( '( ' ), write( A ), write( ' = ' ), write( B ), write( ' )' ).
 
-output_imogen_fof(Atom) :-
-    print(Atom).
+output_imogen_fof(imogen.Atom) :-
+    print(imogen.Atom).
 
 output_imogen_vars([]) :- !.
 output_imogen_vars([X|Xs]) :- write(' '), print(X), output_imogen_vars(Xs).
@@ -114,12 +114,12 @@ output_imogen_vars(X, Xs) :- print(X), output_imogen_vars(Xs).
 output_imogen_fo_formulae([]).
 
 % for TPTP-v3.1.0 or later
-output_imogen_fo_formulae([fof(Name,Status,Formula)|RestOfFormulae]) :-
+output_imogen_fo_formulae([fof(Name,Status,imogen.Formula)|RestOfFormulae]) :-
     ((Status==conjecture, RestOfFormulae \= []) ->
-      (append(RestOfFormulae,[fof(Name,Status,Formula)],Formulae),
+      (append(RestOfFormulae,[fof(Name,Status,imogen.Formula)],Formulae),
        output_imogen_fo_formulae(Formulae))) ;
       (write('% '), write(Name), write(', '), write(Status), write('.'), nl,
-       write('('), output_imogen_fof(Formula), write(')'),
+       write('('), output_imogen_fof(imogen.Formula), write(')'),
        (RestOfFormulae == [] -> true;
         (((RestOfFormulae=[fof(_,conjecture,_)]  ->
            (nl, nl, write('  ⊃'), nl, nl));
@@ -127,9 +127,9 @@ output_imogen_fo_formulae([fof(Name,Status,Formula)|RestOfFormulae]) :-
           output_imogen_fo_formulae(RestOfFormulae)))).
 
 % for TPTP-v2.7.0 or earlier
-output_imogen_fo_formulae([input_formula(Name,Status,Formula)|
+output_imogen_fo_formulae([input_formula(Name,Status,imogen.Formula)|
 RestOfFormulae]):-
-    output_imogen_fo_formulae([fof(Name,Status,Formula)|RestOfFormulae]).
+    output_imogen_fo_formulae([fof(Name,Status,imogen.Formula)|RestOfFormulae]).
 
 %----------------------------------------------------------------------
 %----Print out the list of input formulae as a first-order formula in

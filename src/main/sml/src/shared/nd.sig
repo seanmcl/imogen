@@ -49,7 +49,7 @@ signature ND = sig
     | Fst of elim
     | Snd of elim
     | App of elim * intro
-    | Ascribe of intro * Formula.t
+    | Ascribe of intro * imogen.Formula.t
     | QApp of elim * Term.t
 
    type t = intro
@@ -67,13 +67,13 @@ signature ND = sig
       raise an exn if the term doesn't prove the given type. *)
    val check:
       { eq : Term.t * Term.t -> bool
-      , ctx : (Label.t * Formula.t) list
+      , ctx : (Label.t * imogen.Formula.t) list
       , term : t
-      , form : Formula.t } -> unit
+      , form : imogen.Formula.t } -> unit
 
    (* label(nd, f): try to use the labels of f as variable names in nd.
       Assumes bound variables are unique. *)
-   val label: t * Formula.t -> t
+   val label: t * imogen.Formula.t -> t
 
    val pp: t -> PP.t
 

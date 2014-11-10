@@ -6,7 +6,7 @@ structure Bug = struct
    open General
    open PP.Ops
 
-   val parse = Parse.Formula.ofString
+   val parse = Parse.imogen.Formula.ofString
    val bugs = "(exists Y. forall X. p(X, Y)) -> (forall X. exists Y. p(X, Y))"
    val bugs = "(exists X. p(X)) => (exists X. p(X))"
    val bugs = "(forall X Y. ( p(X) => p(Y) )) | false"
@@ -99,7 +99,7 @@ structure Bug = struct
          val _ = Log.setLevel Log.Debug
          val _ = Log.setLevel Log.Trace
 
-         val f = Parse.Formula.ofString bugs
+         val f = Parse.imogen.Formula.ofString bugs
          val f = F.parse f
          val f = F.neg F.separate f
          val _ = Parameters.Prover.statusInterval := 1
@@ -136,10 +136,10 @@ structure Bug = struct
 (*       (\* val _ = Log.setLevel Log.Trace *\) *)
 (*       (\* val _ = Log.setLevel Log.Debug *\) *)
 (*       val _ = Log.setLevel Log.Info *)
-(*       (\* val _ = PP.ppl (Parse.Formula.pp f) *\) *)
+(*       (\* val _ = PP.ppl (Parse.imogen.Formula.pp f) *\) *)
 (*       fun doit s = *)
 (*          let *)
-(*             val f = Parse.Formula.ofString s *)
+(*             val f = Parse.imogen.Formula.ofString s *)
 (*             val f = F.parse f *)
 (*             val ps = H.apply heuristic (f, {maxSecs = 1000}) *)
 (*          in *)

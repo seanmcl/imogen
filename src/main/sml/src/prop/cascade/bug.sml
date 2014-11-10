@@ -7,7 +7,7 @@ structure Bug = struct
    open General
    open PP.Ops
 
-   val parse = Parse.Formula.ofString
+   val parse = Parse.imogen.Formula.ofString
    val bugs = "( true | true ) => p4 => p4"
    val bugs = "( true | true ) => p2 => p2"
    val bugs = " ( p1 | p2 ) \
@@ -67,7 +67,7 @@ structure Bug = struct
          val _ = Log.setLevel Log.Trace
          val _ = Log.setLevel Log.Info
          (* val _ = Parameters.Rules.useConflicts := false *)
-         val f = Parse.Formula.ofString bugs
+         val f = Parse.imogen.Formula.ofString bugs
          val f = PFormula.parse f
          val f' = LFormula.make f
          val _ = Parameters.Prover.statusInterval := 1
@@ -105,10 +105,10 @@ structure Bug = struct
 (*       val _ = Parameters.Db.useRuleSubsumption := false *)
 (*       val _ = Parameters.Rules.useDisableBranchOnExactMatch := false *)
 (*       val _ = Parameters.Rules.usePruning := false *)
-(*       (\* val _ = PP.ppl (Parse.Formula.pp f) *\) *)
+(*       (\* val _ = PP.ppl (Parse.imogen.Formula.pp f) *\) *)
 (*       fun doit s = *)
 (*          let *)
-(*             val f = Parse.Formula.ofString s *)
+(*             val f = Parse.imogen.Formula.ofString s *)
 (*             val f = PFormula.parse f *)
 (*             val ps = H.apply heuristic (f, {maxSecs = 1000}) *)
 (*          in *)
