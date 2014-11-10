@@ -1,8 +1,5 @@
 
-# Imogen
-
-## Status
-[![Build Status](https://travis-ci.org/seanmcl/imogen.svg?branch=master)](https://travis-ci.org/seanmcl/imogen.svg?branch=master)
+# Imogen [![Build Status](https://travis-ci.org/seanmcl/imogen.svg?branch=master)](https://travis-ci.org/seanmcl/imogen.svg?branch=master)
 
 ## Description
 
