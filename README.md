@@ -1,4 +1,10 @@
+
 # Imogen
+
+## Status
+[![Build Status](https://travis-ci.org/seanmcl/imogen.svg?branch=master)](https://travis-ci.org/seanmcl/imogen.svg?branch=master)
+
+## Description
 
 Imogen is a theorem prover for intuitionistic logic.  There are currently three versions:
 - SML
