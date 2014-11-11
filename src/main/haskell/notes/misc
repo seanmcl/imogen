@@ -1,0 +1,8 @@
+
+{- 
+Gracenotes:
+e.g. you can easily define 
+newtype MyReader a = MyReader (ReaderT MyEnv IO a) 
+  deriving (MonadIO), 
+with GeneralizedNewtypeDeriving
+-} 

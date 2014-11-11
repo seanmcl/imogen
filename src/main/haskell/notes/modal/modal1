@@ -1,0 +1,211 @@
+-*- Mode: Literate-Haskell -*-
+
+-- -----------------------------------------------------------------------------
+--  Dependency                                                                  
+-- -----------------------------------------------------------------------------
+
+ ⊤ | p @ π ---> p @ π 
+
+ ∃ π2. π ≡ π1 ⋆ π2 | □ p @ π1 ---> p @ π 
+
+ By the (intuitionistically true) identitiy  (∃ x. p(x)) ⊃ q ⇔ ∀ x. p(x) ⊃ q
+ when x does not occur free in q, whenever we can solve a constraint of the
+ form ∃ π. ψ, we can apply the substitution.  You can think of the 
+ ∀ as quantifying over the entire sequent.
+
+ So the above simplifies to
+
+ ⊤ | □ p @ π1 ---> p @ π1 ⋆ π2
+
+ ∀ e1. ∃ π2.  π1 ⋆ π2 ≡ π3 ⋆ e1 
+   | □ p @ π1 ---> □ p @ π3
+
+ This constraint is not solvable at the moment.
+
+ ∀ e2. ∃ π3. π3 ≡ π4 ⋆ e2 ∧ ∀ e1. ∃ π2.  π1 ⋆ π2 ≡ π3 ⋆ e1 
+   | □ p @ π1 ---> □ □ p @ π4
+
+ Again, not solvable
+
+ ∃π4. π1 ≡ π4 ∧ ∀ e2. ∃ π3. π3 ≡ π4 ⋆ e2 ∧ ∀ e1. ∃ π2.  π1 ⋆ π2 ≡ π3 ⋆ e1 
+   | □ p @ π1 ---> □ □ p @ π1
+
+ This can not be simplified since if we applied the substitution π4 ↦ π1
+ under the binder ∀ e2. ... we'd allow π1 to depend on e2, but π1 can
+ depend on neither e1 nor e2.  
+
+ ∃ π1. π1 ≡ ε ∧ ∃ π4. π1 ≡ π4 ∧ ∀ e2. ∃ π3. π3 ≡ π4 ⋆ e2 ∧ ∀ e1. ∃ π2.  π1 ⋆ π2 ≡ π3 ⋆ e1 
+   | □ p @ ε ---> □ □ p @ ε
+
+ Now we're getting somewhere. We can substitute π1 ↦ ε since ε is a constant, giving
+
+ ∃ π4. ε ≡ π4 ∧ ∀ e2. ∃ π3. π3 ≡ π4 ⋆ e2 ∧ ∀ e1. ∃ π2.  ε ⋆ π2 ≡ π3 ⋆ e1 
+
+ Then the same with π4.
+
+ ∀ e2. ∃ π3. π3 ≡ ε ⋆ e2 ∧ ∀ e1. ∃ π2.  ε ⋆ π2 ≡ π3 ⋆ e1 
+
+ Now we can subsitute π3 ↦ ε ⋆ e2, also a constant
+
+ ∀ e2. ∀ e1. ∃ π2.  ε ⋆ π2 ≡ (ε · e2) ⋆ e1 
+
+ And now we can solve the unification problem
+
+ ε ⋆ π2 ≡ (ε · e2) ⋆ e1 
+
+ yielding 
+
+ π2 ↦ e2 ⋆ e1 in S4.
+
+-- -----------------------------------------------------------------------------
+--  A better way                                                                
+-- -----------------------------------------------------------------------------
+
+ It may be possible to do things this way, but it is incredible awkward.  
+ Instead, we will record which universally bound variables a path variable
+ is allowed to depend on.  Then we can just solve the unification problem
+ and throw out any unifiers that violate the dependencies.
+
+ π[] ; 
+ ⊤ 
+   | p @ π ---> p @ π 
+
+ π[], π1[], π2[] ; 
+ π ≡ π1 ⋆ π2
+   | □ p @ π1 ---> p @ π
+
+ π[e1], π1[], π2[e1], π3[]; 
+ π ≡ π1 ⋆ π2 ∧ π ≡ π3 ⋆ e1
+   | □ p @ π1 ---> □ p @ π3
+
+ π[e1, e2], π1[], π2[e1, e2], π3[e2], π4[] ; 
+ π ≡ π1 ⋆ π2 ∧ π ≡ π3 ⋆ e1 ∧ π3 ≡ π4 ⋆ e2
+   | □ p @ π1 ---> □ □ p @ π4
+
+ π[e1, e2], π1[], π2[e1, e2], π3[e2], π4[] ; 
+ π ≡ π1 ⋆ π2 ∧ π ≡ π3 ⋆ e1 ∧ π3 ≡ π4 ⋆ e2 ∧ π1 ≡ π4
+   | · ---> □ p ⊃ □ □ p @ π1
+
+ π[e1, e2], π1[], π2[e1, e2], π3[e2], π4[] ; 
+ π ≡ π1 ⋆ π2 ∧ π ≡ π3 ⋆ e1 ∧ π3 ≡ π4 ⋆ e2 ∧ π1 ≡ π4 ∧ π1 ≡ ε
+   | · ---> □ p ⊃ □ □ p @ ε
+
+ π1 ↦ ε 
+ π4 ↦ ε 
+ π3 ↦ ε ⋆ e2
+ π ↦ (ε ⋆ e2) ⋆ e1
+
+ (ε ⋆ e2) ⋆ e1 ≡ ε ⋆ π2
+
+ π2 ↦ e2 ⋆ e1
+
+-- -----------------------------------------------------------------------------
+--  Even better                                                                 
+-- -----------------------------------------------------------------------------
+
+ We can make this better by simplifying each sequent.
+ When we do a substitution π ↦ π', we just need to be sure
+ that the union of the dependencies of π' is a subset of the 
+ dependencies of π.
+
+ π[] ; 
+ ⊤ 
+   | p @ π ---> p @ π 
+
+ π1[], π2[] ; 
+    | □ p @ π1 ---> p @ π1 ⋆ π2
+
+ π1[], π2[e1], π3[]; 
+ π1 ⋆ π2 ≡ π3 ⋆ e1
+   | □ p @ π1 ---> □ p @ π3
+
+ π1[], π2[e1, e2], π4[] ; 
+ π1 ⋆ π2 ≡ (π4 ⋆ e2) ⋆ e1
+   | □ p @ π1 ---> □ □ p @ π4
+
+ π1[], π2[e1, e2] ;
+ π1 ⋆ π2 ≡ (π1 ⋆ e2) ⋆ e1
+   | ---> □ p ⊃ □ □ p @ π1
+
+ π2[e1, e2] ;
+ ε ⋆ π2 ≡ (ε ⋆ e2) ⋆ e1
+   | ---> □ p ⊃ □ □ p @ ε
+
+ π2 ↦ e2 ⋆ e1
+
+-- -----------------------------------------------------------------------------
+--  Successes                                                                   
+-- -----------------------------------------------------------------------------
+
+Try to prove □ □ p ⊃ □ p
+
+ π[] ; 
+ ⊤ 
+   | p @ π ---> p @ π 
+
+ π1[], π2[] ; 
+ ⊤
+    | □ p @ π1 ---> p @ π1 ⋆ π2
+
+ π2[], π3[], π4[] ; 
+ ⊤
+    | □ □ p @ π3 ---> p @ (π3 ⋆ π4) ⋆ π2
+
+ π2[e], π3[], π4[e], π5[] ; 
+ (π3 ⋆ π4) ⋆ π2 ≡ π5 ⋆ e
+    | □ □ p @ π3 ---> □ p @ π5
+
+ π2[e], π3[], π4[e];
+ (π3 ⋆ π4) ⋆ π2 ≡ π3 ⋆ e
+    | □ □ p ⊃ □ p @ π3
+
+ π2[e], π4[e];
+ (ε ⋆ π4) ⋆ π2 ≡ ε ⋆ e
+    | □ □ p ⊃ □ p @ ε
+
+ π4 ⋆ π2 ≡ e
+
+-- -----------------------------------------------------------------------------
+
+ □ ⊤
+
+ π[]; ⊤ | · ---> ⊤ @ π 
+
+ π[e], π1[]; π ≡ π1 ⋆ e  | · ---> □ ⊤ @ π1
+
+ π[e]; π ≡ ε ⋆ e | · ---> □ ⊤ @ ε
+
+
+-- -----------------------------------------------------------------------------
+--  Failures                                                                    
+-- -----------------------------------------------------------------------------
+
+Try to prove p ⊃ □ p
+
+ π[];
+ ⊤
+  | p @ π ---> p @ π
+  
+ π[], π'[];
+  π ≡ π' ⋆ e
+  | p @ π ---> □ p @ π'
+  
+ π[], π'[];
+  π' ≡ π' ⋆ e 
+  |  ---> p ⊃ □ p @ π'
+  
+ π[];
+  ε ≡ ε ⋆ e 
+  |  ---> p ⊃ □ p @ ε
+
+-- -----------------------------------------------------------------------------
+
+ ◇ ⊤
+
+ π[]; ⊤ | · ---> ⊤ @ π 
+
+ π1[], π2[]; ⊤ | · ---> ◇ ⊤ @ π1 
+
+ π2[]; ⊤ | · ---> ◇ ⊤ @ ε
+
+ 

@@ -13,6 +13,7 @@ class Parser extends scala.util.parsing.combinator.RegexParsers {
     case x ~ None => x
     case x ~ Some(y) => Imp(x, y)
   }
+
   def parseString(s: String): Formula = {
     parseAll(form, s) match {
       case Success(result, next) => result

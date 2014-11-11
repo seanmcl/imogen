@@ -1,0 +1,13 @@
+-- -*- Mode: Literate-Haskell -*-
+
+%lang Linear
+
+p+, q+, r- : Prop.
+
+%prove ↓ ↑ 1 ⊗ ↓ ↑ 1 ⊸ ↑ 1.
+
+%prove p ⊗ q ⊸ ↑ (q ⊗ p).
+%prove p ⊗ q ⊸ q ⊗ p.
+
+%prove ↓ (↑ p & r) ⊸ r & p.
+%prove p & r ⊸ r & p.

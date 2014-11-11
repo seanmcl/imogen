@@ -1,0 +1,3 @@
+
+Mention the equivalences between LL formulas that translate to the
+same IL formula in the paper.

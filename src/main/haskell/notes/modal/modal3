@@ -1,0 +1,51 @@
+-*- Mode: Literate-Haskell -*-
+
+Conversion between forms
+
+ π1[e1s], ... πn[ens] ; Π1 ≡ Π1' ∧ ... ∧ Πn ≡ Πn'
+
+and 
+
+ ∀ e1. ∃ π1 π2. ∀ e2. ∃ ...  Π1 ≡ Π1' ∧ ... ∧ Πn ≡ Πn'
+
+Going from the formula to the abstract type, we keep 
+a collection of the edges in scope, and attach them to
+the existential variables.  Easy enough.
+
+The other wiay is slightly trickier.  If any π has no dependencies,
+write ∃ π. and remove π from the list.  If every π has a dependency,
+find the edge e with the most dependents.   Note that there is a linear
+ordering on edges, (e.g. if π may depend on e1 then it may also depend on e2)
+so we Write ∀ e.  and remove e
+from the dependency lists.  we write ∃ π. and continue.  If there are
+dependencies, we delete the edge e and write ∀ e. and continue.
+
+This doesn't work.
+
+
+
+
+
+-------------------------       -------------------------     
+  q @ ε · e1 ⊢ q @ ε · e1          p @ ε · e ⊢ q @ ε · e2
+----------------------------    ----------------------------  
+ p ∧ q @ ε · e1 ⊢ q @ ε · e1      p ∧ q @ ε · e ⊢ q @ ε · e2
+----------------------------    ----------------------------  
+   □ (p ∧ q) @ ε ⊢ q @ ε · e1      □ (p ∧ q) @ ε ⊢ q @ ε · e2
+-----------------------------   -----------------------------  
+   □ (p ∧ q) @ ε ⊢ □ p @ ε         □ (p ∧ q) ⊢ □ q @ ε
+----------------------------------------------------------
+   □ (p ∧ q) @ ε ⊢ □ p ∧ □ q @ ε
+----------------------------------
+ ⊢ □ (p ∧ q) ⊃ □ p ∧ □ q @ ε
+
+
+
+Some problems
+
+ ∃ π. ∀ e. π ≡ π' ⋆ e
+ ∀ e. ∃ π. π ≡ π' ⋆ e
+
+ When do you apply the substitution π ↦ π' ⋆ e
+
+ If you have a dependency analysis, you can throw out the first one.

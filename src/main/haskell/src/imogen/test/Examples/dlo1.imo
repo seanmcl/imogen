@@ -1,0 +1,13 @@
+-- -*- Mode: Literate-Haskell -*-
+
+%lang Dlo.
+
+f : Real → Real.
+p+ : Real → Prop.
+
+mono : ∀ x y : Real. x < y ⊃ f x < f y.
+monop : ∀ x y : Real. x < y ⊃ p x ⊃ p y.
+
+%prove ∀ x y z : Real. x < y ⊃ y < z ⊃ x < z.
+%prove ∀ x y z : Real. x < y ⊃ y < z ⊃ f x < f z.
+%prove ∀ x y z : Real. x < y ⊃ y < z ⊃ p(x) ⊃ ↑ p(z).

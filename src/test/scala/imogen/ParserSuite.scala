@@ -46,5 +46,4 @@ class ParserSuite extends FunSuite {
     ok("p => q & r", Imp(Atom("p"), And(Atom("q"), Atom("r"))))
     ok("T => T & T => T", Imp(Top, Imp(And(Top, Top), Top)))
   }
-
 }

@@ -1,0 +1,40 @@
+
+-*- Mode: Literate-Haskell -*-
+
+Symmetry:
+
+Define
+
+X1 ∼ X2 in Γ := ∀ t1 t2 θ. Γ {X1 ↦ t1, X2 ↦ t2, θ} ≡ Γ {X1 ↦ t2, X2 ↦ t1, θ}
+ (where dom θ ∩ {X1, X2} = ∅)
+
+Note that ∼ is an equivalence relations on the variables of Γ.
+
+Reflexivity and symmetry are obvious.  To see trasitivity, 
+suppose X1 ∼ X2 and X2 ∼ X3.
+fix t1, t3.
+
+Then 
+Γ {X1 ↦ t1, X3 ↦ t3} ≡ 
+Γ {X1 ↦ t1, X2 ↦ X2, X3 ↦ t3} ≡ 
+Γ {X1 ↦ X2, X2 ↦ t1, X3 ↦ t3} ≡ 
+Γ {X1 ↦ X2, X2 ↦ t3, X3 ↦ t1} ≡ 
+Γ {X1 ↦ t3, X2 ↦ X2, X3 ↦ t1} ≡ 
+Γ {X1 ↦ t3, X3 ↦ t1} 
+
+Thus ∼ partitions the variables of a fixed Γ into equivalence classes.
+For example:
+
+p(X1), p(X2), p(X3), p(X4) ⊢ q(X1 ⋆ X2 ⋆ X3 ⋆ X4)
+
+has only one equivalence class {X1, X2, X3, X4} since ⋆ is AC.
+
+p(X1), p(X2), p(X3), p(X4), p(Y1), p(Y2), p(Y3), p(Y4) ⊢ 
+q(X1 ⋆ X2 ⋆ X3 ⋆ X4, Y1 ⋆ Y2 ⋆ Y3 ⋆ Y4)
+
+has 2 equivalence classes {{X1, X2, X3, X4}, {Y1, Y2, Y3, Y4}}.
+
+Interestingly, this sequent is also symmetric in the two classes:
+replacing the bindings for the Xi with the bindings for the Yi uniformly
+yields equivalent sequents.
+

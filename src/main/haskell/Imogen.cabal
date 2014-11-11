@@ -1,0 +1,125 @@
+
+name:           Imogen
+version:        1.0.0
+cabal-version:  >= 1.6.0.3 && < 2
+build-type:     Simple
+license-file:   LICENSE
+author:         Sean McLaughlin <seanmcl@gmail.com>
+maintainer:	Sean McLaughlin <seanmcl@gmail.com>
+homepage:       http://www.seanmcl.com/wiki/imogen
+bug-reports:    http://www.seanmcl.com/wiki/imogen/bugs
+category:       Theorem provers
+
+synopsis:    A family of inverse method theorem provers for modal logics
+
+description: Imogen proves theorems in modal logics.  
+
+tested-with:    GHC == 6.10.4
+
+extra-source-files: README 
+                    LICENSE
+                    Makefile 
+                    src/undefined.h
+
+executable imogen
+
+  main-is:       Main.hs
+
+  other-modules: Imogen.Ants
+                 Imogen.Atom
+                 Imogen.CSubst
+                 Imogen.Cons
+                 Imogen.Constr
+                 Imogen.Constr.Dlo
+                 Imogen.Ctx
+                 Imogen.Database
+                 Imogen.Formula
+                 Imogen.Focus
+                 Imogen.Func
+                 Imogen.Global
+                 Imogen.Linear
+                 Imogen.Linear.Frame
+                 Imogen.Linear.LL
+                 Imogen.Linear.Translate
+                 Imogen.Linear.World
+                 Imogen.Misc
+                 Imogen.Ordered
+                 Imogen.Ordered.Frame
+                 Imogen.Ordered.OL
+                 Imogen.Ordered.Translate
+                 Imogen.Ordered.World
+                 Imogen.Param
+                 Imogen.Path
+                 Imogen.PFormula
+                 Imogen.Pred
+                 Imogen.Prover
+                 Imogen.Rename
+                 Imogen.Rule
+                 Imogen.Sig
+                 Imogen.Sort
+                 Imogen.Subst
+                 Imogen.Term
+                 Imogen.Unif
+                 Imogen.Uninterp
+                 Imogen.Util.Debug
+                 Imogen.Util.Fresh
+                 Imogen.Util.Impossible
+                 Imogen.Util.Lex
+                 Imogen.Util.List
+                 Imogen.Util.Log.Class
+                 Imogen.Util.Log
+                 Imogen.Util.Monad
+                 Imogen.Util.Name
+                 Imogen.Util.Pair
+                 Imogen.Util.Parse
+                 Imogen.Util.Parse.Parse
+                 Imogen.Util.Prelude
+                 Imogen.Util.Print
+                 Imogen.Util.Print.Print
+                 Imogen.Util.Seq
+                 Imogen.Util.Set
+                 Imogen.Util.Test
+                 Imogen.Util.Three
+                 Imogen.Var
+
+  hs-source-dirs: src
+
+  extensions:  NoImplicitPrelude   
+               ScopedTypeVariables
+
+  include-dirs: src
+
+  build-depends:  base,
+                  haskell98,
+                  containers,
+                  directory,
+                  mtl,
+                  parsec >= 2.1.0.1,
+                  random,
+                  pretty,
+                  syb,
+                  utf8-string,
+                  HUnit >= 1.2.2.1,
+                  QuickCheck >= 2.1,
+                  hslogger >= 1.0.7,
+                  ATP >= 1.0.0
+
+  ghc-options: -Wall 
+               -- I currently like name shadowing.  This is also used in the GHC source.
+               -- -fno-warn-name-shadowing
+               -- These warnings are not turned on by -Wall
+               -fwarn-implicit-prelude 
+               -fwarn-monomorphism-restriction 
+               -fwarn-incomplete-record-updates 
+               -fwarn-tabs 
+               -fwarn-simple-patterns 
+
+               -- Error on warnings
+               -Werror
+
+               -- Don't turn off assertions
+               -fno-ignore-asserts
+
+               -- Profiling 
+               -- -prof
+               -- -auto-all

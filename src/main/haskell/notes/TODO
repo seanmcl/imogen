@@ -1,0 +1,41 @@
+
+- Remove ..  Don't be lazy!
+
+- remove Atoms
+
+- Variables are being created during world unification.  I'm just slapping the world sort
+  on any variables not in the context.  Make this nicer.
+
+- clean up globals.  now there are types for the variables that came up during focusing.
+
+- delete sequents with c ⋆ c 
+
+- delete sequents with p Ⓦ α ⋆ β 
+
+??? p Ⓦ a, q Ⓦ a
+
+- filter-aware contraction
+
+- strengthen (delete) propositions on the left that contain worlds that don't occur on the right
+
+- exploit symmetry to reduce exponential to linear contractions
+
+- Lax
+
+ ○ A ↦ (A ⊃ p) ⊸ p
+
+ Γ, A ⊢ C lax
+ ---------------
+ Γ, ○ A ⊢ C lax 
+
+ Γ ⊢ C true
+-------------
+ Γ ⊢ C lax
+
+ Γ ⊢ C lax
+--------------
+ Γ ⊢ ○ C true
+ 
+ - How do variables invented during equation solving get assigned sorts?
+
+- Remove duplicate sequents from focus list.  E.g. p ⇔ p gives p ⊢ p twice.

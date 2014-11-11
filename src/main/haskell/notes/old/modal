@@ -1,0 +1,43 @@
+Notes on solving constraints:
+
+Consider the following inverse method step
+
+ π path | p @ π ---> p @ π 
+ ∀ e. edge(e) ⊃ path(π) ∧ π ≡ π' · e | p @ π ---> □ p @ π'
+
+Note here that if we allowed π ↦ π' · e as a substituion then e would
+escape its scope.  So we don't want to allow this.  Consider instead
+
+ π path | p @ π ---> p @ π 
+ π path | · ---> p ⊃ p @ π 
+ ∀ e. edge(e) ⊃ path(π) ∧ π ≡ π' · e | · ---> □ (p ⊃ p) @ π' 
+
+Here a substitution π ↦ π' · e is OK, since π is
+not free in the sequent.  Thus, the constraint is really
+
+ ∀ e. edge(e) ⊃ ∃ π. path(π) ∧ π ≡ π' · e 
+
+rather than
+
+ ∃ π. ∀ e. edge(e) ⊃ path(π) ∧ π ≡ π' · e 
+
+which is clearly false in a world with more than one edge e.
+
+We don't want to lose the normal form for constraints though, since
+what we need at the end of the day is a set of unification equations.
+We solve this by determining which edge variables a path variable
+is allowed to depend on.  Then in the step
+
+         Ψ | Γ ---> A @ π · e
+-------------------------------------
+ ∀ e. edge e ⊃ Ψ | Γ ---> □ A @ π
+
+we allow all the variables π that do not occur in Γ ---> □ A @ π to
+depend on e.  We then solve the unification problem as usual, and
+throw out any substitutions that break the dependency analysis.
+
+There is an additional problem with paths.  We need to be sure
+that the edges make sense in the given order.  Thus, I think we
+need to associate a start and end world with each edge and make
+sure that the resulting path lines up.  Doh!
+

@@ -1,0 +1,67 @@
+
+{- -*- Mode: Haskell -*- -}
+
+-- -----------------------------------------------------------------------------
+--  Language                                                                    
+-- -----------------------------------------------------------------------------
+
+:set -XNoImplicitPrelude
+:set -XScopedTypeVariables
+
+-- :set -XNamedFieldPuns
+-- :set -XRecordWildCards
+-- :set -XMultiParamTypeClasses
+-- :set -XFlexibleInstances
+-- :set -XOverlappingInstances
+-- :set -XFlexibleContexts
+-- :set -XTypeSynonymInstances
+-- :set -XViewPatterns
+-- :set -XPatternGuards
+-- :set -XFunctionalDependencies
+-- :set -XUnicodeSyntax
+-- :set -XGeneralizedNewtypeDeriving
+-- :set -XUndecidableInstances
+-- :set -XRank2Types
+-- :set -XEmptyDataDecls
+-- :set -XForeignFunctionInterface
+-- :set -XNamedFieldPuns
+-- :set -XDeriveDataTypeable
+-- :set -XCPP
+
+-- -optL passes option to literate preprocessor
+-- -q allows comments next to code lines
+
+:set -optL -q
+
+-- This is needed to set breakpoints
+:set -fbyte-code
+
+-- List code when stopped at a breakpoint
+:set stop :list
+
+-- Include path for C header files
+-- :set -I/Users/sean/save/projects/imogen/haskell/src
+:set -i/Users/sean/save/projects/imogen/haskell/src
+
+-- :set -I/usr1/seanmcl/save/projects/imogen/haskell/src
+:set -i/usr1/seanmcl/save/projects/imogen/haskell/src
+
+-- Be verbose
+-- :set -v
+
+-- For backtraces
+:set -fbreak-on-exception
+
+-- -----------------------------------------------------------------------------
+--  Options                                                                      
+-- -----------------------------------------------------------------------------
+
+:set +t
+
+:def sm (\_ -> return ":stepmodule")
+:def cont (\_ -> return ":continue")
+
+-- It seems that the prompt must say "Prelude>" for emacs loading to work correctly.  
+-- :set prompt "> "
+:set prompt "Prelude> "
+

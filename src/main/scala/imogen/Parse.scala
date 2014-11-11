@@ -6,7 +6,7 @@ object Parse extends Parser {
   def main(args: Array[String]) {
     val src = Source.fromFile(args(0))
     src.getLines().foreach {
-      line => println(parseAll(form, line))
+      line => println(parseString(line))
     }
     // TODO: Use RAII instead of explicit close.
     src.close()
