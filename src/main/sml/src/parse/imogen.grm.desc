@@ -1,0 +1,2305 @@
+
+state 0:
+
+	start : . PARSE_VAR var 
+	start : . PARSE_PARAM param 
+	start : . PARSE_FUNC func 
+	start : . PARSE_TERM term 
+	start : . PARSE_PRED pred 
+	start : . PARSE_REL rel 
+	start : . PARSE_FORMULA form 
+	start : . PARSE_SUBST subst 
+	start : . PARSE_SEQ seq 
+	start : . PARSE_RSEQ rseq 
+	start : . PARSE_RULE rule 
+
+	PARSE_VAR	shift 11
+	PARSE_PARAM	shift 10
+	PARSE_FUNC	shift 9
+	PARSE_TERM	shift 8
+	PARSE_PRED	shift 7
+	PARSE_REL	shift 6
+	PARSE_FORMULA	shift 5
+	PARSE_SUBST	shift 4
+	PARSE_SEQ	shift 3
+	PARSE_RSEQ	shift 2
+	PARSE_RULE	shift 1
+
+	start	goto 144
+
+	.	error
+
+
+state 1:
+
+	start : PARSE_RULE . rule 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 19
+	LBRACE	shift 18
+
+	pred	goto 17
+	rel	goto 16
+	rellist	goto 15
+	rule	goto 14
+	seq	goto 13
+	seqlist	goto 12
+
+	.	reduce by rule 65
+
+
+state 2:
+
+	start : PARSE_RSEQ . rseq 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 19
+	LBRACE	shift 18
+
+	pred	goto 17
+	rel	goto 16
+	rellist	goto 15
+	rseq	goto 22
+	seq	goto 21
+
+	.	reduce by rule 65
+
+
+state 3:
+
+	start : PARSE_SEQ . seq 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 19
+	LBRACE	shift 18
+
+	pred	goto 17
+	rel	goto 16
+	rellist	goto 15
+	seq	goto 23
+
+	.	reduce by rule 65
+
+
+state 4:
+
+	start : PARSE_SUBST . subst 
+
+	LBRACE	shift 25
+
+	subst	goto 24
+
+	.	error
+
+
+state 5:
+
+	start : PARSE_FORMULA . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 29
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 6:
+
+	start : PARSE_REL . rel 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 19
+
+	pred	goto 17
+	rel	goto 47
+
+	.	error
+
+
+state 7:
+
+	start : PARSE_PRED . pred 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 19
+
+	pred	goto 48
+
+	.	error
+
+
+state 8:
+
+	start : PARSE_TERM . term 
+
+	VAR_NEG_PRED_ID	shift 55
+	PARAM_ID	shift 54
+	FUNC_POS_PRED_ID	shift 53
+
+	func	goto 52
+	param	goto 51
+	term	goto 50
+	var	goto 49
+
+	.	error
+
+
+state 9:
+
+	start : PARSE_FUNC . func 
+
+	FUNC_POS_PRED_ID	shift 53
+
+	func	goto 56
+
+	.	error
+
+
+state 10:
+
+	start : PARSE_PARAM . param 
+
+	PARAM_ID	shift 54
+
+	param	goto 57
+
+	.	error
+
+
+state 11:
+
+	start : PARSE_VAR . var 
+
+	VAR_NEG_PRED_ID	shift 55
+
+	var	goto 58
+
+	.	error
+
+
+state 12:
+
+	rule : seqlist . LINE LBRACK paramlist RBRACK seq 
+
+	LINE	shift 59
+
+
+	.	error
+
+
+state 13:
+
+	seqlist : seq .  (reduce by rule 16)
+	seqlist : seq . seqlist 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 19
+	LBRACE	shift 18
+	VDASH	reduce by rule 65
+	LINE	reduce by rule 16
+
+	pred	goto 17
+	rel	goto 16
+	rellist	goto 15
+	seq	goto 13
+	seqlist	goto 60
+
+	.	error
+
+
+state 14:
+
+	start : PARSE_RULE rule .  (reduce by rule 10)
+
+
+
+	.	reduce by rule 10
+
+
+state 15:
+
+	seq : rellist . VDASH cons 
+
+	VDASH	shift 61
+
+
+	.	error
+
+
+state 16:
+
+	rel : rel . EQ term 
+	rellist : rel .  (reduce by rule 63)
+	rellist : rel . COMMA rellist 
+
+	COMMA	shift 63
+	EQ	shift 62
+
+
+	.	reduce by rule 63
+
+
+state 17:
+
+	rel : pred .  (reduce by rule 59)
+	rel : pred . LPAREN RPAREN 
+	rel : pred . LPAREN termlist RPAREN 
+
+	LPAREN	shift 64
+
+
+	.	reduce by rule 59
+
+
+state 18:
+
+	seq : LBRACE . form RBRACE rellist VDASH cons 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 65
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 19:
+
+	pred : FUNC_POS_PRED_ID .  (reduce by rule 57)
+
+
+
+	.	reduce by rule 57
+
+
+state 20:
+
+	pred : VAR_NEG_PRED_ID .  (reduce by rule 58)
+
+
+
+	.	reduce by rule 58
+
+
+state 21:
+
+	rseq : seq . subst 
+
+	LBRACE	shift 25
+
+	subst	goto 66
+
+	.	error
+
+
+state 22:
+
+	start : PARSE_RSEQ rseq .  (reduce by rule 9)
+
+
+
+	.	reduce by rule 9
+
+
+state 23:
+
+	start : PARSE_SEQ seq .  (reduce by rule 8)
+
+
+
+	.	reduce by rule 8
+
+
+state 24:
+
+	start : PARSE_SUBST subst .  (reduce by rule 7)
+
+
+
+	.	reduce by rule 7
+
+
+state 25:
+
+	subst : LBRACE . bindlist RBRACE 
+	subst : LBRACE . RBRACE 
+
+	VAR_NEG_PRED_ID	shift 55
+	PARAM_ID	shift 54
+	RBRACE	shift 71
+
+	bind	goto 70
+	bindlist	goto 69
+	param	goto 68
+	var	goto 67
+
+	.	error
+
+
+state 26:
+
+	form : unop . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 72
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 27:
+
+	form : rel .  (reduce by rule 41)
+	rel : rel . EQ term 
+
+	EQ	shift 62
+
+
+	.	reduce by rule 41
+
+
+state 28:
+
+	form : quant . varbd_list DOT form 
+
+	VAR_NEG_PRED_ID	shift 75
+
+	varbd	goto 74
+	varbd_list	goto 73
+
+	.	error
+
+
+state 29:
+
+	start : PARSE_FORMULA form .  (reduce by rule 6)
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OR	shift 86
+	IMP	shift 85
+	LEFT_IMP	shift 84
+	IFF	shift 83
+	LOLLI	shift 82
+	LEFT_LOLLI	shift 81
+	BI_LOLLI	shift 80
+	OTIMES	shift 79
+	AMP	shift 78
+	ORD_IMP1	shift 77
+	ORD_IMP2	shift 76
+
+
+	.	reduce by rule 6
+
+
+state 30:
+
+	form : const .  (reduce by rule 25)
+
+
+
+	.	reduce by rule 25
+
+
+state 31:
+
+	unop : DIA .  (reduce by rule 56)
+
+
+
+	.	reduce by rule 56
+
+
+state 32:
+
+	unop : BOX .  (reduce by rule 55)
+
+
+
+	.	reduce by rule 55
+
+
+state 33:
+
+	unop : UBANG .  (reduce by rule 54)
+
+
+
+	.	reduce by rule 54
+
+
+state 34:
+
+	unop : BANG .  (reduce by rule 53)
+
+
+
+	.	reduce by rule 53
+
+
+state 35:
+
+	unop : UP_SHIFT .  (reduce by rule 51)
+
+
+
+	.	reduce by rule 51
+
+
+state 36:
+
+	unop : DOWN_SHIFT .  (reduce by rule 52)
+
+
+
+	.	reduce by rule 52
+
+
+state 37:
+
+	quant : EXISTS .  (reduce by rule 49)
+
+
+
+	.	reduce by rule 49
+
+
+state 38:
+
+	quant : FORALL .  (reduce by rule 48)
+
+
+
+	.	reduce by rule 48
+
+
+state 39:
+
+	unop : NOT .  (reduce by rule 50)
+
+
+
+	.	reduce by rule 50
+
+
+state 40:
+
+	const : L_ZERO .  (reduce by rule 47)
+
+
+
+	.	reduce by rule 47
+
+
+state 41:
+
+	const : L_ONE .  (reduce by rule 46)
+
+
+
+	.	reduce by rule 46
+
+
+state 42:
+
+	const : TOP .  (reduce by rule 45)
+
+
+
+	.	reduce by rule 45
+
+
+state 43:
+
+	const : FALSE .  (reduce by rule 44)
+
+
+
+	.	reduce by rule 44
+
+
+state 44:
+
+	const : TRUE .  (reduce by rule 43)
+
+
+
+	.	reduce by rule 43
+
+
+state 45:
+
+	form : LPAREN . form RPAREN 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 88
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 46:
+
+	form : FUNC_POS_PRED_ID . COLONCOLON form 
+	pred : FUNC_POS_PRED_ID .  (reduce by rule 57)
+
+	COLONCOLON	shift 89
+
+
+	.	reduce by rule 57
+
+
+state 47:
+
+	start : PARSE_REL rel .  (reduce by rule 5)
+	rel : rel . EQ term 
+
+	EQ	shift 62
+
+
+	.	reduce by rule 5
+
+
+state 48:
+
+	start : PARSE_PRED pred .  (reduce by rule 4)
+
+
+
+	.	reduce by rule 4
+
+
+state 49:
+
+	term : var .  (reduce by rule 67)
+
+
+
+	.	reduce by rule 67
+
+
+state 50:
+
+	start : PARSE_TERM term .  (reduce by rule 3)
+
+
+
+	.	reduce by rule 3
+
+
+state 51:
+
+	term : param .  (reduce by rule 68)
+
+
+
+	.	reduce by rule 68
+
+
+state 52:
+
+	term : func .  (reduce by rule 69)
+	term : func . LPAREN termlist RPAREN 
+
+	LPAREN	shift 90
+
+
+	.	reduce by rule 69
+
+
+state 53:
+
+	func : FUNC_POS_PRED_ID .  (reduce by rule 66)
+
+
+
+	.	reduce by rule 66
+
+
+state 54:
+
+	param : PARAM_ID . HASH 
+	param : PARAM_ID .  (reduce by rule 76)
+
+	HASH	shift 91
+
+
+	.	reduce by rule 76
+
+
+state 55:
+
+	var : VAR_NEG_PRED_ID . HASH 
+	var : VAR_NEG_PRED_ID .  (reduce by rule 74)
+
+	HASH	shift 92
+
+
+	.	reduce by rule 74
+
+
+state 56:
+
+	start : PARSE_FUNC func .  (reduce by rule 2)
+
+
+
+	.	reduce by rule 2
+
+
+state 57:
+
+	start : PARSE_PARAM param .  (reduce by rule 1)
+
+
+
+	.	reduce by rule 1
+
+
+state 58:
+
+	start : PARSE_VAR var .  (reduce by rule 0)
+
+
+
+	.	reduce by rule 0
+
+
+state 59:
+
+	rule : seqlist LINE . LBRACK paramlist RBRACK seq 
+
+	LBRACK	shift 93
+
+
+	.	error
+
+
+state 60:
+
+	seqlist : seq seqlist .  (reduce by rule 17)
+
+
+
+	.	reduce by rule 17
+
+
+state 61:
+
+	seq : rellist VDASH . cons 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 19
+	DOT	shift 96
+
+	cons	goto 95
+	pred	goto 17
+	rel	goto 94
+
+	.	error
+
+
+state 62:
+
+	rel : rel EQ . term 
+
+	VAR_NEG_PRED_ID	shift 55
+	PARAM_ID	shift 54
+	FUNC_POS_PRED_ID	shift 53
+
+	func	goto 52
+	param	goto 51
+	term	goto 97
+	var	goto 49
+
+	.	error
+
+
+state 63:
+
+	rellist : rel COMMA . rellist 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 19
+
+	pred	goto 17
+	rel	goto 16
+	rellist	goto 98
+
+	.	reduce by rule 65
+
+
+state 64:
+
+	rel : pred LPAREN . RPAREN 
+	rel : pred LPAREN . termlist RPAREN 
+
+	VAR_NEG_PRED_ID	shift 55
+	PARAM_ID	shift 54
+	FUNC_POS_PRED_ID	shift 53
+	RPAREN	shift 101
+
+	func	goto 52
+	param	goto 51
+	term	goto 100
+	termlist	goto 99
+	var	goto 49
+
+	.	error
+
+
+state 65:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+	seq : LBRACE form . RBRACE rellist VDASH cons 
+
+	RBRACE	shift 102
+	AND	shift 87
+	OR	shift 86
+	IMP	shift 85
+	LEFT_IMP	shift 84
+	IFF	shift 83
+	LOLLI	shift 82
+	LEFT_LOLLI	shift 81
+	BI_LOLLI	shift 80
+	OTIMES	shift 79
+	AMP	shift 78
+	ORD_IMP1	shift 77
+	ORD_IMP2	shift 76
+
+
+	.	error
+
+
+state 66:
+
+	rseq : seq subst .  (reduce by rule 15)
+
+
+
+	.	reduce by rule 15
+
+
+state 67:
+
+	bind : var . IMP term 
+
+	IMP	shift 103
+
+
+	.	error
+
+
+state 68:
+
+	bind : param . IMP param 
+
+	IMP	shift 104
+
+
+	.	error
+
+
+state 69:
+
+	subst : LBRACE bindlist . RBRACE 
+
+	RBRACE	shift 105
+
+
+	.	error
+
+
+state 70:
+
+	bindlist : bind .  (reduce by rule 23)
+	bindlist : bind . COMMA bindlist 
+
+	COMMA	shift 106
+
+
+	.	reduce by rule 23
+
+
+state 71:
+
+	subst : LBRACE RBRACE .  (reduce by rule 20)
+
+
+
+	.	reduce by rule 20
+
+
+state 72:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+	form : unop form .  (reduce by rule 40)
+
+
+
+	.	reduce by rule 40
+
+
+state 73:
+
+	form : quant varbd_list . DOT form 
+
+	DOT	shift 107
+
+
+	.	error
+
+
+state 74:
+
+	varbd_list : varbd .  (reduce by rule 82)
+	varbd_list : varbd . varbd_list 
+
+	VAR_NEG_PRED_ID	shift 75
+
+	varbd	goto 74
+	varbd_list	goto 108
+
+	.	reduce by rule 82
+
+
+state 75:
+
+	varbd : VAR_NEG_PRED_ID .  (reduce by rule 80)
+	varbd : VAR_NEG_PRED_ID . COLON sort 
+
+	COLON	shift 109
+
+
+	.	reduce by rule 80
+
+
+state 76:
+
+	form : form ORD_IMP2 . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 110
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 77:
+
+	form : form ORD_IMP1 . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 111
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 78:
+
+	form : form AMP . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 112
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 79:
+
+	form : form OTIMES . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 113
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 80:
+
+	form : form BI_LOLLI . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 114
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 81:
+
+	form : form LEFT_LOLLI . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 115
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 82:
+
+	form : form LOLLI . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 116
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 83:
+
+	form : form IFF . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 117
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 84:
+
+	form : form LEFT_IMP . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 118
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 85:
+
+	form : form IMP . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 119
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 86:
+
+	form : form OR . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 120
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 87:
+
+	form : form AND . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 121
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 88:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+	form : LPAREN form . RPAREN 
+
+	RPAREN	shift 122
+	AND	shift 87
+	OR	shift 86
+	IMP	shift 85
+	LEFT_IMP	shift 84
+	IFF	shift 83
+	LOLLI	shift 82
+	LEFT_LOLLI	shift 81
+	BI_LOLLI	shift 80
+	OTIMES	shift 79
+	AMP	shift 78
+	ORD_IMP1	shift 77
+	ORD_IMP2	shift 76
+
+
+	.	error
+
+
+state 89:
+
+	form : FUNC_POS_PRED_ID COLONCOLON . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 123
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 90:
+
+	term : func LPAREN . termlist RPAREN 
+
+	VAR_NEG_PRED_ID	shift 55
+	PARAM_ID	shift 54
+	FUNC_POS_PRED_ID	shift 53
+
+	func	goto 52
+	param	goto 51
+	term	goto 100
+	termlist	goto 124
+	var	goto 49
+
+	.	error
+
+
+state 91:
+
+	param : PARAM_ID HASH .  (reduce by rule 75)
+
+
+
+	.	reduce by rule 75
+
+
+state 92:
+
+	var : VAR_NEG_PRED_ID HASH .  (reduce by rule 73)
+
+
+
+	.	reduce by rule 73
+
+
+state 93:
+
+	rule : seqlist LINE LBRACK . paramlist RBRACK seq 
+
+	PARAM_ID	shift 54
+
+	param	goto 126
+	paramlist	goto 125
+
+	.	reduce by rule 79
+
+
+state 94:
+
+	cons : rel .  (reduce by rule 12)
+	rel : rel . EQ term 
+
+	EQ	shift 62
+
+
+	.	reduce by rule 12
+
+
+state 95:
+
+	seq : rellist VDASH cons .  (reduce by rule 13)
+
+
+
+	.	reduce by rule 13
+
+
+state 96:
+
+	cons : DOT .  (reduce by rule 11)
+
+
+
+	.	reduce by rule 11
+
+
+state 97:
+
+	rel : rel EQ term .  (reduce by rule 62)
+
+
+
+	.	reduce by rule 62
+
+
+state 98:
+
+	rellist : rel COMMA rellist .  (reduce by rule 64)
+
+
+
+	.	reduce by rule 64
+
+
+state 99:
+
+	rel : pred LPAREN termlist . RPAREN 
+
+	RPAREN	shift 127
+
+
+	.	error
+
+
+state 100:
+
+	termlist : term .  (reduce by rule 71)
+	termlist : term . COMMA termlist 
+
+	COMMA	shift 128
+
+
+	.	reduce by rule 71
+
+
+state 101:
+
+	rel : pred LPAREN RPAREN .  (reduce by rule 60)
+
+
+
+	.	reduce by rule 60
+
+
+state 102:
+
+	seq : LBRACE form RBRACE . rellist VDASH cons 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 19
+
+	pred	goto 17
+	rel	goto 16
+	rellist	goto 129
+
+	.	reduce by rule 65
+
+
+state 103:
+
+	bind : var IMP . term 
+
+	VAR_NEG_PRED_ID	shift 55
+	PARAM_ID	shift 54
+	FUNC_POS_PRED_ID	shift 53
+
+	func	goto 52
+	param	goto 51
+	term	goto 130
+	var	goto 49
+
+	.	error
+
+
+state 104:
+
+	bind : param IMP . param 
+
+	PARAM_ID	shift 54
+
+	param	goto 131
+
+	.	error
+
+
+state 105:
+
+	subst : LBRACE bindlist RBRACE .  (reduce by rule 19)
+
+
+
+	.	reduce by rule 19
+
+
+state 106:
+
+	bindlist : bind COMMA . bindlist 
+
+	VAR_NEG_PRED_ID	shift 55
+	PARAM_ID	shift 54
+
+	bind	goto 70
+	bindlist	goto 132
+	param	goto 68
+	var	goto 67
+
+	.	error
+
+
+state 107:
+
+	form : quant varbd_list DOT . form 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 46
+	LPAREN	shift 45
+	TRUE	shift 44
+	FALSE	shift 43
+	TOP	shift 42
+	L_ONE	shift 41
+	L_ZERO	shift 40
+	NOT	shift 39
+	FORALL	shift 38
+	EXISTS	shift 37
+	DOWN_SHIFT	shift 36
+	UP_SHIFT	shift 35
+	BANG	shift 34
+	UBANG	shift 33
+	BOX	shift 32
+	DIA	shift 31
+
+	const	goto 30
+	form	goto 133
+	pred	goto 17
+	quant	goto 28
+	rel	goto 27
+	unop	goto 26
+
+	.	error
+
+
+state 108:
+
+	varbd_list : varbd varbd_list .  (reduce by rule 83)
+
+
+
+	.	reduce by rule 83
+
+
+state 109:
+
+	varbd : VAR_NEG_PRED_ID COLON . sort 
+
+	SORT_INT	shift 135
+
+	sort	goto 134
+
+	.	error
+
+
+state 110:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form ORD_IMP2 form .  (reduce by rule 34)
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OR	shift 86
+	IMP	shift 85
+	LEFT_IMP	shift 84
+	LOLLI	shift 82
+	LEFT_LOLLI	shift 81
+	OTIMES	shift 79
+	AMP	shift 78
+	ORD_IMP1	shift 77
+	ORD_IMP2	shift 76
+
+
+	.	reduce by rule 34
+
+
+state 111:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form ORD_IMP1 form .  (reduce by rule 33)
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OR	shift 86
+	IMP	shift 85
+	LEFT_IMP	shift 84
+	LOLLI	shift 82
+	LEFT_LOLLI	shift 81
+	OTIMES	shift 79
+	AMP	shift 78
+	ORD_IMP1	shift 77
+	ORD_IMP2	shift 76
+
+
+	.	reduce by rule 33
+
+
+state 112:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form AMP form .  (reduce by rule 28)
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OTIMES	shift 79
+	AMP	shift 78
+
+
+	.	reduce by rule 28
+
+
+state 113:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form OTIMES form .  (reduce by rule 29)
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OTIMES	shift 79
+	AMP	shift 78
+
+
+	.	reduce by rule 29
+
+
+state 114:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+	form : form BI_LOLLI form .  (reduce by rule 38)
+
+	AND	shift 87
+	OR	shift 86
+	IMP	shift 85
+	LEFT_IMP	shift 84
+	IFF	shift 83
+	LOLLI	shift 82
+	LEFT_LOLLI	shift 81
+	BI_LOLLI	shift 80
+	OTIMES	shift 79
+	AMP	shift 78
+	ORD_IMP1	shift 77
+	ORD_IMP2	shift 76
+
+
+	.	reduce by rule 38
+
+
+state 115:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form LEFT_LOLLI form .  (reduce by rule 36)
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OR	shift 86
+	OTIMES	shift 79
+	AMP	shift 78
+
+
+	.	reduce by rule 36
+
+
+state 116:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form LOLLI form .  (reduce by rule 32)
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OR	shift 86
+	IMP	shift 85
+	LEFT_IMP	shift 84
+	LOLLI	shift 82
+	LEFT_LOLLI	shift 81
+	OTIMES	shift 79
+	AMP	shift 78
+	ORD_IMP1	shift 77
+	ORD_IMP2	shift 76
+
+
+	.	reduce by rule 32
+
+
+state 117:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form IFF form .  (reduce by rule 37)
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OR	shift 86
+	IMP	shift 85
+	LEFT_IMP	shift 84
+	IFF	shift 83
+	LOLLI	shift 82
+	LEFT_LOLLI	shift 81
+	BI_LOLLI	shift 80
+	OTIMES	shift 79
+	AMP	shift 78
+	ORD_IMP1	shift 77
+	ORD_IMP2	shift 76
+
+
+	.	reduce by rule 37
+
+
+state 118:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form LEFT_IMP form .  (reduce by rule 35)
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OR	shift 86
+	OTIMES	shift 79
+	AMP	shift 78
+
+
+	.	reduce by rule 35
+
+
+state 119:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form IMP form .  (reduce by rule 31)
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OR	shift 86
+	IMP	shift 85
+	LEFT_IMP	shift 84
+	LOLLI	shift 82
+	LEFT_LOLLI	shift 81
+	OTIMES	shift 79
+	AMP	shift 78
+	ORD_IMP1	shift 77
+	ORD_IMP2	shift 76
+
+
+	.	reduce by rule 31
+
+
+state 120:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form OR form .  (reduce by rule 30)
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OR	shift 86
+	OTIMES	shift 79
+	AMP	shift 78
+
+
+	.	reduce by rule 30
+
+
+state 121:
+
+	form : form . AND form 
+	form : form AND form .  (reduce by rule 27)
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OTIMES	shift 79
+	AMP	shift 78
+
+
+	.	reduce by rule 27
+
+
+state 122:
+
+	form : LPAREN form RPAREN .  (reduce by rule 42)
+
+
+
+	.	reduce by rule 42
+
+
+state 123:
+
+	form : FUNC_POS_PRED_ID COLONCOLON form .  (reduce by rule 26)
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+
+	AND	shift 87
+	OR	shift 86
+	IMP	shift 85
+	LEFT_IMP	shift 84
+	IFF	shift 83
+	LOLLI	shift 82
+	LEFT_LOLLI	shift 81
+	BI_LOLLI	shift 80
+	OTIMES	shift 79
+	AMP	shift 78
+	ORD_IMP1	shift 77
+	ORD_IMP2	shift 76
+
+
+	.	reduce by rule 26
+
+
+state 124:
+
+	term : func LPAREN termlist . RPAREN 
+
+	RPAREN	shift 136
+
+
+	.	error
+
+
+state 125:
+
+	rule : seqlist LINE LBRACK paramlist . RBRACK seq 
+
+	RBRACK	shift 137
+
+
+	.	error
+
+
+state 126:
+
+	paramlist : param .  (reduce by rule 77)
+	paramlist : param . COMMA paramlist 
+
+	COMMA	shift 138
+
+
+	.	reduce by rule 77
+
+
+state 127:
+
+	rel : pred LPAREN termlist RPAREN .  (reduce by rule 61)
+
+
+
+	.	reduce by rule 61
+
+
+state 128:
+
+	termlist : term COMMA . termlist 
+
+	VAR_NEG_PRED_ID	shift 55
+	PARAM_ID	shift 54
+	FUNC_POS_PRED_ID	shift 53
+
+	func	goto 52
+	param	goto 51
+	term	goto 100
+	termlist	goto 139
+	var	goto 49
+
+	.	error
+
+
+state 129:
+
+	seq : LBRACE form RBRACE rellist . VDASH cons 
+
+	VDASH	shift 140
+
+
+	.	error
+
+
+state 130:
+
+	bind : var IMP term .  (reduce by rule 21)
+
+
+
+	.	reduce by rule 21
+
+
+state 131:
+
+	bind : param IMP param .  (reduce by rule 22)
+
+
+
+	.	reduce by rule 22
+
+
+state 132:
+
+	bindlist : bind COMMA bindlist .  (reduce by rule 24)
+
+
+
+	.	reduce by rule 24
+
+
+state 133:
+
+	form : form . AND form 
+	form : form . AMP form 
+	form : form . OTIMES form 
+	form : form . OR form 
+	form : form . IMP form 
+	form : form . LOLLI form 
+	form : form . ORD_IMP1 form 
+	form : form . ORD_IMP2 form 
+	form : form . LEFT_IMP form 
+	form : form . LEFT_LOLLI form 
+	form : form . IFF form 
+	form : form . BI_LOLLI form 
+	form : quant varbd_list DOT form .  (reduce by rule 39)
+
+	AND	shift 87
+	OR	shift 86
+	IMP	shift 85
+	LEFT_IMP	shift 84
+	IFF	shift 83
+	LOLLI	shift 82
+	LEFT_LOLLI	shift 81
+	BI_LOLLI	shift 80
+	OTIMES	shift 79
+	AMP	shift 78
+	ORD_IMP1	shift 77
+	ORD_IMP2	shift 76
+
+
+	.	reduce by rule 39
+
+
+state 134:
+
+	varbd : VAR_NEG_PRED_ID COLON sort .  (reduce by rule 81)
+
+
+
+	.	reduce by rule 81
+
+
+state 135:
+
+	sort : SORT_INT .  (reduce by rule 84)
+
+
+
+	.	reduce by rule 84
+
+
+state 136:
+
+	term : func LPAREN termlist RPAREN .  (reduce by rule 70)
+
+
+
+	.	reduce by rule 70
+
+
+state 137:
+
+	rule : seqlist LINE LBRACK paramlist RBRACK . seq 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 19
+	LBRACE	shift 18
+
+	pred	goto 17
+	rel	goto 16
+	rellist	goto 15
+	seq	goto 141
+
+	.	reduce by rule 65
+
+
+state 138:
+
+	paramlist : param COMMA . paramlist 
+
+	PARAM_ID	shift 54
+
+	param	goto 126
+	paramlist	goto 142
+
+	.	reduce by rule 79
+
+
+state 139:
+
+	termlist : term COMMA termlist .  (reduce by rule 72)
+
+
+
+	.	reduce by rule 72
+
+
+state 140:
+
+	seq : LBRACE form RBRACE rellist VDASH . cons 
+
+	VAR_NEG_PRED_ID	shift 20
+	FUNC_POS_PRED_ID	shift 19
+	DOT	shift 96
+
+	cons	goto 143
+	pred	goto 17
+	rel	goto 94
+
+	.	error
+
+
+state 141:
+
+	rule : seqlist LINE LBRACK paramlist RBRACK seq .  (reduce by rule 18)
+
+
+
+	.	reduce by rule 18
+
+
+state 142:
+
+	paramlist : param COMMA paramlist .  (reduce by rule 78)
+
+
+
+	.	reduce by rule 78
+
+
+state 143:
+
+	seq : LBRACE form RBRACE rellist VDASH cons .  (reduce by rule 14)
+
+
+
+	.	reduce by rule 14
+
+
+state 144:
+
+
+	EOF	accept
+
+
+	.	error
+
+236 of 701 action table entries left after compaction
+198 goto table entries
