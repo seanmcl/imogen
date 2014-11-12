@@ -33,11 +33,11 @@ structure Bug = struct
          val _ = Log.setLevel Log.Trace
          (* val _ = PP.ppl (Signat.pp ()) *)
          val _ = Log.trace (fn () => $"Parsing as linear formula")
-         val f = Parse.imogen.Formula.ofString bugs
-         val _ = PP.ppl (Parse.imogen.Formula.pp f)
+         val f = Parse.Formula.ofString bugs
+         val _ = PP.ppl (Parse.Formula.pp f)
          val _ = Log.trace (fn () => $"Translating to linear pformula")
          val f = P.Frontend.parse f
-         val _ = Log.trace (fn () => &[$"imogen.Formula:", %[\\, P.Frontend.pp f]])
+         val _ = Log.trace (fn () => &[$"Formula:", %[\\, P.Frontend.pp f]])
          val _ = Log.trace (fn () => $"Translating to pformula")
          val f = P.Frontend.pformula f
          val _ = Log.trace (fn () => &[$"PFormula:", %[\\, F.neg F.pp f]])

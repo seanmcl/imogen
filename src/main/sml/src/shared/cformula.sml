@@ -7,11 +7,11 @@ structure CFormula :> CFormula = struct
 
    structure Export = struct
       datatype t =
-         imogen.Atom of Rel.t
+         Atom of Rel.t
        | Top
        | Bot
-       | imogen.And of t * t
-       | imogen.Imp of Rel.t * t
+       | And of t * t
+       | Imp of Rel.t * t
        | All of (Var.t * Sort.t) * t
        | Ex of (Var.t * Sort.t) * t
        | Hole
@@ -30,18 +30,18 @@ structure CFormula :> CFormula = struct
 
    val listConj = fn
       [] => Top
-    | l => List.foldr1 imogen.And l
+    | l => List.foldr1 And l
 
    val rec conjuncts = fn
-      imogen.And (a, b) => conjuncts a @ conjuncts b
+      And (a, b) => conjuncts a @ conjuncts b
     | f => [f]
 
    fun map f fm =
       let
          val rec g = fn
-            imogen.Atom r => imogen.Atom (f r)
-          | imogen.And (a, b) => imogen.And (g a, g b)
-          | imogen.Imp (a, b) => imogen.Imp (f a, g b)
+            Atom r => Atom (f r)
+          | And (a, b) => And (g a, g b)
+          | Imp (a, b) => Imp (f a, g b)
           | All (x, a) => All (x, g a)
           | Ex (x, a) => Ex (x, g a)
           | f => f
@@ -52,8 +52,8 @@ structure CFormula :> CFormula = struct
    fun propositional f =
       let
          val rec g = fn
-            imogen.And (a, b) => g a andalso g b
-          | imogen.Imp (_, b) => g b
+            And (a, b) => g a andalso g b
+          | Imp (_, b) => g b
           | All _ => false
           | Ex _ => false
           | _ => true
@@ -92,23 +92,23 @@ structure CFormula :> CFormula = struct
       let
          val rec f = fn
             Hole => (filler, true)
-          | imogen.And (t1, t2) =>
+          | And (t1, t2) =>
             let
                val (t1, filled) = f t1
             in
-               if filled then (imogen.And (t1, t2), true)
+               if filled then (And (t1, t2), true)
                else
                   let
                      val (t2, filled) = f t2
                   in
-                     (imogen.And (t1, t2), filled)
+                     (And (t1, t2), filled)
                   end
             end
-          | imogen.Imp (r, t) =>
+          | Imp (r, t) =>
             let
                val (t, filled) = f t
             in
-               (imogen.Imp (r, t), filled)
+               (Imp (r, t), filled)
             end
           | All (x, t) =>
             let
@@ -133,7 +133,7 @@ structure CFormula :> CFormula = struct
          Var.eq (x1, x2) andalso Sort.Base.eq (s1, s2)
    in
       val rec eq = fn
-         (imogen.Atom rel1, imogen.Atom rel2) =>
+         (Atom rel1, Atom rel2) =>
          let
             val (p, xs) = Rel.dest rel1
             val (q, ys) = Rel.dest rel2
@@ -142,17 +142,17 @@ structure CFormula :> CFormula = struct
          end
        | (Top, Top) => true
        | (Bot, Bot) => true
-       | (imogen.And (x1, y1), imogen.And (x2, y2)) => eq (x1, x2) andalso eq (y1, y2)
-       | (imogen.Imp (x1, y1), imogen.Imp (x2, y2)) => Rel.eq (x1, x2) andalso eq (y1, y2)
+       | (And (x1, y1), And (x2, y2)) => eq (x1, x2) andalso eq (y1, y2)
+       | (Imp (x1, y1), Imp (x2, y2)) => Rel.eq (x1, x2) andalso eq (y1, y2)
        | (All (x, f), All (y, g)) => veq (x, y) andalso eq (f, g)
        | (Ex (x, f), Ex (y, g)) => veq (x, y) andalso eq (f, g)
        | _ => false
    end
 
    val rec atoms = fn
-      imogen.Atom rel => Rel.atoms rel
-    | imogen.And (p, q) => Atoms.union (atoms p, atoms q)
-    | imogen.Imp (r, q) => Atoms.union (Rel.atoms r, atoms q)
+      Atom rel => Rel.atoms rel
+    | And (p, q) => Atoms.union (atoms p, atoms q)
+    | Imp (r, q) => Atoms.union (Rel.atoms r, atoms q)
     | All ((x, _), p) => Atoms.remove (atoms p, Left x)
     | Ex ((x, _), p) => Atoms.remove (atoms p, Left x)
     | _ => Atoms.empty
@@ -162,13 +162,13 @@ structure CFormula :> CFormula = struct
          val xy = (x, Term.Var y)
          fun rel r = Rel.apply1 (r, xy)
          fun f fm = case fm of
-            imogen.Atom r => imogen.Atom (rel r)
+            Atom r => Atom (rel r)
           | All ((x', s), a) =>
             if Var.eq (x, x') then fm else All ((x', s), f a)
           | Ex ((x', s), a) =>
             if Var.eq (x, x') then fm else Ex ((x', s), f a)
-          | imogen.And (p, q) => imogen.And (f p, f q)
-          | imogen.Imp (r, q) => imogen.Imp (rel r, f q)
+          | And (p, q) => And (f p, f q)
+          | Imp (r, q) => Imp (rel r, f q)
           | _ => fm
       in
          f
@@ -178,7 +178,7 @@ structure CFormula :> CFormula = struct
       let
          fun rel r = Rel.apply1 (r, xt)
          fun subst fm = case fm of
-            imogen.Atom r => imogen.Atom (rel r)
+            Atom r => Atom (rel r)
           | All ((x', s), a) =>
             if Var.eq (x, x') then fm else
             if Atoms.mem (Term.atoms t, Left x') then
@@ -199,8 +199,8 @@ structure CFormula :> CFormula = struct
                   Ex ((v, s), subst a')
                end
             else Ex ((x', s), subst a)
-          | imogen.And (p, q) => imogen.And (subst p, subst q)
-          | imogen.Imp (r, q) => imogen.Imp (rel r, subst q)
+          | And (p, q) => And (subst p, subst q)
+          | Imp (r, q) => Imp (rel r, subst q)
           | _ => fm
       in
          subst f
@@ -214,11 +214,11 @@ structure CFormula :> CFormula = struct
       structure Prec = Parse.Prec
 
       val prec = fn
-         imogen.Imp _ => Prec.imogen.Imp
-       | imogen.And _ => Prec.imogen.And
+         Imp _ => Prec.Imp
+       | And _ => Prec.And
        | All _ => Prec.Quant
        | Ex _ => Prec.Quant
-       | _ => Prec.imogen.Atom
+       | _ => Prec.Atom
 
       fun destAll (All (x, b)) =
          let
@@ -242,11 +242,11 @@ structure CFormula :> CFormula = struct
             fun var (x, s) = %[Var.pp x, $":", Sort.Base.pp s]
          in
             case f of
-               imogen.Atom rel => Rel.pp rel
+               Atom rel => Rel.pp rel
              | Top => $U.top
              | Bot => $U.bot
              | Hole => $U.circ
-             | imogen.And (p, q) =>
+             | And (p, q) =>
                let
                   val p' = pp p
                   val p' = if prec p < fprec then PP.paren p' else p'
@@ -255,7 +255,7 @@ structure CFormula :> CFormula = struct
                in
                   PP.hang (%[p', \, $U.wedge]) 2 q'
                end
-             | imogen.Imp (r, q) =>
+             | Imp (r, q) =>
                let
                   val r = Rel.pp r
                   val q' = pp q
@@ -285,11 +285,11 @@ structure CFormula :> CFormula = struct
    fun apply (f, s) =
       let
          fun sub s = fn
-            imogen.Atom r => imogen.Atom (Rel.apply (r, s))
+            Atom r => Atom (Rel.apply (r, s))
           | Top => Top
           | Bot => Bot
-          | imogen.And (a, b) => imogen.And (sub s a, sub s b)
-          | imogen.Imp (r, a) => imogen.Imp (Rel.apply (r, s), sub s a)
+          | And (a, b) => And (sub s a, sub s b)
+          | Imp (r, a) => Imp (Rel.apply (r, s), sub s a)
           | All f => quant All s f
           | Ex f => quant Ex s f
           | Hole => Hole
@@ -315,15 +315,15 @@ structure CFormula :> CFormula = struct
          fun quant f ((x, s), p) =
             if Atoms.mem (atoms p, Left x) then f ((x, s), p) else p
          val rec simp1 = fn
-            imogen.And (a, Top) => a
-          | imogen.And (Top, a) => a
-          | imogen.And (Bot, _) => Bot
-          | imogen.And (_, Bot) => Bot
-          | imogen.Imp (_, Top) => Top
+            And (a, Top) => a
+          | And (Top, a) => a
+          | And (Bot, _) => Bot
+          | And (_, Bot) => Bot
+          | Imp (_, Top) => Top
           | f => f
          val rec simp = fn
-            imogen.And (p, q) => simp1 (imogen.And (simp p, simp q))
-          | imogen.Imp (r, p) => simp1 (imogen.Imp (r, simp p))
+            And (p, q) => simp1 (And (simp p, simp q))
+          | Imp (r, p) => simp1 (Imp (r, simp p))
           | All (x, p) => quant All (x, simp p)
           | Ex (x, p) => quant Ex (x, simp p)
           | f => f
@@ -340,8 +340,8 @@ structure CFormula :> CFormula = struct
    val fillHolesWithTop =
       let
          val rec f = fn
-            imogen.And (p, q) => imogen.And (f p, f q)
-          | imogen.Imp (r, p) => imogen.Imp (r, f p)
+            And (p, q) => And (f p, f q)
+          | Imp (r, p) => Imp (r, f p)
           | All (x, p) => All (x, f p)
           | Ex (x, p) => Ex (x, f p)
           | Hole => Top

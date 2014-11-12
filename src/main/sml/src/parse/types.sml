@@ -80,26 +80,26 @@ structure Types = struct
    end
 
    structure Prec = struct
-      val imogen.Atom = 90
+      val Atom = 90
       val Not = 80
-      val imogen.And = 70
+      val And = 70
       val Or  = 60
-      val imogen.Imp = 50
+      val Imp = 50
       val Iff = 40
       val Quant = 30
       val Label = 20
    end
 
    structure Binop = struct
-      datatype t = imogen.And | With | Or | Tensor | Iff | imogen.Imp | imogen.Imp' | Lolli | Lolli'
+      datatype t = And | With | Or | Tensor | Iff | Imp | Imp' | Lolli | Lolli'
                  | BiLolli | OrdImp1 | OrdImp2
 
       val pp = fn
-         imogen.And => $"imogen.And"
+         And => $"And"
        | Tensor => $"Tensor"
        | With => $"With"
-       | imogen.Imp => $"imogen.Imp"
-       | imogen.Imp' => $"imogen.Imp'"
+       | Imp => $"Imp"
+       | Imp' => $"Imp'"
        | Or => $"Or"
        | Iff => $"Iff"
        | Lolli => $"Lolli"
@@ -177,7 +177,7 @@ structure Types = struct
        | Top => $"Top"
    end
 
-   structure imogen.Formula = struct
+   structure Formula = struct
       datatype t =
          Binop of Binop.t * t * t
        | Unop of Unop.t * t
@@ -214,7 +214,7 @@ structure Types = struct
    structure Seq = struct
       datatype t = T of
          { ctx : Ctx.t option
-         , constr : imogen.Formula.t option
+         , constr : Formula.t option
          , ants : Rel.t list
          , cons : Rel.t option }
    end
@@ -226,7 +226,7 @@ structure Types = struct
    structure Rule = struct
       datatype t = T of
          { ctx : Ctx.t option
-         , constr : imogen.Formula.t option
+         , constr : Formula.t option
          , fresh : Param.t list
          , hyps : Seq.t list
          , conc : Seq.t }
@@ -240,7 +240,7 @@ structure Types = struct
        | Term of Term.t
        | Pred of Pred.t
        | Rel of Rel.t
-       | Form of imogen.Formula.t
+       | Form of Formula.t
        | Subst of Subst.t
        | Seq of Seq.t
        | RSeq of RSeq.t

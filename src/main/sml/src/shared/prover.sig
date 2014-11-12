@@ -15,7 +15,7 @@ signature Prover = sig
 
    structure Output : sig
       datatype t =
-         Success of (ND.t * imogen.Formula.t) option * Stats.t
+         Success of (ND.t * Formula.t) option * Stats.t
        | Saturated of Stats.t
        | TimeOut
    end

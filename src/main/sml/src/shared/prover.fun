@@ -62,7 +62,7 @@ functor ProverFn (structure Frontend : Frontend
    (* Result for the entire process. *)
    structure Output = struct
       datatype t =
-         Success of (ND.t * imogen.Formula.t) option * Stats.t
+         Success of (ND.t * Formula.t) option * Stats.t
        | Saturated of Stats.t
        | TimeOut
    end
@@ -176,7 +176,7 @@ functor ProverFn (structure Frontend : Frontend
                            end
                      val form = F.neg F.erase f
                      val pf = ND.label(pf, form)
-                     val form = imogen.Formula.unlabel form
+                     val form = Formula.unlabel form
                   in
                      Log.info (fn () => ND.pp pf)
                    ; Log.info (fn () => $"Checking proof...")

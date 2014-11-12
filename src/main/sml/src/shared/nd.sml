@@ -4,7 +4,7 @@ structure ND :> ND = struct
    open General
    open PP.Ops
 
-   structure F = imogen.Formula
+   structure F = Formula
    structure U = Unicode
    structure S = Subst
 
@@ -30,7 +30,7 @@ structure ND :> ND = struct
     | Fst of elim
     | Snd of elim
     | App of elim * intro
-    | Ascribe of intro * imogen.Formula.t
+    | Ascribe of intro * Formula.t
     | QApp of elim * Term.t
 
    type t = intro
@@ -60,7 +60,7 @@ structure ND :> ND = struct
     | (Snd e, Snd e') => eqe (e, e')
     | (App (e, i), App (e', i')) => eqe (e, e') andalso eqi (i, i')
     | (Ascribe (i, f), Ascribe (i', f')) =>
-      eqi (i, i') andalso imogen.Formula.eq (f, f')
+      eqi (i, i') andalso Formula.eq (f, f')
     | (QApp (l, i), QApp (l', i')) => eqe (l, l') andalso Term.eq (i, i')
     | _ => false
 
@@ -336,25 +336,25 @@ structure ND :> ND = struct
 
    exception Check
 
-   type ctx = (Label.t * imogen.Formula.t) list
-   fun ppCtx (l:ctx) = &(map (fn (l, f) => PP.pair (Label.pp l, imogen.Formula.pp f)) l)
+   type ctx = (Label.t * Formula.t) list
+   fun ppCtx (l:ctx) = &(map (fn (l, f) => PP.pair (Label.pp l, Formula.pp f)) l)
 
    fun check { eq, ctx, term, form } =
       let
          (* Remove labels before checking proof. *)
          val form = F.unlabel form
          fun chk ctx = fn
-            (Pair (t1, t2), F.imogen.And (p, q)) =>
+            (Pair (t1, t2), F.And (p, q)) =>
             let in
                chk ctx (t1, p)
              ; chk ctx (t2, q)
             end
           | (Pair (t1, t2), F.Iff (p, q)) =>
             let in
-               chk ctx (t1, F.imogen.Imp (p, q))
-             ; chk ctx (t2, F.imogen.Imp (q, p))
+               chk ctx (t1, F.Imp (p, q))
+             ; chk ctx (t2, F.Imp (q, p))
             end
-          | (Lam (x, t), F.imogen.Imp (p, q)) => chk ((x, p) :: ctx) (t, q)
+          | (Lam (x, t), F.Imp (p, q)) => chk ((x, p) :: ctx) (t, q)
           | (Lam (x, t), F.Not p) => chk ((x, p) :: ctx) (t, F.Bot)
           | (Inl t, F.Or (p, _)) => chk ctx (t, p)
           | (Inr t, F.Or (_, q)) => chk ctx (t, q)
@@ -426,21 +426,21 @@ structure ND :> ND = struct
           | Fst t =>
             let in
                case syn ctx t of
-                  F.imogen.And (p, _) => p
-                | F.Iff (p, q) => F.imogen.Imp (p, q)
+                  F.And (p, _) => p
+                | F.Iff (p, q) => F.Imp (p, q)
                 | _ => (printl "check fst"; raise Check)
             end
           | Snd t =>
             let in
                case syn ctx t of
-                  F.imogen.And (_, q) => q
-                | F.Iff (p, q) => F.imogen.Imp (q, p)
+                  F.And (_, q) => q
+                | F.Iff (p, q) => F.Imp (q, p)
                 | _ => (printl "check snd"; raise Check)
             end
           | App (t1, t2) =>
             let in
                case syn ctx t1 of
-                  F.imogen.Imp (p, q) =>
+                  F.Imp (p, q) =>
                   let in
                      chk ctx (t2, p)
                    ; q
@@ -691,14 +691,14 @@ structure ND :> ND = struct
    (* Assumes bound variable names are unique. *)
    local
       fun makeMap m = fn
-         (Lam (l, p), F.imogen.Imp (F.Label (s, a), b)) =>
+         (Lam (l, p), F.Imp (F.Label (s, a), b)) =>
          let
             val s = Label.ofString s
             val m = Label.Map.replace(m, l, s)
          in
             makeMap m (p, b)
          end
-       | (Lam (_, p), F.imogen.Imp (_, b)) => makeMap m (p, b)
+       | (Lam (_, p), F.Imp (_, b)) => makeMap m (p, b)
        | _ => m
    in
       fun label (nd, f) =

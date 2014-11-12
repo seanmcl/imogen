@@ -156,7 +156,7 @@ structure SC :> SC = struct
        | TensorL (u, (v, v'), D) =>
          ND.Let ((`v, ND.Fst (``u)), ND.Let ((`v', ND.Snd (``u)), nd D))
        | OneR => ND.Unit
-       | OneL (u, D) => ND.Let ((`u, ND.Ascribe (ND.Unit, imogen.Formula.Top)), nd D)
+       | OneL (u, D) => ND.Let ((`u, ND.Ascribe (ND.Unit, Formula.Top)), nd D)
        | LolliR (u, D) => ND.Lam (`u, nd D)
        | LolliL (u, (v, D), D') => ND.Let ((`v, ND.App (``u, nd D')), nd D)
        | WithR (D, D') => ND.Pair (nd D, nd D')

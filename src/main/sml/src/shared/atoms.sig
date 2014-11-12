@@ -13,10 +13,10 @@ signature Atoms = sig
    val dest : t -> Var.set * Param.set
    val size : t -> int
 
-   val add : t * imogen.Atom.t -> t
-   val remove : t * imogen.Atom.t -> t
-   val singleton : imogen.Atom.t -> t
-   val mem : t * imogen.Atom.t -> bool
+   val add : t * Atom.t -> t
+   val remove : t * Atom.t -> t
+   val singleton : Atom.t -> t
+   val mem : t * Atom.t -> bool
    val union : t * t -> t
    val unions : t list -> t
    val intersection : t * t -> t
@@ -24,8 +24,8 @@ signature Atoms = sig
    val disjoint : t * t -> bool
    val subset : t * t -> bool
    val isEmpty : t -> bool
-   val fold : (imogen.Atom.t * 'a -> 'a) -> 'a -> t -> 'a
-   val all : (imogen.Atom.t -> bool) -> t -> bool
+   val fold : (Atom.t * 'a -> 'a) -> 'a -> t -> 'a
+   val all : (Atom.t -> bool) -> t -> bool
 
    (* [fixed t] returns unfixed versions of the atoms that are fixed in t. *)
    val fixed : t -> t

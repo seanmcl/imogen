@@ -11,52 +11,52 @@ structure Parse1 : Parse = struct
 
    structure Var = struct
       open T.Var
-      open imogen.Parser.Var
+      open Parser.Var
       type parseable = t
    end
 
    structure Param = struct
       open T.Param
-      open imogen.Parser.Param
+      open Parser.Param
       type parseable = t
    end
 
    structure Func = struct
       open T.Func
-      open imogen.Parser.Func
+      open Parser.Func
       type parseable = t
    end
 
    structure Term = struct
       open T.Term
-      open imogen.Parser.Term
+      open Parser.Term
       type parseable = t
    end
 
    structure Pred = struct
       open T.Pred
-      open imogen.Parser.Pred
+      open Parser.Pred
       type parseable = t
    end
 
    structure Rel = struct
       open T.Rel
-      open imogen.Parser.Rel
+      open Parser.Rel
       type parseable = t
    end
 
    structure Sort = T.Sort
    structure Const = T.Const
 
-   structure imogen.Formula = struct
-      open T.imogen.Formula
-      open imogen.Parser.imogen.Formula
+   structure Formula = struct
+      open T.Formula
+      open Parser.Formula
       type parseable = t
    end
 
    structure Subst = struct
       open T.Subst
-      open imogen.Parser.Subst
+      open Parser.Subst
       type parseable = t
    end
 
@@ -64,19 +64,19 @@ structure Parse1 : Parse = struct
 
    structure Seq = struct
       open T.Seq
-      open imogen.Parser.Seq
+      open Parser.Seq
       type parseable = t
    end
 
    structure RSeq = struct
       open T.RSeq
-      open imogen.Parser.RSeq
+      open Parser.RSeq
       type parseable = t
    end
 
    structure Rule = struct
       open T.Rule
-      open imogen.Parser.Rule
+      open Parser.Rule
       type parseable = t
    end
 
@@ -84,7 +84,7 @@ structure Parse1 : Parse = struct
 
    val () = noWarnUnused (fn _ :
       Func.parseable * Term.parseable * Pred.parseable
-      * Rel.parseable * imogen.Formula.parseable * Subst.parseable
+      * Rel.parseable * Formula.parseable * Subst.parseable
       * Seq.parseable * Rule.parseable * Sort.t * Ctx.t
       * Var.parseable * Param.parseable * RSeq.parseable
       => ())

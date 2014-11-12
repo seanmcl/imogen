@@ -39,18 +39,18 @@ signature Parse = sig
 
    structure Prec : sig
       val Not : int
-      val imogen.And : int
+      val And : int
       val Or : int
-      val imogen.Imp : int
+      val Imp : int
       val Iff : int
-      val imogen.Atom : int
+      val Atom : int
       val Quant : int
       val Label : int
    end
 
    structure Binop : sig
       datatype t =
-         imogen.And | With | Or | Tensor | imogen.Imp | Lolli | imogen.Imp' | Lolli' | Iff | BiLolli
+         And | With | Or | Tensor | Imp | Lolli | Imp' | Lolli' | Iff | BiLolli
        | OrdImp1 | OrdImp2
    end
 
@@ -82,7 +82,7 @@ signature Parse = sig
       datatype t = True | False | One | Zero | Top
    end
 
-   structure imogen.Formula : sig
+   structure Formula : sig
       datatype t =
          Binop of Binop.t * t * t
        | Unop of Unop.t * t
@@ -109,7 +109,7 @@ signature Parse = sig
    structure Seq : sig
       datatype t = T of
          { ctx : Ctx.t option
-         , constr : imogen.Formula.t option
+         , constr : Formula.t option
          , ants : Rel.t list
          , cons : Rel.t option }
       include Parseable where type parseable = t
@@ -128,7 +128,7 @@ signature Parse = sig
    structure Rule : sig
       datatype t = T of
          { ctx : Ctx.t option
-         , constr : imogen.Formula.t option
+         , constr : Formula.t option
          , fresh : Param.t list
          , hyps : Seq.t list
          , conc : Seq.t }

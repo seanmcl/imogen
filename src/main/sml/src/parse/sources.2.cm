@@ -1,7 +1,7 @@
 (* The mlyacc lexer and parser. *)
 
 Library
-   structure imogen.Parser
+   structure Parser
    structure Types
 is
    sources.1.cm

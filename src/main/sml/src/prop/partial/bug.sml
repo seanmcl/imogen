@@ -7,7 +7,7 @@ structure Bug = struct
 
    fun h () = print "hello\n"
 
-   val parse = Parse.imogen.Formula.ofString
+   val parse = Parse.Formula.ofString
    val bugs = "( true | true ) => p4 => p4"
    val bugs = "( true | true ) => p2 => p2"
    val bugs = " ( p1 | p2 ) \
@@ -85,10 +85,10 @@ structure Bug = struct
          val _ = Log.setLevel Log.Trace
          val _ = Parameters.Db.useConflicts := false
          val _ = Parameters.Db.useRuleSubsumption := false
-         (* val _ = PP.ppl (Parse.imogen.Formula.pp f) *)
+         (* val _ = PP.ppl (Parse.Formula.pp f) *)
          fun doit s =
             let
-               val f = Parse.imogen.Formula.ofString s
+               val f = Parse.Formula.ofString s
                val f = PFormula.parse f
                val ps = H.apply heuristic (f, {maxSecs = 1000})
             in
@@ -112,8 +112,8 @@ structure Bug = struct
          (* val _ = Log.setLevel Log.Nothing *)
          (* val _ = Parameters.Rules.useConflicts := false *)
          val _ = print "1\n";
-         val f = Parse.imogen.Formula.ofString bugs
-         val _ = PP.ppl (Parse.imogen.Formula.pp f)
+         val f = Parse.Formula.ofString bugs
+         val _ = PP.ppl (Parse.Formula.pp f)
          val _ = print "2\n";
          val f = PFormula.parse f
          val _ = PP.ppl (PFormula.neg PFormula.pp f)
@@ -137,8 +137,8 @@ structure Bug = struct
                let
                   val _ = print "Orig proof:\n";
                   val _ = PP.ppl (ND.pp nd)
-                  val _ = print "imogen.Formula:\n";
-                  val _ = PP.ppl (imogen.Formula.pp f)
+                  val _ = print "Formula:\n";
+                  val _ = PP.ppl (Formula.pp f)
                   val _ = print ("Labeled proof:\n")
                   val nd' = ND.label (nd, f)
                   val _ = PP.ppl (ND.pp nd')

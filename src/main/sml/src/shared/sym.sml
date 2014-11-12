@@ -228,7 +228,7 @@ end = struct
    val ofParam = ofInt o Param.toInt
 end
 
-structure imogen.Atom :> imogen.Atom
+structure Atom :> Atom
    where type Var.t = Var.t
      and type Param.t = Param.t = struct
    open General
@@ -415,7 +415,7 @@ end
 
 structure Var   : Var   = Var
 structure Param : Param = Param
-structure imogen.Atom  : imogen.Atom  = imogen.Atom
+structure Atom  : Atom  = Atom
 structure Func  : Func  = Func
 structure Pred  : Pred  = Pred
 structure Label : Label = Label

@@ -4,7 +4,7 @@ signature Davies = sig
       PAtom of Term.t
     | One
     | Zero
-    | imogen.And of pos * pos
+    | And of pos * pos
     | Or of pos * pos
     | Box of neg
     | Ex of Var.t * pos
@@ -13,7 +13,7 @@ signature Davies = sig
       NAtom of Term.t
     | Top
     | With of neg * neg
-    | imogen.Imp of pos * neg
+    | Imp of pos * neg
     | Not of pos
     | Iff of neg * neg
     | Dia of pos

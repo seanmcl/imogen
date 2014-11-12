@@ -440,7 +440,7 @@ type pos = int
 type arg = unit
 structure MlyValue = 
 struct
-datatype svalue = VOID | ntVOID of unit | INT of  (string) | FUNC_POS_PRED_ID of  (string) | PARAM_ID of  (string) | VAR_NEG_PRED_ID of  (string) | varbd_list of  ( ( string * T.Sort.t option )  list) | varbd of  (string*T.Sort.t option) | var of  (T.Var.t) | unop of  (T.Unop.t) | termlist of  (T.Term.t list) | term of  (T.Term.t) | subst of  (T.Subst.one list) | sort of  (T.Sort.t) | seqlist of  (T.Seq.t list) | seq of  (T.Seq.t) | rseq of  (T.RSeq.t) | rule of  (T.Rule.t) | rellist of  (T.Rel.t list) | rel of  (T.Rel.t) | quant of  (T.Quant.t) | pred of  (T.Pred.t) | paramlist of  (T.Param.t list) | param of  (T.Param.t) | id of  (string*{ lower:bool } ) | func of  (T.Func.t) | form of  (T.imogen.Formula.t) | const of  (T.Const.t) | cons of  (T.Rel.t option) | bindlist of  (T.Subst.one list) | bind of  (T.Subst.one) | start of  (T.Parse.t)
+datatype svalue = VOID | ntVOID of unit | INT of  (string) | FUNC_POS_PRED_ID of  (string) | PARAM_ID of  (string) | VAR_NEG_PRED_ID of  (string) | varbd_list of  ( ( string * T.Sort.t option )  list) | varbd of  (string*T.Sort.t option) | var of  (T.Var.t) | unop of  (T.Unop.t) | termlist of  (T.Term.t list) | term of  (T.Term.t) | subst of  (T.Subst.one list) | sort of  (T.Sort.t) | seqlist of  (T.Seq.t list) | seq of  (T.Seq.t) | rseq of  (T.RSeq.t) | rule of  (T.Rule.t) | rellist of  (T.Rel.t list) | rel of  (T.Rel.t) | quant of  (T.Quant.t) | pred of  (T.Pred.t) | paramlist of  (T.Param.t list) | param of  (T.Param.t) | id of  (string*{ lower:bool } ) | func of  (T.Func.t) | form of  (T.Formula.t) | const of  (T.Const.t) | cons of  (T.Rel.t option) | bindlist of  (T.Subst.one list) | bind of  (T.Subst.one) | start of  (T.Parse.t)
 end
 type svalue = MlyValue.svalue
 type result = T.Parse.t
@@ -640,71 +640,71 @@ end
 )
  in ( LrTable.NT 2, ( result, bind1left, bindlist1right), rest671)
 end
-|  ( 25, ( ( _, ( MlyValue.const const, const1left, const1right)) :: rest671)) => let val  result = MlyValue.form ((*#line 177.39 "imogen.grm"*) T.imogen.Formula.Const const (*#line 643.1 "imogen.grm.sml"*)
+|  ( 25, ( ( _, ( MlyValue.const const, const1left, const1right)) :: rest671)) => let val  result = MlyValue.form ((*#line 177.39 "imogen.grm"*) T.Formula.Const const (*#line 643.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, const1left, const1right), rest671)
 end
-|  ( 26, ( ( _, ( MlyValue.form form, _, form1right)) :: _ :: ( _, ( MlyValue.FUNC_POS_PRED_ID FUNC_POS_PRED_ID, FUNC_POS_PRED_ID1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 178.39 "imogen.grm"*) T.imogen.Formula.Label (FUNC_POS_PRED_ID, form)(*#line 647.1 "imogen.grm.sml"*)
+|  ( 26, ( ( _, ( MlyValue.form form, _, form1right)) :: _ :: ( _, ( MlyValue.FUNC_POS_PRED_ID FUNC_POS_PRED_ID, FUNC_POS_PRED_ID1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 178.39 "imogen.grm"*) T.Formula.Label (FUNC_POS_PRED_ID, form)(*#line 647.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, FUNC_POS_PRED_ID1left, form1right), rest671)
 end
-|  ( 27, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 179.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.imogen.And, form1, form2) (*#line 651.1 "imogen.grm.sml"*)
+|  ( 27, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 179.39 "imogen.grm"*) T.Formula.Binop (T.Binop.And, form1, form2) (*#line 651.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 28, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 180.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.With, form1, form2) (*#line 655.1 "imogen.grm.sml"*)
+|  ( 28, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 180.39 "imogen.grm"*) T.Formula.Binop (T.Binop.With, form1, form2) (*#line 655.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 29, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 181.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.Tensor, form1, form2) (*#line 659.1 "imogen.grm.sml"*)
+|  ( 29, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 181.39 "imogen.grm"*) T.Formula.Binop (T.Binop.Tensor, form1, form2) (*#line 659.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 30, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 182.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.Or, form1, form2) (*#line 663.1 "imogen.grm.sml"*)
+|  ( 30, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 182.39 "imogen.grm"*) T.Formula.Binop (T.Binop.Or, form1, form2) (*#line 663.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 31, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 183.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.imogen.Imp, form1, form2) (*#line 667.1 "imogen.grm.sml"*)
+|  ( 31, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 183.39 "imogen.grm"*) T.Formula.Binop (T.Binop.Imp, form1, form2) (*#line 667.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 32, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 184.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.Lolli, form1, form2) (*#line 671.1 "imogen.grm.sml"*)
+|  ( 32, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 184.39 "imogen.grm"*) T.Formula.Binop (T.Binop.Lolli, form1, form2) (*#line 671.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 33, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 185.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.OrdImp1, form1, form2) (*#line 675.1 "imogen.grm.sml"*)
+|  ( 33, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 185.39 "imogen.grm"*) T.Formula.Binop (T.Binop.OrdImp1, form1, form2) (*#line 675.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 34, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 186.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.OrdImp2, form1, form2) (*#line 679.1 "imogen.grm.sml"*)
+|  ( 34, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 186.39 "imogen.grm"*) T.Formula.Binop (T.Binop.OrdImp2, form1, form2) (*#line 679.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 35, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 187.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.imogen.Imp, form2, form1) (*#line 683.1 "imogen.grm.sml"*)
+|  ( 35, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 187.39 "imogen.grm"*) T.Formula.Binop (T.Binop.Imp, form2, form1) (*#line 683.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 36, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 188.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.Lolli, form2, form1) (*#line 687.1 "imogen.grm.sml"*)
+|  ( 36, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 188.39 "imogen.grm"*) T.Formula.Binop (T.Binop.Lolli, form2, form1) (*#line 687.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 37, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 189.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.Iff, form1, form2) (*#line 691.1 "imogen.grm.sml"*)
+|  ( 37, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 189.39 "imogen.grm"*) T.Formula.Binop (T.Binop.Iff, form1, form2) (*#line 691.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 38, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 190.39 "imogen.grm"*) T.imogen.Formula.Binop (T.Binop.BiLolli, form1, form2) (*#line 695.1 "imogen.grm.sml"*)
+|  ( 38, ( ( _, ( MlyValue.form form2, _, form2right)) :: _ :: ( _, ( MlyValue.form form1, form1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 190.39 "imogen.grm"*) T.Formula.Binop (T.Binop.BiLolli, form1, form2) (*#line 695.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, form1left, form2right), rest671)
 end
-|  ( 39, ( ( _, ( MlyValue.form form, _, form1right)) :: _ :: ( _, ( MlyValue.varbd_list varbd_list, _, _)) :: ( _, ( MlyValue.quant quant, quant1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 191.39 "imogen.grm"*) foldr (fn (bnd, f) => T.imogen.Formula.Quant (quant, bnd, f)) form varbd_list (*#line 699.1 "imogen.grm.sml"*)
+|  ( 39, ( ( _, ( MlyValue.form form, _, form1right)) :: _ :: ( _, ( MlyValue.varbd_list varbd_list, _, _)) :: ( _, ( MlyValue.quant quant, quant1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 191.39 "imogen.grm"*) foldr (fn (bnd, f) => T.Formula.Quant (quant, bnd, f)) form varbd_list (*#line 699.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, quant1left, form1right), rest671)
 end
-|  ( 40, ( ( _, ( MlyValue.form form, _, form1right)) :: ( _, ( MlyValue.unop unop, unop1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 192.39 "imogen.grm"*) T.imogen.Formula.Unop (unop, form) (*#line 703.1 "imogen.grm.sml"*)
+|  ( 40, ( ( _, ( MlyValue.form form, _, form1right)) :: ( _, ( MlyValue.unop unop, unop1left, _)) :: rest671)) => let val  result = MlyValue.form ((*#line 192.39 "imogen.grm"*) T.Formula.Unop (unop, form) (*#line 703.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, unop1left, form1right), rest671)
 end
-|  ( 41, ( ( _, ( MlyValue.rel rel, rel1left, rel1right)) :: rest671)) => let val  result = MlyValue.form ((*#line 193.39 "imogen.grm"*) T.imogen.Formula.Rel rel (*#line 707.1 "imogen.grm.sml"*)
+|  ( 41, ( ( _, ( MlyValue.rel rel, rel1left, rel1right)) :: rest671)) => let val  result = MlyValue.form ((*#line 193.39 "imogen.grm"*) T.Formula.Rel rel (*#line 707.1 "imogen.grm.sml"*)
 )
  in ( LrTable.NT 5, ( result, rel1left, rel1right), rest671)
 end

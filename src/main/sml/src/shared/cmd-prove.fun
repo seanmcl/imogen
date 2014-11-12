@@ -10,7 +10,7 @@ functor CmdProveFn (val summary : string
    structure F = PFormula
    structure U = CmdUtil
    structure G = U.Flags
-   structure PF = Parse.imogen.Formula
+   structure PF = Parse.Formula
    structure Meta = Parse.Meta
    structure S = Meta.Pre
    structure O = OS.Process
@@ -102,7 +102,7 @@ functor CmdProveFn (val summary : string
           | _ => failwith "Too many args"
          (* val _ = Log.trace (fn () => PF.pp f) *)
          val f = P.Frontend.parse f
-         val _ = Log.trace (fn () => &[$"imogen.Formula:", %[\\, P.Frontend.pp f]])
+         val _ = Log.trace (fn () => &[$"Formula:", %[\\, P.Frontend.pp f]])
          val f = P.Frontend.pformula f
          val f = F.neg F.separate f
          val _ = Log.trace (fn () => $"Parsing complete.")

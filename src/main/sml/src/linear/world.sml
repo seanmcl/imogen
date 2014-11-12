@@ -85,7 +85,7 @@ structure World :> World = struct
          let
             val mfn = fn
                C.Top => NONE
-             | C.imogen.Atom r =>
+             | C.Atom r =>
                let in
                   case Rel.dest r of
                      (eq, [w1, w2]) =>
@@ -102,7 +102,7 @@ structure World :> World = struct
       fun toForm eqs =
          let
             fun mfn (t1, t2) =
-               C.imogen.Atom (Rel.make (Pred.ueq, [W.toTerm t1, W.toTerm t2]))
+               C.Atom (Rel.make (Pred.ueq, [W.toTerm t1, W.toTerm t2]))
          in
             C.listConj (List.map mfn eqs)
          end

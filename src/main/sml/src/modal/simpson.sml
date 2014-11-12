@@ -5,7 +5,7 @@ structure Simpson :> Simpson = struct
    structure S = Sort
    structure F = PFormula
    structure P = Parse
-   structure PF = Parse.imogen.Formula
+   structure PF = Parse.Formula
    structure T = Term
 
    open General
@@ -15,7 +15,7 @@ structure Simpson :> Simpson = struct
       PAtom of Term.t
     | One
     | Zero
-    | imogen.And of pos * pos
+    | And of pos * pos
     | Or of pos * pos
     | Dia of pos
     | Ex of Var.t * pos
@@ -24,7 +24,7 @@ structure Simpson :> Simpson = struct
       NAtom of Term.t
     | Top
     | With of neg * neg
-    | imogen.Imp of pos * neg
+    | Imp of pos * neg
     | Iff of neg * neg
     | Box of neg
     | All of Var.t * neg
@@ -36,19 +36,19 @@ structure Simpson :> Simpson = struct
    val pp =
       let
          val precP = fn
-            imogen.And _ => Prec.imogen.And
+            And _ => Prec.And
           | Or _ => Prec.Or
           | Down _ => Prec.Not
           | Dia _ => Prec.Not
           | Ex _ => Prec.Quant
-          | _ => Prec.imogen.Atom
+          | _ => Prec.Atom
          val precN = fn
-            With _ => Prec.imogen.And
-          | imogen.Imp _ => Prec.imogen.Imp
+            With _ => Prec.And
+          | Imp _ => Prec.Imp
           | Up _ => Prec.Not
           | Box _ => Prec.Not
           | All _ => Prec.Quant
-          | _ => Prec.imogen.Atom
+          | _ => Prec.Atom
          val rec destAll = fn
             All (x, b) =>
             let
@@ -69,12 +69,12 @@ structure Simpson :> Simpson = struct
             PAtom r => Term.pp r
           | One => $"1"
           | Zero => $"0"
-          | imogen.And (p, q) =>
+          | And (p, q) =>
             let
                val p' = pos p
-               val p' = if precP p <= Prec.imogen.And then PP.paren p' else p'
+               val p' = if precP p <= Prec.And then PP.paren p' else p'
                val q' = pos q
-               val q' = if precP q < Prec.imogen.And then PP.paren q' else q'
+               val q' = if precP q < Prec.And then PP.paren q' else q'
             in
                PP.hang (%[p', \, $U.wedge]) 0 q'
             end
@@ -115,28 +115,28 @@ structure Simpson :> Simpson = struct
           | With (n, m) =>
             let
                val n' = neg n
-               val n' = if precN n <= Prec.imogen.And then PP.paren n' else n'
+               val n' = if precN n <= Prec.And then PP.paren n' else n'
                val m' = neg m
-               val m' = if precN m < Prec.imogen.And then PP.paren m' else m'
+               val m' = if precN m < Prec.And then PP.paren m' else m'
             in
                PP.hang (%[n', \, $"&"]) 0 m'
             end
           | Top => $U.top
-          | imogen.Imp (p, n) =>
+          | Imp (p, n) =>
             let
                val p' = pos p
-               val p' = if precP p <= Prec.imogen.Imp then PP.paren p' else p'
+               val p' = if precP p <= Prec.Imp then PP.paren p' else p'
                val n' = neg n
-               val n' = if precN n < Prec.imogen.Imp then PP.paren n' else n'
+               val n' = if precN n < Prec.Imp then PP.paren n' else n'
             in
                PP.hang (%[ p', \, $U.sup]) 0 n'
             end
           | Iff (a, b) =>
             let
                val a' = neg a
-               val a' = if precN a <= Prec.imogen.Imp then PP.paren a' else a'
+               val a' = if precN a <= Prec.Imp then PP.paren a' else a'
                val b' = neg b
-               val b' = if precN b < Prec.imogen.Imp then PP.paren b' else b'
+               val b' = if precN b < Prec.Imp then PP.paren b' else b'
             in
                PP.hang (%[ a', \, $U.sup]) 0 b'
             end
@@ -194,8 +194,8 @@ structure Simpson :> Simpson = struct
           | PF.Const P.Const.Zero => Zero
           | PF.Unop (P.Unop.Down, n) => Down (neg n)
           | PF.Unop (P.Unop.Dia, n) => Dia (pos n)
-          | PF.Binop (P.Binop.imogen.And, p, q) => imogen.And (pos p, pos q)
-          | PF.Binop (P.Binop.Tensor, p, q) => imogen.And (pos p, pos q)
+          | PF.Binop (P.Binop.And, p, q) => And (pos p, pos q)
+          | PF.Binop (P.Binop.Tensor, p, q) => And (pos p, pos q)
           | PF.Binop (P.Binop.Or, p, q) => Or (pos p, pos q)
           | PF.Quant (P.Quant.Ex, (x, _), p) =>
             Ex (Var.ofString x, pos p)
@@ -211,17 +211,17 @@ structure Simpson :> Simpson = struct
           | PF.Const P.Const.Top => Top
           | PF.Unop (P.Unop.Bang, _) => fail ()
           | PF.Unop (P.Unop.Up, p) => Up (pos p)
-          | PF.Unop (P.Unop.Not, n) => imogen.Imp (pos n, Up Zero)
+          | PF.Unop (P.Unop.Not, n) => Imp (pos n, Up Zero)
           | PF.Unop (P.Unop.Box, n) => Box (neg n)
           | PF.Binop (P.Binop.With, p, q) => With (neg p, neg q)
-          | PF.Binop (P.Binop.imogen.Imp, p, q) => imogen.Imp (pos p, neg q)
-          | PF.Binop (P.Binop.imogen.Imp', p, q) => imogen.Imp (pos q, neg p)
+          | PF.Binop (P.Binop.Imp, p, q) => Imp (pos p, neg q)
+          | PF.Binop (P.Binop.Imp', p, q) => Imp (pos q, neg p)
           | PF.Binop (P.Binop.Iff, p, q) =>
             let
                val p = neg p
                val q = neg q
             in
-               With (imogen.Imp (Down p, q), imogen.Imp (Down q, p))
+               With (Imp (Down p, q), Imp (Down q, p))
             end
           | PF.Quant (P.Quant.All, (x, _), p) =>
             All (Var.ofString x, neg p)
@@ -241,7 +241,7 @@ structure Simpson :> Simpson = struct
             PAtom r => F.PAtom (mkRel w r)
           | One => F.One
           | Zero => F.Zero
-          | imogen.And (p, q) => F.Tensor (pos w p, pos w q)
+          | And (p, q) => F.Tensor (pos w p, pos w q)
           | Or (p, q) => F.Sum (pos w p, pos w q)
           | Dia p =>
             let
@@ -256,7 +256,7 @@ structure Simpson :> Simpson = struct
             NAtom r : neg => F.NAtom (mkRel w r) : F.neg
           | Top => F.Top
           | With (p, q) => F.With (neg w p, neg w q)
-          | imogen.Imp (p, q) => F.Lolli (pos w p, neg w q)
+          | Imp (p, q) => F.Lolli (pos w p, neg w q)
           | Iff (p, q) => F.BiLolli (neg w p, neg w q)
           | Box p =>
             let

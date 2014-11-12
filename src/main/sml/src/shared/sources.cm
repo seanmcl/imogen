@@ -14,7 +14,7 @@ Library
   structure Param
   structure Func
   structure Pred
-  structure imogen.Atom
+  structure Atom
   structure Label
 
   structure CSubst
@@ -29,7 +29,7 @@ Library
   structure Term
   structure Subst
   structure Rel
-  structure imogen.Formula
+  structure Formula
   structure PFormula
   structure LFormula
   structure Classical

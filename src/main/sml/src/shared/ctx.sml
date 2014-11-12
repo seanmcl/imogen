@@ -8,7 +8,7 @@ structure Ctx :> Ctx = struct
    open General
    open PP.Ops
 
-   structure Map = imogen.Atom.Map
+   structure Map = Atom.Map
 
    type t = Sort.t Map.t
    type printable = t
@@ -25,7 +25,7 @@ structure Ctx :> Ctx = struct
                 | SOME _ => failwith "Ctx.fix"
             in
                if Atoms.mem (ats, a)
-               then ins (imogen.Atom.fix a)
+               then ins (Atom.fix a)
                else ins a
             end
       in
@@ -82,7 +82,7 @@ structure Ctx :> Ctx = struct
 
    val isEmpty = Map.isEmpty
 
-   fun pp m = Map.ppHoriz (fn (k, s) => %[imogen.Atom.pp k, $" : ", Sort.Base.pp s]) m
+   fun pp m = Map.ppHoriz (fn (k, s) => %[Atom.pp k, $" : ", Sort.Base.pp s]) m
 
    fun atoms m =
       let

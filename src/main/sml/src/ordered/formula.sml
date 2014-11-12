@@ -1,11 +1,11 @@
 
-structure imogen.Formula :> imogen.Formula = struct
+structure Formula :> Formula = struct
    structure F = PFormula
    structure T = Term
    structure S = Sort
    structure Prec = Parse.Prec
    structure P = Parse
-   structure PF = Parse.imogen.Formula
+   structure PF = Parse.Formula
    structure U = Unicode
 
    open General
@@ -176,7 +176,7 @@ structure imogen.Formula :> imogen.Formula = struct
           | PF.Unop (P.Unop.Down, n) => Down (neg n)
           | PF.Unop (P.Unop.Bang, n) => Bang (neg n)
           | PF.Unop (P.Unop.UBang, n) => UBang (neg n)
-          | PF.Binop (P.Binop.imogen.And, p, q) => Dot (pos p, pos q)
+          | PF.Binop (P.Binop.And, p, q) => Dot (pos p, pos q)
           | PF.Binop (P.Binop.Tensor, p, q) => Dot (pos p, pos q)
           | PF.Binop (P.Binop.Or, p, q) => Sum (pos p, pos q)
           | PF.Quant (P.Quant.Ex, (x, _), p) =>
@@ -220,18 +220,18 @@ structure imogen.Formula :> imogen.Formula = struct
             end
            | destEx f = ([], f)
          val precP = fn
-            Dot _ => Prec.imogen.And
+            Dot _ => Prec.And
           | Sum _ => Prec.Or
           | Down _ => Prec.Not
           | Ex _ => Prec.Quant
-          | _ => Prec.imogen.Atom
+          | _ => Prec.Atom
          val precN = fn
-            With _ => Prec.imogen.And
-          | ImpL _ => Prec.imogen.Imp
-          | ImpR _ => Prec.imogen.Imp
+            With _ => Prec.And
+          | ImpL _ => Prec.Imp
+          | ImpR _ => Prec.Imp
           | Up _ => Prec.Not
           | All _ => Prec.Quant
-          | _ => Prec.imogen.Atom
+          | _ => Prec.Atom
          val rec pos = fn
             PAtom rel => Term.pp rel
           | One => $"1"
@@ -239,9 +239,9 @@ structure imogen.Formula :> imogen.Formula = struct
           | Dot (p, q) =>
             let
                val p' = pos p
-               val p' = if precP p <= Prec.imogen.And then PP.paren p' else p'
+               val p' = if precP p <= Prec.And then PP.paren p' else p'
                val q' = pos q
-               val q' = if precP q < Prec.imogen.And then PP.paren q' else q'
+               val q' = if precP q < Prec.And then PP.paren q' else q'
             in
                PP.hang (%[p', \, $U.wedge]) 0 q'
             end
@@ -289,9 +289,9 @@ structure imogen.Formula :> imogen.Formula = struct
           | With (n, m) =>
             let
                val n' = neg n
-               val n' = if precN n <= Prec.imogen.And then PP.paren n' else n'
+               val n' = if precN n <= Prec.And then PP.paren n' else n'
                val m' = neg m
-               val m' = if precN m < Prec.imogen.And then PP.paren m' else m'
+               val m' = if precN m < Prec.And then PP.paren m' else m'
             in
                PP.hang (%[n', \, $"&"]) 0 m'
             end
@@ -299,18 +299,18 @@ structure imogen.Formula :> imogen.Formula = struct
           | ImpL (p, n) =>
             let
                val p' = pos p
-               val p' = if precP p <= Prec.imogen.Imp then PP.paren p' else p'
+               val p' = if precP p <= Prec.Imp then PP.paren p' else p'
                val n' = neg n
-               val n' = if precN n < Prec.imogen.Imp then PP.paren n' else n'
+               val n' = if precN n < Prec.Imp then PP.paren n' else n'
             in
                PP.hang (%[ p', \, $">->"]) 0 n'
             end
           | ImpR (p, n) =>
             let
                val p' = pos p
-               val p' = if precP p <= Prec.imogen.Imp then PP.paren p' else p'
+               val p' = if precP p <= Prec.Imp then PP.paren p' else p'
                val n' = neg n
-               val n' = if precN n < Prec.imogen.Imp then PP.paren n' else n'
+               val n' = if precN n < Prec.Imp then PP.paren n' else n'
             in
                PP.hang (%[ p', \, $"->>"]) 0 n'
             end

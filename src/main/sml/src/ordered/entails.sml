@@ -193,7 +193,7 @@ structure Entails = struct
       let
          val rec f = fn
             C.Top => true
-          | C.imogen.And (a, b) => f a andalso f b
+          | C.And (a, b) => f a andalso f b
           | C.Bot => false
           | _ => false
       in

@@ -1,13 +1,12 @@
 #!/bin/bash
-
 set -e -u -o pipefail
 
-mode=fast
-# mode=debug
+# mode=fast
+mode=debug
 # mode=profile
 
 #profile_flag="time-field"
- profile_flag="count"
+# profile_flag="count"
 # profile_flag="-alloc"
 # profile_flag="time" # too slow
 # profile_flag="time-label" # too slow

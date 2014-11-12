@@ -62,7 +62,7 @@ signature LFormula = sig
 
    val make: PFormula.neg -> neg
    val pformula: (PFormula.pos, PFormula.neg) t
-   val erase: imogen.Formula.t func
+   val erase: Formula.t func
 
    (* Correctly staged. *)
    type unlabel = Rel.t -> (pos, neg) Either.t

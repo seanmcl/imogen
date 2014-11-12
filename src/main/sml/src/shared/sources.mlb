@@ -145,7 +145,7 @@ in
       structure Subst
       structure CSubst
       structure Rel
-      structure imogen.Formula
+      structure Formula
       structure PFormula
       structure LFormula
       structure Classical

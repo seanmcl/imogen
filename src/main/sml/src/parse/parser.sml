@@ -1,5 +1,5 @@
 
-structure imogen.Parser : imogen.Parser = struct
+structure Parser : Parser = struct
    open General
 
    structure T = Types
@@ -12,7 +12,7 @@ structure imogen.Parser : imogen.Parser = struct
    structure Lexer : LEXER =
       ImogenLexFun (structure Tokens = Tokens)
 
-   structure imogen.Parser =
+   structure Parser =
       Join ( structure LrParser = LrParser
    structure ParserData = LrVals.ParserData
    structure Lex = Lexer )
@@ -26,22 +26,22 @@ structure imogen.Parser : imogen.Parser = struct
             val dummyTOKEN = dummyToken (empty,empty)
             fun invoke lexer =
                let
-                  val newLexer = imogen.Parser.Stream.cons (dummyTOKEN, lexer)
+                  val newLexer = Parser.Stream.cons (dummyTOKEN, lexer)
                in
-                  imogen.Parser.parse ( lookahead, newLexer, Interface.error
+                  Parser.parse ( lookahead, newLexer, Interface.error
                                , Interface.nothing )
                end
             fun loop lexer =
                let
                   val (result, lexer) = invoke lexer
-                  val (nextToken, _) = imogen.Parser.Stream.get lexer
+                  val (nextToken, _) = Parser.Stream.get lexer
                in
-                  if imogen.Parser.sameToken (nextToken,dummyEOF)
+                  if Parser.sameToken (nextToken,dummyEOF)
                   then result
                   else loop lexer
                end
          in
-            loop (imogen.Parser.makeLexer reader)
+            loop (Parser.makeLexer reader)
          end
 
       fun file dummy f =
@@ -119,7 +119,7 @@ structure imogen.Parser : imogen.Parser = struct
       val (_, ofString, _) = Gen.parsers (get, dummy)
    end
 
-   structure imogen.Formula = struct
+   structure Formula = struct
       val get = fn
          T.Parse.Form mf => mf
        | _ => raise (Fail "parse")

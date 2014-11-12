@@ -1,9 +1,9 @@
 
 structure PFormula :> PFormula = struct
-   structure F = imogen.Formula
+   structure F = Formula
    structure P = Parse
    structure Prec = Parse.Prec
-   structure PF = Parse.imogen.Formula
+   structure PF = Parse.Formula
    structure U = Unicode
    structure RSet = Pred.Set
    structure S = Signat
@@ -220,20 +220,20 @@ structure PFormula :> PFormula = struct
    val pp =
       let
          val precP = fn
-            Tensor _ => Prec.imogen.And
+            Tensor _ => Prec.And
           | Sum _ => Prec.Or
           | Down _ => Prec.Not
           | Ex _ => Prec.Quant
           | PLabel _ => Prec.Label
-          | _ => Prec.imogen.Atom
+          | _ => Prec.Atom
          val precN = fn
-            With _ => Prec.imogen.And
-          | Lolli _ => Prec.imogen.Imp
+            With _ => Prec.And
+          | Lolli _ => Prec.Imp
           | Up _ => Prec.Not
           | BiLolli _ => Prec.Iff
           | All _ => Prec.Quant
           | NLabel _ => Prec.Label
-          | _ => Prec.imogen.Atom
+          | _ => Prec.Atom
          fun vs (x, s) =
             %[Var.pp x, case s of Sort.I => PP.empty | _ => %[$":", Sort.Base.pp s]]
          val rec pos = fn
@@ -244,9 +244,9 @@ structure PFormula :> PFormula = struct
           | Tensor (p, q) =>
             let
                val p' = pos p
-               val p' = if precP p <= Prec.imogen.And then PP.paren p' else p'
+               val p' = if precP p <= Prec.And then PP.paren p' else p'
                val q' = pos q
-               val q' = if precP q < Prec.imogen.And then PP.paren q' else q'
+               val q' = if precP q < Prec.And then PP.paren q' else q'
             in
                PP.hang (%[p', \, $U.wedge]) 0 q'
             end
@@ -281,9 +281,9 @@ structure PFormula :> PFormula = struct
           | With (n, m) =>
             let
                val n' = neg n
-               val n' = if precN n <= Prec.imogen.And then PP.paren n' else n'
+               val n' = if precN n <= Prec.And then PP.paren n' else n'
                val m' = neg m
-               val m' = if precN m < Prec.imogen.And then PP.paren m' else m'
+               val m' = if precN m < Prec.And then PP.paren m' else m'
             in
                PP.hang (%[n', \, $"&"]) 0 m'
             end
@@ -291,9 +291,9 @@ structure PFormula :> PFormula = struct
           | Lolli (p, n) =>
             let
                val p' = pos p
-               val p' = if precP p <= Prec.imogen.Imp then PP.paren p' else p'
+               val p' = if precP p <= Prec.Imp then PP.paren p' else p'
                val n' = neg n
-               val n' = if precN n < Prec.imogen.Imp then PP.paren n' else n'
+               val n' = if precN n < Prec.Imp then PP.paren n' else n'
             in
                PP.hang (%[ p', \, $Unicode.sup]) 0 n'
             end
@@ -594,14 +594,14 @@ structure PFormula :> PFormula = struct
          {p = fst o pos [], n = fst o neg []}
       end
 
-   (* Atoms in imogen.Formula.formulas are not polarized.  We thus must give
+   (* Atoms in Formula.formulas are not polarized.  We thus must give
       some polarity assignment to atoms.  We must do this consistently.
       Thus, we just make every atom negative and let the heuristic
       assign different polarities if it wishes. *)
-   val formulate : imogen.Formula.t -> neg =
+   val formulate : Formula.t -> neg =
       let
          fun pos f = case f of
-            F.imogen.Atom rel =>
+            F.Atom rel =>
             let in
                case Rel.sign rel of
                   Pred.Neg => Down (NAtom rel)
@@ -609,21 +609,21 @@ structure PFormula :> PFormula = struct
             end
           | F.Top => One
           | F.Bot => Zero
-          | F.imogen.And (p, q) => Tensor (pos p, pos q)
+          | F.And (p, q) => Tensor (pos p, pos q)
           | F.Or (p, q) => Sum (pos p, pos q)
           | F.Ex (x, p) => Ex (x, pos p)
           | _ => Down (neg f)
          and neg f = case f of
-            F.imogen.Atom rel =>
+            F.Atom rel =>
             let in
                case Rel.sign rel of
                   Pred.Neg => NAtom rel
                 | Pred.Pos => Up (PAtom rel)
             end
           | F.Top => Top
-          | F.imogen.Imp (p, q) => Lolli (pos p, neg q)
+          | F.Imp (p, q) => Lolli (pos p, neg q)
           | F.Iff (p, q) => BiLolli (neg p, neg q)
-          | F.imogen.And (p, q) => With (neg p, neg q)
+          | F.And (p, q) => With (neg p, neg q)
           | F.Not p => Lolli (pos p, Up Zero)
           | F.All (x, p) => All (x, neg p)
           | _ => Up (pos f)
@@ -634,8 +634,8 @@ structure PFormula :> PFormula = struct
    val erase =
       let
          val rec pos = fn
-            PAtom m => F.imogen.Atom m
-          | Tensor (a, b) => F.imogen.And (pos a, pos b)
+            PAtom m => F.Atom m
+          | Tensor (a, b) => F.And (pos a, pos b)
           | One => F.Top
           | Sum (a, b) => F.Or (pos a, pos b)
           | Zero => F.Bot
@@ -643,10 +643,10 @@ structure PFormula :> PFormula = struct
           | Ex (x, p) => F.Ex (x, pos p)
           | PLabel (s, a) => F.Label (s, pos a)
          and neg = fn
-            NAtom m => F.imogen.Atom m
-          | With (a, b) => F.imogen.And (neg a, neg b)
+            NAtom m => F.Atom m
+          | With (a, b) => F.And (neg a, neg b)
           | Top => F.Top
-          | Lolli (p, n) => F.imogen.Imp (pos p, neg n)
+          | Lolli (p, n) => F.Imp (pos p, neg n)
           | BiLolli (p, n) => F.Iff (neg p, neg n)
           | Up p => pos p
           | All (x, p) => F.All (x, neg p)
@@ -655,7 +655,7 @@ structure PFormula :> PFormula = struct
          {p = pos, n = neg}
       end
 
-   val parse : Parse.imogen.Formula.t -> neg =
+   val parse : Parse.Formula.t -> neg =
       let
          fun mkRel (rel as P.Rel.R (p, _)) =
             let
@@ -680,7 +680,7 @@ structure PFormula :> PFormula = struct
           | PF.Const P.Const.False => Zero
           | PF.Const P.Const.Zero => Zero
           | PF.Unop (P.Unop.Down, n) => Down (neg n)
-          | PF.Binop (P.Binop.imogen.And, p, q) => Tensor (pos p, pos q)
+          | PF.Binop (P.Binop.And, p, q) => Tensor (pos p, pos q)
           | PF.Binop (P.Binop.Tensor, p, q) => Tensor (pos p, pos q)
           | PF.Binop (P.Binop.Or, p, q) => Sum (pos p, pos q)
           | PF.Quant (P.Quant.Ex, (x, s), p) =>
@@ -700,9 +700,9 @@ structure PFormula :> PFormula = struct
           | PF.Unop (P.Unop.Up, p) => Up (pos p)
           | PF.Unop (P.Unop.Not, n) => Lolli (pos n, Up Zero)
           | PF.Binop (P.Binop.With, p, q) => With (neg p, neg q)
-          | PF.Binop (P.Binop.imogen.Imp, p, q) => Lolli (pos p, neg q)
+          | PF.Binop (P.Binop.Imp, p, q) => Lolli (pos p, neg q)
           | PF.Binop (P.Binop.Lolli, p, q) => Lolli (pos p, neg q)
-          | PF.Binop (P.Binop.imogen.Imp', p, q) => Lolli (pos q, neg p)
+          | PF.Binop (P.Binop.Imp', p, q) => Lolli (pos q, neg p)
           | PF.Binop (P.Binop.Lolli', p, q) => Lolli (pos q, neg p)
           | PF.Binop (P.Binop.Iff, p, q) => BiLolli (neg p, neg q)
           | PF.Binop (P.Binop.BiLolli, p, q) => BiLolli (neg p, neg q)
