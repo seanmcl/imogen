@@ -1,4 +1,4 @@
-package imogen
+package imogen.minimal
 
 import scala.io.Source
 

@@ -1,4 +1,4 @@
-package imogen
+package imogen.minimal
 
 class ParseError extends Exception
 

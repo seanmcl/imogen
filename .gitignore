@@ -14,3 +14,4 @@ activator-launch-1.2.10.jar
 *.grm.desc
 *.lex.sml
 .cm
+/src/main/sml/bin/imogen
