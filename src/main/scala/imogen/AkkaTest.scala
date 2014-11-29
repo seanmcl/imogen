@@ -16,7 +16,7 @@ class Greeter extends Actor {
   }
 }
 
-object AkkaTest extends App {
+object AkkaTest {
 
   // Create the 'helloakka' actor system
   val system = ActorSystem("helloakka")
