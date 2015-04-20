@@ -16,3 +16,4 @@ activator-launch-1.2.10.jar
 .cm
 /src/main/sml/bin/imogen
 *.iml
+/activator-launch-1.3.2.jar

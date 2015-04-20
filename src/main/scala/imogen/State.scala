@@ -1,0 +1,3 @@
+package imogen
+
+trait State

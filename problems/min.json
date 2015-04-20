@@ -1,0 +1,154 @@
+[
+  {"id": "efe5d9ed6edf2efd7a8239fc70dd31c8abc93002",
+   "formula": "true",
+   "status": "Theorem"},
+
+  {"id": "3d9ddd15b1cadd97e3c88401c8f1508ea6081588",
+   "formula": "p => p",
+   "status": "Theorem"},
+
+  {"id": "f5db6503911f723aa8d178155206aa46fb999f5f",
+   "formula": "p => p => p",
+   "status": "Theorem"},
+
+  {"id": "3c7e62ed8e7d3c21602cdd937159540327f1f3b3",
+   "formula": "p => q => p",
+   "status": "Theorem"},
+
+  {"id": "f3eb158094242679d0f38663383b8f56e9cd57f2",
+   "formula": "p & q => p",
+   "status": "Theorem"},
+
+  {"id": "5a3f54b6f4fe84142e5292d4d1ac0e8192c28ed9f",
+   "formula": "p & q => q",
+   "status": "Theorem"},
+
+  {"id": "633be506807757b72f9c1446102cd0604c161b38d",
+   "formula": "(p => q) => (p => q)",
+   "status": "Theorem"},
+
+  {"id": "70d9f48e20498adc44a748f0fd062f9ffbba1727c",
+   "formula": "p & q => q & p",
+   "status": "Theorem"},
+
+  {"id": "8c1d5a4773f1dcb160caf1825f65887b1842d07b9",
+   "formula": "p",
+   "status": "NonTheorem"},
+
+  {"id": "834045114a1d99dc2cf72289534d7b96db404b167",
+   "formula": "(p => q) => (p => q => r) => p => r",
+   "status": "Theorem"},
+
+  {"id": "96046a3b223288425a6a178597138c117d67dc156",
+   "formula": "p & q & r => r & q & p",
+   "status": "Theorem"},
+
+  {"id": "103fb85b81b6ffd532c8daf55c933276664e289fd5",
+   "formula": "p <=> p",
+   "status": "Theorem"},
+
+  {"id": "1152fd6317a1c28f952480e25540ed3b959eff230f",
+   "formula": "( (p1 <=> p2) => p1 & p2 & p3 ) =>
+( (p2 <=> p3) => p1 & p2 & p3 ) =>
+( (p3 <=> p1) => p1 & p2 & p3 ) =>
+( p1 )",
+   "status": "Theorem"},
+
+  {"id": "12ff9e4c3d2dd8c4da271870a6a19e96a5db0b1db2",
+   "formula": "( (p1 <=> p2) => p1 & p2 & p3 ) =>
+( (p2 <=> p3) => p1 & p2 & p3 ) =>
+( (p3 <=> p1) => p1 & p2 & p3 ) =>
+( p1 & p2 & p3 )",
+   "status": "Theorem"},
+
+  {"id": "1304e27817d8e57076b0c3d06717e4f65aa36fda7a",
+   "formula": "( (p1 <=> p2) => p1 & p2 & p3 & p4 & p5 ) =>
+( (p2 <=> p3) => p1 & p2 & p3 & p4 & p5 ) =>
+( (p3 <=> p4) => p1 & p2 & p3 & p4 & p5 ) =>
+( (p4 <=> p5) => p1 & p2 & p3 & p4 & p5 ) =>
+( (p5 <=> p1) => p1 & p2 & p3 & p4 & p5 ) =>
+p1",
+   "status": "Theorem"},
+
+  {"id": "140a6302dff8fed7badf2a6df70477292952c9d6a9",
+   "formula": "( (p1 <=> p2) => p1 & p2 & p3 & p4 & p5 ) =>
+( (p2 <=> p3) => p1 & p2 & p3 & p4 & p5 ) =>
+( (p3 <=> p4) => p1 & p2 & p3 & p4 & p5 ) =>
+( (p4 <=> p5) => p1 & p2 & p3 & p4 & p5 ) =>
+( (p5 <=> p1) => p1 & p2 & p3 & p4 & p5 ) =>
+( p1 & p2 & p3 & p4 & p5 )",
+   "status": "Theorem"},
+
+  {"id": "15ab05792c7c11e9b6dd0b877e6b21d802e21b2348",
+   "formula": "p & q => r <=> p => q => r",
+   "status": "Theorem"},
+
+  {"id": "1bd30d4eaa50b160913a305127f599311edd9b98",
+   "formula": "( ( p1 <=> p2) => ( p1 & ( p2 & p3 ) )) =>  ( ( p2 <=> p3) => ( p1 & ( p2 & p3 ) )) =>  ( ( p3 <=> p1) => ( p1 & ( p2 & p3 ) )) =>  ( p1 & ( p2 & p3 ))",
+   "status": "Theorem"},
+
+  {"id": "d4134fb020be81ef36603b36d54e6534bff4ebed",
+   "formula": "p & q => r",
+   "status": "NonTheorem"},
+
+  {"id": "7c344acbe408cf2d5ca2b3aee362b2c86c9b9cdc",
+   "formula": "a => b => a",
+   "status": "Theorem"},
+
+  {"id": "03bd3274ab3bdb2f4c5fc38f323377e0aa4c44c1",
+   "formula": "a => a",
+   "status": "Theorem"},
+
+  {"id": "6ddd0e70927c313904209bcd4a9ddbc9ed5d66a9",
+   "formula": "a & b <=> b & a",
+   "status": "Theorem"},
+
+  {"id": "941b8b71a383d9cd120b78362e6de6aa282b568c",
+   "formula": "a & (b & c) <=> (a & b) & c",
+   "status": "Theorem"},
+
+  {"id": "bb370dc01fd186da0d8c566144047ae48f26dad9",
+   "formula": "a & a <=> a",
+   "status": "Theorem"},
+
+  {"id": "e7c51bac89738d7d81ac9da8f25624bd3f5a5afa",
+   "formula": "a => b => a & b",
+   "status": "Theorem"},
+
+  {"id": "5d2479227c2c5df2968ede8e9f07bffaa3f9e2d2",
+   "formula": "a & b => a",
+   "status": "Theorem"},
+
+  {"id": "4170bf9750772f6123c7d32282d26130615ea871",
+   "formula": "a & b => b",
+   "status": "Theorem"},
+
+  {"id": "6c7239c7bd8c104117ea0ba71078e745f8d39782",
+   "formula": "a => a & b",
+   "status": "NonTheorem"},
+
+  {"id": "8cf4f787a4702d6f1a13faa6818492aed9a781bb",
+   "formula": "a & b => c <=> a => b => c",
+   "status": "Theorem"},
+
+  {"id": "241a3715a48b271544778def3fb018ced0db7a19",
+   "formula": "a => b & c <=> (a => b) & (a => c)",
+   "status": "Theorem"},
+
+  {"id": "521d201bb826d0fd583601c47a2fce7282028961",
+   "formula": "a => true <=> true",
+   "status": "Theorem"},
+
+  {"id": "6dad5b576c0d96c2db664fecff4e1fd320e78090",
+   "formula": "a & true <=> a",
+   "status": "Theorem"},
+
+  {"id": "9c7395ea11a72fdac395451d942e7c394f505f9d",
+   "formula": "A & B => C <=> A => B => C",
+   "status": "Theorem"},
+
+  {"id": "18603d66d77794c59283607c62eec902d13e842c",
+   "formula": "(('a => 'b) => 'a) => 'a",
+   "status": "NonTheorem"}
+
+]
