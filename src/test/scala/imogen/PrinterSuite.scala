@@ -1,4 +1,4 @@
-package imogen.minimal
+package imogen
 
 import org.scalatest.FunSuite
 

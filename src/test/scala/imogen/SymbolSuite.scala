@@ -1,6 +1,8 @@
-package imogen.util
+package imogen
 
 import org.scalatest.FunSuite
+import org.scalacheck.Properties
+import org.scalacheck.Prop.forAll
 
 class SymbolSuite extends FunSuite {
   test("equality") {

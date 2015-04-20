@@ -1,8 +1,9 @@
-package imogen.minimal.formula
+package imogen
 
 import org.scalatest.FunSuite
-import imogen.minimal.Parser
+
 import scala.util.{Failure, Success}
+
 
 class FormulaSuite extends FunSuite {
   def ok(s: String, f: Formula) = Parser.parseFormula(s) match {
@@ -53,4 +54,17 @@ class FormulaSuite extends FunSuite {
     ok("p => q & r", Imp(mkAtom("p"), And(mkAtom("q"), mkAtom("r"))))
     ok("T => T & T => T", Imp(Top, Imp(And(Top, Top), Top)))
   }
+
+  test("BiImplication Right Associative") {
+    ok("p <=> q <=> r", Iff(mkAtom("p"), Iff(mkAtom("q"), mkAtom("r"))))
+    ok("(T <=> T) <=> T", Iff(Iff(Top, Top), Top))
+  }
+
+  test("BiImplication Precedence") {
+    ok("p & q <=> r", Iff(And(mkAtom("p"), mkAtom("q")), mkAtom("r")))
+    ok("p <=> q & r", Iff(mkAtom("p"), And(mkAtom("q"), mkAtom("r"))))
+    ok("p => q <=> r", Iff(Imp(mkAtom("p"), mkAtom("q")), mkAtom("r")))
+    ok("p <=> q => r", Iff(mkAtom("p"), Imp(mkAtom("q"), mkAtom("r"))))
+  }
+
 }

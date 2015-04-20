@@ -1,10 +1,9 @@
-package imogen.minimal
+package imogen
 
-import imogen.minimal.formula.Top
-import imogen.minimal.nd.{ Let, Alpha, App, Ascribe, Cast, Intro, Label, Lam, ND, Unit }
+import imogen.ParserUtil.Interpolation
 import org.scalatest.FunSuite
-import Implicits.Interpolation
-import scala.util.{ Failure, Success }
+
+import scala.util.{Failure, Success}
 
 class ParserSuite extends FunSuite {
 
@@ -56,28 +55,30 @@ class ParserSuite extends FunSuite {
   }
 
   test("ascribe") {
+    success("<> : T", Cast(Ascribe(Unit, form"T")))
     success("(<> : T)", Cast(Ascribe(Unit, form"T")))
-    //    success("(<> : T)", Cast(Ascribe(Unit, form"T")))
-    //    success("((x : T))", Cast(Ascribe(i"x", form"T")))
-    //    success("(((fn x => x) : (T)))", Cast(Ascribe(Lam(l"x", i"x"), form"T")))
-    //    success("(<>:T) <>", Cast(App(Ascribe(Unit, Top), Unit)))
-    //success("(((fn x => (x: T1 => T2)) : (T)))", Cast(Ascribe(Lam(l"x", Cast(Ascribe(i"x", form"T1 => T2"))), form"T")))
+    success("((x : T))", Cast(Ascribe(i"x", form"T")))
+    success("(((fn x => x) : (T)))", Cast(Ascribe(Lam(l"x", i"x"), form"T")))
+    success("(<>:T) <>", Cast(App(Ascribe(Unit, Top), Unit)))
+    success("(((fn x => (x: t1 => t2)) : (T)))",
+      Cast(Ascribe(Lam(l"x", Cast(Ascribe(i"x", form"t1 => t2"))), form"T")))
   }
 
   test("funs") {
-    //    success("fn x => x", Lam(l"x", i"x"))
-    //    error("f x")
+    success("fn x => x", Lam(l"x", i"x"))
+    success("f x", Cast(App(e"f", i"x")))
     success("(f: T => T) x", Cast(App(Ascribe(i"f", form"T => T"), i"x")))
-    success("(f: T => T => T) x y", Cast(App(App(Ascribe(i"f", form"T => T => T"), i"x"), i"y")))
+    success("(f: T => T => T) x y",
+      Cast(App(App(Ascribe(i"f", form"T => T => T"), i"x"), i"y")))
   }
 
   test("let") {
     success("let x = y in x", Let(l"x", e"y", i"x"))
+    success("let f = ((fn x => x) : T => T) in f <>",
+      Let(l"f", Ascribe(Lam(l"y", i"y"), form"T => T"), Cast(App(e"f", Unit))))
   }
 
   test("bug") {
-    success("<>", Unit)
-    //  success("let f = ((fn x => x) : T => T) in f Unit", Let(l"f", Ascribe(Lam(l"y", i"y"), form"T => T"), Cast(App(e"f", Unit))))
   }
 }
 

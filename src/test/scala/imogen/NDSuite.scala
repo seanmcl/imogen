@@ -1,7 +1,7 @@
-package imogen.minimal.nd
+package imogen
 
-import imogen.minimal.Parser
 import org.scalatest.FunSuite
+
 import scala.util.{Failure, Success}
 
 object LabelInterpolation {
@@ -29,7 +29,7 @@ class NormalizeSuite extends FunSuite {
   def failure(t1: Intro) = assert(Normalize(t1) == Failure(Check.Check()))
 
   test("Unit") {
-    success(Unit, Unit)
+    success(imogen.Unit, imogen.Unit)
   }
 }
 

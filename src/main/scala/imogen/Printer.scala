@@ -1,7 +1,4 @@
-package imogen.minimal
-
-import imogen.minimal.formula.{ Imp, Atom, And, Top, Formula }
-import imogen.minimal.nd.{ Snd, Fst, Ascribe, Label, Let, Cast, ND, App, Lam, Elim, Intro, Unit, Pair }
+package imogen
 
 object Printer extends org.kiama.output.PrettyPrinter {
   def pretty(t: Formula): String =
@@ -17,6 +14,7 @@ object Printer extends org.kiama.output.PrettyPrinter {
     case Top => "T"
     case And(p, q) => show(p) <+> "&" <+> show(q)
     case Imp(p, q) => show(p) <+> "=>" <+> show(q)
+    case Iff(p, q) => show(p) <+> "<=>" <+> show(q)
     case Atom(x) => x.toString
   }
 

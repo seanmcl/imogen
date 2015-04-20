@@ -1,0 +1,145 @@
+{
+  "prop": [
+
+    {"id": "d9268a6cae7535128aa278eb3ec21e8a290ca034",
+     "formula": "false",
+     "status": "NonTheorem"},
+
+    {"id": "e6d3e6d5d4071aa303338b9e580c9b425b76975c",
+     "formula": "false => true",
+     "status": "Theorem"},
+
+    {"id": "a131de05f24fcd71046d2628c3cf2694e8a4e8cb",
+     "formula": "p => ~~p",
+     "status": "Theorem"},
+
+    {"id": "10d7271d03221641a57b445013432e6f316f7da5",
+     "formula": "~(~(( ( a & ( b & c ) ) | ( ~a |  ~b | ~c ) ) ))",
+     "status": "Theorem"},
+
+    {"id": "091bfe3f692c2b1de22d71f32be21f8fc96121b1",
+     "formula": "s => ( ~(( t => r) ) => p) => ( ~(( ( p => q)  & ( t => r)  )) => ( ~(~(p)) & ( s & s ) ))",
+     "status": "Theorem"},
+
+    {"id": "506ce33ce765e2311019cfbff81c93dd9ea5f104",
+     "formula": "(~ ~ (p | ~p) => p | ~p) => (p | ~p)",
+     "status": "Theorem"},
+
+    {"id": "ac65c5adf526298ac9eabf4b29fa5cc412cc69a1",
+     "formula": "~~p => p",
+     "status": "NonTheorem"},
+
+    {"id": "fceba063c48b53faedaec7a46b1fccb9f88fdd63",
+     "formula": "p => ~p",
+     "status": "NonTheorem"},
+
+    {"id": "1eb3faf040ecf5a22fd7a16e87b5ef88fc933f40",
+     "formula": "p | q => p",
+     "status": "NonTheorem"},
+
+    {"id": "b093bd48abf594844454ca9cb793263dd0baf2b7",
+     "formula": "( p1 | p2 ) => ( ~ p1 | p2 ) => ( p1 | ~ p2 ) => ~ ( ~ p1 | ~ p2 )",
+     "status": "Theorem"},
+
+    {"id": "c6a7391f491016806aed4d0e58b7bb82d15159d0",
+     "formula": "( (Q <=> Q) => false ) => false",
+     "status": "Theorem"},
+
+    {"id": "b08aab127b8756abf14ba1f5625f45453af6635c",
+     "formula": " ~ ~ (a | ((~a) | (~a)))",
+     "status": "Theorem"}
+
+    {"id": "40aa53e33b0611d544711915e91d958f16bb97de",
+     "formula": "a | b <=> b | a",
+     "status": "Theorem"},
+
+    {"id": "ae82fc53380098e3bf858f2b9b51e3ef93f5ad4b",
+     "formula": "a | (b | c) <=> (a | b) | c",
+     "status": "Theorem"},
+
+    {"id": "5ed389861a27b9089b6c87d9b6031e0f1e5fbac1",
+     "formula": "a | a <=> a",
+     "status": "Theorem"},
+
+    {"id": "169cbb1b0d8c7a3423be8f319f6abb9cfd718dfb",
+     "formula": "a => a | b",
+     "status": "Theorem"},
+
+    {"id": "1621c81a4099c80f6993b9c3feeb6db1265d67b8",
+     "formula": "a | b => a",
+     "status": "NonTheorem"},
+
+    {"id": "3d38130b3fe887949a7a30f555c1f72174995c45",
+     "formula": "a | b => b",
+     "status": "NonTheorem"},
+
+    {"id": "cb91ed47d0d7cdfd16ad4149a89348d02e87ebdd",
+     "formula": "a | b => c <=> (a => c) & (b => c)",
+     "status": "Theorem"},
+
+    {"id": "06831ba0519158bb40a95bd31db3510c6b17dbe1",
+     "formula": "a | (b & c) <=> (a | b) & (a | c)",
+     "status": "Theorem"},
+
+    {"id": "cc40a89f2ef59aed45c337c5405422ef9acf7bef",
+     "formula": "a & (b | c) <=> (a & b) | (a & c)",
+     "status": "Theorem"},
+
+    {"id": "78da05e42ece4a7b01e4dfeea68679aaee3a4b8b",
+     "formula": "a | true <=> true",
+     "status": "Theorem"},
+
+    {"id": "4fd6850b204bdfa503835fbe12b1a497f3e413ae",
+     "formula": "a & false <=> false",
+     "status": "Theorem"},
+
+    {"id": "e9f0a793e3ce3b53be3d561beed884ac1b38d2ef",
+     "formula": "a | false <=> a",
+     "status": "Theorem"},
+
+    {"id": "a0399111a049f4295acc15c8d18e4248fded2254",
+     "formula": "A | (B & C) <=> (A | B) & (A | C)",
+     "status": "Theorem"},
+
+    {"id": "cac72d50929b877c4128551ffefcb7020ddc56eb",
+     "formula": "A & (B | C) <=> (A & B) | (A & C)",
+     "status": "Theorem"},
+
+    {"id": "f201ac17dc2b5db6c2fb9d115125c9d065fa2e24",
+     "formula": "A | false <=> A",
+     "status": "Theorem"},
+
+    {"id": "279ca27d4f2a16588e14605ae1245d0070916365",
+     "formula": "('a => false) => false",
+     "status": "NonTheorem"},
+
+    {"id": "a154eae1057fb618b117545b81b01ecde6f29e7e",
+     "formula": "false",
+     "status": "NonTheorem"},
+
+    {"id": "8d4afe04050c6b8a80880b26bf2a45db1a377371",
+     "formula": "(('a => 'b) => 'c) => ('a | 'c) & ('b => 'c)",
+     "status": "NonTheorem"},
+
+    {"id": "2b6632e071b0e622ebdf901eea191afa5d24a912",
+     "formula": "((A => B) => C) <- (A | C) & (B => C)",
+     "status": "Theorem"},
+
+    {"id": "42b2f8568776f1621fd8ff5ddaee3d1391c41954",
+     "formula": "(('a => false) => false) => 'a",
+     "status": "NonTheorem"},
+
+    {"id": "6f5e8ca013b77573c0241900f9aa22ba49ff2713",
+     "formula": "'a | ('a => 'b)",
+     "status": "NonTheorem"},
+
+    {"id": "3e0da3b8131f976646ebf265e85d7b26ba59b3e4",
+     "formula": "( q => r ) => ( r => ( p & q ) ) => ( p => ( q | r ) ) => ( p <=> q )",
+     "status": "Theorem"},
+
+    {"id": "fda6f12b84e3c0d03990e8399c72e45d04d7dcfd",
+     "formula": "( p1 => p2 ) => ( p2 => ( p3 & p1 ) ) => ( p3 => ( p1 | p2 ) ) => ( p3 <=> p1 )",
+     "status": "Theorem"}
+
+  ]
+}

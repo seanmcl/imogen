@@ -1,12 +1,9 @@
-package imogen.minimal
+package imogen
 
-import imogen.minimal.formula.{ Imp, And, Formula, Atom, Top }
-import imogen.minimal.nd.{ Snd, Fst, Label, Cast, Ascribe, Let, App, ND, Lam, Elim, Intro, Unit, Pair }
-import scala.util.parsing.combinator.syntactical.StandardTokenParsers
-import scala.util.{ Failure, Success }
-import scala.util.parsing.input.Position
 import scala.util.parsing.combinator.PackratParsers
-
+import scala.util.parsing.combinator.syntactical.StandardTokenParsers
+import scala.util.parsing.input.Position
+import scala.util.{Failure, Success}
 
 /**
  * It's too difficult to parse the bi-directional form directly.  Clauses such as
@@ -34,10 +31,13 @@ case class ParseError(msg: String = "",
 }
 
 object Parser extends StandardTokenParsers with PackratParsers {
-  import scala.util.{ Try, Success => TrySuccess, Failure => TryFailure }
+  import scala.util.{Failure => TryFailure, Success => TrySuccess, Try}
 
-  lexical.reserved ++= Seq("let", "in", "fn", "T")
-  lexical.delimiters ++= Seq("(", ")", "=>", "=", "&", "<", ">", ",", ":")
+  lexical.reserved ++=
+    Seq("let", "in", "fn", "T")
+
+  lexical.delimiters ++=
+    Seq("(", ")", "=>", "=", "&", "<", ">", ",", ":", "<=>")
 
   def isLowerId(s: String) = {
     val c = s.charAt(0)
@@ -54,9 +54,14 @@ object Parser extends StandardTokenParsers with PackratParsers {
     case x ~ Some(y) => And(x, y)
   }
 
-  private def form: Parser[Formula] = conj ~ ("=>" ~> form).? ^^ {
+  private def imp: Parser[Formula] = conj ~ ("=>" ~> imp).? ^^ {
     case x ~ None => x
     case x ~ Some(y) => Imp(x, y)
+  }
+
+  private def form: Parser[Formula] = imp ~ ("<=>" ~> form).? ^^ {
+    case x ~ None => x
+    case x ~ Some(y) => Iff(x, y)
   }
 
   private sealed trait Term
@@ -133,9 +138,9 @@ object Parser extends StandardTokenParsers with PackratParsers {
   val parseTerm = parseReader(term ^^ termToIntro)_
 }
 
-object Implicits {
+object ParserUtil {
   implicit class Interpolation(val sc: StringContext) extends AnyVal {
-    import Parser.{ parseFormula, parseTerm }
+    import Parser.{parseFormula, parseTerm}
 
     def form(args: Any*): Formula = {
       parseFormula(sc.parts.mkString("")) match {

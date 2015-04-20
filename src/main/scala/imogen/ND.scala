@@ -1,10 +1,9 @@
-package imogen.minimal.nd
+package imogen
 
-import imogen.minimal.formula.{ Top, Formula, Imp, And }
-import scala.util.{ Failure, Success, Try }
+import scala.util.{Failure, Success, Try}
 
 object ND {
-  val labels = new imogen.util.Symbol("H")
+  val labels = new imogen.Symbol("H")
   type Symbol = labels.T
 }
 
